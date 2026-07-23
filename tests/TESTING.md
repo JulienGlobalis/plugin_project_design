@@ -64,6 +64,7 @@ For every future iteration:
 | `golden-outputs/` | Explicitly approved reference artefacts |
 | `regression/` | Difference classification and regression procedure |
 | `executions/` | Test-run evidence and validation decisions |
+| `manual/` | Lightweight workbooks for real-project validation |
 
 Test data, execution instructions, evaluation criteria, and approved outputs
 must remain separate. This prevents expected conclusions from leaking into a
@@ -218,3 +219,21 @@ not:
 
 Add automation only after the corresponding methodology and contracts are
 stable. Until then, manual evidence and review are authoritative.
+
+## Manual Real-Project Validation
+
+Use a manual workbook after fixture validation when a skill needs practical
+review on real project material. Keep the workbook concise and complete it
+during or immediately after the test.
+
+Manual workbooks:
+
+- do not replace permanent scenarios or quality checklists;
+- do not become Golden Outputs automatically;
+- must not contain committed confidential client information;
+- record practical usefulness, friction, terminology, and improvement needs;
+- may support a later skill change only when feedback is traceable and
+  reviewed.
+
+The current workbook is
+[Project Framing](manual/project-framing/manual-test-workbook.md).

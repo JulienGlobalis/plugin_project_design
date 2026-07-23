@@ -2,7 +2,9 @@
 
 ## Iteration Objective
 
-Initialize the plugin structure, manifests, skills, and shared-resource placeholders. Do not implement the detailed project-design methodology.
+Implement the first complete business methodology, `project-framing`, on the
+accepted Canonical Domain Model, Knowledge Model, and Project Model without
+implementing downstream skill methodologies.
 
 ## In Scope
 
@@ -22,10 +24,15 @@ Initialize the plugin structure, manifests, skills, and shared-resource placehol
   Model traceability.
 - An initial French terminology companion for canonical concepts and shared
   model labels.
+- A complete `project-framing` methodology for concise, traceable,
+  uncertainty-aware project framing.
+- Four fixture scenarios, a detailed quality checklist, and a lightweight
+  real-project manual test workbook for `project-framing`.
 
 ## Out of Scope
 
-- Detailed project-design methodology.
+- Detailed `functional-design`, `technical-design`, `product-backlog`,
+  `document-output`, and orchestration methodologies.
 - Executable workflows or generic workflow engines.
 - Runtime code or language packages.
 - Hooks, custom agents, slash commands, MCP servers, and API integrations.
@@ -74,9 +81,24 @@ Initialize the plugin structure, manifests, skills, and shared-resource placehol
   English names or definitions.
 - Missing requested-language terminology is explicit and never falls back
   silently to an unrelated localized language.
+- `project-framing` accepts an existing Project View or available project
+  sources and remains independently callable.
+- The framing output covers only justified context, objectives, Scope,
+  participants, lifecycle perspectives, uncertainty, decisions, Risks,
+  Issues, questions, and next steps.
+- The framing distinguishes Established, Provisional, and Unresolved
+  information and Existing, Target, and Transition perspectives.
+- Contradictory or missing information remains visible and no unsupported
+  project information is invented.
+- Preliminary questions are limited to useful blockers and the user can
+  continue with an incomplete framing.
+- Detailed functional, technical, backlog, and document methodology remains
+  outside `project-framing`.
+- A concise manual workbook supports real-project validation without
+  introducing a second automated suite.
 
 ## Unresolved Design
 
-The skill methodologies, shared-model representation and versioning, detailed
-schemas, artefact mappings, installation distribution, license, and
-automation implementation are TO BE DEFINED.
+The remaining skill methodologies, orchestration, shared-model representation
+and versioning, detailed schemas, artefact mappings, installation
+distribution, license, and automation implementation are TO BE DEFINED.

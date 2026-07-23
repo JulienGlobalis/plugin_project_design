@@ -28,7 +28,8 @@ Provide a reusable, evidence-aware methodology for designing application and sof
 - `product-backlog`: backlog structure, harmonization, prioritization, estimation, and traceability.
 - `document-output`: document assembly, language, assets, branding, formatting, and consistency.
 
-Detailed methodology for every skill is TO BE DEFINED.
+The `project-framing` methodology is defined in version 0.1. Detailed
+methodology for the remaining skills is TO BE DEFINED.
 
 ## Usage Modes
 

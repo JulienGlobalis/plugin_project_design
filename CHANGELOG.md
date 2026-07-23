@@ -20,6 +20,9 @@
   Knowledge Model traceability.
 - Added the initial French terminology companion for all canonical concepts,
   shared-model labels, and localization fallback rules.
+- Implemented `project-framing` methodology version 0.1 with proportionate
+  questioning, uncertainty-aware framing, lifecycle separation, traceable
+  outputs, four fixture validations, and a real-project manual test workbook.
 
 ## Version 0.1.0 - 2026-07-23
 

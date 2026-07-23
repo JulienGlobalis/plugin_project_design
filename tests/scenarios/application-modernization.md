@@ -29,3 +29,18 @@ it for `project-design` when orchestration or a shared contract changes.
 - Proposals are not represented as approved migration decisions.
 - Technical debt remains connected to source evidence.
 - The output stays within the selected skill's responsibility.
+
+## Project Framing-Specific Observations
+
+- Existing application, processes, interfaces, workarounds, Issues, and
+  operational constraints are summarized without turning the framing into a
+  technical design.
+- Target maintainability, security, workflow, and reporting outcomes remain
+  distinct from current behavior.
+- Migration, continuity, rollback, archive, training, adoption, and parallel
+  operation remain Transition considerations rather than approved plans.
+- Historical Decisions are not assumed to remain binding when applicability
+  is unknown.
+- The reopening contradiction and Central Intake divergence remain visible.
+- Recommended next steps prioritize current-state validation, transition
+  decisions, data treatment, continuity, and governance.

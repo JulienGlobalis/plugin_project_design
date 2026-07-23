@@ -28,3 +28,17 @@ whose handling of missing information or unsupported invention changes.
 - Ambiguous user populations are not silently merged.
 - No requirement, priority, volume, owner, or constraint is invented.
 - The output stays within the selected skill's responsibility.
+
+## Project Framing-Specific Observations
+
+- A useful first framing is produced before requesting non-blocking details.
+- Existing handling remains distinct from the proposed workspace.
+- Final scope, ownership, terminology, measures, service targets, integrations,
+  and governance remain provisional or unresolved.
+- Ambiguous terms such as request, ticket, case, requester, and site are not
+  normalized silently.
+- Questions needed before framing approval are distinguished from details that
+  can wait for functional or technical design.
+- Recommended next steps prioritize scope authority, participant coverage,
+  terminology, and critical information requirements without inventing a
+  delivery plan.

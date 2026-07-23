@@ -29,3 +29,17 @@ whose traceability, consistency, or decision handling changes.
 - Unknown decision authority remains an open question.
 - Technical identity limitations are not presented as a business decision.
 - The output stays within the selected skill's responsibility.
+
+## Project Framing-Specific Observations
+
+- The framing remains coherent without selecting a winner for unresolved
+  conflicts.
+- Retention alternatives of two, three, five, and seven years remain visible.
+- Approval, eligibility, response target, reporting interface, rollout,
+  cutover, launch date, and priority conflicts remain visible.
+- Established project context is separated from provisional or unresolved
+  direction.
+- Clarification requests identify the required decision or authority when
+  known and do not ask for details already supplied.
+- The next steps focus on governance and conflict resolution rather than
+  functional or technical design.

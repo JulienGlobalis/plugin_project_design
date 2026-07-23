@@ -16,6 +16,7 @@ skill changes and releases.
   artefacts.
 - [Regression](regression/README.md): difference classification and review.
 - [Execution history](executions/README.md): records of completed test runs.
+- [Manual validation](manual/README.md): lightweight real-project workbooks.
 
 Structural validation of manifests and skill front matter remains required in
 addition to the methodology tests described here.

@@ -8,10 +8,12 @@ Project-design knowledge is often spread across briefs, workshops, requirements,
 
 ## Architecture
 
-The plugin contains one future orchestration skill and five specialized skills:
+The plugin contains one future orchestration skill and five specialized
+skills:
 
 - `project-design` will select and coordinate specialized skills.
-- `project-framing` will structure project context and boundaries.
+- `project-framing` structures project context, objectives, boundaries,
+  participants, uncertainty, and next clarification activities.
 - `functional-design` will structure expected system behavior.
 - `technical-design` will structure architecture and technical decisions.
 - `product-backlog` will structure and harmonize backlog items.
@@ -90,20 +92,27 @@ documentation-first testing strategy, a permanent multi-artefact reference
 corpus, the common information-architecture decision, version 0.1 of the
 Canonical Domain Model, version 0.1 of the conceptual Knowledge Model, and
 version 0.1 of the Minimal Normalized Project Model. It also provides the
-initial French canonical terminology companion. It does not provide the
-detailed skill methodologies, executable workflows, schemas, exporters,
-persistence, API integrations, MCP servers, hooks, agents, commands, or Spec
-Kit automation.
+initial French canonical terminology companion and the first complete
+business methodology, `project-framing` version 0.1. It does not provide the
+remaining detailed skill methodologies, executable orchestration, schemas,
+exporters, persistence, API integrations, MCP servers, hooks, agents,
+commands, or Spec Kit automation.
 
 ## Development Approach
 
-Develop one responsibility per skill, reuse shared concepts, preserve evidence and traceability, and validate methodology before adding automation. Every change follows [the shared testing strategy](tests/TESTING.md). Planned capability remains `TO BE DEFINED` until its behavior and contracts are explicitly designed.
+Develop one responsibility per skill, reuse shared concepts, preserve
+evidence and traceability, and validate methodology before adding automation.
+Every change follows [the shared testing strategy](tests/TESTING.md).
+Real-project validation of `project-framing` uses the
+[manual workbook](tests/manual/project-framing/manual-test-workbook.md).
+Planned capability remains `TO BE DEFINED` until its behavior and contracts
+are explicitly designed.
 
 ## Roadmap
 
-The next iteration implements and validates the first complete methodology,
-`project-framing`, using the Canonical Domain Model, Knowledge Model, and
-Project Model as its architectural foundations.
+The next business iteration should implement `functional-design`, consuming
+validated project framing and the shared Project Model without duplicating
+the framing methodology.
 
 ## Installation
 
