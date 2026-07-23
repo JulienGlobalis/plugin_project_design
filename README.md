@@ -36,7 +36,7 @@ skills/              Shared, platform-independent skill foundations
 shared/              Shared assets, schemas, project model, rules, and terms
 integrations/        Platform notes and optional integration boundaries
 examples/            Future examples
-tests/               Validation scope and future tests
+tests/               Shared fixtures, scenarios, checklists, and regression evidence
 ```
 
 ## Localization and Assets
@@ -47,15 +47,15 @@ All plugin source content is English. Only user-facing assets may be localized. 
 
 UNDER CONSTRUCTION
 
-Version 0.1.0 provides manifests, valid skill skeletons, shared-resource placeholders, integration boundaries, and repository documentation. It does not provide the detailed methodology, executable workflows, exporters, persistence, API integrations, MCP servers, hooks, agents, commands, or Spec Kit automation.
+Version 0.1.0 provides manifests, valid skill skeletons, shared-resource placeholders, integration boundaries, repository documentation, a documentation-first testing strategy, and a permanent multi-artefact reference corpus. It does not provide the detailed methodology, executable workflows, exporters, persistence, API integrations, MCP servers, hooks, agents, commands, or Spec Kit automation.
 
 ## Development Approach
 
-Develop one responsibility per skill, reuse shared concepts, preserve evidence and traceability, and validate methodology before adding automation. Planned capability remains `TO BE DEFINED` until its behavior and contracts are explicitly designed.
+Develop one responsibility per skill, reuse shared concepts, preserve evidence and traceability, and validate methodology before adding automation. Every change follows [the shared testing strategy](tests/TESTING.md). Planned capability remains `TO BE DEFINED` until its behavior and contracts are explicitly designed.
 
 ## Roadmap
 
-The next iteration is limited to defining and testing `project-framing`. Later iterations may define the remaining specialized skills, the shared project model, orchestration, document outputs, and optional adapters.
+The next iteration defines the shared Project Model used by every specialized skill. The first complete methodology, `project-framing`, follows once that common information model is stable. Later iterations may define the remaining specialized skills, orchestration, document outputs, and optional adapters.
 
 ## Installation
 

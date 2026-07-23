@@ -11,6 +11,8 @@ Initialize the plugin structure, manifests, skills, and shared-resource placehol
 - Shared-resource directories and conventions.
 - Codex, Claude Code, and GitHub Spec Kit integration documentation.
 - Repository documentation, contribution rules, and validation scope.
+- A shared documentation-first testing strategy and anonymized regression
+  corpus.
 
 ## Out of Scope
 
@@ -30,7 +32,12 @@ Initialize the plugin structure, manifests, skills, and shared-resource placehol
 - Spec Kit standalone, companion, and integration modes are documented.
 - No runtime dependency or detailed methodology is introduced.
 - Planned behavior is marked `UNDER CONSTRUCTION` or `TO BE DEFINED`.
+- Exactly four permanent anonymized, multi-artefact fixtures support shared
+  Codex and Claude Code scenarios.
+- Repository-wide and skill-specific quality criteria evaluate methodology
+  without requiring identical wording.
+- Golden outputs require explicit human approval.
 
 ## Unresolved Design
 
-The methodology, project-information model, detailed schemas, artefact mappings, installation distribution, license, and automation strategy are TO BE DEFINED.
+The methodology, project-information model, detailed schemas, artefact mappings, installation distribution, license, and automation implementation are TO BE DEFINED.

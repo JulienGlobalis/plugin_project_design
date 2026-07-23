@@ -1,12 +1,21 @@
 # Validation and Tests
 
-Version 0.1.0 uses structural validation only:
+The repository uses a lightweight, documentation-first testing strategy. Tests
+evaluate methodological quality rather than exact wording.
 
-- Validate `.codex-plugin/plugin.json` with the installed Codex plugin validator.
-- Validate `.claude-plugin/plugin.json` with the installed Claude Code CLI in strict mode.
-- Validate every `skills/*/SKILL.md` with the skill-creator validator.
-- Check for unresolved scaffold placeholders.
-- Check that core skills contain no Spec Kit runtime dependency.
-- Check that no runtime package, hook, command, custom agent, or MCP server is present.
+Start with [TESTING.md](TESTING.md), which defines the mandatory workflow for
+skill changes and releases.
 
-Detailed methodology tests, fixtures, forward tests, and integration tests are TO BE DEFINED.
+## Test Areas
+
+- [Fixtures](fixtures/README.md): the four permanent anonymized source sets.
+- [Scenarios](scenarios/README.md): platform-independent test instructions.
+- [Quality checklists](quality-checklists/README.md): repository-wide and
+  skill-specific evaluation criteria.
+- [Golden outputs](golden-outputs/README.md): human-approved reference
+  artefacts.
+- [Regression](regression/README.md): difference classification and review.
+- [Execution history](executions/README.md): records of completed test runs.
+
+Structural validation of manifests and skill front matter remains required in
+addition to the methodology tests described here.

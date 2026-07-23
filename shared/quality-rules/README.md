@@ -13,4 +13,6 @@ This directory will define common quality principles and traceability rules. The
 
 The methodology must prohibit unsupported invention, preserve source traceability, and prevent unresolved assumptions from being represented as validated decisions.
 
-Detailed checks and quality-control workflows are TO BE DEFINED.
+The current repository-wide test criteria are defined in the
+[quality checklist](../../tests/quality-checklists/repository-quality.md).
+Detailed methodology-level quality contracts remain TO BE DEFINED.

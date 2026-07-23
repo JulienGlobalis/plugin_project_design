@@ -35,12 +35,21 @@ Future extension points include runtime helpers, persistence, exporters, APIs, M
 
 These extension points are not implemented in version 0.1.0 and must not force a reorganization of the shared skills.
 
+## Testing Strategy
+
+All skill development uses the shared fixtures, scenarios, quality checklists,
+golden-output policy, and regression workflow defined in
+[`tests/TESTING.md`](tests/TESTING.md). A methodology change is incomplete
+until its affected tests have been updated and reviewed.
+
 ## Roadmap
 
-1. Define and test `project-framing`.
-2. Define shared project-model and quality-rule contracts from framing evidence.
-3. Define and test the remaining specialized skills individually.
-4. Define orchestration and cross-artefact consistency.
-5. Validate document-output conventions and localized assets.
-6. Design optional platform and Spec Kit adapters.
-7. Consider automation only after stable contracts exist.
+1. Establish the repository testing strategy.
+2. Build the permanent anonymized reference corpus.
+3. Define the shared Project Model and quality-rule contracts.
+4. Define and test `project-framing`.
+5. Define and test the remaining specialized skills individually.
+6. Define orchestration and cross-artefact consistency.
+7. Validate document-output conventions and localized assets.
+8. Design optional platform and Spec Kit adapters.
+9. Consider automation only after stable contracts exist.
