@@ -39,4 +39,11 @@ The current repository-wide and shared-model test criteria are defined in the
 and the dedicated
 [Knowledge Model](../../tests/quality-checklists/knowledge-model.md) and
 [Project Model](../../tests/quality-checklists/project-model.md) checklists.
+
+Localized outputs must use the preferred terminology for the requested
+language while preserving canonical distinctions. The initial mapping and
+fallback rules are defined by the
+[French terminology companion](../terminology/canonical-terms.fr.md) and the
+[localized terminology checklist](../../tests/quality-checklists/localized-terminology.md).
+
 Detailed methodology-level quality contracts remain TO BE DEFINED.

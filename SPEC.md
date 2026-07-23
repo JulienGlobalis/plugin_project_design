@@ -20,6 +20,8 @@ Initialize the plugin structure, manifests, skills, and shared-resource placehol
 - A minimal normalized Project Model for coherent project elements,
   relationships, normalization status, lifecycle perspective, and Knowledge
   Model traceability.
+- An initial French terminology companion for canonical concepts and shared
+  model labels.
 
 ## Out of Scope
 
@@ -68,6 +70,10 @@ Initialize the plugin structure, manifests, skills, and shared-resource placehol
   supporting, qualifying, and opposing knowledge.
 - The Project Model remains independent from skill methodology, storage,
   platform, and serialization.
+- Localized terminology maps all canonical concepts without modifying their
+  English names or definitions.
+- Missing requested-language terminology is explicit and never falls back
+  silently to an unrelated localized language.
 
 ## Unresolved Design
 

@@ -7,6 +7,8 @@
 - [ ] Structure and terminology remain consistent across included artefacts.
 - [ ] Requested language, branding, assets, and formatting constraints are
       respected when supplied.
+- [ ] Localized canonical and shared-model labels follow the requested
+      language's terminology companion when available.
 - [ ] Missing localized assets are explicit.
 - [ ] The output never silently falls back to an unrelated language.
 - [ ] Assembly does not alter the source methodology or invent design content.

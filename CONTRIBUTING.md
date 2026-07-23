@@ -1,6 +1,14 @@
 # Contributing
 
-Keep all source content, identifiers, comments, manifests, documentation, workflows, schemas, and tests in English. Localized user-facing assets are the only exception and must follow `<asset-name>.<language-code>.<extension>`, optionally using a regional language code.
+Keep normative source content, identifiers, comments, manifests,
+documentation, workflows, schemas, and tests in English. Localized
+user-facing assets and terminology companions are the exceptions and must
+follow `<asset-name>.<language-code>.<extension>`, optionally using a regional
+language code.
+
+English canonical names and definitions remain authoritative. A localized
+terminology companion may define preferred labels, variants, and usage notes
+but must not add, remove, merge, split, or redefine canonical concepts.
 
 Keep one responsibility per skill and reuse shared resources instead of duplicating concepts. Preserve the platform independence of `skills/`; place platform-specific configuration in its manifest or integration directory.
 

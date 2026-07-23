@@ -14,6 +14,8 @@ Provide a reusable, evidence-aware methodology for designing application and sof
 - Separate source documents, extracted knowledge, normalized project
   information, and generated artefacts.
 - Use one canonical vocabulary across shared models and skills.
+- Keep English canonical names stable while allowing governed localized
+  presentation labels.
 - Prefer Markdown, YAML, and JSON until executable behavior is justified.
 - Isolate optional integrations so dependencies point toward external platforms, never into the core.
 

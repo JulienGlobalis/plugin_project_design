@@ -18,6 +18,8 @@
 - Defined version 0.1 of the Minimal Normalized Project Model with shared
   elements, relationships, normalization status, lifecycle perspective, and
   Knowledge Model traceability.
+- Added the initial French terminology companion for all canonical concepts,
+  shared-model labels, and localization fallback rules.
 
 ## Version 0.1.0 - 2026-07-23
 

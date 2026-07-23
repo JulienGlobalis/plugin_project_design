@@ -43,6 +43,10 @@ The
 defines the vocabulary shared by both models and all skills. It governs
 semantics but is not an additional processing layer.
 
+Localized terminology companions, starting with
+[French canonical terminology](shared/terminology/canonical-terms.fr.md),
+provide output labels without changing that semantic contract.
+
 ## Platforms
 
 Version 0.1.0 targets Codex and Claude Code. Both platforms discover the same root `skills/` implementation. Platform-specific manifests and notes are isolated under `.codex-plugin/`, `.claude-plugin/`, and `integrations/`.
@@ -65,7 +69,16 @@ tests/               Shared fixtures, scenarios, checklists, and regression evid
 
 ## Localization and Assets
 
-All plugin source content is English. Only user-facing assets may be localized. Localized assets follow `<asset-name>.<language-code>.<extension>`, with optional regional tags such as `fr-FR`. Resolution must never silently fall back to an unrelated language.
+Normative plugin source content and canonical names are English. User-facing
+assets and terminology companions may be localized. Localized resources
+follow `<asset-name>.<language-code>.<extension>`, with optional regional tags
+such as `fr-FR`.
+
+Resolution prefers an exact regional language and then its base language.
+Missing requested-language content must be explicit. English is the default
+when no output language is requested and is a fallback for a requested
+language only through an explicit rule or user acceptance. Resolution must
+never silently fall back to an unrelated localized language.
 
 ## Current Status
 
@@ -76,7 +89,8 @@ placeholders, integration boundaries, repository documentation, a
 documentation-first testing strategy, a permanent multi-artefact reference
 corpus, the common information-architecture decision, version 0.1 of the
 Canonical Domain Model, version 0.1 of the conceptual Knowledge Model, and
-version 0.1 of the Minimal Normalized Project Model. It does not provide the
+version 0.1 of the Minimal Normalized Project Model. It also provides the
+initial French canonical terminology companion. It does not provide the
 detailed skill methodologies, executable workflows, schemas, exporters,
 persistence, API integrations, MCP servers, hooks, agents, commands, or Spec
 Kit automation.

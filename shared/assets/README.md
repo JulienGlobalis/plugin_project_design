@@ -31,3 +31,8 @@ The future resolution order is:
 4. Controlled missing-asset handling.
 
 Never silently fall back to an unrelated language. Asset storage, resolution, validation, and branding rules are TO BE DEFINED.
+
+Localized canonical terminology is maintained separately under
+[`shared/terminology/`](../terminology/README.md). Terminology companions use
+the same language suffix convention but are not document templates or
+presentation assets.
