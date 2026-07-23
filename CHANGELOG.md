@@ -13,6 +13,8 @@
   Generated Artefacts information architecture.
 - Defined version 0.1 of the corpus-driven Canonical Domain Model with 22
   shared concepts and explicit exclusions.
+- Defined version 0.1 of the Minimal Knowledge Model for assertions,
+  provenance, epistemic state, contradiction, coexistence, and traceability.
 
 ## Version 0.1.0 - 2026-07-23
 

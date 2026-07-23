@@ -30,6 +30,10 @@ The Knowledge Model preserves extracted evidence, provenance, uncertainty,
 and conflicts. The Project Model provides normalized project information.
 Neither model belongs to an individual skill.
 
+Version 0.1 of the
+[Minimal Knowledge Model](shared/knowledge-model/README.md) defines how
+assertions and their epistemic state are preserved before normalization.
+
 The
 [Canonical Domain Model](shared/terminology/canonical-domain-model.md)
 defines the vocabulary shared by both models and all skills. It governs
@@ -49,7 +53,7 @@ The plugin is standalone by design and does not require GitHub Spec Kit. Spec Ki
 .codex-plugin/       Codex manifest
 .claude-plugin/      Claude Code manifest
 skills/              Shared, platform-independent skill foundations
-shared/              Shared assets, schemas, project model, rules, and terms
+shared/              Shared models, assets, schemas, rules, and terms
 integrations/        Platform notes and optional integration boundaries
 examples/            Future examples
 tests/               Shared fixtures, scenarios, checklists, and regression evidence
@@ -63,7 +67,14 @@ All plugin source content is English. Only user-facing assets may be localized. 
 
 UNDER CONSTRUCTION
 
-Version 0.1.0 provides manifests, valid skill skeletons, shared-resource placeholders, integration boundaries, repository documentation, a documentation-first testing strategy, a permanent multi-artefact reference corpus, the common information-architecture decision, and version 0.1 of the Canonical Domain Model. It does not provide the detailed methodology, Knowledge Model or Project Model implementations, executable workflows, exporters, persistence, API integrations, MCP servers, hooks, agents, commands, or Spec Kit automation.
+Version 0.1.0 provides manifests, valid skill skeletons, shared-resource
+placeholders, integration boundaries, repository documentation, a
+documentation-first testing strategy, a permanent multi-artefact reference
+corpus, the common information-architecture decision, version 0.1 of the
+Canonical Domain Model, and version 0.1 of the conceptual Knowledge Model. It
+does not provide the detailed methodology, normalized Project Model,
+executable workflows, schemas, exporters, persistence, API integrations, MCP
+servers, hooks, agents, commands, or Spec Kit automation.
 
 ## Development Approach
 
@@ -71,7 +82,10 @@ Develop one responsibility per skill, reuse shared concepts, preserve evidence a
 
 ## Roadmap
 
-The next iteration implements the minimal Knowledge Model and validates it against all four permanent fixtures. The shared Project Model follows once evidence, provenance, uncertainty, and conflict handling are stable. The first complete methodology, `project-framing`, follows both shared models.
+The next iteration defines the minimal normalized Project Model and validates
+its relationship with Knowledge Assertions against all four permanent
+fixtures. The first complete methodology, `project-framing`, follows both
+shared models.
 
 ## Installation
 

@@ -9,6 +9,12 @@ Reuse the
 shared business concepts. Do not redefine canonical meaning inside a skill,
 schema, integration, or generated artefact.
 
+Reuse the
+[Minimal Knowledge Model](shared/knowledge-model/README.md) for assertions,
+provenance, confidence, uncertainty, validation, and relationships between
+extracted statements. Do not resolve contradictions or normalize project
+truth inside extraction or an individual skill.
+
 Do not add automation before the related methodology and contracts are validated. Distinguish implemented behavior from `UNDER CONSTRUCTION` and `TO BE DEFINED` plans.
 
 Update `CHANGELOG.md` for every release or material repository change. Validate both plugin manifests and every modified skill before submitting a contribution.

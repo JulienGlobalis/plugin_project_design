@@ -18,3 +18,4 @@ do not silently score them as passing.
 Shared-model changes also use their dedicated checklist:
 
 - [Canonical Domain Model](canonical-domain-model.md)
+- [Knowledge Model](knowledge-model.md)

@@ -3,7 +3,8 @@
 - Status: Accepted
 - Date: 2026-07-23
 - Scope: Shared information architecture
-- Implementation status: TO BE DEFINED
+- Implementation status: Knowledge Model v0.1 defined; Project Model TO BE
+  DEFINED
 
 ## Decision Summary
 
@@ -187,6 +188,9 @@ Source content remains unchanged by extraction and normalization.
 The Knowledge Model records what has been extracted from source documents
 without prematurely deciding what the project truth should be.
 
+Version 0.1 is defined in the
+[Minimal Knowledge Model](../knowledge-model/README.md).
+
 Its responsibility is to preserve:
 
 - an extracted statement or observation;
@@ -321,13 +325,12 @@ Kit structures from leaking into shared models.
 
 ## Repository Impact
 
-This iteration adds only this architecture decision and updates existing
-documentation. It does not add a `shared/knowledge-model/` directory or any
-schema because the Knowledge Model is not yet implemented.
+The accepted architecture is documented here. The conceptual Knowledge Model
+now has a dedicated `shared/knowledge-model/` location because its minimal
+constructions and boundaries have been validated against all four fixtures.
 
-A dedicated Knowledge Model location becomes justified in the next iteration,
-after its minimal concepts and boundaries have been tested against all four
-fixtures.
+No Knowledge Model schema or runtime implementation exists. The future
+normalized Project Model remains in `shared/project-model/`.
 
 ## Assumptions
 
@@ -340,29 +343,27 @@ fixtures.
 
 ## Unresolved Questions
 
-- What is the minimum useful unit of extracted knowledge?
-- Which qualitative confidence or reliability states are useful without
-  creating false precision?
-- How are source authority and freshness represented?
-- Which validation states and transitions are required?
-- How are equivalent, superseded, and contradictory statements related?
 - How are stable identities and versions maintained across all layers?
 - When does a normalized Project Model element remain unresolved rather than
   absent?
 - How are model changes and downstream generated artefacts invalidated?
+- Which validation transitions require authorization, and by whom?
+- How does the Project Model reference supporting, qualifying, and opposing
+  assertions?
 
 These questions belong to model implementation and must be answered
 incrementally from the corpus, not by adding speculative abstractions here.
 
 ## Next Iteration
 
-Implement the minimal shared Knowledge Model first, using the Canonical Domain
-Model without redefining its concepts.
+Define the minimal normalized Project Model, consuming the
+[Minimal Knowledge Model](../knowledge-model/README.md) through the unchanged
+Canonical Domain Model.
 
-This is required because the Project Model depends on preserved source
-statements, provenance, uncertainty, and conflicts. Implementing the Project
-Model first would either lose that information or embed temporary
-evidence-handling responsibilities that would later need to be removed.
+This sequencing is now possible because source statements, provenance,
+uncertainty, conflicts, and coexistence have been defined and validated
+without assigning them to the Project Model.
 
-The next iteration must test the Knowledge Model against all four permanent
-fixtures before defining the detailed Project Model.
+The next iteration must test normalization and bidirectional traceability
+against all four permanent fixtures before defining schemas or skill
+methodology.

@@ -51,7 +51,7 @@ until its affected tests have been updated and reviewed.
 2. Build the permanent anonymized reference corpus.
 3. Decide the shared information architecture.
 4. Define and validate the Canonical Domain Model.
-5. Implement and test the minimal Knowledge Model.
+5. Define and test the minimal Knowledge Model.
 6. Implement and test the normalized Project Model and quality-rule contracts.
 7. Define and test `project-framing`.
 8. Define and test the remaining specialized skills individually.

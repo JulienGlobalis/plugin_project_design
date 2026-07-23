@@ -14,6 +14,10 @@ the Knowledge Model will distinguish:
 - Decision
 - Open Question
 
+Version 0.1 of these responsibilities, including provenance, confidence,
+uncertainty, validation, and assertion relationships, is defined in the
+[Minimal Knowledge Model](../knowledge-model/README.md).
+
 The shared models and future methodologies must prohibit unsupported
 invention, preserve source traceability, and prevent unresolved assumptions
 from being represented as validated decisions.
@@ -24,6 +28,9 @@ defined in the
 Interpretation, and epistemic Proposal classification remain Knowledge Model
 responsibilities.
 
-The current repository-wide test criteria are defined in the
-[quality checklist](../../tests/quality-checklists/repository-quality.md).
+The current repository-wide and Knowledge Model test criteria are defined in
+the
+[repository quality checklist](../../tests/quality-checklists/repository-quality.md)
+and
+[Knowledge Model checklist](../../tests/quality-checklists/knowledge-model.md).
 Detailed methodology-level quality contracts remain TO BE DEFINED.

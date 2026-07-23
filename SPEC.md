@@ -15,6 +15,8 @@ Initialize the plugin structure, manifests, skills, and shared-resource placehol
   corpus.
 - An evidence-aware common information-architecture decision.
 - A minimal Canonical Domain Model shared by future models and skills.
+- A minimal conceptual Knowledge Model for assertions, provenance, epistemic
+  state, and inter-assertion relationships.
 
 ## Out of Scope
 
@@ -47,7 +49,15 @@ Initialize the plugin structure, manifests, skills, and shared-resource placehol
   responsibility.
 - The Canonical Domain Model defines vocabulary and relationships without
   implementing knowledge state, project instances, schemas, or methodology.
+- The Knowledge Model preserves assertions, provenance, confidence,
+  uncertainty, validation, contradictions, and coexistence without
+  normalizing project truth.
+- Knowledge Model constructions reuse the unchanged Canonical Domain Model
+  and remain independent from storage, platform, methodology, and
+  serialization.
 
 ## Unresolved Design
 
-The methodology, Knowledge Model implementation, Project Model implementation, detailed schemas, artefact mappings, installation distribution, license, and automation implementation are TO BE DEFINED.
+The methodology, normalized Project Model, Knowledge Model representation,
+detailed schemas, artefact mappings, installation distribution, license, and
+automation implementation are TO BE DEFINED.

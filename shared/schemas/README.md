@@ -11,4 +11,9 @@ Future schemas must reuse the
 [Canonical Domain Model](../terminology/canonical-domain-model.md) without
 changing canonical meaning.
 
-Detailed fields, identifiers, relationships, validation rules, and serialization formats are TO BE DEFINED.
+Knowledge schemas must also conform to the conceptual
+[Minimal Knowledge Model](../knowledge-model/README.md) without turning its
+qualifications into normalized project truth.
+
+Detailed fields, identifiers, relationships, validation rules, and
+serialization formats are TO BE DEFINED.

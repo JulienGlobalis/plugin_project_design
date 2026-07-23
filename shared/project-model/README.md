@@ -23,9 +23,13 @@ specialized skills. It will preserve links to supporting, qualifying, and
 opposing extracted knowledge without owning source extraction, conflict
 evidence, skill methodology, or generated presentation.
 
+Its upstream evidence contract is version 0.1 of the
+[Minimal Knowledge Model](../knowledge-model/README.md).
+
 Its concepts must use the
 [Canonical Domain Model](../terminology/canonical-domain-model.md), which
 defines shared meaning without becoming part of the processing pipeline.
 
-The architecture is decided. Detailed concepts, fields, relationships,
-validation rules, and serialization remain TO BE DEFINED.
+The architecture and upstream evidence model are defined. Project Model
+responsibilities, normalization state, identity, relationships, validation
+rules, and serialization remain TO BE DEFINED.
