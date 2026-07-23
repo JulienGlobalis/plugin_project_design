@@ -11,6 +11,8 @@
   validation, and execution-history conventions.
 - Accepted the layered Source Documents, Knowledge Model, Project Model, and
   Generated Artefacts information architecture.
+- Defined version 0.1 of the corpus-driven Canonical Domain Model with 22
+  shared concepts and explicit exclusions.
 
 ## Version 0.1.0 - 2026-07-23
 

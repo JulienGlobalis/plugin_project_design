@@ -14,6 +14,7 @@ Initialize the plugin structure, manifests, skills, and shared-resource placehol
 - A shared documentation-first testing strategy and anonymized regression
   corpus.
 - An evidence-aware common information-architecture decision.
+- A minimal Canonical Domain Model shared by future models and skills.
 
 ## Out of Scope
 
@@ -42,6 +43,10 @@ Initialize the plugin structure, manifests, skills, and shared-resource placehol
   generated artefacts have distinct responsibilities.
 - The accepted architecture preserves end-to-end provenance without coupling
   shared models to a skill, platform, or Spec Kit.
+- Canonical concepts are justified by the permanent corpus or cross-skill
+  responsibility.
+- The Canonical Domain Model defines vocabulary and relationships without
+  implementing knowledge state, project instances, schemas, or methodology.
 
 ## Unresolved Design
 

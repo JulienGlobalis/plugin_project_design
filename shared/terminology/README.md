@@ -1,7 +1,12 @@
 # Shared Terminology
 
-UNDER CONSTRUCTION
+The [Canonical Domain Model](canonical-domain-model.md) defines version 0.1 of
+the common business vocabulary shared by the Knowledge Model, Project Model,
+and every future skill.
 
-This directory will contain shared project-design terminology and optional localized terminology assets. It will help specialized skills use concepts consistently without embedding one language into the plugin core.
+The canonical model is conceptual and technology-independent. It does not
+define project instances, schemas, serialization, provenance, confidence,
+validation state, or methodology.
 
-The vocabulary, identifiers, localization rules, and conflict-resolution policy are TO BE DEFINED.
+Localized terminology assets, translation rules, stable implementation
+identifiers, and conflict-resolution policy remain TO BE DEFINED.

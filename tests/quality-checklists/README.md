@@ -14,3 +14,7 @@ for the selected skill:
 Record every item as `PASS`, `FAIL`, or `NOT APPLICABLE`, and attach concise
 evidence. Keep `TO BE DEFINED` criteria visible as unresolved methodology work;
 do not silently score them as passing.
+
+Shared-model changes also use their dedicated checklist:
+
+- [Canonical Domain Model](canonical-domain-model.md)

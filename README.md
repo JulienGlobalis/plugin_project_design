@@ -30,6 +30,11 @@ The Knowledge Model preserves extracted evidence, provenance, uncertainty,
 and conflicts. The Project Model provides normalized project information.
 Neither model belongs to an individual skill.
 
+The
+[Canonical Domain Model](shared/terminology/canonical-domain-model.md)
+defines the vocabulary shared by both models and all skills. It governs
+semantics but is not an additional processing layer.
+
 ## Platforms
 
 Version 0.1.0 targets Codex and Claude Code. Both platforms discover the same root `skills/` implementation. Platform-specific manifests and notes are isolated under `.codex-plugin/`, `.claude-plugin/`, and `integrations/`.
@@ -58,7 +63,7 @@ All plugin source content is English. Only user-facing assets may be localized. 
 
 UNDER CONSTRUCTION
 
-Version 0.1.0 provides manifests, valid skill skeletons, shared-resource placeholders, integration boundaries, repository documentation, a documentation-first testing strategy, a permanent multi-artefact reference corpus, and the common information-architecture decision. It does not provide the detailed methodology, model implementations, executable workflows, exporters, persistence, API integrations, MCP servers, hooks, agents, commands, or Spec Kit automation.
+Version 0.1.0 provides manifests, valid skill skeletons, shared-resource placeholders, integration boundaries, repository documentation, a documentation-first testing strategy, a permanent multi-artefact reference corpus, the common information-architecture decision, and version 0.1 of the Canonical Domain Model. It does not provide the detailed methodology, Knowledge Model or Project Model implementations, executable workflows, exporters, persistence, API integrations, MCP servers, hooks, agents, commands, or Spec Kit automation.
 
 ## Development Approach
 

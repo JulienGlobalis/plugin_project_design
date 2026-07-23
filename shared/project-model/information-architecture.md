@@ -29,6 +29,18 @@ This decision defines responsibilities and boundaries only. It does not define
 schemas, fields, identifiers, serialization, extraction rules, confidence
 algorithms, conflict-resolution rules, or skill methodologies.
 
+## Canonical Domain Model
+
+The
+[Canonical Domain Model](../terminology/canonical-domain-model.md)
+defines the common vocabulary used by the Knowledge Model, Project Model, and
+future skills.
+
+It is not a processing layer and does not change the accepted information
+flow. It defines the meaning of shared concepts while the Knowledge Model
+defines evidence state and the Project Model defines normalized project
+instances.
+
 ## Context from the Reference Corpus
 
 The four permanent fixtures expose different architectural pressures:
@@ -344,7 +356,8 @@ incrementally from the corpus, not by adding speculative abstractions here.
 
 ## Next Iteration
 
-Implement the minimal shared Knowledge Model first.
+Implement the minimal shared Knowledge Model first, using the Canonical Domain
+Model without redefining its concepts.
 
 This is required because the Project Model depends on preserved source
 statements, provenance, uncertainty, and conflicts. Implementing the Project
