@@ -22,15 +22,21 @@ The shared models and future methodologies must prohibit unsupported
 invention, preserve source traceability, and prevent unresolved assumptions
 from being represented as validated decisions.
 
+Version 0.1 of the
+[Minimal Normalized Project Model](../project-model/README.md) distinguishes
+Established, Provisional, and Unresolved project information; Existing,
+Target, and Transition perspectives; and Supporting, Qualifying, and Opposing
+Knowledge Basis links.
+
 Canonical meanings for Assumption, Option, Decision, and Open Question are
 defined in the
 [Canonical Domain Model](../terminology/canonical-domain-model.md). Fact,
 Interpretation, and epistemic Proposal classification remain Knowledge Model
 responsibilities.
 
-The current repository-wide and Knowledge Model test criteria are defined in
-the
+The current repository-wide and shared-model test criteria are defined in the
 [repository quality checklist](../../tests/quality-checklists/repository-quality.md)
-and
-[Knowledge Model checklist](../../tests/quality-checklists/knowledge-model.md).
+and the dedicated
+[Knowledge Model](../../tests/quality-checklists/knowledge-model.md) and
+[Project Model](../../tests/quality-checklists/project-model.md) checklists.
 Detailed methodology-level quality contracts remain TO BE DEFINED.

@@ -15,6 +15,9 @@
   shared concepts and explicit exclusions.
 - Defined version 0.1 of the Minimal Knowledge Model for assertions,
   provenance, epistemic state, contradiction, coexistence, and traceability.
+- Defined version 0.1 of the Minimal Normalized Project Model with shared
+  elements, relationships, normalization status, lifecycle perspective, and
+  Knowledge Model traceability.
 
 ## Version 0.1.0 - 2026-07-23
 

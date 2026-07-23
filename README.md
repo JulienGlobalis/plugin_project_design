@@ -34,6 +34,10 @@ Version 0.1 of the
 [Minimal Knowledge Model](shared/knowledge-model/README.md) defines how
 assertions and their epistemic state are preserved before normalization.
 
+Version 0.1 of the
+[Minimal Normalized Project Model](shared/project-model/README.md) defines the
+shared current project view consumed by future skills.
+
 The
 [Canonical Domain Model](shared/terminology/canonical-domain-model.md)
 defines the vocabulary shared by both models and all skills. It governs
@@ -71,10 +75,11 @@ Version 0.1.0 provides manifests, valid skill skeletons, shared-resource
 placeholders, integration boundaries, repository documentation, a
 documentation-first testing strategy, a permanent multi-artefact reference
 corpus, the common information-architecture decision, version 0.1 of the
-Canonical Domain Model, and version 0.1 of the conceptual Knowledge Model. It
-does not provide the detailed methodology, normalized Project Model,
-executable workflows, schemas, exporters, persistence, API integrations, MCP
-servers, hooks, agents, commands, or Spec Kit automation.
+Canonical Domain Model, version 0.1 of the conceptual Knowledge Model, and
+version 0.1 of the Minimal Normalized Project Model. It does not provide the
+detailed skill methodologies, executable workflows, schemas, exporters,
+persistence, API integrations, MCP servers, hooks, agents, commands, or Spec
+Kit automation.
 
 ## Development Approach
 
@@ -82,10 +87,9 @@ Develop one responsibility per skill, reuse shared concepts, preserve evidence a
 
 ## Roadmap
 
-The next iteration defines the minimal normalized Project Model and validates
-its relationship with Knowledge Assertions against all four permanent
-fixtures. The first complete methodology, `project-framing`, follows both
-shared models.
+The next iteration implements and validates the first complete methodology,
+`project-framing`, using the Canonical Domain Model, Knowledge Model, and
+Project Model as its architectural foundations.
 
 ## Installation
 

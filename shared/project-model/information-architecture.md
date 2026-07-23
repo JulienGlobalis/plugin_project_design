@@ -3,8 +3,7 @@
 - Status: Accepted
 - Date: 2026-07-23
 - Scope: Shared information architecture
-- Implementation status: Knowledge Model v0.1 defined; Project Model TO BE
-  DEFINED
+- Implementation status: Knowledge Model v0.1 and Project Model v0.1 defined
 
 ## Decision Summary
 
@@ -218,6 +217,9 @@ The Knowledge Model does not:
 The Project Model represents the coherent, normalized project information
 consumed by every skill.
 
+Version 0.1 is defined in the
+[Minimal Normalized Project Model](README.md).
+
 Its responsibility is to:
 
 - organize shared project concepts consistently;
@@ -326,11 +328,11 @@ Kit structures from leaking into shared models.
 ## Repository Impact
 
 The accepted architecture is documented here. The conceptual Knowledge Model
-now has a dedicated `shared/knowledge-model/` location because its minimal
-constructions and boundaries have been validated against all four fixtures.
+and normalized Project Model have dedicated shared locations because their
+minimal constructions and boundaries have been validated against all four
+fixtures.
 
-No Knowledge Model schema or runtime implementation exists. The future
-normalized Project Model remains in `shared/project-model/`.
+No schema or runtime implementation exists for either model.
 
 ## Assumptions
 
@@ -344,26 +346,25 @@ normalized Project Model remains in `shared/project-model/`.
 ## Unresolved Questions
 
 - How are stable identities and versions maintained across all layers?
-- When does a normalized Project Model element remain unresolved rather than
-  absent?
 - How are model changes and downstream generated artefacts invalidated?
 - Which validation transitions require authorization, and by whom?
-- How does the Project Model reference supporting, qualifying, and opposing
-  assertions?
+- Which roles may establish or accept provisional Project Model information?
+- How should skills declare required elements and blocking unresolved
+  information?
 
 These questions belong to model implementation and must be answered
 incrementally from the corpus, not by adding speculative abstractions here.
 
 ## Next Iteration
 
-Define the minimal normalized Project Model, consuming the
-[Minimal Knowledge Model](../knowledge-model/README.md) through the unchanged
-Canonical Domain Model.
+Implement the first complete `project-framing` methodology, consuming the
+[Minimal Normalized Project Model](README.md) without re-normalizing source
+knowledge.
 
-This sequencing is now possible because source statements, provenance,
-uncertainty, conflicts, and coexistence have been defined and validated
-without assigning them to the Project Model.
+This sequencing is now possible because shared semantics, evidence
+preservation, normalization status, lifecycle perspective, and bidirectional
+traceability have been defined and validated against all four permanent
+fixtures.
 
-The next iteration must test normalization and bidirectional traceability
-against all four permanent fixtures before defining schemas or skill
-methodology.
+The next iteration should define purpose-specific framing readiness and
+blocking rules before schemas or automation are introduced.

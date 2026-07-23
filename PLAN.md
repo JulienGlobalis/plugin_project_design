@@ -52,7 +52,7 @@ until its affected tests have been updated and reviewed.
 3. Decide the shared information architecture.
 4. Define and validate the Canonical Domain Model.
 5. Define and test the minimal Knowledge Model.
-6. Implement and test the normalized Project Model and quality-rule contracts.
+6. Define and test the minimal normalized Project Model.
 7. Define and test `project-framing`.
 8. Define and test the remaining specialized skills individually.
 9. Define orchestration and cross-artefact consistency.

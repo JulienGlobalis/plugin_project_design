@@ -17,6 +17,9 @@ Initialize the plugin structure, manifests, skills, and shared-resource placehol
 - A minimal Canonical Domain Model shared by future models and skills.
 - A minimal conceptual Knowledge Model for assertions, provenance, epistemic
   state, and inter-assertion relationships.
+- A minimal normalized Project Model for coherent project elements,
+  relationships, normalization status, lifecycle perspective, and Knowledge
+  Model traceability.
 
 ## Out of Scope
 
@@ -55,9 +58,19 @@ Initialize the plugin structure, manifests, skills, and shared-resource placehol
 - Knowledge Model constructions reuse the unchanged Canonical Domain Model
   and remain independent from storage, platform, methodology, and
   serialization.
+- The Project Model consolidates knowledge into canonical project elements
+  and relationships without copying every assertion.
+- Established, Provisional, and Unresolved normalized information remains
+  distinguishable from Knowledge Model validation and confidence.
+- Existing, Target, and Transition perspectives can coexist in one current
+  Project View.
+- Every material normalized element and relationship remains traceable to
+  supporting, qualifying, and opposing knowledge.
+- The Project Model remains independent from skill methodology, storage,
+  platform, and serialization.
 
 ## Unresolved Design
 
-The methodology, normalized Project Model, Knowledge Model representation,
-detailed schemas, artefact mappings, installation distribution, license, and
+The skill methodologies, shared-model representation and versioning, detailed
+schemas, artefact mappings, installation distribution, license, and
 automation implementation are TO BE DEFINED.

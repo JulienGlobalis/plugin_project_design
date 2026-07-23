@@ -15,6 +15,13 @@ provenance, confidence, uncertainty, validation, and relationships between
 extracted statements. Do not resolve contradictions or normalize project
 truth inside extraction or an individual skill.
 
+Reuse the
+[Minimal Normalized Project Model](shared/project-model/README.md) for the
+shared current project view, normalized canonical elements, relationships,
+normalization status, lifecycle perspective, and Knowledge Model derivation.
+Skills may consume relevant project information but must not maintain a
+private competing normalized view.
+
 Do not add automation before the related methodology and contracts are validated. Distinguish implemented behavior from `UNDER CONSTRUCTION` and `TO BE DEFINED` plans.
 
 Update `CHANGELOG.md` for every release or material repository change. Validate both plugin manifests and every modified skill before submitting a contribution.
