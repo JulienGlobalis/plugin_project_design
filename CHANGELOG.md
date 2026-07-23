@@ -9,6 +9,8 @@
 - Added repository-wide and skill-specific quality checklists.
 - Added golden-output governance, regression classification, release
   validation, and execution-history conventions.
+- Accepted the layered Source Documents, Knowledge Model, Project Model, and
+  Generated Artefacts information architecture.
 
 ## Version 0.1.0 - 2026-07-23
 

@@ -11,6 +11,8 @@ Provide a reusable, evidence-aware methodology for designing application and sof
 - Share project concepts, terminology, assets, and quality rules.
 - Support complete and partial workflows.
 - Preserve traceability between facts, interpretations, assumptions, proposals, decisions, and open questions.
+- Separate source documents, extracted knowledge, normalized project
+  information, and generated artefacts.
 - Prefer Markdown, YAML, and JSON until executable behavior is justified.
 - Isolate optional integrations so dependencies point toward external platforms, never into the core.
 
@@ -46,10 +48,12 @@ until its affected tests have been updated and reviewed.
 
 1. Establish the repository testing strategy.
 2. Build the permanent anonymized reference corpus.
-3. Define the shared Project Model and quality-rule contracts.
-4. Define and test `project-framing`.
-5. Define and test the remaining specialized skills individually.
-6. Define orchestration and cross-artefact consistency.
-7. Validate document-output conventions and localized assets.
-8. Design optional platform and Spec Kit adapters.
-9. Consider automation only after stable contracts exist.
+3. Decide the shared information architecture.
+4. Implement and test the minimal Knowledge Model.
+5. Implement and test the normalized Project Model and quality-rule contracts.
+6. Define and test `project-framing`.
+7. Define and test the remaining specialized skills individually.
+8. Define orchestration and cross-artefact consistency.
+9. Validate document-output conventions and localized assets.
+10. Design optional platform and Spec Kit adapters.
+11. Consider automation only after stable contracts exist.

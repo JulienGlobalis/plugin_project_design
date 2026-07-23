@@ -13,6 +13,7 @@ Initialize the plugin structure, manifests, skills, and shared-resource placehol
 - Repository documentation, contribution rules, and validation scope.
 - A shared documentation-first testing strategy and anonymized regression
   corpus.
+- An evidence-aware common information-architecture decision.
 
 ## Out of Scope
 
@@ -37,7 +38,11 @@ Initialize the plugin structure, manifests, skills, and shared-resource placehol
 - Repository-wide and skill-specific quality criteria evaluate methodology
   without requiring identical wording.
 - Golden outputs require explicit human approval.
+- Source documents, extracted knowledge, normalized project information, and
+  generated artefacts have distinct responsibilities.
+- The accepted architecture preserves end-to-end provenance without coupling
+  shared models to a skill, platform, or Spec Kit.
 
 ## Unresolved Design
 
-The methodology, project-information model, detailed schemas, artefact mappings, installation distribution, license, and automation implementation are TO BE DEFINED.
+The methodology, Knowledge Model implementation, Project Model implementation, detailed schemas, artefact mappings, installation distribution, license, and automation implementation are TO BE DEFINED.

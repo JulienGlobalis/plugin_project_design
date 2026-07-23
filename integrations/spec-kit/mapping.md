@@ -4,6 +4,10 @@ UNDER CONSTRUCTION
 
 This document reserves the future mapping boundary between `project-design` artefacts and GitHub Spec Kit artefacts.
 
+The normalized Project Model is the future adapter input. Source provenance,
+uncertainty, and conflicts remain traceable through the Knowledge Model
+without becoming Spec Kit dependencies.
+
 | Project Design source | Possible Spec Kit relationship | Status |
 | --- | --- | --- |
 | Project framing | Input before or during specification | TO BE DEFINED |

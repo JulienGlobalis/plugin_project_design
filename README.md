@@ -4,7 +4,7 @@
 
 ## Problem Addressed
 
-Project-design knowledge is often spread across briefs, workshops, requirements, architecture notes, and delivery tools. This plugin will provide a shared project-information model and focused skills without coupling the methodology to one AI agent, document format, or orchestration framework.
+Project-design knowledge is often spread across briefs, workshops, requirements, architecture notes, and delivery tools. This plugin will provide a shared information architecture and focused skills without coupling the methodology to one AI agent, document format, or orchestration framework.
 
 ## Architecture
 
@@ -18,6 +18,17 @@ The plugin contains one future orchestration skill and five specialized skills:
 - `document-output` will assemble consistent project documents.
 
 Each specialized skill is independently callable. Users will be able to request a complete workflow, one skill, or an explicit subset of skills.
+
+All skills will rely on the accepted
+[common information architecture](shared/project-model/information-architecture.md):
+
+```text
+Source documents -> Knowledge Model -> Project Model -> Skills -> Generated artefacts
+```
+
+The Knowledge Model preserves extracted evidence, provenance, uncertainty,
+and conflicts. The Project Model provides normalized project information.
+Neither model belongs to an individual skill.
 
 ## Platforms
 
@@ -47,7 +58,7 @@ All plugin source content is English. Only user-facing assets may be localized. 
 
 UNDER CONSTRUCTION
 
-Version 0.1.0 provides manifests, valid skill skeletons, shared-resource placeholders, integration boundaries, repository documentation, a documentation-first testing strategy, and a permanent multi-artefact reference corpus. It does not provide the detailed methodology, executable workflows, exporters, persistence, API integrations, MCP servers, hooks, agents, commands, or Spec Kit automation.
+Version 0.1.0 provides manifests, valid skill skeletons, shared-resource placeholders, integration boundaries, repository documentation, a documentation-first testing strategy, a permanent multi-artefact reference corpus, and the common information-architecture decision. It does not provide the detailed methodology, model implementations, executable workflows, exporters, persistence, API integrations, MCP servers, hooks, agents, commands, or Spec Kit automation.
 
 ## Development Approach
 
@@ -55,7 +66,7 @@ Develop one responsibility per skill, reuse shared concepts, preserve evidence a
 
 ## Roadmap
 
-The next iteration defines the shared Project Model used by every specialized skill. The first complete methodology, `project-framing`, follows once that common information model is stable. Later iterations may define the remaining specialized skills, orchestration, document outputs, and optional adapters.
+The next iteration implements the minimal Knowledge Model and validates it against all four permanent fixtures. The shared Project Model follows once evidence, provenance, uncertainty, and conflict handling are stable. The first complete methodology, `project-framing`, follows both shared models.
 
 ## Installation
 

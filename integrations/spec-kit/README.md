@@ -12,13 +12,11 @@ The plugin may eventually prepare or enrich independent project artefacts before
 
 ## Integration Mode
 
-A future optional adapter may map structured `project-design` artefacts to Spec Kit artefacts:
+A future optional adapter may map normalized Project Model information to Spec
+Kit artefacts:
 
 ```text
-project-design methodology
-        |
-        v
-structured project artefacts
+Project Model
         |
         v
 optional Spec Kit adapter
@@ -28,5 +26,9 @@ Spec Kit workflow
 ```
 
 The dependency flows only from `integrations/spec-kit/` toward Spec Kit. Core skills must never depend directly on Spec Kit structures.
+
+The Knowledge Model remains the evidence and provenance layer. It may support
+audit and qualification but does not require Spec Kit to adopt the plugin's
+internal knowledge representation.
 
 Automatic command execution, installation, template modification, synchronization, and runtime artefact conversion are not included. Detailed integration behavior is TO BE DEFINED.
