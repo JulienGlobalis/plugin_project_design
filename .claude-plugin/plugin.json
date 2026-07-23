@@ -1,0 +1,15 @@
+{
+  "name": "project-design",
+  "version": "0.1.0",
+  "description": "Reusable, platform-independent foundations for application and software project design.",
+  "author": {
+    "name": "Project Design Contributors"
+  },
+  "keywords": [
+    "project-design",
+    "software-design",
+    "requirements",
+    "architecture",
+    "product-backlog"
+  ]
+}

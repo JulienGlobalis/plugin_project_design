@@ -1,0 +1,46 @@
+# Project Design Plan
+
+## Vision
+
+Provide a reusable, evidence-aware methodology for designing application and software projects across AI coding agents, orchestration frameworks, documentation systems, and project-management platforms.
+
+## Architectural Principles
+
+- Keep methodology independent from platforms and output formats.
+- Keep one clear responsibility per specialized skill.
+- Share project concepts, terminology, assets, and quality rules.
+- Support complete and partial workflows.
+- Preserve traceability between facts, interpretations, assumptions, proposals, decisions, and open questions.
+- Prefer Markdown, YAML, and JSON until executable behavior is justified.
+- Isolate optional integrations so dependencies point toward external platforms, never into the core.
+
+## Skill Set
+
+- `project-design`: orchestration and consistency.
+- `project-framing`: context, objectives, scope, stakeholders, constraints, risks, assumptions, and questions.
+- `functional-design`: actors, modules, features, journeys, rules, requirements, and acceptance criteria.
+- `technical-design`: architecture, components, flows, integrations, decisions, risks, and non-functional requirements.
+- `product-backlog`: backlog structure, harmonization, prioritization, estimation, and traceability.
+- `document-output`: document assembly, language, assets, branding, formatting, and consistency.
+
+Detailed methodology for every skill is TO BE DEFINED.
+
+## Usage Modes
+
+The plugin will support standalone use, optional preparation alongside GitHub Spec Kit, and a future isolated Spec Kit adapter. It will also support one skill, several selected skills, or a complete orchestrated workflow.
+
+## Extension Points
+
+Future extension points include runtime helpers, persistence, exporters, APIs, MCP integrations, agent adapters, Spec Kit, Jira, GitHub, GitLab, Google Docs, Google Sheets, Word, PDF, PowerPoint, Notion, and Confluence.
+
+These extension points are not implemented in version 0.1.0 and must not force a reorganization of the shared skills.
+
+## Roadmap
+
+1. Define and test `project-framing`.
+2. Define shared project-model and quality-rule contracts from framing evidence.
+3. Define and test the remaining specialized skills individually.
+4. Define orchestration and cross-artefact consistency.
+5. Validate document-output conventions and localized assets.
+6. Design optional platform and Spec Kit adapters.
+7. Consider automation only after stable contracts exist.

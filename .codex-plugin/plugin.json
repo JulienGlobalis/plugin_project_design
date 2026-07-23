@@ -1,0 +1,18 @@
+{
+  "name": "project-design",
+  "version": "0.1.0",
+  "description": "Reusable, platform-independent foundations for application and software project design.",
+  "author": {
+    "name": "Project Design Contributors"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Project Design",
+    "shortDescription": "Structure application and software project design.",
+    "longDescription": "Project Design provides modular skills and shared foundations for framing, functional design, technical design, backlog preparation, and document output.",
+    "developerName": "Project Design Contributors",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": "Help me structure an application or software project design request."
+  }
+}
