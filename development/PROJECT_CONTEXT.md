@@ -98,7 +98,7 @@ concurrent.
 | 7 - Project Model | Vue projet normalisée minimale définie | Terminée |
 | Extension linguistique | Compagnon terminologique français ajouté | Terminée |
 | 8 - `project-framing` | Premier skill métier complet, tests sur quatre fixtures et workbook manuel | Terminée |
-| 8.1 - Packaging Boundary | Bundle installable isolé des ressources de développement et du travail local | Terminée localement |
+| 8.1 - Packaging Boundary | Bundle installable isolé des ressources de développement et du travail local | Terminée |
 
 Commits principaux :
 
@@ -112,6 +112,8 @@ Commits principaux :
 | `3ea36c5` | Project Model |
 | `a3b5cdf` | French terminology companion |
 | `934f5eb` | `project-framing` version 0.1 |
+| `4390f1c` | Réorganisation autour du bundle installable isolé |
+| `696abeb` | Clarification des règles qualité et de la roadmap |
 
 ## Tests et qualité
 
@@ -154,13 +156,13 @@ Le skill :
 Rapport :
 [Project Framing Skill Review](tests/executions/2026-07-23-project-framing-review.md).
 
-## État Git courant
+## État Git de la série de packaging
 
 Branche : `main`
 
-Dernier commit poussé : `934f5eb` (`Implement project-framing skill`)
+Base distante avant la série : `934f5eb` (`Implement project-framing skill`)
 
-Modifications locales non commitées au 2026-07-24 :
+La série de packaging du 2026-07-24 couvre :
 
 - déplacement du bundle installable vers `plugins/project-design/` ;
 - déplacement des tests, exemples, contexte, plan et spécification vers
@@ -184,6 +186,12 @@ Vérifications effectuées :
 - structure plate de `development/tests/manual/` : PASS ;
 - absence de référence vers l'ancien workbook : PASS ;
 - cinq cas manuels et tableaux : PASS ;
+- destination trouvée pour chacun des 85 anciens chemins suivis : PASS ;
+- correspondance entre les quatre fixtures et leurs scénarios : PASS ;
+- correspondance exacte des 22 concepts canoniques avec le compagnon
+  français : PASS ;
+- ADR, modèle canonique et compagnon français inchangés au niveau des
+  contenus : PASS ;
 - validation du plugin Codex depuis `plugins/project-design/` : PASS ;
 - validation stricte du plugin Claude : PASS ;
 - validation des six skills : PASS ;
@@ -192,7 +200,15 @@ Vérifications effectuées :
 - liens du bundle limités à sa frontière installable : PASS ;
 - Markdown, liens locaux et blocs de code : PASS.
 
-Aucun commit ou push n'a été effectué pour ces modifications.
+La réorganisation et les corrections de cohérence sont séparées en commits
+dédiés. Le rapport de cohérence et cette mise à jour du contexte appartiennent
+au commit documentaire final de la série. Le dépôt et `git log` restent la
+source de vérité pour le statut de synchronisation.
+
+Rapports :
+
+- [Packaging Boundary Review](tests/executions/2026-07-24-packaging-boundary-review.md)
+- [Packaging Coherence Review](tests/executions/2026-07-24-packaging-coherence-review.md)
 
 ## Packaging Boundary
 
@@ -227,10 +243,10 @@ valident ces règles sans être une dépendance runtime.
 
 ## Prochaines étapes
 
-1. Examiner puis commiter et pousser les modifications locales lorsque
-   demandé.
-2. Réaliser un test d'installation depuis le marketplace du dépôt lors de la
+1. Réaliser un test d'installation depuis le marketplace du dépôt lors de la
    prochaine validation de distribution.
+2. Décider avant la prochaine release si les évolutions `Unreleased` restent
+   dans la version `0.1.0` ou nécessitent une nouvelle version.
 3. Démarrer l'itération 9 consacrée à `functional-design`.
 
 ## Prompt de reprise
