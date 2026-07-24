@@ -60,8 +60,11 @@ until its affected tests have been updated and reviewed.
 6. Define and test the minimal normalized Project Model.
 7. Define and test `project-framing`.
 8. Isolate the installable bundle from tests and development context.
-9. Define and test the remaining specialized skills individually.
-10. Define orchestration and cross-artefact consistency.
-11. Validate document-output conventions and localized assets.
-12. Design optional platform and Spec Kit adapters.
-13. Consider automation only after stable contracts exist.
+9. Define and test `functional-design`.
+10. Define and test `technical-design`.
+11. Define and test `product-backlog`.
+12. Define and test `document-output`, localized assets, and output
+    conventions.
+13. Define orchestration and cross-artefact consistency.
+14. Design optional platform and Spec Kit adapters.
+15. Consider automation only after stable contracts exist.

@@ -27,7 +27,7 @@ shared information architecture.
 - A complete `project-framing` methodology for concise, traceable,
   uncertainty-aware project framing.
 - Four fixture scenarios, a detailed quality checklist, and a lightweight
-  real-project manual test workbook for `project-framing`.
+  real-project manual test file for `project-framing`.
 - An installable bundle under `plugins/project-design/`.
 - Versioned tests, context, plans, specifications, and examples under
   `development/`.
@@ -99,7 +99,7 @@ shared information architecture.
   continue with an incomplete framing.
 - Detailed functional, technical, backlog, and document methodology remains
   outside `project-framing`.
-- A concise manual workbook supports real-project validation without
+- A concise manual test file supports real-project validation without
   introducing a second automated suite.
 - The installable bundle contains manifests, skills, shared models,
   terminology, and runtime quality contracts only.

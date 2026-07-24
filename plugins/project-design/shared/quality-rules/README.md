@@ -1,11 +1,16 @@
 # Shared Quality Rules
 
-UNDER CONSTRUCTION
+## Status
 
-This directory will define common quality principles and traceability rules.
+IMPLEMENTED - common verification contract version 0.1.
+
+This directory defines common quality principles and traceability rules.
+Skill-specific criteria remain in each implemented skill and will expand as
+the remaining methodologies are defined.
+
 Under the accepted
 [common information architecture](../project-model/information-architecture.md),
-the Knowledge Model will distinguish:
+the Knowledge Model distinguishes:
 
 - Fact
 - Interpretation

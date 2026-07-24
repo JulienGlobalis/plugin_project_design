@@ -67,7 +67,7 @@ For every future iteration:
 | `golden-outputs/` | Explicitly approved reference artefacts |
 | `regression/` | Difference classification and regression procedure |
 | `executions/` | Test-run evidence and validation decisions |
-| `manual/` | Lightweight workbooks for real-project validation |
+| `manual/` | One lightweight manual test file per implemented skill |
 
 Test data, execution instructions, evaluation criteria, and approved outputs
 must remain separate. This prevents expected conclusions from leaking into a
@@ -157,8 +157,10 @@ golden output merely because a new run looks better. Approval must identify
 the reviewer, date, scenario, skill, platform-neutral expectations, and reason
 for accepting the reference.
 
-Golden outputs are currently `TO BE DEFINED` because detailed skill
-methodologies have not yet been approved.
+No Golden Output has yet received explicit human approval. The
+`project-framing` methodology is implemented, but its outputs remain
+unapproved references until the review and approval process above is
+completed.
 
 ## Regression Testing
 
@@ -226,11 +228,11 @@ stable. Until then, manual evidence and review are authoritative.
 
 ## Manual Real-Project Validation
 
-Use a manual workbook after fixture validation when a skill needs practical
-review on real project material. Keep the workbook concise and complete it
-during or immediately after the test.
+Use a manual test file after fixture validation when a skill needs practical
+review on real project material. Keep it concise and complete it during or
+immediately after the test.
 
-Manual workbooks:
+Manual test files:
 
 - do not replace permanent scenarios or quality checklists;
 - do not become Golden Outputs automatically;
@@ -239,5 +241,5 @@ Manual workbooks:
 - may support a later skill change only when feedback is traceable and
   reviewed.
 
-The current workbook is
+The current manual test file is
 [Project Framing](manual/project-framing.md).
