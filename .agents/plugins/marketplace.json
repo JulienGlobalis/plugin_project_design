@@ -1,0 +1,20 @@
+{
+  "name": "project-design",
+  "interface": {
+    "displayName": "Project Design"
+  },
+  "plugins": [
+    {
+      "name": "project-design",
+      "source": {
+        "source": "local",
+        "path": "./plugins/project-design"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

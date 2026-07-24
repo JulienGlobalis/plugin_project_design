@@ -23,6 +23,13 @@
 - Implemented `project-framing` methodology version 0.1 with proportionate
   questioning, uncertainty-aware framing, lifecycle separation, traceable
   outputs, four fixture validations, and a real-project manual test workbook.
+- Isolated the installable plugin under `plugins/project-design/`, moved
+  versioned development resources under `development/`, added an ignored
+  `.local/` workspace, and added a repository marketplace entry.
+- Made runtime quality contracts self-contained so the installed plugin no
+  longer depends on fixtures or development checklists.
+- Added a cross-conversation project context and simplified manual tests to
+  one Markdown file per skill.
 
 ## Version 0.1.0 - 2026-07-23
 

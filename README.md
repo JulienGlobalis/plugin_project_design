@@ -22,7 +22,7 @@ skills:
 Each specialized skill is independently callable. Users will be able to request a complete workflow, one skill, or an explicit subset of skills.
 
 All skills will rely on the accepted
-[common information architecture](shared/project-model/information-architecture.md):
+[common information architecture](plugins/project-design/shared/project-model/information-architecture.md):
 
 ```text
 Source documents -> Knowledge Model -> Project Model -> Skills -> Generated artefacts
@@ -33,25 +33,28 @@ and conflicts. The Project Model provides normalized project information.
 Neither model belongs to an individual skill.
 
 Version 0.1 of the
-[Minimal Knowledge Model](shared/knowledge-model/README.md) defines how
+[Minimal Knowledge Model](plugins/project-design/shared/knowledge-model/README.md) defines how
 assertions and their epistemic state are preserved before normalization.
 
 Version 0.1 of the
-[Minimal Normalized Project Model](shared/project-model/README.md) defines the
+[Minimal Normalized Project Model](plugins/project-design/shared/project-model/README.md) defines the
 shared current project view consumed by future skills.
 
 The
-[Canonical Domain Model](shared/terminology/canonical-domain-model.md)
+[Canonical Domain Model](plugins/project-design/shared/terminology/canonical-domain-model.md)
 defines the vocabulary shared by both models and all skills. It governs
 semantics but is not an additional processing layer.
 
 Localized terminology companions, starting with
-[French canonical terminology](shared/terminology/canonical-terms.fr.md),
+[French canonical terminology](plugins/project-design/shared/terminology/canonical-terms.fr.md),
 provide output labels without changing that semantic contract.
 
 ## Platforms
 
-Version 0.1.0 targets Codex and Claude Code. Both platforms discover the same root `skills/` implementation. Platform-specific manifests and notes are isolated under `.codex-plugin/`, `.claude-plugin/`, and `integrations/`.
+Version 0.1.0 targets Codex and Claude Code. Both platforms discover the same
+`plugins/project-design/skills/` implementation. Installable manifests live
+inside the plugin bundle, while platform notes and optional adapters remain
+outside it under `integrations/`.
 
 ## Standalone and Spec Kit Use
 
@@ -60,14 +63,25 @@ The plugin is standalone by design and does not require GitHub Spec Kit. Spec Ki
 ## Repository Structure
 
 ```text
-.codex-plugin/       Codex manifest
-.claude-plugin/      Claude Code manifest
-skills/              Shared, platform-independent skill foundations
-shared/              Shared models, assets, schemas, rules, and terms
-integrations/        Platform notes and optional integration boundaries
-examples/            Future examples
-tests/               Shared fixtures, scenarios, checklists, and regression evidence
+plugins/project-design/   Installable plugin bundle
+  .codex-plugin/          Codex manifest
+  .claude-plugin/         Claude Code manifest
+  skills/                 Platform-independent skill foundations
+  shared/                 Models, assets, schemas, rules, and terminology
+development/              Versioned resources excluded from installation
+  PROJECT_CONTEXT.md      Cross-conversation continuity
+  tests/                  Fixtures, scenarios, checklists, and evidence
+  examples/               Future development examples
+  PLAN.md                 Project roadmap
+  SPEC.md                 Current specification
+.local/                   Ignored local and confidential working files
+.agents/plugins/          Repository marketplace metadata
+integrations/             Platform notes and optional integration boundaries
 ```
+
+The repository marketplace points only to `plugins/project-design/`.
+Development resources remain versioned in Git but are not part of the
+installed plugin copy.
 
 ## Localization and Assets
 
@@ -102,9 +116,11 @@ commands, or Spec Kit automation.
 
 Develop one responsibility per skill, reuse shared concepts, preserve
 evidence and traceability, and validate methodology before adding automation.
-Every change follows [the shared testing strategy](tests/TESTING.md).
+Every change follows [the shared testing strategy](development/tests/TESTING.md).
 Real-project validation of `project-framing` uses the
-[manual workbook](tests/manual/project-framing/manual-test-workbook.md).
+[manual test file](development/tests/manual/project-framing.md).
+Development continuity between conversations is maintained in
+[PROJECT_CONTEXT.md](development/PROJECT_CONTEXT.md).
 Planned capability remains `TO BE DEFINED` until its behavior and contracts
 are explicitly designed.
 
@@ -116,4 +132,10 @@ the framing methodology.
 
 ## Installation
 
-Installation and distribution are TO BE DEFINED. The repository has valid local plugin manifests but no marketplace entry, package release, or automated installer in version 0.1.0.
+The repository includes a local marketplace entry at
+`.agents/plugins/marketplace.json`. It points to the isolated
+`plugins/project-design/` bundle so development tests and context files are
+not installed with the plugin.
+
+External publication, package releases, and automated installation remain TO
+BE DEFINED.

@@ -10,21 +10,28 @@ English canonical names and definitions remain authoritative. A localized
 terminology companion may define preferred labels, variants, and usage notes
 but must not add, remove, merge, split, or redefine canonical concepts.
 
-Keep one responsibility per skill and reuse shared resources instead of duplicating concepts. Preserve the platform independence of `skills/`; place platform-specific configuration in its manifest or integration directory.
+Keep one responsibility per skill and reuse shared resources instead of
+duplicating concepts. Preserve the platform independence of
+`plugins/project-design/skills/`; place platform-specific configuration in
+the plugin manifest or an integration directory.
+
+Keep the installable bundle independent from `development/`. Tests may
+validate runtime contracts but installable skills and shared resources must
+not link to development-only files.
 
 Reuse the
-[Canonical Domain Model](shared/terminology/canonical-domain-model.md) for
+[Canonical Domain Model](plugins/project-design/shared/terminology/canonical-domain-model.md) for
 shared business concepts. Do not redefine canonical meaning inside a skill,
 schema, integration, or generated artefact.
 
 Reuse the
-[Minimal Knowledge Model](shared/knowledge-model/README.md) for assertions,
+[Minimal Knowledge Model](plugins/project-design/shared/knowledge-model/README.md) for assertions,
 provenance, confidence, uncertainty, validation, and relationships between
 extracted statements. Do not resolve contradictions or normalize project
 truth inside extraction or an individual skill.
 
 Reuse the
-[Minimal Normalized Project Model](shared/project-model/README.md) for the
+[Minimal Normalized Project Model](plugins/project-design/shared/project-model/README.md) for the
 shared current project view, normalized canonical elements, relationships,
 normalization status, lifecycle perspective, and Knowledge Model derivation.
 Skills may consume relevant project information but must not maintain a
@@ -32,10 +39,12 @@ private competing normalized view.
 
 Do not add automation before the related methodology and contracts are validated. Distinguish implemented behavior from `UNDER CONSTRUCTION` and `TO BE DEFINED` plans.
 
-Update `CHANGELOG.md` for every release or material repository change. Validate both plugin manifests and every modified skill before submitting a contribution.
+Update `CHANGELOG.md` for every release or material repository change.
+Validate the plugin bundle at `plugins/project-design/`, both manifests, and
+every modified skill before submitting a contribution.
 
 Before changing a skill or shared contract, read
-[`tests/TESTING.md`](tests/TESTING.md), identify affected scenarios and
+[`development/tests/TESTING.md`](development/tests/TESTING.md), identify affected scenarios and
 checklists, and update them in the same change. Run the relevant scenarios,
 classify meaningful differences, and record the validation result. Never add
 or replace a golden output without explicit human approval.
