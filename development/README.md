@@ -10,7 +10,8 @@ Contents:
 - `SPEC.md`: current specification and acceptance criteria;
 - `tests/`: fixtures, scenarios, quality checklists, manual tests, and
   execution evidence;
-- `examples/`: future development examples.
+- `examples/`: draft or unapproved examples that are not installed with the
+  plugin.
 
 Do not place files required by an installed skill in this directory.
 Installable methodology, models, terminology, and quality contracts belong

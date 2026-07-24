@@ -71,7 +71,7 @@ plugins/project-design/   Installable plugin bundle
 development/              Versioned resources excluded from installation
   PROJECT_CONTEXT.md      Cross-conversation continuity
   tests/                  Fixtures, scenarios, checklists, and evidence
-  examples/               Future development examples
+  examples/               Draft examples excluded from installation
   PLAN.md                 Project roadmap
   SPEC.md                 Current specification
 .local/                   Ignored local and confidential working files

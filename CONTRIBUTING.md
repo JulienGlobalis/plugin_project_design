@@ -19,6 +19,13 @@ Keep the installable bundle independent from `development/`. Tests may
 validate runtime contracts but installable skills and shared resources must
 not link to development-only files.
 
+Keep draft or unapproved examples under `development/examples/`. Place an
+approved example needed at runtime under the relevant
+`plugins/project-design/skills/<skill-name>/references/` directory and link
+to it directly from that skill's `SKILL.md`. Do not use expected fixture
+conclusions as runtime examples because that would bias regression
+validation. Golden Outputs remain development-only test evidence.
+
 Reuse the
 [Canonical Domain Model](plugins/project-design/shared/terminology/canonical-domain-model.md) for
 shared business concepts. Do not redefine canonical meaning inside a skill,

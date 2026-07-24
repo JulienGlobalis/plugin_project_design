@@ -30,6 +30,10 @@
   longer depends on fixtures or development checklists.
 - Added a cross-conversation project context and simplified manual tests to
   one Markdown file per skill.
+- Defined the boundary between development examples and approved skill
+  references used at runtime.
+- Expanded the cross-conversation context with the prompt history, future
+  roadmap, deferred decisions, and runtime-example policy.
 
 ## Version 0.1.0 - 2026-07-23
 
