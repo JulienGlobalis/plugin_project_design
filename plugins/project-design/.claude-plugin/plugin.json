@@ -1,7 +1,7 @@
 {
   "name": "project-design",
   "version": "0.1.0",
-  "description": "Implemented Markdown Project Canvas framing plus explicit under-construction project-design foundations; future document-specific skills are not installed.",
+  "description": "Implemented Project Canvas framing plus separate business-artefact and discipline-specific document-skill placeholders; document generation is not implemented.",
   "author": {
     "name": "Project Design Contributors"
   },

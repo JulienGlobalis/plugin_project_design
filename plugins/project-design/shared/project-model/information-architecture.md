@@ -286,8 +286,9 @@ knowledge. Normalization must never erase a source path.
   confusing proposals with approved choices.
 - `product-backlog` consumes normalized scope, requirements, risks, and
   decisions, and keeps every backlog item traceable to project information.
-- `document-output` assembles generated artefacts while preserving status,
-  terminology, provenance, and unresolved issues.
+- Each `document-<discipline>` skill consumes the corresponding validated
+  business artefact and produces its document while preserving status,
+  terminology, provenance, and unresolved issues without changing knowledge.
 
 No skill owns either shared model. A skill may consume a relevant view and
 produce artefacts, but shared information responsibilities remain independent

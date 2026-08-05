@@ -44,8 +44,8 @@ Apply these contracts without redefining them:
 
 Before composing or revising a Project Canvas, read the
 [Project Canvas reference](references/project-canvas.md). Read the
-[framing structure reference](references/framing-structure.md) when selecting
-tables, registers, visible status, or presentation order.
+[framing structure reference](references/framing-structure.md) when organizing
+artefact sections, registers, visible status, or logical order.
 
 When an example would help interpret the required structure, status handling,
 or level of detail, read the
@@ -64,7 +64,7 @@ Identify:
 - the project or initiative being framed;
 - the available inputs;
 - the intended audience and immediate use when supplied;
-- the requested output language;
+- the requested artefact language;
 - whether an existing Project View is available.
 
 Infer language and audience from the request when clear. Do not ask the user
@@ -263,18 +263,16 @@ Confirm that:
 - the result can support the next applicable design step without concealing
   its limits.
 
-## Output Contract
+## Artefact Contract
 
-Produce one Project Canvas in the requested language. Markdown is the native
-and mandatory default format.
+Produce one structured Project Canvas business artefact in the requested
+language.
 
-The Canvas must be autonomous, readable, structured, versionable, traceable,
-and suitable as input to `functional-design` and `technical-design`. It owns
-the framing content, not document-format conversion.
-
-Google Docs or Microsoft Word are future optional presentation targets only
-when the user supplies a compatible template. Do not claim, simulate, or
-implement those conversions in this methodology.
+The Canvas must be autonomous, structured, versionable, traceable, and
+suitable as input to `functional-design`, `technical-design`,
+`product-backlog`, and `document-project-canvas`. `project-framing` owns the
+framing knowledge only. It does not select a document format, apply a
+template, format a final document, convert, or export.
 
 ## Traceability
 
@@ -332,6 +330,5 @@ Identify, without performing, the appropriate next work:
   technical Risks to `technical-design`;
 - send designed and validated Scope, Capabilities, Requirements, Business
   Rules, and related traceability to `product-backlog`;
-- send validated domain artefacts and presentation constraints to the future
-  applicable document skill, directly or through the provisional
-  `document-output` orchestrator.
+- send the validated Project Canvas artefact and separately supplied document
+  constraints to `document-project-canvas` when a final document is required.

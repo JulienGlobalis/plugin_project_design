@@ -1,6 +1,6 @@
 ---
 name: product-backlog
-description: Describe the forecast transformation of a Project Canvas and validated functional or technical design into a traceable Product Backlog. This installed entry is a placeholder; backlog creation, harmonization, prioritization, estimation, and export methodology are not yet implemented.
+description: Describe the forecast transformation of a Project Canvas and validated functional or technical design into a traceable Product Backlog business artefact. This installed entry is a placeholder; backlog creation, harmonization, prioritization, and estimation methodology are not yet implemented.
 ---
 
 # Product Backlog
@@ -9,7 +9,7 @@ description: Describe the forecast transformation of a Project Canvas and valida
 
 PLACEHOLDER — FUTURE METHODOLOGY NOT IMPLEMENTED
 
-The detailed backlog methodology, column semantics, and output templates are TO BE DEFINED.
+The detailed backlog methodology and artefact semantics are TO BE DEFINED.
 
 ## Purpose
 
@@ -25,9 +25,9 @@ Decisions without inventing new project content.
 
 ## Expected Outputs
 
-- A structured Product Backlog prepared for review.
-- Future columns: Application, Module, Who, What, Objective, Effort, Value, Priority, and Type.
-- Future item types: User Story, Technical, and Process.
+- A structured Product Backlog business artefact prepared for review.
+- Supported future structures may include Epics, Features, User Stories,
+  technical tasks, dependencies, increments, and methodological organization.
 
 Detailed semantics are TO BE DEFINED.
 
@@ -35,7 +35,9 @@ Detailed semantics are TO BE DEFINED.
 
 - Remain independently callable without the `project-design` orchestrator.
 - Remain fully usable without GitHub Spec Kit.
-- Do not define detailed backlog rules, export formats, or platform integrations in this iteration.
+- Do not define detailed backlog rules or platform integrations in this iteration.
+- Do not select document formats, apply templates, format final documents, or
+  export the artefact.
 - Do not invent priority, effort, value, or acceptance information.
 - Do not invent estimates, new Requirements, or backlog items unsupported by
   the designed and validated inputs.

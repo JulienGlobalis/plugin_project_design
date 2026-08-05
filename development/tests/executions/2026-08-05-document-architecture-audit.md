@@ -1,5 +1,10 @@
 # Document Architecture Audit
 
+> **Superseded architecture notice:** this historical audit documented a
+> provisional generic documentary-orchestration option. The later definitive
+> architecture replaces it with four installed discipline-specific document
+> placeholders. The observations and validation evidence remain historical.
+
 - Date: 2026-08-05
 - Reviewer: Codex
 - Source branch: `main`

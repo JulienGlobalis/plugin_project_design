@@ -397,8 +397,8 @@ versions of normalized project truth.
   Existing, Target, and Transition perspectives.
 - `product-backlog` consumes normalized Scope, Need, Capability, Requirement,
   Business Rule, Risk, Decision, and related traceability.
-- `document-output` consumes the selected Project View without changing its
-  normalized meaning or status.
+- Each `document-<discipline>` skill consumes the corresponding validated
+  business artefact without changing its normalized meaning or status.
 
 Consumption rules are consistent:
 
@@ -416,8 +416,8 @@ criteria, and presentation rules remain outside the Project Model.
 
 The Project Model does not define one universal `Complete` status. Completeness
 depends on a declared purpose: a framing review, functional design, technical
-design, backlog preparation, and document output require different subsets of
-project information.
+design, backlog preparation, and document restitution require different
+subsets of project information.
 
 A Project View can represent a project that is complete for a declared
 purpose when:

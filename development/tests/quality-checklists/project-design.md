@@ -11,11 +11,11 @@
 - [ ] `functional-design` and `technical-design` may be ordered or parallelized
       only when their inputs and unresolved questions permit it.
 - [ ] Design skills remain distinct from future document-restitution skills.
-- [ ] Future document skills remain directly callable even if
-      `document-output` is retained as a documentary orchestrator.
-- [ ] `project-design` owns global step selection and cross-artefact
-      consistency; `document-output` is limited to documentary routing and
-      presentation coordination.
+- [ ] Each document skill receives only its corresponding validated business
+      artefact and remains directly callable.
+- [ ] `project-design` owns global step selection, artefact transmission, and
+      cross-step consistency but produces neither business content nor
+      documents.
 - [ ] Reliable new information may trigger a traceable return to an earlier
       stage without silently rewriting validated artefacts.
 - [ ] Shared facts, assumptions, decisions, and questions remain consistent

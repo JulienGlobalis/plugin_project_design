@@ -1,5 +1,10 @@
 # Project Canvas Evolution Review
 
+> **Superseded architecture notice:** the documentary-orchestration
+> recommendation in this historical report was replaced later on 2026-08-05
+> by the definitive discipline-specific document-skill architecture. The
+> Project Canvas methodology evidence remains valid.
+
 - Date: 2026-08-05
 - Reviewer: Codex
 - Platform: Platform independent, with Codex and Claude manifest validation

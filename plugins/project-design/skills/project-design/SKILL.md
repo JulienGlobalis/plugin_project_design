@@ -45,6 +45,7 @@ Output structures are TO BE DEFINED.
 ## Boundaries
 
 - Keep specialized methodology inside the corresponding specialized skill.
+- Produce neither business content nor documents.
 - Do not require GitHub Spec Kit or any agent-specific runtime.
 - Do not execute workflows, convert artefacts, persist project state, or invoke external systems in this iteration.
 - Do not invent unsupported project information.
@@ -57,17 +58,14 @@ The intended design sequence is:
 2. `functional-design` and `technical-design` consume it as complementary
    steps and may run in parallel when inputs permit.
 3. `product-backlog` transforms designed and validated Scope.
-4. Future document-specific skills restitute the validated domain artefacts.
+4. `document-project-canvas`, `document-functional-design`,
+   `document-technical-design`, or `document-product-backlog` consumes the
+   corresponding validated business artefact when a document is requested.
 
-`document-output` is provisionally retained as a possible documentary
-orchestrator. Future `document-functional-design`,
-`document-technical-design`, and `document-product-backlog` skills may also be
-invoked directly. They are not installed in the current version. Do not
+The four document skills remain independently callable. `project-design`
+owns only future step selection, artefact transmission, and cross-step
+consistency; it does not own their business or document methodology. Do not
 implement this routing in the current version.
-
-`project-design` owns global step selection and cross-artefact consistency.
-The possible future `document-output` owns only documentary routing and
-presentation coordination; it must not become a second global orchestrator.
 
 ## Shared References
 

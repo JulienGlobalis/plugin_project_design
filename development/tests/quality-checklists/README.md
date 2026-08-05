@@ -9,7 +9,10 @@ for the selected skill:
 - [Functional Design](functional-design.md)
 - [Technical Design](technical-design.md)
 - [Product Backlog](product-backlog.md)
-- [Document Output](document-output.md)
+- [Document Project Canvas](document-project-canvas.md)
+- [Document Functional Design](document-functional-design.md)
+- [Document Technical Design](document-technical-design.md)
+- [Document Product Backlog](document-product-backlog.md)
 
 Record every item as `PASS`, `FAIL`, or `NOT APPLICABLE`, and attach concise
 evidence. Keep `TO BE DEFINED` criteria visible as unresolved methodology work;

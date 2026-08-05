@@ -12,11 +12,11 @@ Project-design knowledge is often spread across briefs, workshops, requirements,
 
 ## Architecture
 
-The target architecture distinguishes global orchestration, design skills,
-and document-restitution skills.
+The official architecture distinguishes global orchestration, business skills,
+and document skills.
 
-- `project-design` will select and coordinate the necessary design and
-  restitution steps without duplicating their methodologies.
+- `project-design` will select and coordinate the necessary business and
+  document skills without producing business content or documents.
 - `project-framing` is the implemented first design step. It clarifies the
   expression of need and produces the Project Canvas.
 - `functional-design` will structure products, modules, features, users,
@@ -27,32 +27,33 @@ and document-restitution skills.
   design when the available inputs permit it.
 - `product-backlog` will transform designed and validated Scope into traceable
   backlog items without inventing requirements, priority, value, or effort.
-- `document-functional-design`, `document-technical-design`, and
-  `document-product-backlog` are future document-specific restitution skills.
-- `document-output` is provisionally retained as their possible documentary
-  orchestrator; this responsibility remains to be confirmed through usage.
+- `document-project-canvas`, `document-functional-design`,
+  `document-technical-design`, and `document-product-backlog` are installed
+  placeholders for future document restitution from their corresponding
+  business artefacts.
 
-Only the six existing skill directories are currently present. Future skills
-are documented without empty scaffolding. Every specialized skill remains
-independently callable, and future orchestration must preserve direct use.
+Exactly nine skill directories are installed. Only `project-framing` has an
+implemented business methodology; the other eight entries are explicit
+placeholders. Every specialized skill remains independently callable, and
+future orchestration must preserve direct use.
 
 ### Current Availability
 
 | Skill | Installed entry | Current status | Current or forecast responsibility |
 | --- | --- | --- | --- |
 | `project-design` | Yes | Placeholder | Future global orchestration; full routing is not implemented |
-| `project-framing` | Yes | Implemented; manual user validation pending | Step 1; produces the Markdown Project Canvas |
+| `project-framing` | Yes | Implemented; manual user validation pending | Step 1; produces the Project Canvas business artefact |
 | `functional-design` | Yes | Placeholder | Future structured functional-design methodology |
 | `technical-design` | Yes | Placeholder | Future complementary or parallel technical-design methodology |
 | `product-backlog` | Yes | Placeholder | Future traceable transformation of designed and validated Scope |
-| `document-output` | Yes | Provisional placeholder | Possible future documentary orchestrator; necessity remains undecided |
-| `document-functional-design` | No | Future | Document restitution from the functional-design artefact |
-| `document-technical-design` | No | Future | Document restitution from the technical-design artefact |
-| `document-product-backlog` | No | Future | Document restitution from the Product Backlog artefact |
+| `document-project-canvas` | Yes | Placeholder | Future Project Canvas document |
+| `document-functional-design` | Yes | Placeholder | Future functional specifications document |
+| `document-technical-design` | Yes | Placeholder | Future technical specifications document |
+| `document-product-backlog` | Yes | Placeholder | Future Product Backlog document |
 
 An installed placeholder is discoverable but does not provide the future
-methodology. The manifests expose only the six installed entries; they do not
-make the three future document-specific skills available.
+methodology. The manifests expose all nine installed entries through their
+shared `skills/` directory.
 
 ```text
 project-design
@@ -60,10 +61,10 @@ project-design
 ├── functional-design
 ├── technical-design
 ├── product-backlog
-├── document-output                  # provisional future orchestrator
-├── document-functional-design       # future
-├── document-technical-design        # future
-└── document-product-backlog         # future
+├── document-project-canvas          # placeholder
+├── document-functional-design       # placeholder
+├── document-technical-design        # placeholder
+└── document-product-backlog         # placeholder
 ```
 
 All skills will rely on the accepted
@@ -79,29 +80,29 @@ Neither model belongs to an individual skill.
 
 ### Design Artefacts and Document Restitution
 
-Design skills own the structured project knowledge they produce. Document
-skills may present a validated artefact for people or external tools, but
-must not invent content, resolve a business question, change a Decision, or
-become owners of design methodology.
+Business skills own the structured project knowledge they produce. They do
+not generate final documents, select output formats, apply templates, export,
+or contain document-format logic. Document skills consume one corresponding
+validated business artefact and may present it for people or external tools,
+but must not invent content, resolve a business question, change a Decision,
+or become owners of business methodology.
 
 Markdown is the native default. Google Docs, Google Sheets, and Microsoft
 Word are not currently implemented output capabilities. The forecast rules
 are:
 
+- `document-project-canvas`: Markdown by default; Google Docs or Microsoft
+  Word in a future implementation;
 - `document-functional-design`: Markdown by default; Google Docs or Microsoft
   Word only in a future implementation when a compatible template is
   supplied;
 - `document-technical-design`: the same future format rule for the technical
   artefact;
-- `document-product-backlog`: Markdown by default; Google Sheets only in a
-  future implementation when a compatible template is supplied; Google Docs
-  or Microsoft Word only for an explicitly requested documentary form with a
-  compatible template.
+- `document-product-backlog`: Markdown by default; Google Sheets, Microsoft
+  Excel, Google Docs, or Microsoft Word in a future implementation.
 
-The current minimal Project Canvas option is direct Markdown production by
-`project-framing`. A future `document-project-canvas` could isolate Google
-Docs or Microsoft Word restitution, but no such skill exists and the decision
-is deliberately deferred until concrete format workflows provide evidence.
+These are forecast formats only. The placeholders contain no methodology,
+template, example, generator, conversion, export, or integration.
 
 Version 0.1 of the
 [Minimal Knowledge Model](plugins/project-design/shared/knowledge-model/README.md) defines how
@@ -181,7 +182,7 @@ initial French canonical terminology companion and the first complete
 business methodology, `project-framing`. Its current unreleased evolution
 defines the Project Canvas as the primary framing artefact and awaits manual
 user validation. It does not provide the remaining detailed skill
-methodologies, documentary skills, executable orchestration, schemas,
+methodologies, document-generation methodologies, executable orchestration, schemas,
 exporters, persistence, API integrations, MCP servers, hooks, agents,
 commands, or Spec Kit automation.
 
@@ -199,24 +200,16 @@ are explicitly designed.
 
 ## Roadmap
 
-1. Complete manual user validation of revised Iteration 8
-   `project-framing` and its Project Canvas.
-2. Iteration 9: implement `functional-design`.
-3. Iteration 10: implement `technical-design` as step 2 bis, complementary,
-   parallel, or iterative with functional design according to available
-   inputs.
-4. Iteration 11: implement `product-backlog` from designed and validated
-   Scope.
-5. Run separate document iterations for `document-functional-design`,
-   `document-technical-design`, and `document-product-backlog`; do not assume
-   that their format and template complexity is identical.
-6. Experiment with and decide the exact role of `document-output`, the
-   possible need for `document-project-canvas`, and the boundary between
-   documentary and global orchestration.
-7. Implement complete `project-design` orchestration only after specialized
-   skill contracts are sufficiently stable.
-8. Design optional adapters and structural automation after the methodologies
-   and document contracts are stable.
+1. Iteration 8: `project-framing` -> Project Canvas; manual validation remains
+   pending.
+2. Iteration 9: `functional-design` -> Functional Design.
+3. Iteration 10: `technical-design` -> Technical Design.
+4. Iteration 11: `product-backlog` -> Product Backlog.
+5. Iteration 12: implement `document-project-canvas`.
+6. Iteration 13: implement `document-functional-design`.
+7. Iteration 14: implement `document-technical-design`.
+8. Iteration 15: implement `document-product-backlog`.
+9. Iteration 16: implement complete `project-design` orchestration.
 
 ## Installation
 

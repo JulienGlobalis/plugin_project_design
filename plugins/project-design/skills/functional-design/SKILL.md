@@ -9,7 +9,7 @@ description: Describe the forecast functional-design responsibility for applicat
 
 PLACEHOLDER — FUTURE METHODOLOGY NOT IMPLEMENTED
 
-The detailed functional-design methodology and output templates are TO BE DEFINED.
+The detailed functional-design methodology and artefact structure are TO BE DEFINED.
 
 ## Purpose
 
@@ -37,6 +37,8 @@ Output structures are TO BE DEFINED.
 - Remain independently callable without the `project-design` orchestrator.
 - Remain fully usable without GitHub Spec Kit.
 - Do not prescribe architecture, implementation tasks, or detailed methodology in this iteration.
+- Do not select document formats, apply templates, format final documents, or
+  export the artefact.
 - Do not infer unsupported requirements.
 - Do not repeat complete project framing or silently rewrite validated Canvas
   information; identify any founded adjustment for traceable upstream review.

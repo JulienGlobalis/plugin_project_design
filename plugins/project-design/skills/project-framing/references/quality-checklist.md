@@ -89,9 +89,10 @@
 - [ ] The Canvas remains usable by the next applicable stage despite explicit
       non-blocking unknowns.
 
-## Language and Presentation
+## Language and Artefact Usability
 
-- [ ] Markdown is the native default output.
+- [ ] The business artefact is format-neutral and contains no template,
+      conversion, export, or final-document formatting logic.
 - [ ] The Canvas uses the requested language.
 - [ ] French output uses localized canonical terminology while keeping prose
       natural and professional.
@@ -101,8 +102,9 @@
       stakeholder-facing prose.
 - [ ] The default Canvas is autonomous, concise, structured, actionable, and
       suitable for stakeholder review.
-- [ ] Google Docs or Microsoft Word output is not claimed without a future
-      compatible template-based document capability.
+- [ ] Any requested final document is handed to
+      `document-project-canvas`; `project-framing` does not claim a document
+      format capability.
 
 ## Boundaries, Adjustments, and Handoffs
 

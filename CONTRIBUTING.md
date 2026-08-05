@@ -15,6 +15,18 @@ duplicating concepts. Preserve the platform independence of
 `plugins/project-design/skills/`; place platform-specific configuration in
 the plugin manifest or an integration directory.
 
+Apply the definitive skill naming and ownership convention to every new
+discipline:
+
+```text
+<discipline>           produces the business artefact
+document-<discipline>  produces its document
+```
+
+Business skills own knowledge and contain no document format, template,
+formatting, conversion, or export behavior. Document skills consume one
+validated business artefact and never add knowledge or make Decisions.
+
 Keep the installable bundle independent from `development/`. Tests may
 validate runtime contracts but installable skills and shared resources must
 not link to development-only files.

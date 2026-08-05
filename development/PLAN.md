@@ -26,16 +26,17 @@ documentation systems, and project-management platforms.
 - Isolate optional integrations so dependencies point toward external
   platforms, never into the core.
 
-## Responsibility Levels
+## Responsibility Families
 
 ### Global Orchestration
 
 - `project-design`: installed placeholder for future orchestration, routing,
   artefact transmission, cross-step consistency, and traceable returns to an
   earlier stage when reliable new information appears. Full orchestration is
-  not implemented and must not duplicate specialized methodology.
+  not implemented. It produces neither business content nor documents and
+  must not duplicate specialized methodology.
 
-### Design Skills
+### Business Skills
 
 - `project-framing`: implemented step 1; clarifies the expression of need and
   produces the Project Canvas.
@@ -47,55 +48,54 @@ documentation systems, and project-management platforms.
   deployment, technical Decisions, and technical Risks. It may complement or
   run in parallel with functional design when inputs permit.
 - `product-backlog`: future transformation of designed and validated Scope
-  into a traceable backlog without inventing requirements, priority, value,
-  effort, or Decisions.
+  into a traceable Product Backlog artefact containing supported Epics,
+  Features, User Stories, technical tasks, dependencies, increments, and
+  methodological organization without inventing requirements, priority,
+  value, effort, or Decisions.
 
-### Document Restitution Skills
+Business skills own project knowledge. They produce business artefacts only.
+They do not generate final documents, know output formats, apply templates,
+perform exports, or contain presentation logic.
 
-- `document-functional-design`: future Markdown output by default, with
-  template-based Google Docs or Microsoft Word as optional future targets
-  only when a compatible template is supplied.
-- `document-technical-design`: future Markdown output by default, with
-  template-based Google Docs or Microsoft Word as optional future targets
-  only when a compatible template is supplied.
-- `document-product-backlog`: future Markdown or Google Sheets-oriented
-  restitution. Google Sheets requires a compatible template; Google Docs or
-  Microsoft Word require both an explicit documentary request and a
-  compatible template.
-- `document-output`: installed placeholder provisionally retained as a
-  possible future documentary orchestrator. It may select a generator,
-  output format, supplied compatible template, and presentation constraints,
-  but must not own or change design content. Its necessity must be confirmed
-  after document-specific workflows provide usage evidence.
+### Document Skills
+
+- `document-project-canvas`: future Project Canvas document in Markdown,
+  Microsoft Word, or Google Docs.
+- `document-functional-design`: future functional specifications in Markdown,
+  Microsoft Word, or Google Docs.
+- `document-technical-design`: future technical specifications in Markdown,
+  Microsoft Word, or Google Docs.
+- `document-product-backlog`: future backlog document in Markdown, Google
+  Sheets, Microsoft Excel, Microsoft Word, or Google Docs.
 
 Only `project-framing` has an implemented business methodology. The other
-five installed entries are placeholders or under-construction contracts. The
-three document-specific skills are future concepts and have no directories.
-Do not add empty skill directories merely to mirror this forecast
-architecture.
+eight installed entries are placeholders or under-construction contracts.
+The four document skills consume their corresponding business artefacts and
+apply only document structure, formatting, an optional template, and an
+output format. They add no knowledge and make no Decisions. Their directories
+stabilize the architecture but contain no methodology, template, runtime
+example, generator, or integration.
 
-### Project Canvas Restitution
+The naming convention is mandatory:
 
-The current minimal option is that `project-framing` owns its Project Canvas
-content and produces it directly as Markdown. Google Docs and Microsoft Word
-restitution are not implemented.
-
-A future `document-project-canvas` may be justified if concrete Google Docs
-or Microsoft Word workflows need a dedicated template and format contract.
-Do not create it before that evidence exists. Its necessity, its relationship
-with `document-output`, and direct invocation remain open decisions.
+```text
+<discipline>           -> business artefact
+document-<discipline>  -> corresponding document
+```
 
 ## Design Sequence
 
 ```text
-project-framing -> Project Canvas
+project-framing -> Project Canvas artefact -> document-project-canvas
                        |
-                       +-> functional-design --------+
-                       |                             |
-                       +-> technical-design ---------+-> product-backlog
-                                                     |
-                                                     v
-                                          document restitution
+                       +-> functional-design -> Functional Design artefact
+                       |                          -> document-functional-design
+                       |
+                       +-> technical-design -> Technical Design artefact
+                       |                         -> document-technical-design
+                       |
+                       +-> product-backlog -> Product Backlog artefact
+                                             -> document-product-backlog
 ```
 
 Functional and technical design are complementary. Their exact execution
@@ -134,18 +134,17 @@ until its affected tests have been updated and reviewed.
 6. Define and test the minimal normalized Project Model.
 7. Define and test the initial `project-framing` methodology.
 8. Isolate the installable bundle from tests and development context.
-9. Revise `project-framing` around the Project Canvas and complete manual user
-   validation.
-10. Define and test `functional-design`.
-11. Define and test `technical-design` as a complementary or parallel step.
-12. Define and test `product-backlog`.
-13. Define and test `document-functional-design`.
-14. Define and test `document-technical-design`.
-15. Define and test `document-product-backlog`.
-16. Experiment with documentary orchestration and decide the long-term status
-    of `document-output`, the possible need for `document-project-canvas`, and
-    the boundary with `project-design`.
-17. Define global `project-design` orchestration and cross-artefact
-    consistency after specialized contracts are sufficiently stable.
-18. Design optional platform and Spec Kit adapters.
-19. Consider automation only after stable contracts exist.
+9. Iteration 8: implement `project-framing` and the Project Canvas artefact;
+   complete manual user validation.
+10. Iteration 9: define and test `functional-design` and its Functional Design
+    artefact.
+11. Iteration 10: define and test `technical-design` and its Technical Design
+    artefact as a complementary or parallel step.
+12. Iteration 11: define and test `product-backlog` and its Product Backlog
+    artefact.
+13. Iteration 12: define and test `document-project-canvas`.
+14. Iteration 13: define and test `document-functional-design`.
+15. Iteration 14: define and test `document-technical-design`.
+16. Iteration 15: define and test `document-product-backlog`.
+17. Iteration 16: define global `project-design` orchestration and
+    cross-artefact consistency after specialized contracts are stable.

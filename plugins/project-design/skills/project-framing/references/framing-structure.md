@@ -1,20 +1,20 @@
-# Project Canvas Presentation Reference
+# Project Canvas Artefact Structure Reference
 
-Use this reference to present the required Project Canvas content clearly.
+Use this reference to organize the required Project Canvas business content.
 The content contract remains defined by
 [the Project Canvas reference](project-canvas.md).
 
 ## Contents
 
-- [Presentation principles](#presentation-principles)
+- [Structure principles](#structure-principles)
 - [Review context](#review-context)
-- [Section presentation](#section-presentation)
+- [Section organization](#section-organization)
 - [Registers and tables](#registers-and-tables)
 - [Question classification](#question-classification)
 - [Readiness statement](#readiness-statement)
 - [Status and language](#status-and-language)
 
-## Presentation Principles
+## Structure Principles
 
 - Represent every required Canvas section or state explicitly that its
   information is insufficient.
@@ -45,18 +45,18 @@ An optional short opening paragraph may summarize why the Project exists, its
 most consequential boundary, and its most important unresolved matter. It
 must not replace or introduce information absent from the ten sections.
 
-## Section Presentation
+## Section Organization
 
 ### Business Context
 
-Use short prose for the situation, relevant Existing state, main Issues, and
-business rationale. Use a register only when Constraints or dependencies need
+Represent the situation, relevant Existing state, main Issues, and business
+rationale. Use a logical register when Constraints or dependencies need
 comparison.
 
 ### Objectives and Expected Value
 
-Use bullets or a table when Objectives have different statuses, owners, or
-measures. Keep unapproved value claims and missing success measures explicit.
+Keep Objectives with different statuses, owners, or measures distinct. Keep
+unapproved value claims and missing success measures explicit.
 
 ### Project Stakeholders and Users
 
@@ -98,9 +98,10 @@ Present supported criteria and explicitly identify missing baselines,
 measures, targets, or approval. Never add numeric thresholds to make the
 section look complete.
 
-## Registers and Tables
+## Logical Registers
 
-Use only the registers that improve review.
+Use only the logical registers that improve review. Their final document
+representation belongs to `document-project-canvas`.
 
 ### Scope Register
 

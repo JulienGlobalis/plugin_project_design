@@ -1,5 +1,9 @@
 # Minimal Normalized Project Model Review
 
+> Historical evidence: the documentary architecture described in this report
+> was superseded by the definitive discipline-specific document-skill
+> architecture adopted on 2026-08-05.
+
 - Date: 2026-07-23
 - Reviewer: Codex
 - Platform: Platform independent

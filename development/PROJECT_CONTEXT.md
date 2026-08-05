@@ -7,6 +7,11 @@ Dernière mise à jour : 2026-08-05
 Ce document permet de reprendre le projet dans un nouveau prompt sans perdre
 les décisions, l'historique ou l'état de travail.
 
+Il constitue la source centrale et unique du contexte de continuité du projet.
+Les fichiers racine `AGENTS.md` pour Codex et `CLAUDE.md` pour Claude doivent
+uniquement pointer vers ce document et ne doivent pas maintenir une copie
+concurrente de ses instructions.
+
 Au début d'une nouvelle conversation :
 
 1. fournir ce fichier à l'agent ;
@@ -21,7 +26,15 @@ Mettre ce fichier à jour :
 - à la fin de chaque itération ;
 - après une décision architecturale importante ;
 - après une modification de la feuille de route ;
+- dès qu'un résultat de validation, un changement matériel de l'état du dépôt,
+  une prochaine étape ou un blocage non résolu serait perdu avec l'historique
+  de la conversation ;
 - avant de transférer le projet vers une nouvelle conversation.
+
+Ne pas attendre que l'utilisateur annonce un changement de conversation :
+enregistrer les éléments durables au cours du même tour de travail. Ne pas
+modifier ce fichier pour un échange qui n'ajoute aucun contexte durable au
+projet.
 
 ## Projet
 
@@ -40,15 +53,17 @@ Compétences prévues :
   complémentaire ou parallèle ;
 - `product-backlog` : placeholder installé pour la transformation future de
   la conception validée en backlog traçable ;
-- `document-output` : placeholder installé pour un éventuel orchestrateur
-  documentaire futur, au statut provisoire ;
-- `document-functional-design` : restitution fonctionnelle future ;
-- `document-technical-design` : restitution technique future ;
-- `document-product-backlog` : restitution du backlog future.
+- `document-project-canvas` : placeholder installé pour le futur document
+  Project Canvas ;
+- `document-functional-design` : placeholder installé pour les futures
+  spécifications fonctionnelles ;
+- `document-technical-design` : placeholder installé pour les futures
+  spécifications techniques ;
+- `document-product-backlog` : placeholder installé pour le futur document de
+  backlog.
 
-Seuls les six répertoires de skills existants sont présents. Aucun squelette
-vide n'est créé pour annoncer une capacité future. Chaque skill spécialisé
-doit rester utilisable indépendamment.
+Les neuf répertoires de skills de l'architecture officielle sont présents.
+Chaque skill spécialisé doit rester utilisable indépendamment.
 
 ### Catégories de responsabilités
 
@@ -59,27 +74,26 @@ L'architecture cible distingue trois catégories :
    leur cohérence et organisera les retours tracés vers une étape précédente.
    Cette orchestration complète n'est pas implémentée et ne doit pas absorber
    les méthodologies spécialisées.
-2. **Conception** — `project-framing` est la seule méthodologie métier
-   implémentée. Elle produit le Project Canvas Markdown. `functional-design`,
+2. **Skills métier** — `project-framing` est la seule méthodologie métier
+   implémentée. Elle produit l'artefact Project Canvas. `functional-design`,
    `technical-design` et `product-backlog` restent des placeholders installés
-   dont les méthodologies et artefacts structurés sont futurs.
-3. **Restitution documentaire** — les futurs skills documentaires mettront en
-   forme les artefacts métier sans en devenir propriétaires. Ils ne pourront
-   ni inventer de contenu, ni résoudre une question, ni modifier une Decision.
+   dont les méthodologies et artefacts structurés sont futurs. Aucun skill
+   métier ne connaît un format documentaire, un template, une mise en forme
+   finale ou un export.
+3. **Skills documentaires** — les quatre placeholders documentaires mettront
+   en forme leur artefact métier correspondant sans en devenir propriétaires.
+   Ils ne pourront ni inventer de contenu, ni résoudre une question, ni
+   modifier une Decision.
 
 Formats prévisionnels, non disponibles actuellement :
 
-- `document-functional-design` et `document-technical-design` : Markdown par
-  défaut ; Google Docs ou Microsoft Word uniquement dans une future
-  implémentation et avec un modèle compatible fourni ;
-- `document-product-backlog` : Markdown par défaut ; Google Sheets avec un
-  modèle compatible fourni ; Google Docs ou Microsoft Word uniquement sur
-  demande documentaire explicite et avec un modèle compatible fourni.
+- `document-project-canvas`, `document-functional-design` et
+  `document-technical-design` : Markdown natif, Microsoft Word et Google Docs ;
+- `document-product-backlog` : Markdown natif, Google Sheets, Microsoft Excel,
+  Microsoft Word et Google Docs.
 
-Pour le Project Canvas, l'option actuelle minimale reste sa production
-directe en Markdown par `project-framing`. Un futur
-`document-project-canvas` pourrait isoler les restitutions Google Docs ou
-Microsoft Word, mais sa pertinence n'est pas décidée et aucun skill n'est créé.
+Ces formats sont futurs. Les placeholders ne contiennent aucune méthodologie,
+aucun exemple runtime, aucun template et aucune intégration.
 
 ## Architecture de référence
 
@@ -123,7 +137,7 @@ concurrent.
   Option/Decision ne doivent pas être confondus.
 - Les contradictions ne sont pas résolues sans preuve et autorité suffisantes.
 - Les Golden Outputs ne changent qu'après approbation humaine explicite.
-- Le Project Canvas est la sortie principale Markdown de `project-framing`.
+- Le Project Canvas est l'artefact métier principal de `project-framing`.
 - Ses dix sections restent présentes ou explicitement insuffisamment
   renseignées ; une structure obligatoire ne justifie jamais l'invention.
 - L'objectif métier de fiabilité à 80-90 % reste qualitatif et ne devient
@@ -133,9 +147,8 @@ concurrent.
   Decision.
 - La production de connaissance métier reste séparée de sa restitution
   documentaire.
-- `document-output` est conservé provisoirement comme orchestrateur
-  documentaire potentiel ; sa nécessité sera réévaluée après preuve d'usage
-  des futurs skills documentaires.
+- La convention `<discipline>` pour l'artefact métier et
+  `document-<discipline>` pour son document est définitive et obligatoire.
 - Les exemples nécessaires au raisonnement d'un skill installé appartiennent
   à son répertoire `references/` et doivent être liés depuis son `SKILL.md`.
 - `development/examples/` ne contient que des exemples brouillons ou non
@@ -160,6 +173,7 @@ concurrent.
 | 8 - `project-framing` | Premier skill métier complet, tests sur quatre fixtures et workbook manuel | Terminée |
 | 8.1 - Packaging Boundary | Bundle installable isolé des ressources de développement et du travail local | Terminée |
 | 8.2 - Project Canvas | Architecture prévisionnelle révisée et `project-framing` repositionné autour du Project Canvas | Implémentation terminée — validation manuelle utilisateur en attente |
+| 8.3 - Architecture documentaire définitive | Quatre placeholders `document-<discipline>` installés et ancien placeholder générique supprimé | Terminée techniquement — aucune méthodologie documentaire implémentée |
 
 ## Historique des prompts directeurs
 
@@ -416,7 +430,8 @@ Références runtime ajoutées :
 L'exemple est fictif, court, étranger aux fixtures et n'est ni un Golden
 Output ni une source de faits réutilisables.
 
-L'architecture prévisionnelle distingue désormais :
+Cette architecture prévisionnelle a ensuite été remplacée par la séparation
+définitive entre artefacts métier et documents. L'architecture officielle est :
 
 ```text
 project-design
@@ -424,16 +439,16 @@ project-design
 ├── functional-design
 ├── technical-design
 ├── product-backlog
-├── document-output                  # statut provisoire
-├── document-functional-design       # futur
-├── document-technical-design        # futur
-└── document-product-backlog         # futur
+├── document-project-canvas          # placeholder
+├── document-functional-design       # placeholder
+├── document-technical-design        # placeholder
+└── document-product-backlog         # placeholder
 ```
 
-Les trois futurs skills documentaires mettent en forme des artefacts métier
-sans les modifier. `document-output` est provisoirement conservé comme leur
-orchestrateur potentiel, mais cette recommandation devra être réévaluée après
-l'implémentation et le test d'au moins deux workflows documentaires concrets.
+Les quatre skills documentaires mettent en forme leur artefact métier
+correspondant sans le modifier. L'ancien placeholder documentaire générique a
+été supprimé : l'orchestration globale reste la responsabilité future unique
+de `project-design`.
 
 Les quatre fixtures ont été rejouées avec succès. Les sorties brutes restent
 hors Git sous `.local/test-runs/2026-08-05-project-canvas/`. Les tests manuels
@@ -441,6 +456,34 @@ ont été actualisés, mais leur rejeu par l'utilisateur reste requis.
 
 Rapport :
 [Project Canvas Evolution Review](tests/executions/2026-08-05-project-canvas-review.md).
+
+### Séparation définitive des skills documentaires
+
+La décision structurante suivante remplace la recommandation documentaire
+provisoire des deux rapports précédents :
+
+- chaque discipline métier produit un artefact métier et ne connaît aucun
+  format documentaire ;
+- chaque `document-<discipline>` produit uniquement le document correspondant ;
+- les quatre placeholders documentaires sont installés pour stabiliser
+  l'arborescence, sans méthodologie, template, exemple ou intégration ;
+- l'ancien placeholder générique a été supprimé, car les manifests découvrent
+  directement les neuf répertoires et sa suppression ne casse pas le plugin ;
+- `project-design` reste l'unique futur orchestrateur global et ne produit ni
+  contenu métier ni document.
+
+Rapport :
+[Definitive Document Skill Architecture](tests/executions/2026-08-05-definitive-document-skill-architecture.md).
+
+État Git de cette intervention :
+
+- branche : `main` ;
+- base : `ff72ce5` (`Clarify project document architecture`) ;
+- `main`, `origin/main` et `origin/HEAD` étaient alignés sur cette base au
+  début de l'intervention ;
+- l'utilisateur a explicitement autorisé le commit et le push de l'ensemble
+  de l'intervention le 2026-08-05 ; le journal Git reste la source de vérité
+  pour l'identifiant du commit de livraison.
 
 Commits principaux :
 
@@ -458,6 +501,7 @@ Commits principaux :
 | `696abeb` | Clarification des règles qualité et de la roadmap |
 | `3b21750` | Rapport de cohérence du packaging |
 | `0332597` | Évolution de `project-framing` autour du Project Canvas |
+| `ff72ce5` | Clarification de l'architecture documentaire provisoire |
 
 Rapports d'itération et de revue :
 
@@ -473,6 +517,7 @@ Rapports d'itération et de revue :
 | Cohérence du packaging | [Revue](tests/executions/2026-07-24-packaging-coherence-review.md) |
 | Project Canvas | [Revue](tests/executions/2026-08-05-project-canvas-review.md) |
 | Architecture documentaire | [Audit](tests/executions/2026-08-05-document-architecture-audit.md) |
+| Architecture documentaire définitive | [Revue](tests/executions/2026-08-05-definitive-document-skill-architecture.md) |
 
 Les itérations 1 à 3 n'ont pas de rapport d'exécution dédié. Leur historique
 est conservé par les commits, la stratégie de test, les fixtures et la
@@ -511,7 +556,7 @@ Le skill :
 
 - accepte un Project View ou des sources projet ;
 - reprend et clarifie l'expression de besoin ;
-- produit un Project Canvas Markdown couvrant les dix sections obligatoires ;
+- produit un artefact Project Canvas couvrant les dix sections obligatoires ;
 - produit un premier Canvas sans questionnaire exhaustif ;
 - préserve les contradictions et les incertitudes ;
 - distingue les informations bloquantes, nécessaires avant la conception
@@ -647,13 +692,11 @@ Séquence métier prévue :
 | 9 | Implémenter `functional-design` | Consommer le Project Canvas et le Project Model, sans refaire le cadrage ni anticiper l'architecture technique |
 | 10 | Implémenter `technical-design` comme étape complémentaire ou parallèle | Consommer le Canvas, distinguer architecture, décisions, intégrations, qualités et risques sans redéfinir les besoins métier |
 | 11 | Implémenter `product-backlog` | Transformer le périmètre conçu et validé en backlog traçable sans inventer de priorité, estimation, exigence ou décision |
-| 12 | Implémenter `document-functional-design` | Restituer l'artefact fonctionnel ; Markdown natif, formats externes futurs uniquement avec modèle compatible |
-| 13 | Implémenter `document-technical-design` | Restituer l'artefact technique selon son propre contrat de format et de modèle |
-| 14 | Implémenter `document-product-backlog` | Restituer le backlog ; traiter séparément le besoin Google Sheets et les éventuels formats documentaires |
-| 15 | Expérimenter l'orchestration documentaire | Décider du maintien de `document-output`, de la pertinence de `document-project-canvas` et de la frontière avec `project-design` |
-| 16 | Implémenter l'orchestration `project-design` | Router les skills, transmettre les artefacts et maintenir la cohérence sans dupliquer leurs responsabilités |
-| 17 | Concevoir les adaptateurs optionnels | Conserver les dépendances vers Spec Kit et les plateformes hors du cœur |
-| 18 | Introduire l'automatisation justifiée | Automatiser les contrôles structurels seulement après stabilisation des contrats |
+| 12 | Implémenter `document-project-canvas` | Produire le document Project Canvas sans modifier l'artefact métier |
+| 13 | Implémenter `document-functional-design` | Produire les spécifications fonctionnelles sans modifier l'artefact métier |
+| 14 | Implémenter `document-technical-design` | Produire les spécifications techniques sans modifier l'artefact métier |
+| 15 | Implémenter `document-product-backlog` | Produire le document de backlog sans créer, prioriser ou estimer de contenu |
+| 16 | Implémenter l'orchestration `project-design` | Router les skills, transmettre les artefacts et maintenir la cohérence sans produire de contenu ni de documents |
 
 Chaque itération métier doit recevoir son propre prompt détaillé avant
 implémentation. Cette roadmap fixe l'ordre et les frontières, pas encore la
@@ -671,11 +714,6 @@ méthodologie des skills futurs.
   Model.
 - Ne pas restructurer de nouveau le dépôt avant qu'un besoin concret soit
   démontré par les prochains skills.
-- Décider, après expérimentation, si `document-output` reste nécessaire et
-  quelle part exacte de routage documentaire il porte face à
-  `project-design`.
-- Décider si un futur `document-project-canvas` est justifié par de vrais
-  workflows Google Docs ou Microsoft Word.
 - Définir les formats et contrats de modèles réellement pris en charge par
   chaque futur skill documentaire avant d'annoncer ces formats comme
   disponibles.

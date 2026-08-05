@@ -22,8 +22,9 @@ reliable enough to support functional and technical design without repeating
 the complete framing effort.
 
 It is not a source summary, requirements specification, technical
-architecture, backlog, or document-format conversion. Markdown is its native
-and mandatory default format.
+architecture, backlog, document template, or document-format conversion. Its
+logical structure is format-neutral; final document structure and formatting
+belong to `document-project-canvas`.
 
 The intended 80-90% reliability is a qualitative business expectation. Never
 calculate, display, or infer a percentage. Reliability means that the Canvas:
