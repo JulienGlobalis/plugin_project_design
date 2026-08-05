@@ -1,13 +1,13 @@
 ---
 name: functional-design
-description: Structure the future functional design of one or more applications or products, including modules, features, target users, processes, journeys, business rules, functional data, exceptions, dependencies, requirements, and acceptance criteria. Use when defining or clarifying expected system behavior from a Project Canvas independently of technical implementation.
+description: Describe the forecast functional-design responsibility for applications or products, including modules, features, target users, processes, journeys, business rules, functional data, exceptions, dependencies, and requirements. This installed entry is a placeholder; the methodology and structured business artefact are not yet implemented.
 ---
 
 # Functional Design
 
 ## Status
 
-UNDER CONSTRUCTION
+PLACEHOLDER — FUTURE METHODOLOGY NOT IMPLEMENTED
 
 The detailed functional-design methodology and output templates are TO BE DEFINED.
 
@@ -24,10 +24,11 @@ value, and remaining functional questions.
 
 ## Expected Outputs
 
-- A structured functional-design artefact.
+- A future structured functional-design business artefact.
 - Traceable products or applications, modules, features, users, Processes,
   journeys, Business Rules, functional data, exceptions, dependencies,
-  Requirements, and acceptance criteria.
+  Requirements, and acceptance criteria when supported by the future
+  methodology and project evidence.
 
 Output structures are TO BE DEFINED.
 

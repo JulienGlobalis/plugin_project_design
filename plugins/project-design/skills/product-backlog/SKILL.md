@@ -1,19 +1,21 @@
 ---
 name: product-backlog
-description: Create, harmonize, prioritize, estimate, or trace a structured Product Backlog for an application or software project. Use when requirements must be organized into backlog items or an existing backlog needs consistency work; do not use for general functional design without a backlog deliverable.
+description: Describe the forecast transformation of a Project Canvas and validated functional or technical design into a traceable Product Backlog. This installed entry is a placeholder; backlog creation, harmonization, prioritization, estimation, and export methodology are not yet implemented.
 ---
 
 # Product Backlog
 
 ## Status
 
-UNDER CONSTRUCTION
+PLACEHOLDER — FUTURE METHODOLOGY NOT IMPLEMENTED
 
 The detailed backlog methodology, column semantics, and output templates are TO BE DEFINED.
 
 ## Purpose
 
-Eventually produce or improve a traceable Product Backlog aligned with validated project requirements.
+Eventually produce or improve a traceable Product Backlog aligned with
+validated project Requirements, Capabilities, Business Rules, Scope, and
+Decisions without inventing new project content.
 
 ## Expected Inputs
 
@@ -35,6 +37,8 @@ Detailed semantics are TO BE DEFINED.
 - Remain fully usable without GitHub Spec Kit.
 - Do not define detailed backlog rules, export formats, or platform integrations in this iteration.
 - Do not invent priority, effort, value, or acceptance information.
+- Do not invent estimates, new Requirements, or backlog items unsupported by
+  the designed and validated inputs.
 - Do not create new Requirements or Decisions while transforming the designed
   and validated Scope.
 

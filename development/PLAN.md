@@ -30,8 +30,10 @@ documentation systems, and project-management platforms.
 
 ### Global Orchestration
 
-- `project-design`: future orchestration, routing, artefact transmission, and
-  cross-step consistency without duplicating specialized methodology.
+- `project-design`: installed placeholder for future orchestration, routing,
+  artefact transmission, cross-step consistency, and traceable returns to an
+  earlier stage when reliable new information appears. Full orchestration is
+  not implemented and must not duplicate specialized methodology.
 
 ### Design Skills
 
@@ -51,17 +53,37 @@ documentation systems, and project-management platforms.
 ### Document Restitution Skills
 
 - `document-functional-design`: future Markdown output by default, with
-  template-based Google Docs or Microsoft Word as optional future targets.
+  template-based Google Docs or Microsoft Word as optional future targets
+  only when a compatible template is supplied.
 - `document-technical-design`: future Markdown output by default, with
-  template-based Google Docs or Microsoft Word as optional future targets.
+  template-based Google Docs or Microsoft Word as optional future targets
+  only when a compatible template is supplied.
 - `document-product-backlog`: future Markdown or Google Sheets-oriented
-  restitution, with other template-based document formats only when justified.
-- `document-output`: existing placeholder provisionally retained as a future
-  documentary orchestrator. Its necessity must be confirmed after the first
-  document-specific skills provide usage evidence.
+  restitution. Google Sheets requires a compatible template; Google Docs or
+  Microsoft Word require both an explicit documentary request and a
+  compatible template.
+- `document-output`: installed placeholder provisionally retained as a
+  possible future documentary orchestrator. It may select a generator,
+  output format, supplied compatible template, and presentation constraints,
+  but must not own or change design content. Its necessity must be confirmed
+  after document-specific workflows provide usage evidence.
 
-Only existing skills are implemented or scaffolded. Do not add empty skill
-directories merely to mirror this forecast architecture.
+Only `project-framing` has an implemented business methodology. The other
+five installed entries are placeholders or under-construction contracts. The
+three document-specific skills are future concepts and have no directories.
+Do not add empty skill directories merely to mirror this forecast
+architecture.
+
+### Project Canvas Restitution
+
+The current minimal option is that `project-framing` owns its Project Canvas
+content and produces it directly as Markdown. Google Docs and Microsoft Word
+restitution are not implemented.
+
+A future `document-project-canvas` may be justified if concrete Google Docs
+or Microsoft Word workflows need a dedicated template and format contract.
+Do not create it before that evidence exists. Its necessity, its relationship
+with `document-output`, and direct invocation remain open decisions.
 
 ## Design Sequence
 
@@ -117,8 +139,13 @@ until its affected tests have been updated and reviewed.
 10. Define and test `functional-design`.
 11. Define and test `technical-design` as a complementary or parallel step.
 12. Define and test `product-backlog`.
-13. Define the three document-specific restitution skills and decide whether
-   `document-output` remains their orchestrator.
-14. Define global orchestration and cross-artefact consistency.
-15. Design optional platform and Spec Kit adapters.
-16. Consider automation only after stable contracts exist.
+13. Define and test `document-functional-design`.
+14. Define and test `document-technical-design`.
+15. Define and test `document-product-backlog`.
+16. Experiment with documentary orchestration and decide the long-term status
+    of `document-output`, the possible need for `document-project-canvas`, and
+    the boundary with `project-design`.
+17. Define global `project-design` orchestration and cross-artefact
+    consistency after specialized contracts are sufficiently stable.
+18. Design optional platform and Spec Kit adapters.
+19. Consider automation only after stable contracts exist.

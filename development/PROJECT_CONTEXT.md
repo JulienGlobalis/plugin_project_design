@@ -30,13 +30,18 @@ structurer la conception de projets applicatifs et logiciels.
 
 Compétences prévues :
 
-- `project-design` : orchestration future ;
+- `project-design` : placeholder installé pour l'orchestration globale
+  future, non implémentée ;
 - `project-framing` : étape 1, cadrage et Project Canvas ;
-- `functional-design` : étape 2, conception fonctionnelle future ;
-- `technical-design` : étape 2 bis, conception technique future,
+- `functional-design` : placeholder installé pour l'étape 2, conception
+  fonctionnelle future ;
+- `technical-design` : placeholder installé pour l'étape 2 bis, conception
+  technique future,
   complémentaire ou parallèle ;
-- `product-backlog` : préparation du backlog ;
-- `document-output` : orchestrateur documentaire futur provisoire ;
+- `product-backlog` : placeholder installé pour la transformation future de
+  la conception validée en backlog traçable ;
+- `document-output` : placeholder installé pour un éventuel orchestrateur
+  documentaire futur, au statut provisoire ;
 - `document-functional-design` : restitution fonctionnelle future ;
 - `document-technical-design` : restitution technique future ;
 - `document-product-backlog` : restitution du backlog future.
@@ -44,6 +49,37 @@ Compétences prévues :
 Seuls les six répertoires de skills existants sont présents. Aucun squelette
 vide n'est créé pour annoncer une capacité future. Chaque skill spécialisé
 doit rester utilisable indépendamment.
+
+### Catégories de responsabilités
+
+L'architecture cible distingue trois catégories :
+
+1. **Orchestration globale** — `project-design` déterminera les étapes utiles,
+   appellera les skills spécialisés, transmettra leurs artefacts, maintiendra
+   leur cohérence et organisera les retours tracés vers une étape précédente.
+   Cette orchestration complète n'est pas implémentée et ne doit pas absorber
+   les méthodologies spécialisées.
+2. **Conception** — `project-framing` est la seule méthodologie métier
+   implémentée. Elle produit le Project Canvas Markdown. `functional-design`,
+   `technical-design` et `product-backlog` restent des placeholders installés
+   dont les méthodologies et artefacts structurés sont futurs.
+3. **Restitution documentaire** — les futurs skills documentaires mettront en
+   forme les artefacts métier sans en devenir propriétaires. Ils ne pourront
+   ni inventer de contenu, ni résoudre une question, ni modifier une Decision.
+
+Formats prévisionnels, non disponibles actuellement :
+
+- `document-functional-design` et `document-technical-design` : Markdown par
+  défaut ; Google Docs ou Microsoft Word uniquement dans une future
+  implémentation et avec un modèle compatible fourni ;
+- `document-product-backlog` : Markdown par défaut ; Google Sheets avec un
+  modèle compatible fourni ; Google Docs ou Microsoft Word uniquement sur
+  demande documentaire explicite et avec un modèle compatible fourni.
+
+Pour le Project Canvas, l'option actuelle minimale reste sa production
+directe en Markdown par `project-framing`. Un futur
+`document-project-canvas` pourrait isoler les restitutions Google Docs ou
+Microsoft Word, mais sa pertinence n'est pas décidée et aucun skill n'est créé.
 
 ## Architecture de référence
 
@@ -421,6 +457,7 @@ Commits principaux :
 | `4390f1c` | Réorganisation autour du bundle installable isolé |
 | `696abeb` | Clarification des règles qualité et de la roadmap |
 | `3b21750` | Rapport de cohérence du packaging |
+| `0332597` | Évolution de `project-framing` autour du Project Canvas |
 
 Rapports d'itération et de revue :
 
@@ -434,6 +471,8 @@ Rapports d'itération et de revue :
 | `project-framing` | [Revue](tests/executions/2026-07-23-project-framing-review.md) |
 | Frontière de packaging | [Revue](tests/executions/2026-07-24-packaging-boundary-review.md) |
 | Cohérence du packaging | [Revue](tests/executions/2026-07-24-packaging-coherence-review.md) |
+| Project Canvas | [Revue](tests/executions/2026-08-05-project-canvas-review.md) |
+| Architecture documentaire | [Audit](tests/executions/2026-08-05-document-architecture-audit.md) |
 
 Les itérations 1 à 3 n'ont pas de rapport d'exécution dédié. Leur historique
 est conservé par les commits, la stratégie de test, les fixtures et la
@@ -489,14 +528,12 @@ Rapport :
 ## État Git de l'intervention Project Canvas
 
 - Branche : `main`.
-- Base et HEAD : `19f8abf` (`Document prompt history and runtime example
-  policy`).
-- État initial : propre et aligné avec `origin/main`.
-- État final attendu : modifications locales non commitées de l'intervention,
-  deux nouvelles références runtime, un nouveau rapport et sorties de fixture
-  ignorées sous `.local/`.
-- Commit : aucun.
-- Push : aucun.
+- Base de l'intervention : `19f8abf` (`Document prompt history and runtime
+  example policy`).
+- Commit livré : `0332597` (`Evolve project framing around Project Canvas`).
+- `main`, `origin/main` et `origin/HEAD` étaient alignés sur `0332597` au début
+  de l'audit documentaire du 2026-08-05.
+- Les sorties brutes de fixture restent ignorées sous `.local/`.
 
 ## État Git de la série de packaging
 
@@ -610,11 +647,13 @@ Séquence métier prévue :
 | 9 | Implémenter `functional-design` | Consommer le Project Canvas et le Project Model, sans refaire le cadrage ni anticiper l'architecture technique |
 | 10 | Implémenter `technical-design` comme étape complémentaire ou parallèle | Consommer le Canvas, distinguer architecture, décisions, intégrations, qualités et risques sans redéfinir les besoins métier |
 | 11 | Implémenter `product-backlog` | Transformer le périmètre conçu et validé en backlog traçable sans inventer de priorité, estimation, exigence ou décision |
-| 12 | Concevoir les trois skills documentaires | Restituer sans inventer ni modifier le contenu métier ; modèles compatibles requis pour les formats externes |
-| 13 | Décider du statut définitif de `document-output` | Comparer l'orchestration documentaire aux appels directs sur la base d'usages testés |
-| 14 | Implémenter l'orchestration `project-design` | Router les skills et maintenir la cohérence sans dupliquer leurs responsabilités |
-| 15 | Concevoir les adaptateurs optionnels | Conserver les dépendances vers Spec Kit et les plateformes hors du cœur |
-| 16 | Introduire l'automatisation justifiée | Automatiser les contrôles structurels seulement après stabilisation des contrats |
+| 12 | Implémenter `document-functional-design` | Restituer l'artefact fonctionnel ; Markdown natif, formats externes futurs uniquement avec modèle compatible |
+| 13 | Implémenter `document-technical-design` | Restituer l'artefact technique selon son propre contrat de format et de modèle |
+| 14 | Implémenter `document-product-backlog` | Restituer le backlog ; traiter séparément le besoin Google Sheets et les éventuels formats documentaires |
+| 15 | Expérimenter l'orchestration documentaire | Décider du maintien de `document-output`, de la pertinence de `document-project-canvas` et de la frontière avec `project-design` |
+| 16 | Implémenter l'orchestration `project-design` | Router les skills, transmettre les artefacts et maintenir la cohérence sans dupliquer leurs responsabilités |
+| 17 | Concevoir les adaptateurs optionnels | Conserver les dépendances vers Spec Kit et les plateformes hors du cœur |
+| 18 | Introduire l'automatisation justifiée | Automatiser les contrôles structurels seulement après stabilisation des contrats |
 
 Chaque itération métier doit recevoir son propre prompt détaillé avant
 implémentation. Cette roadmap fixe l'ordre et les frontières, pas encore la
@@ -632,6 +671,14 @@ méthodologie des skills futurs.
   Model.
 - Ne pas restructurer de nouveau le dépôt avant qu'un besoin concret soit
   démontré par les prochains skills.
+- Décider, après expérimentation, si `document-output` reste nécessaire et
+  quelle part exacte de routage documentaire il porte face à
+  `project-design`.
+- Décider si un futur `document-project-canvas` est justifié par de vrais
+  workflows Google Docs ou Microsoft Word.
+- Définir les formats et contrats de modèles réellement pris en charge par
+  chaque futur skill documentaire avant d'annoncer ces formats comme
+  disponibles.
 
 ## Prompt de reprise
 

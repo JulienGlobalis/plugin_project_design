@@ -1,13 +1,13 @@
 ---
 name: technical-design
-description: Structure the future technical design of an application or software system, including architecture, technologies, components, integrations, APIs, flows, constraints, security, performance, deployment, decisions, risks, and non-functional requirements. Use when translating a Project Canvas and known project or functional needs into technology-oriented design considerations.
+description: Describe the forecast technical-design responsibility for architecture, technologies, components, integrations, APIs, flows, security, performance, hosting, operations, deployment, decisions, risks, and non-functional requirements. This installed entry is a placeholder; the methodology and structured technical artefact are not yet implemented.
 ---
 
 # Technical Design
 
 ## Status
 
-UNDER CONSTRUCTION
+PLACEHOLDER — FUTURE METHODOLOGY NOT IMPLEMENTED
 
 The detailed technical-design methodology and output templates are TO BE DEFINED.
 
@@ -27,8 +27,8 @@ complementary or parallel step to functional design when inputs permit.
 
 - A structured technical-design artefact.
 - Traceable architecture, technologies, components, Integrations, APIs,
-  flows, Constraints, security, performance, deployment, Decisions, Risks,
-  and non-functional Requirements.
+  flows, Constraints, security, performance, hosting, operations, deployment,
+  Decisions, Risks, and non-functional Requirements.
 
 Output structures are TO BE DEFINED.
 

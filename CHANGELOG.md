@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Audited and clarified the documented skill architecture, installed versus
+  future capability status, design-versus-restitution boundary, separate
+  documentary roadmap, and deferred `document-project-canvas` decision.
 - Repositioned `project-framing` as the first project-design step and made a
   ten-section Project Canvas its primary Markdown artefact.
 - Added runtime Project Canvas guidance and a short fictional structural

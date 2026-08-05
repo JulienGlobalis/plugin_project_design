@@ -1,7 +1,7 @@
 {
   "name": "project-design",
   "version": "0.1.0",
-  "description": "Reusable, platform-independent Project Canvas and application or software project-design foundations.",
+  "description": "Implemented Markdown Project Canvas framing plus explicit under-construction project-design foundations; future document-specific skills are not installed.",
   "author": {
     "name": "Project Design Contributors"
   },

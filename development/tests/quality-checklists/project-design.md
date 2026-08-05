@@ -1,6 +1,6 @@
 # Project Design Checklist
 
-## Current Contract
+## Forecast Contract — Not Yet Implemented
 
 - [ ] The request is classified as complete workflow, one specialized skill,
       or an explicit subset.
@@ -13,6 +13,11 @@
 - [ ] Design skills remain distinct from future document-restitution skills.
 - [ ] Future document skills remain directly callable even if
       `document-output` is retained as a documentary orchestrator.
+- [ ] `project-design` owns global step selection and cross-artefact
+      consistency; `document-output` is limited to documentary routing and
+      presentation coordination.
+- [ ] Reliable new information may trigger a traceable return to an earlier
+      stage without silently rewriting validated artefacts.
 - [ ] Shared facts, assumptions, decisions, and questions remain consistent
       across artefacts.
 - [ ] Specialized methodology is not duplicated in orchestration.

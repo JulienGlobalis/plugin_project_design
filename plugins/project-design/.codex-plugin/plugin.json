@@ -1,7 +1,7 @@
 {
   "name": "project-design",
   "version": "0.1.0",
-  "description": "Reusable, platform-independent foundations for application and software project design.",
+  "description": "Project Canvas framing plus under-construction foundations for future application and software project design.",
   "author": {
     "name": "Project Design Contributors"
   },
@@ -9,7 +9,7 @@
   "interface": {
     "displayName": "Project Design",
     "shortDescription": "Structure application and software project design.",
-    "longDescription": "Project Design provides a Project Canvas framing methodology, future modular functional and technical design, traceable backlog preparation, and separated document restitution foundations.",
+    "longDescription": "Project Design currently provides the implemented Markdown Project Canvas framing methodology. Its other installed skill entries are explicit placeholders for future global orchestration, functional and technical design, traceable backlog preparation, and provisional documentary orchestration; future document-specific skills are not installed.",
     "developerName": "Project Design Contributors",
     "category": "Productivity",
     "capabilities": [],

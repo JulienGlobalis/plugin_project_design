@@ -1,13 +1,13 @@
 ---
 name: project-design
-description: Coordinate a complete or partial application and software project-design effort across the plugin's specialized skills. Use when a request spans multiple design concerns, requires an execution order, or needs consistent framing, functional, technical, backlog, and document outputs. Do not use for a single specialized concern when one dedicated skill is sufficient.
+description: Define the forecast coordination of a complete or partial application and software project-design effort across specialized skills. This installed entry is an under-construction placeholder and does not yet execute end-to-end orchestration. Use its contract when a request spans several design concerns or needs future routing boundaries; use one implemented dedicated skill for a single concern.
 ---
 
 # Project Design
 
 ## Status
 
-UNDER CONSTRUCTION
+PLACEHOLDER — GLOBAL ORCHESTRATION NOT IMPLEMENTED
 
 Only the forecast orchestration contract is defined in version 0.1.0.
 Detailed routing and methodology are TO BE DEFINED.
@@ -17,6 +17,10 @@ Detailed routing and methodology are TO BE DEFINED.
 Eventually analyze a project-design request, select the required specialized
 skills, transmit their artefacts, order or parallelize their use, and preserve
 global consistency without duplicating their methodology.
+
+Future orchestration may route reliable new information back to an earlier
+stage for a traceable review. It must not silently rewrite validated artefacts
+or absorb the methodology of a specialized skill.
 
 Support three invocation patterns:
 
@@ -58,7 +62,12 @@ The intended design sequence is:
 `document-output` is provisionally retained as a possible documentary
 orchestrator. Future `document-functional-design`,
 `document-technical-design`, and `document-product-backlog` skills may also be
-invoked directly. Do not implement this routing in the current version.
+invoked directly. They are not installed in the current version. Do not
+implement this routing in the current version.
+
+`project-design` owns global step selection and cross-artefact consistency.
+The possible future `document-output` owns only documentary routing and
+presentation coordination; it must not become a second global orchestrator.
 
 ## Shared References
 
