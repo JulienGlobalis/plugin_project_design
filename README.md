@@ -15,6 +15,11 @@ Project-design knowledge is often spread across briefs, workshops, requirements,
 The official architecture distinguishes global orchestration, business skills,
 and document skills.
 
+See the
+[Plugin Architecture Overview v1.0](development/documentation/PLUGIN_ARCHITECTURE_OVERVIEW.md)
+for the consolidated layer, model, skill, ownership, flow, and dependency
+reference.
+
 - `project-design` will select and coordinate the necessary business and
   document skills without producing business content or documents.
 - `project-framing` is the implemented first design step. It clarifies the
@@ -27,15 +32,18 @@ and document skills.
   design when the available inputs permit it.
 - `product-backlog` will transform designed and validated Scope into traceable
   backlog items without inventing requirements, priority, value, or effort.
-- `document-project-canvas`, `document-functional-design`,
-  `document-technical-design`, and `document-product-backlog` are installed
-  placeholders for future document restitution from their corresponding
-  business artefacts.
+- `document-project-canvas` is the implemented documentary counterpart of
+  `project-framing`. It produces a verified Markdown, Microsoft Word, or
+  Google Docs document from a validated Project Canvas without changing its
+  business knowledge.
+- `document-functional-design`, `document-technical-design`, and
+  `document-product-backlog` remain installed placeholders for future
+  document restitution from their corresponding business artefacts.
 
-Exactly nine skill directories are installed. Only `project-framing` has an
-implemented business methodology; the other eight entries are explicit
-placeholders. Every specialized skill remains independently callable, and
-future orchestration must preserve direct use.
+Exactly nine skill directories are installed. `project-framing` and
+`document-project-canvas` are implemented; the other seven entries are
+explicit placeholders. Every specialized skill remains independently
+callable, and future orchestration must preserve direct use.
 
 ### Current Availability
 
@@ -46,7 +54,7 @@ future orchestration must preserve direct use.
 | `functional-design` | Yes | Placeholder | Future structured functional-design methodology |
 | `technical-design` | Yes | Placeholder | Future complementary or parallel technical-design methodology |
 | `product-backlog` | Yes | Placeholder | Future traceable transformation of designed and validated Scope |
-| `document-project-canvas` | Yes | Placeholder | Future Project Canvas document |
+| `document-project-canvas` | Yes | Implemented; combined manual validation pending | Project Canvas document in Markdown, Microsoft Word, or Google Docs |
 | `document-functional-design` | Yes | Placeholder | Future functional specifications document |
 | `document-technical-design` | Yes | Placeholder | Future technical specifications document |
 | `document-product-backlog` | Yes | Placeholder | Future Product Backlog document |
@@ -61,7 +69,7 @@ project-design
 ├── functional-design
 ├── technical-design
 ├── product-backlog
-├── document-project-canvas          # placeholder
+├── document-project-canvas          # implemented
 ├── document-functional-design       # placeholder
 ├── document-technical-design        # placeholder
 └── document-product-backlog         # placeholder
@@ -87,12 +95,18 @@ validated business artefact and may present it for people or external tools,
 but must not invent content, resolve a business question, change a Decision,
 or become owners of business methodology.
 
-Markdown is the native default. Google Docs, Google Sheets, and Microsoft
-Word are not currently implemented output capabilities. The forecast rules
-are:
+Version 0.1 of the
+[Shared Document Model](plugins/project-design/shared/document-model/README.md)
+defines this discipline-neutral artefact-to-document contract for every
+implemented and future document skill.
 
-- `document-project-canvas`: Markdown by default; Google Docs or Microsoft
-  Word in a future implementation;
+Markdown is the native default. `document-project-canvas` currently supports
+native Markdown, Microsoft Word, and Google Docs through available native
+document tooling, with a default professional structure or a compatible
+supplied template. The rules are:
+
+- `document-project-canvas`: Markdown by default; verified native Google Docs
+  or Microsoft Word on explicit request;
 - `document-functional-design`: Markdown by default; Google Docs or Microsoft
   Word only in a future implementation when a compatible template is
   supplied;
@@ -101,8 +115,9 @@ are:
 - `document-product-backlog`: Markdown by default; Google Sheets, Microsoft
   Excel, Google Docs, or Microsoft Word in a future implementation.
 
-These are forecast formats only. The placeholders contain no methodology,
-template, example, generator, conversion, export, or integration.
+The formats for the remaining three document skills are forecast only. Those
+placeholders contain no methodology, template, example, generator,
+conversion, export, or integration.
 
 Version 0.1 of the
 [Minimal Knowledge Model](plugins/project-design/shared/knowledge-model/README.md) defines how
@@ -179,19 +194,21 @@ corpus, the common information-architecture decision, version 0.1 of the
 Canonical Domain Model, version 0.1 of the conceptual Knowledge Model, and
 version 0.1 of the Minimal Normalized Project Model. It also provides the
 initial French canonical terminology companion and the first complete
-business methodology, `project-framing`. Its current unreleased evolution
-defines the Project Canvas as the primary framing artefact and awaits manual
-user validation. It does not provide the remaining detailed skill
-methodologies, document-generation methodologies, executable orchestration, schemas,
-exporters, persistence, API integrations, MCP servers, hooks, agents,
-commands, or Spec Kit automation.
+business methodology, `project-framing`, plus the first document methodology,
+`document-project-canvas`. Its current unreleased evolution defines the
+Project Canvas as the primary framing artefact and supports its verified
+Markdown, Microsoft Word, or Google Docs restitution. Combined manual user
+validation remains pending. It does not provide the remaining detailed skill
+methodologies, executable orchestration, general exporters, persistence, API
+integrations, MCP servers, hooks, agents, commands, or Spec Kit automation.
 
 ## Development Approach
 
 Develop one responsibility per skill, reuse shared concepts, preserve
 evidence and traceability, and validate methodology before adding automation.
 Every change follows [the shared testing strategy](development/tests/TESTING.md).
-Real-project validation of `project-framing` uses the
+Combined real-project validation of `project-framing` and
+`document-project-canvas` uses the
 [manual test file](development/tests/manual/project-framing.md).
 Development continuity between conversations is maintained in
 [PROJECT_CONTEXT.md](development/PROJECT_CONTEXT.md).
@@ -200,12 +217,13 @@ are explicitly designed.
 
 ## Roadmap
 
-1. Iteration 8: `project-framing` -> Project Canvas; manual validation remains
-   pending.
+1. Iteration 8 and advanced Iteration 12: `project-framing` -> Project Canvas
+   -> `document-project-canvas`; combined manual validation remains pending.
 2. Iteration 9: `functional-design` -> Functional Design.
 3. Iteration 10: `technical-design` -> Technical Design.
 4. Iteration 11: `product-backlog` -> Product Backlog.
-5. Iteration 12: implement `document-project-canvas`.
+5. Iteration 12: `document-project-canvas` implementation advanced into the
+   combined Iteration 8 validation; complete that validation.
 6. Iteration 13: implement `document-functional-design`.
 7. Iteration 14: implement `document-technical-design`.
 8. Iteration 15: implement `document-product-backlog`.

@@ -242,7 +242,9 @@ Manual test files:
 - may support a later skill change only when feedback is traceable and
   reviewed.
 
-The current [Project Framing](manual/project-framing.md) file contains four
-fixture replay cases and one controlled real-project case for validating the
-Project Canvas. Its results remain pending until the user completes and
-returns them.
+The current
+[Project Framing and Project Canvas Document](manual/project-framing.md) file
+contains four fixture replay cases and one controlled real-project case for
+validating `project-framing` followed by `document-project-canvas`. Preserve
+and evaluate the business artefact and final document separately. Results
+remain pending until the user completes and returns them.

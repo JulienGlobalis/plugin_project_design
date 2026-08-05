@@ -53,8 +53,9 @@ Compétences prévues :
   complémentaire ou parallèle ;
 - `product-backlog` : placeholder installé pour la transformation future de
   la conception validée en backlog traçable ;
-- `document-project-canvas` : placeholder installé pour le futur document
-  Project Canvas ;
+- `document-project-canvas` : méthodologie documentaire version 0.1
+  implémentée pour restituer un Project Canvas validé en Markdown natif,
+  Microsoft Word ou Google Docs ; validation manuelle combinée en attente ;
 - `document-functional-design` : placeholder installé pour les futures
   spécifications fonctionnelles ;
 - `document-technical-design` : placeholder installé pour les futures
@@ -80,20 +81,29 @@ L'architecture cible distingue trois catégories :
    dont les méthodologies et artefacts structurés sont futurs. Aucun skill
    métier ne connaît un format documentaire, un template, une mise en forme
    finale ou un export.
-3. **Skills documentaires** — les quatre placeholders documentaires mettront
-   en forme leur artefact métier correspondant sans en devenir propriétaires.
-   Ils ne pourront ni inventer de contenu, ni résoudre une question, ni
-   modifier une Decision.
+3. **Skills documentaires** — `document-project-canvas` met en forme le Canvas
+   validé sans en devenir propriétaire. Les trois autres skills documentaires
+   restent des placeholders. Aucun ne peut inventer de contenu, résoudre une
+   question ou modifier une Decision.
 
-Formats prévisionnels, non disponibles actuellement :
+Formats actuellement pris en charge par `document-project-canvas` :
 
-- `document-project-canvas`, `document-functional-design` et
-  `document-technical-design` : Markdown natif, Microsoft Word et Google Docs ;
+- Markdown natif par défaut ;
+- Microsoft Word ;
+- Google Docs.
+
+Formats encore prévisionnels et non disponibles :
+
+- `document-functional-design` et `document-technical-design` : Markdown
+  natif, Microsoft Word et Google Docs ;
 - `document-product-backlog` : Markdown natif, Google Sheets, Microsoft Excel,
   Microsoft Word et Google Docs.
 
-Ces formats sont futurs. Les placeholders ne contiennent aucune méthodologie,
-aucun exemple runtime, aucun template et aucune intégration.
+Les trois placeholders restants ne contiennent aucune méthodologie, aucun
+exemple runtime, aucun template et aucune intégration. Le skill
+`document-project-canvas` contient uniquement sa méthodologie et ses références
+runtime de structure, formats et qualité ; aucun template ou script n'est
+embarqué.
 
 ## Architecture de référence
 
@@ -116,6 +126,7 @@ Fondations architecturales actuellement considérées comme stables :
 - [Canonical Domain Model v0.1](../plugins/project-design/shared/terminology/canonical-domain-model.md)
 - [Minimal Knowledge Model v0.1](../plugins/project-design/shared/knowledge-model/README.md)
 - [Minimal Normalized Project Model v0.1](../plugins/project-design/shared/project-model/README.md)
+- [Shared Document Model v0.1](../plugins/project-design/shared/document-model/README.md)
 - [French canonical terminology](../plugins/project-design/shared/terminology/canonical-terms.fr.md)
 
 Toute évolution d'une fondation stable doit passer par une décision
@@ -147,6 +158,15 @@ concurrent.
   Decision.
 - La production de connaissance métier reste séparée de sa restitution
   documentaire.
+- Le Shared Document Model version 0.1 est le contrat documentaire commun,
+  indépendant des disciplines, pour tous les skills `document-<discipline>`.
+- Un document représente un artefact métier mais ne devient jamais sa source
+  de vérité ; un changement de format ou de template ne peut modifier le sens,
+  les statuts, les Decisions, les contradictions ou la traçabilité.
+- La vue d'ensemble officielle de l'architecture est
+  `development/documentation/PLUGIN_ARCHITECTURE_OVERVIEW.md` ; elle consolide
+  les contrats existants sans remplacer les modèles ou les `SKILL.md`
+  normatifs.
 - La convention `<discipline>` pour l'artefact métier et
   `document-<discipline>` pour son document est définitive et obligatoire.
 - Les exemples nécessaires au raisonnement d'un skill installé appartiennent
@@ -174,6 +194,9 @@ concurrent.
 | 8.1 - Packaging Boundary | Bundle installable isolé des ressources de développement et du travail local | Terminée |
 | 8.2 - Project Canvas | Architecture prévisionnelle révisée et `project-framing` repositionné autour du Project Canvas | Implémentation terminée — validation manuelle utilisateur en attente |
 | 8.3 - Architecture documentaire définitive | Quatre placeholders `document-<discipline>` installés et ancien placeholder générique supprimé | Terminée techniquement — aucune méthodologie documentaire implémentée |
+| 8.4 / Itération 12 avancée - Document Project Canvas | `document-project-canvas` implémenté pour tester la chaîne complète avec `project-framing` | Implémentation et validation technique terminées — validation manuelle combinée en attente |
+| 8.5 - Shared Document Model | Contrat documentaire commun formalisé pour tous les skills documentaires | Fondation architecturale terminée — validation technique documentée |
+| 8.6 - Plugin Architecture & Coherence Review v1.0 | Modèles, skills, propriétaires, flux, dépendances et roadmap audités et documentés | Revue terminée — architecture prête pour `functional-design` avec réserves documentaires non bloquantes |
 
 ## Historique des prompts directeurs
 
@@ -439,7 +462,7 @@ project-design
 ├── functional-design
 ├── technical-design
 ├── product-backlog
-├── document-project-canvas          # placeholder
+├── document-project-canvas          # implemented methodology
 ├── document-functional-design       # placeholder
 ├── document-technical-design        # placeholder
 └── document-product-backlog         # placeholder
@@ -485,6 +508,153 @@ Rapport :
   de l'intervention le 2026-08-05 ; le journal Git reste la source de vérité
   pour l'identifiant du commit de livraison.
 
+### Avancement anticipé de `document-project-canvas`
+
+Après la livraison de l'architecture définitive, l'utilisateur a demandé
+d'implémenter immédiatement `document-project-canvas` afin de tester dans le
+même rejeu le Canvas métier et son document final. Cette instruction avance
+l'itération 12 sans modifier l'ordre prévu des autres méthodologies.
+
+Le contrat version 0.1 retenu est :
+
+- entrée obligatoire : Project Canvas validé produit par `project-framing` ou
+  artefact équivalent conforme ;
+- Markdown natif par défaut, Microsoft Word et Google Docs sur demande ;
+- structure professionnelle native si aucun template compatible n'est fourni ;
+- template optionnel, jamais utilisé pour ajouter, supprimer ou altérer une
+  connaissance métier ;
+- préservation intégrale des dix sections, statuts, perspectives, conflits,
+  Decisions, questions, readiness et références de traçabilité ;
+- vérification du contenu et du format natif avant livraison ;
+- retour vers `project-framing` lorsqu'un défaut porte sur l'artefact métier,
+  sans correction documentaire silencieuse.
+
+Le skill ne contient aucun template, script ou intégration spécifique. Il
+utilise les outils documentaires natifs disponibles sur la plateforme et doit
+annoncer explicitement toute impossibilité de produire ou vérifier un format
+externe.
+
+La validation manuelle devient séquentielle : `project-framing`, conservation
+de l'artefact brut, puis `document-project-canvas`, conservation du document et
+évaluation séparée de la fidélité métier et de la qualité documentaire. Le
+fichier manuel Markdown et l'onglet `project-framing` du Google Sheet `Recette`
+comportent désormais une colonne `Prompt`. Chaque cas et chacun des 28 critères
+proposent ainsi le ou les prompts types à exécuter. Les colonnes de résultat et
+de commentaires restent séparées, et les listes de validation de résultat du
+Google Sheet sont préservées. L'onglet conserve les critères métier et les cinq
+contrôles sur la fidélité documentaire, la structure, la lisibilité, la
+non-invention et le format natif vérifié.
+
+Le marketplace Codex actif ne pointe plus vers l'ancien clone iCloud. Il
+référence désormais le bon dépôt sous
+`/Users/julienoger/Documents/Dev/project_design`. Après la formalisation du
+Shared Document Model, le cachebuster installé est
+`0.1.0+codex.20260805211133`. Il expose les neuf skills, le
+`document-project-canvas` implémenté avec ses trois références runtime et la
+nouvelle fondation documentaire référencée par les quatre skills
+documentaires. Un nouveau fil Codex est nécessaire pour charger ce registre
+mis à jour.
+
+Rapport :
+[Document Project Canvas Implementation Review](tests/executions/2026-08-05-document-project-canvas-implementation.md).
+
+État Git de cette implémentation :
+
+- branche : `main` ;
+- base : `dfba5f1` (`Finalize document skill architecture`) ;
+- l'arbre de travail contient les modifications non commitées de
+  `document-project-canvas`, de ses tests et de la documentation associée ;
+- aucun commit et aucun push n'ont été demandés ou effectués.
+
+### Formalisation du Shared Document Model
+
+L'itération d'architecture suivante a extrait le contrat commun déjà appliqué
+par `document-project-canvas` dans une fondation indépendante des disciplines :
+`plugins/project-design/shared/document-model/README.md`.
+
+Le modèle version 0.1 définit :
+
+- l'artefact métier structuré, versionnable et indépendant des formats ;
+- le document comme représentation humaine, jamais source de vérité métier ;
+- le flux unidirectionnel artefact -> skill documentaire -> document ;
+- les responsabilités des formats et des templates sans mutation sémantique ;
+- la préservation des Decisions, questions, contradictions, statuts,
+  perspectives, références et qualifications de readiness ;
+- le contrat minimal de tous les skills `document-<discipline>` ;
+- une dépendance sans cycle : les skills documentaires référencent le modèle,
+  qui ne dépend d'aucune discipline ni d'aucun skill.
+
+`document-project-canvas` référence désormais explicitement cette fondation.
+Sa méthodologie, `project-framing`, les autres méthodologies métier et tous les
+artefacts métier restent inchangés par cette intervention.
+
+Rapport :
+[Shared Document Model Architecture Review](tests/executions/2026-08-05-shared-document-model-review.md).
+
+État Git de cette formalisation :
+
+- branche : `main` ;
+- base commune des modifications non commitées : `dfba5f1` ;
+- l'intervention complète la série non commitée de
+  `document-project-canvas` ;
+- aucun commit et aucun push n'ont été demandés ou effectués.
+
+### Itération 8.6 - Plugin Architecture & Coherence Review v1.0
+
+La revue complète confirme une architecture sans cycle et une responsabilité
+unique pour chaque artefact métier et chaque représentation documentaire. La
+vue officielle est :
+[Plugin Architecture Overview v1.0](documentation/PLUGIN_ARCHITECTURE_OVERVIEW.md).
+
+Constats durables :
+
+- les quatre fondations stables couvrent la sémantique, la connaissance
+  extraite, la vue projet normalisée et la restitution documentaire ;
+- aucun modèle ne dépend d'un skill et aucun skill ne redéfinit un modèle ;
+- les 28 documents Markdown du bundle forment 73 dépendances locales directes
+  sans cycle ;
+- `functional-design` et `technical-design` sont complémentaires et peuvent
+  être parallèles ; le pipeline ne doit pas être présenté comme strictement
+  linéaire ;
+- aucun producteur runtime autonome du Knowledge Model ou du Project Model
+  n'est implémenté. `project-framing` prépare actuellement une vue de travail
+  conforme à ces contrats lorsque seules des sources brutes sont fournies ;
+- aucune fondation partagée supplémentaire n'est nécessaire avant
+  l'implémentation de `functional-design` ;
+- la validation manuelle combinée de `project-framing` et
+  `document-project-canvas` reste un garde qualité en attente, sans constituer
+  une dépendance architecturale nouvelle.
+
+Réserves documentaires détectées, sans correction dans cette revue :
+
+- les sections historiques `Next Iteration` des modèles et de l'ADR ne
+  reflètent plus la roadmap courante ;
+- `plugins/project-design/README.md` emploie une formulation ambiguë sur les
+  « four skills without the document- prefix », alors que l'orchestrateur est
+  également sans ce préfixe mais ne produit aucun artefact métier ;
+- `development/examples/README.md` indique encore qu'aucun exemple runtime
+  n'est approuvé, malgré l'exemple Project Canvas installé ;
+- `development/tests/golden-outputs/README.md` présente encore toutes les
+  méthodologies détaillées comme futures, alors que deux sont implémentées ;
+- le minimum exact d'artefacts conçus requis par `product-backlog` reste une
+  décision de sa future méthodologie.
+
+Ces réserves ne créent ni chevauchement de responsabilité ni fondation
+manquante. Elles sont classées dans le rapport entre corrections nécessaires,
+améliorations facultatives et évolutions futures.
+
+Rapport :
+[Plugin Architecture and Coherence Review v1.0](tests/executions/2026-08-05-plugin-architecture-coherence-review-v1.0.md).
+
+État Git de cette revue :
+
+- branche : `main` ;
+- base commune des modifications non commitées : `dfba5f1` ;
+- les modifications non commitées des itérations 8.4 et 8.5 ont été
+  préservées ;
+- aucun modèle, `SKILL.md`, fixture ou Golden Output n'a été modifié ;
+- aucun commit et aucun push n'ont été demandés ou effectués.
+
 Commits principaux :
 
 | Commit | Contenu |
@@ -518,6 +688,9 @@ Rapports d'itération et de revue :
 | Project Canvas | [Revue](tests/executions/2026-08-05-project-canvas-review.md) |
 | Architecture documentaire | [Audit](tests/executions/2026-08-05-document-architecture-audit.md) |
 | Architecture documentaire définitive | [Revue](tests/executions/2026-08-05-definitive-document-skill-architecture.md) |
+| Document Project Canvas | [Revue](tests/executions/2026-08-05-document-project-canvas-implementation.md) |
+| Shared Document Model | [Revue](tests/executions/2026-08-05-shared-document-model-review.md) |
+| Architecture globale v1.0 | [Revue](tests/executions/2026-08-05-plugin-architecture-coherence-review-v1.0.md) |
 
 Les itérations 1 à 3 n'ont pas de rapport d'exécution dédié. Leur historique
 est conservé par les commits, la stratégie de test, les fixtures et la
@@ -686,13 +859,18 @@ traités avant une distribution :
 
 Séquence métier prévue :
 
+La revue 8.6 confirme que les fondations sont suffisantes. La prochaine
+méthodologie à implémenter est `functional-design`. Le rejeu manuel combiné
+8.2 reste à terminer comme garde qualité amont, sans imposer une nouvelle
+fondation ni une révision des modèles.
+
 | Itération | Objectif prévu | Garde-fous principaux |
 | --- | --- | --- |
-| Validation 8.2 | Rejouer les tests manuels du Project Canvas | Ne pas déclarer la méthodologie pleinement validée avant retour utilisateur |
+| Validation 8.2 combinée | Rejouer `project-framing`, puis `document-project-canvas` sur le Canvas conservé | Évaluer séparément la fidélité métier et la qualité documentaire ; ne déclarer aucune méthodologie pleinement validée avant retour utilisateur |
 | 9 | Implémenter `functional-design` | Consommer le Project Canvas et le Project Model, sans refaire le cadrage ni anticiper l'architecture technique |
 | 10 | Implémenter `technical-design` comme étape complémentaire ou parallèle | Consommer le Canvas, distinguer architecture, décisions, intégrations, qualités et risques sans redéfinir les besoins métier |
 | 11 | Implémenter `product-backlog` | Transformer le périmètre conçu et validé en backlog traçable sans inventer de priorité, estimation, exigence ou décision |
-| 12 | Implémenter `document-project-canvas` | Produire le document Project Canvas sans modifier l'artefact métier |
+| 12 avancée | Terminer la validation de `document-project-canvas`, déjà implémenté avant la fin de la validation 8.2 | Produire et vérifier le document sans modifier l'artefact métier |
 | 13 | Implémenter `document-functional-design` | Produire les spécifications fonctionnelles sans modifier l'artefact métier |
 | 14 | Implémenter `document-technical-design` | Produire les spécifications techniques sans modifier l'artefact métier |
 | 15 | Implémenter `document-product-backlog` | Produire le document de backlog sans créer, prioriser ou estimer de contenu |
@@ -714,8 +892,8 @@ méthodologie des skills futurs.
   Model.
 - Ne pas restructurer de nouveau le dépôt avant qu'un besoin concret soit
   démontré par les prochains skills.
-- Définir les formats et contrats de modèles réellement pris en charge par
-  chaque futur skill documentaire avant d'annoncer ces formats comme
+- Définir les formats et contrats de modèles réellement pris en charge par les
+  trois skills documentaires encore futurs avant d'annoncer ces formats comme
   disponibles.
 
 ## Prompt de reprise
@@ -738,10 +916,11 @@ rendu CI clair.
 Ne crée aucun commit et ne pousse aucune modification sans instruction
 explicite.
 
-Reprends à la section "Roadmap prévue". La prochaine étape attendue est le
-rejeu manuel du Project Canvas avec
-development/tests/manual/project-framing.md. Après validation utilisateur,
-l'itération métier suivante sera consacrée à functional-design. Si son prompt
-détaillé n'est pas fourni, ne déduis pas sa méthodologie : demande les
-instructions.
+Reprends à la section "Roadmap prévue". La revue d'architecture 8.6 confirme
+qu'aucune fondation supplémentaire n'est nécessaire. La prochaine itération
+méthodologique est `functional-design`, uniquement lorsque son prompt détaillé
+est fourni ; ne déduis pas sa méthodologie. Le rejeu manuel combiné de
+`project-framing` puis `document-project-canvas` avec
+development/tests/manual/project-framing.md reste un garde qualité en attente.
+Conserve séparément l'artefact Canvas et le document final lors de ce rejeu.
 ```

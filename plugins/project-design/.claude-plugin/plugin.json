@@ -1,7 +1,7 @@
 {
   "name": "project-design",
   "version": "0.1.0",
-  "description": "Implemented Project Canvas framing plus separate business-artefact and discipline-specific document-skill placeholders; document generation is not implemented.",
+  "description": "Implemented Project Canvas framing and document restitution, plus separate business-artefact and discipline-specific skill placeholders.",
   "author": {
     "name": "Project Design Contributors"
   },

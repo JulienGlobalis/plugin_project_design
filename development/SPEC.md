@@ -2,10 +2,10 @@
 
 ## Iteration Objective
 
-Make the discipline-specific business-artefact and document-skill separation
-the definitive plugin architecture. Remove the generic documentary skill,
-install four document-skill placeholders, and align contracts and roadmap
-without implementing a document methodology or changing business methodology.
+Implement `document-project-canvas` as the documentary counterpart of the
+validated Project Canvas business artefact so `project-framing` and final
+document restitution can be tested sequentially, without changing the
+business methodology or the three remaining document placeholders.
 
 ## Current Capability Status
 
@@ -16,18 +16,21 @@ without implementing a document methodology or changing business methodology.
 | `functional-design` | Installed placeholder | Future structured functional-design methodology |
 | `technical-design` | Installed placeholder | Future complementary or parallel technical-design methodology |
 | `product-backlog` | Installed placeholder | Future transformation of designed and validated Scope into traceable backlog items |
-| `document-project-canvas` | Installed placeholder | Future Project Canvas document in Markdown, Word, or Google Docs |
+| `document-project-canvas` | Implemented methodology version 0.1 | Produces a verified Project Canvas document in native Markdown, Microsoft Word, or Google Docs |
 | `document-functional-design` | Installed placeholder | Future functional specifications in Markdown, Word, or Google Docs |
 | `document-technical-design` | Installed placeholder | Future technical specifications in Markdown, Word, or Google Docs |
 | `document-product-backlog` | Installed placeholder | Future backlog document in Markdown, Google Sheets, Excel, Word, or Google Docs |
 
-Only `project-framing` is implemented. The other eight entries are
+`project-framing` and `document-project-canvas` are implemented. Their combined
+manual user validation remains pending. The other seven entries remain
 architecture-stabilizing placeholders and provide no operational capability.
 
 ## In Scope
 
 - Document global orchestration and the definitive business/document skill
   families.
+- Define the discipline-neutral Shared Document Model as the common contract
+  for every implemented and future document skill.
 - Retain `project-design` as the future global orchestrator.
 - Position `project-framing` as the first design step.
 - Keep the Project Canvas as the primary `project-framing` business artefact.
@@ -39,9 +42,13 @@ architecture-stabilizing placeholders and provide no operational capability.
   steps without implementing their methodologies.
 - Remove the generic documentary placeholder and every active architectural
   dependency on it.
-- Create `document-project-canvas`, `document-functional-design`,
-  `document-technical-design`, and `document-product-backlog` as
-  non-operational placeholders.
+- Implement `document-project-canvas` with a default documentary structure,
+  optional compatible-template handling, native Markdown, Microsoft Word, and
+  Google Docs routing, content-preservation rules, and format verification.
+- Keep `document-functional-design`, `document-technical-design`, and
+  `document-product-backlog` as non-operational placeholders.
+- Extend the four fixture scenarios and the manual replay to validate
+  `project-framing` followed by `document-project-canvas`.
 - Apply the mandatory `<discipline>` / `document-<discipline>` convention.
 - Update repository documentation, skill descriptions, quality checklists,
   manifests, execution evidence, and continuity context.
@@ -50,14 +57,17 @@ architecture-stabilizing placeholders and provide no operational capability.
 
 ## Out of Scope
 
-- Implementing `functional-design`, `technical-design`, `product-backlog`, or
-  any document-specific methodology.
+- Implementing `functional-design`, `technical-design`, `product-backlog`,
+  `document-functional-design`, `document-technical-design`, or
+  `document-product-backlog` methodology.
 - Implementing complete `project-design` orchestration.
-- Creating Google Docs, Google Sheets, or DOCX integrations or generators.
-- Claiming Google Docs, Google Sheets, or Microsoft Word as currently
-  supported output formats.
-- Adding runtime examples, templates, assets, scripts, or integrations to the
-  four document placeholders.
+- Creating custom Google Docs or DOCX runtime packages, APIs, exporters, or
+  bundled generators instead of using available native document tooling.
+- Claiming Google Sheets or Microsoft Excel as Project Canvas output formats.
+- Adding a bundled template, runtime example, script, or platform-specific
+  integration to `document-project-canvas` without a demonstrated need.
+- Adding methodology, templates, examples, scripts, or integrations to the
+  three remaining document placeholders.
 - Executable workflows, runtime code, language packages, templating engines,
   exporters, persistence, APIs, MCP servers, hooks, agents, commands, or Spec
   Kit automation.
@@ -87,11 +97,15 @@ contradictory, unsupported, or awaiting a Decision. The Canvas must never
 invent content to appear complete.
 
 `project-framing` owns this business artefact and no document format.
-`document-project-canvas` will eventually consume the validated artefact and
-produce its Markdown, Microsoft Word, or Google Docs document.
+`document-project-canvas` consumes the validated artefact and produces its
+verified native Markdown, Microsoft Word, or Google Docs document.
 
 ## Design and Restitution Boundary
 
+- The
+  [Shared Document Model](../plugins/project-design/shared/document-model/README.md)
+  governs the common artefact-to-document contract without defining any
+  discipline-specific methodology.
 - Business skills produce traceable structured business or technical
   artefacts and know no document format, template, export, or presentation
   logic.
@@ -100,19 +114,27 @@ produce its Markdown, Microsoft Word, or Google Docs document.
   questions.
 - Document skills apply only a document structure, formatting, an optional
   template, and an output format.
-- Markdown is the native default of every future document skill.
-- Project Canvas, functional specifications, and technical specifications may
-  later target Microsoft Word or Google Docs.
+- Markdown is the native default of every document skill.
+- Project Canvas documents currently target native Markdown, Microsoft Word,
+  or Google Docs through the active platform's native document tooling.
+- Functional and technical specifications may later target Microsoft Word or
+  Google Docs.
 - Product Backlog documents may later target Google Sheets, Microsoft Excel,
   Microsoft Word, or Google Docs.
-- No external document format is an implemented version 0.1.0 capability.
+- No external document format is implemented for the three remaining document
+  placeholders.
 
 ## Acceptance Criteria
 
 - Both manifests continue to identify `project-design` at version `0.1.0`.
 - All nine installed skills retain valid front matter and distinct triggering
   descriptions.
-- The four document skills are placeholders containing only `SKILL.md`.
+- `document-project-canvas` contains an implemented methodology and only the
+  runtime references required for structure, formats, and quality.
+- `document-project-canvas` explicitly references and conforms to the Shared
+  Document Model without changing its methodology.
+- The other three document skills remain placeholders containing only
+  `SKILL.md`.
 - `project-design` remains a future global orchestrator and does not duplicate
   specialized methodology.
 - The former generic documentary skill directory is removed because its
@@ -149,11 +171,12 @@ produce its Markdown, Microsoft Word, or Google Docs document.
   outside `project-framing`.
 - `project-framing`, `functional-design`, `technical-design`, and
   `product-backlog` contain no document format, export, or template ownership.
-- Every future document format is documented as non-operational placeholder
-  scope, not current behavior.
-- The manual test file remains one flat Markdown file, retains
-  `PF-MAN-001` through `PF-MAN-005`, bilingual criteria, allowed statuses,
-  result areas, and the confidentiality rule.
+- Project Canvas Markdown, Microsoft Word, and Google Docs are documented as
+  current behavior; formats forecast for the remaining document skills remain
+  explicitly non-operational.
+- The combined manual test file remains one flat Markdown file, retains
+  `PF-MAN-001` through `PF-MAN-005`, bilingual business and documentary
+  criteria, allowed statuses, result areas, and the confidentiality rule.
 - No Golden Output changes without explicit human approval.
 - No installable skill or shared resource depends on `development/`.
 - The Canonical Domain Model, Knowledge Model, Project Model, Information
@@ -164,13 +187,21 @@ produce its Markdown, Microsoft Word, or Google Docs document.
 
 - Whether the Unreleased changes remain in version `0.1.0` or require a new
   version.
-- Which compatible template contracts will eventually support Google Docs,
-  Google Sheets, and Microsoft Word outputs.
+- Which compatible template contracts will support the three remaining
+  document skills and whether a branded Project Canvas template is later
+  supplied.
 - Which Project Canvas changes discovered downstream require a future stable
   identity or version representation.
 
 ## Validation Status
 
 Technical implementation and fixture validation may complete in this
-iteration. Full methodology validation remains pending until the user returns
-the requested manual test results.
+iteration. Full combined validation of `project-framing` and
+`document-project-canvas` remains pending until the user returns the requested
+manual test results.
+
+The independent
+[Plugin Architecture and Coherence Review v1.0](documentation/PLUGIN_ARCHITECTURE_OVERVIEW.md)
+confirms that no additional shared foundation is required before the
+`functional-design` methodology iteration. The pending combined manual replay
+remains a quality gate, not an architectural dependency.

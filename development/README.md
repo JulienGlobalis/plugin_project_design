@@ -8,6 +8,7 @@ Contents:
 - `PROJECT_CONTEXT.md`: cross-conversation continuity and current state;
 - `PLAN.md`: project direction and roadmap;
 - `SPEC.md`: current specification and acceptance criteria;
+- `documentation/`: official consolidated architecture documentation;
 - `tests/`: fixtures, scenarios, quality checklists, manual tests, and
   execution evidence;
 - `examples/`: draft or unapproved examples that are not installed with the

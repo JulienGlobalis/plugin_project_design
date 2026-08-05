@@ -16,8 +16,9 @@ uncertainty visible.
 
 ## Applicable Skills
 
-Run this scenario for `project-framing` and `project-design`, and for any skill
-whose handling of missing information or unsupported invention changes.
+Run this scenario for `project-framing`, `document-project-canvas`, and
+`project-design`, and for any skill whose handling of missing information or
+unsupported invention changes.
 
 ## Expected Observations
 
@@ -62,3 +63,12 @@ whose handling of missing information or unsupported invention changes.
   thresholds.
 - The Canvas identifies responsible downstream work without performing
   detailed functional or technical design.
+
+## Document Project Canvas-Specific Observations
+
+- The final document preserves all explicit gaps and does not fill empty
+  sections through presentation content.
+- Ambiguous terms, Provisional positions, and Unresolved Scope remain visible.
+- The documentary hierarchy makes the ten sections reviewable without adding
+  metadata, owners, dates, or approval status.
+- The requested format is native and verified.

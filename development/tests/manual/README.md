@@ -8,6 +8,6 @@ They are not automated suites, permanent fixtures, or Golden Outputs. Do not
 store confidential source material, completed client test records, or raw
 customer data in this directory.
 
-Available test file:
+Available combined test file:
 
-- [Project Framing](project-framing.md)
+- [Project Framing and Project Canvas Document](project-framing.md)

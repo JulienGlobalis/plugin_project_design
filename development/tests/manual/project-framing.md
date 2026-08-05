@@ -1,7 +1,7 @@
-# Project Framing Manual Tests
+# Project Framing and Project Canvas Document Manual Tests
 
-Use this single file to prepare and review manual tests of `project-framing`
-after its Project Canvas evolution.
+Use this single file to prepare and review the sequential manual test of
+`project-framing` followed by `document-project-canvas`.
 
 Do not commit confidential project information, raw client data, a generated
 client Canvas, or a completed client test record.
@@ -16,13 +16,35 @@ Allowed results:
 
 1. Select one case below.
 2. Provide every listed source artefact, excluding the fixture `README.md`.
-3. Use the supplied prompt without adding the expected observations or this
-   checklist to the model context.
-4. Preserve the generated Project Canvas before reviewing it.
-5. Complete the case controls and the bilingual verification grid.
-6. Record concrete evidence, the result, and any reservations.
-7. Return the completed results and generated Canvas for the intervention
-   report without committing confidential material.
+3. Use the supplied prompt or the applicable entry in the `Prompt` column
+   without adding the expected observations or this checklist to the model
+   context.
+4. Preserve the generated Project Canvas artefact before documentary
+   restitution.
+5. Invoke `document-project-canvas` with that artefact and the documentary
+   prompt below. Preserve the produced document separately.
+6. Complete the case controls and the bilingual verification grid against
+   both the artefact and final document.
+7. Record concrete evidence, the result, and any reservations.
+8. Return the completed results, generated Canvas, and final document for the
+   intervention report without committing confidential material.
+
+## Documentary Prompt
+
+Use this prompt after the selected case has produced its Project Canvas:
+
+```text
+Use document-project-canvas to transform the supplied validated Project
+Canvas into a final Project Canvas document in [format]. Preserve every
+material statement, status, lifecycle perspective, contradiction, Decision,
+question classification, readiness qualification, and traceability reference.
+Apply the default professional structure unless a compatible template is also
+supplied. Do not add, remove, resolve, approve, or reinterpret project
+knowledge. Verify the finished document before delivery.
+```
+
+Replace `[format]` with `Markdown`, `Microsoft Word`, or `Google Docs`.
+Use Markdown when the format itself is not under test.
 
 ## PF-MAN-001 — Incomplete Project
 
@@ -60,9 +82,9 @@ information.
   details remain explicit gaps;
 - no generic questionnaire precedes the useful first Canvas.
 
-| Case result | Reservations or observed evidence |
-| --- | --- |
-|  |  |
+| Prompt | Case result | Reservations or observed evidence |
+| --- | --- | --- |
+| Project-framing prompt above, then Documentary Prompt with `[format]` replaced |  |  |
 
 ## PF-MAN-002 — Contradictory Project
 
@@ -98,9 +120,9 @@ before functional design, technical design, and backlog preparation.
 - success criteria do not reuse conflicting targets as approved measures;
 - downstream readiness is qualified by the unresolved authority and Scope.
 
-| Case result | Reservations or observed evidence |
-| --- | --- |
-|  |  |
+| Prompt | Case result | Reservations or observed evidence |
+| --- | --- | --- |
+| Project-framing prompt above, then Documentary Prompt with `[format]` replaced |  |  |
 
 ## PF-MAN-003 — Application Modernization
 
@@ -142,9 +164,9 @@ technical design. State the readiness of each downstream step.
 - known continuity and service expectations are preserved without inventing
   additional success targets.
 
-| Case result | Reservations or observed evidence |
-| --- | --- |
-|  |  |
+| Prompt | Case result | Reservations or observed evidence |
+| --- | --- | --- |
+| Project-framing prompt above, then Documentary Prompt with `[format]` replaced |  |  |
 
 ## PF-MAN-004 — New Application in French
 
@@ -187,9 +209,9 @@ aucune information.
 - la terminologie française est naturelle et respecte les distinctions
   canoniques.
 
-| Résultat du cas | Réserves ou preuves observées |
-| --- | --- |
-|  |  |
+| Prompt | Résultat du cas | Réserves ou preuves observées |
+| --- | --- | --- |
+| Prompt project-framing ci-dessus, puis prompt documentaire avec `[format]` remplacé |  |  |
 
 ## PF-MAN-005 — Controlled Real Project
 
@@ -224,9 +246,9 @@ context.
 - the level of detail is useful without becoming a specification;
 - any required future adjustment can be identified and traced.
 
-| Case result | Reservations or observed evidence |
-| --- | --- |
-|  |  |
+| Prompt | Case result | Reservations or observed evidence |
+| --- | --- | --- |
+| Project-framing prompt above with both placeholders replaced, then Documentary Prompt with `[format]` replaced |  |  |
 
 ## Test Context
 
@@ -241,36 +263,43 @@ context.
 | Requested language |  |
 | Review purpose |  |
 | Intended audience |  |
+| Requested document format |  |
+| Template or default structure |  |
 
 ## Bilingual Verification Grid
 
 Enter one allowed result and concise evidence or reservations for every row.
 
-| Criterion | Critères FR | Result | Evidence, comments, or reservations |
-| --- | --- | --- | --- |
-| The primary output is a Project Canvas | La sortie principale est un Project Canvas |  |  |
-| All ten required sections are present or explicitly insufficiently informed | Les dix sections obligatoires sont présentes ou explicitement signalées comme insuffisamment renseignées |  |  |
-| The Canvas clarifies the expression of need instead of only summarizing sources | Le Canvas clarifie l'expression de besoin au lieu de seulement résumer les sources |  |  |
-| Content remains faithful and traceable to source material | Le contenu reste fidèle et traçable aux sources |  |  |
-| No unsupported information is invented | Aucune information non étayée n'est inventée |  |  |
-| Objectives and expected value are correct and distinct | Les objectifs et la valeur attendue sont corrects et distincts |  |  |
-| Project Stakeholders and users are correctly distinguished | Les parties prenantes du projet et les utilisateurs sont correctement distingués |  |  |
-| MVP, outside MVP, explicit exclusions, future Options, and unresolved Scope are distinct | Le MVP, le hors MVP, les exclusions explicites, les options futures et le périmètre non résolu sont distincts |  |  |
-| Known business and technical Constraints are represented without detailed design | Les contraintes métier et techniques connues sont représentées sans conception détaillée |  |  |
-| Existing, Target, and Transition are correctly distinguished | L'existant, la cible et la transition sont correctement distingués |  |  |
-| Decisions remain distinct from Assumptions, preferences, and proposals | Les décisions restent distinctes des hypothèses, préférences et propositions |  |  |
-| Risks and confirmed Issues are correctly distinguished | Les risques et les problèmes avérés sont correctement distingués |  |  |
-| Established, Provisional, and Unresolved statuses remain visible | Les statuts Établi, Provisoire et Non résolu restent visibles |  |  |
-| Contradictions remain visible without unsupported resolution | Les contradictions restent visibles sans résolution non étayée |  |  |
-| Questions are project-specific, useful, and classified by impact | Les questions sont propres au projet, utiles et classées selon leur impact |  |  |
-| Success criteria are supported or explicitly unresolved without invented thresholds | Les critères de succès sont étayés ou explicitement non résolus sans seuil inventé |  |  |
-| The Canvas remains outside detailed functional and technical design | Le Canvas reste en dehors de la conception fonctionnelle et technique détaillée |  |  |
-| French terminology is natural and professionally appropriate when requested | La terminologie française est naturelle et adaptée à un contexte professionnel lorsqu'elle est demandée |  |  |
-| Functional-design readiness is stated and justified | La capacité à démarrer la conception fonctionnelle est indiquée et justifiée |  |  |
-| Technical-design readiness is stated and justified | La capacité à démarrer la conception technique est indiquée et justifiée |  |  |
-| Backlog-preparation readiness is stated and justified | La capacité à préparer le backlog est indiquée et justifiée |  |  |
-| The Canvas is usable despite explicit non-blocking unknowns | Le Canvas reste exploitable malgré des inconnues non bloquantes explicites |  |  |
-| Later adjustments can be traced and do not silently rewrite validated information | Les ajustements ultérieurs peuvent être tracés et ne réécrivent pas silencieusement les informations validées |  |  |
+| Criterion | Critères FR | Prompt | Result | Evidence, comments, or reservations |
+| --- | --- | --- | --- | --- |
+| The primary output is a Project Canvas | La sortie principale est un Project Canvas | Use `project-framing` on all supplied sources and produce a structured Project Canvas, not a free-form report. |  |  |
+| All ten required sections are present or explicitly insufficiently informed | Les dix sections obligatoires sont présentes ou explicitement signalées comme insuffisamment renseignées | Produce the ten-section Project Canvas and keep every unsupported or missing section explicitly visible. |  |  |
+| The Canvas clarifies the expression of need instead of only summarizing sources | Le Canvas clarifie l'expression de besoin au lieu de seulement résumer les sources | Clarify the business problem, objectives, value, and boundaries from the supplied sources instead of only summarizing them. |  |  |
+| Content remains faithful and traceable to source material | Le contenu reste fidèle et traçable aux sources | Preserve source fidelity and provide concise traceability for every material Canvas statement. |  |  |
+| No unsupported information is invented | Aucune information non étayée n'est inventée | Do not invent missing owners, dates, measures, budgets, Constraints, Requirements, or Decisions; expose them as gaps or questions. |  |  |
+| Objectives and expected value are correct and distinct | Les objectifs et la valeur attendue sont corrects et distincts | Separate supported Objectives from expected value and do not turn benefits into unsupported commitments. |  |  |
+| Project Stakeholders and users are correctly distinguished | Les parties prenantes du projet et les utilisateurs sont correctement distingués | Distinguish Project Stakeholders, authority, contributors, direct users, and indirect users from the supplied evidence. |  |  |
+| MVP, outside MVP, explicit exclusions, future Options, and unresolved Scope are distinct | Le MVP, le hors MVP, les exclusions explicites, les options futures et le périmètre non résolu sont distincts | Separate MVP, Outside MVP, explicit exclusions, future Options, and Unresolved Scope without inventing approval. |  |  |
+| Known business and technical Constraints are represented without detailed design | Les contraintes métier et techniques connues sont représentées sans conception détaillée | Represent known business and technical Constraints at framing level and stop before detailed solution design. |  |  |
+| Existing, Target, and Transition are correctly distinguished | L'existant, la cible et la transition sont correctement distingués | Distinguish Existing, Target, and Transition information wherever mixing them would change meaning. |  |  |
+| Decisions remain distinct from Assumptions, preferences, and proposals | Les décisions restent distinctes des hypothèses, préférences et propositions | Keep authoritative Decisions separate from Assumptions, preferences, proposals, and Options. |  |  |
+| Risks and confirmed Issues are correctly distinguished | Les risques et les problèmes avérés sont correctement distingués | Separate uncertain Risks from confirmed current Issues and retain their supported impacts. |  |  |
+| Established, Provisional, and Unresolved statuses remain visible | Les statuts Établi, Provisoire et Non résolu restent visibles | Preserve Established, Provisional, and Unresolved status for every material statement where status affects use. |  |  |
+| Contradictions remain visible without unsupported resolution | Les contradictions restent visibles sans résolution non étayée | Expose every material contradiction and do not resolve it without sufficient evidence and authority. |  |  |
+| Questions are project-specific, useful, and classified by impact | Les questions sont propres au projet, utiles et classées selon leur impact | Produce project-specific Open Questions and classify each by downstream impact and known decision authority. |  |  |
+| Success criteria are supported or explicitly unresolved without invented thresholds | Les critères de succès sont étayés ou explicitement non résolus sans seuil inventé | Include only source-supported success criteria and leave missing measures or thresholds explicitly unresolved. |  |  |
+| The Canvas remains outside detailed functional and technical design | Le Canvas reste en dehors de la conception fonctionnelle et technique détaillée | Produce framing only; do not create detailed features, journeys, architecture, APIs, components, or backlog items. |  |  |
+| French terminology is natural and professionally appropriate when requested | La terminologie française est naturelle et adaptée à un contexte professionnel lorsqu'elle est demandée | Produce the Canvas in natural professional French while preserving canonical distinctions and project-specific terms. |  |  |
+| Functional-design readiness is stated and justified | La capacité à démarrer la conception fonctionnelle est indiquée et justifiée | State and justify whether functional design can start, including blocking and non-blocking questions. |  |  |
+| Technical-design readiness is stated and justified | La capacité à démarrer la conception technique est indiquée et justifiée | State and justify whether technical design can start independently, including remaining technical blockers. |  |  |
+| Backlog-preparation readiness is stated and justified | La capacité à préparer le backlog est indiquée et justifiée | State and justify whether backlog preparation can start without pretending that insufficiently designed Scope is ready. |  |  |
+| The Canvas is usable despite explicit non-blocking unknowns | Le Canvas reste exploitable malgré des inconnues non bloquantes explicites | Produce a useful first Canvas despite non-blocking unknowns and identify only the questions that truly block progress. |  |  |
+| Later adjustments can be traced and do not silently rewrite validated information | Les ajustements ultérieurs peuvent être tracés et ne réécrivent pas silencieusement les informations validées | Revise the supplied Canvas from new founded evidence, trace the adjustment, and never silently rewrite validated information or Decisions. |  |  |
+| The final document preserves every material Canvas element without changing business meaning | Le document final préserve chaque élément matériel du Canvas sans modifier le sens métier | Use `document-project-canvas` on the validated Canvas and preserve every material element, status, contradiction, question, readiness qualification, and traceability reference. |  |  |
+| The ten sections, explicit gaps, statuses, contradictions, Decisions, and questions remain visible in the document | Les dix sections, les lacunes explicites, les statuts, les contradictions, les décisions et les questions restent visibles dans le document | Produce the final document with all ten sections and keep every explicit gap, status, contradiction, Decision, and question visible. |  |  |
+| The document hierarchy, registers, and tables are readable and consistent | La hiérarchie, les registres et les tableaux du document sont lisibles et cohérents | Apply the default professional structure in `[format]` and verify headings, registers, lists, and tables for readability. |  |  |
+| No title metadata, template field, summary, owner, date, or approval is invented | Aucun titre, champ de template, résumé, responsable, date ou approbation n'est inventé | Apply the supplied template or default structure without inventing metadata, summaries, owners, dates, approvals, or missing content. |  |  |
+| The requested format is native and verified rather than simulated | Le format demandé est natif et vérifié plutôt que simulé | Produce the Project Canvas document in `[format]` and verify the actual native Markdown, Word, or Google Docs result before delivery. |  |  |
 
 ## Feedback Summary
 
@@ -290,6 +319,8 @@ Enter one allowed result and concise evidence or reservations for every row.
 | Is the Canvas usable as input to `functional-design`? |  |
 | Is the Canvas usable as input to `technical-design`? |  |
 | Is the Canvas usable before backlog preparation? |  |
+| Does the final document preserve the validated Canvas without documentary distortion? |  |
+| Is the produced format ready for stakeholder review? |  |
 | Is another test required before broader use? |  |
 | Overall result |  |
 | Reservations |  |
@@ -301,6 +332,7 @@ Provide ChatGPT with:
 - the selected test-case identifier;
 - the completed test context;
 - the generated Project Canvas;
+- the produced Project Canvas document and requested format;
 - the completed bilingual verification grid;
 - the feedback summary;
 - the reuse decision and reservations.

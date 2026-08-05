@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+- Added the official Plugin Architecture Overview v1.0 and a complete
+  coherence review of models, skills, artefact ownership, document ownership,
+  flows, dependencies, boundaries, and roadmap readiness.
+- Defined Shared Document Model version 0.1 as the discipline-neutral contract
+  for business artefacts, documents, formats, templates, traceability, and all
+  current or future document skills.
+- Implemented `document-project-canvas` methodology version 0.1 for verified
+  native Markdown, Microsoft Word, and Google Docs restitution from a
+  validated Project Canvas without changing business knowledge.
+- Extended fixture scenarios, quality criteria, and the manual replay to test
+  `project-framing` and `document-project-canvas` sequentially.
 - Replaced the former generic documentary-orchestration placeholder with four
   discipline-specific document-skill placeholders and made the
   business-artefact/document boundary definitive.

@@ -60,3 +60,13 @@ it for `project-design` when orchestration or a shared contract changes.
 - When French output is requested, terminology is natural and consistent with
   the French companion without translating project-specific Domain Terms
   mechanically.
+
+## Document Project Canvas-Specific Observations
+
+- The final document preserves the requested language and natural French
+  terminology without changing project-specific Domain Terms.
+- Proposed MVP, explicit exclusions, future Options, and Unresolved Scope
+  remain distinct in the documentary layout.
+- Supplied service targets remain separate from missing business baselines and
+  no presentation placeholder becomes project knowledge.
+- The requested format is native and verified.

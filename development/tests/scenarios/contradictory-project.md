@@ -16,8 +16,9 @@ uncertainty visible.
 
 ## Applicable Skills
 
-Run this scenario for `project-framing` and `project-design`, and for any skill
-whose traceability, consistency, or decision handling changes.
+Run this scenario for `project-framing`, `document-project-canvas`, and
+`project-design`, and for any skill whose traceability, consistency, or
+decision handling changes.
 
 ## Expected Observations
 
@@ -57,3 +58,13 @@ whose traceability, consistency, or decision handling changes.
   functional or technical design.
 - The Canvas remains a usable decision frame without pretending that
   functional design, technical design, or backlog preparation is unblocked.
+
+## Document Project Canvas-Specific Observations
+
+- The final document preserves every material opposing position and its
+  qualification without selecting or visually privileging a winner.
+- Decision, Assumption, Option, and unresolved-conflict presentation remains
+  distinct and readable.
+- Tables do not merge conflicting retention, access, approval, rollout,
+  cutover, response, or priority positions.
+- The requested format is native and verified.

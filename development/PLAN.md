@@ -6,11 +6,16 @@ Provide a reusable, evidence-aware methodology for designing application and
 software projects across AI coding agents, orchestration frameworks,
 documentation systems, and project-management platforms.
 
+The consolidated current architecture is documented in the
+[Plugin Architecture Overview v1.0](documentation/PLUGIN_ARCHITECTURE_OVERVIEW.md).
+
 ## Architectural Principles
 
 - Keep methodology independent from platforms and output formats.
 - Keep one clear responsibility per specialized skill.
 - Separate design knowledge from document restitution.
+- Use the Shared Document Model as the discipline-neutral contract for every
+  documentary restitution skill.
 - Share project concepts, terminology, assets, and quality rules.
 - Support complete and partial workflows.
 - Preserve traceability between facts, interpretations, assumptions,
@@ -59,8 +64,9 @@ perform exports, or contain presentation logic.
 
 ### Document Skills
 
-- `document-project-canvas`: future Project Canvas document in Markdown,
-  Microsoft Word, or Google Docs.
+- `document-project-canvas`: implemented Project Canvas documentary
+  restitution in native Markdown, Microsoft Word, or Google Docs from the
+  validated business artefact.
 - `document-functional-design`: future functional specifications in Markdown,
   Microsoft Word, or Google Docs.
 - `document-technical-design`: future technical specifications in Markdown,
@@ -68,13 +74,16 @@ perform exports, or contain presentation logic.
 - `document-product-backlog`: future backlog document in Markdown, Google
   Sheets, Microsoft Excel, Microsoft Word, or Google Docs.
 
-Only `project-framing` has an implemented business methodology. The other
-eight installed entries are placeholders or under-construction contracts.
-The four document skills consume their corresponding business artefacts and
-apply only document structure, formatting, an optional template, and an
-output format. They add no knowledge and make no Decisions. Their directories
-stabilize the architecture but contain no methodology, template, runtime
-example, generator, or integration.
+`project-framing` has an implemented business methodology and
+`document-project-canvas` has an implemented documentary methodology. Their
+combined manual validation remains pending. The other seven installed entries
+are placeholders or under-construction contracts. Document skills consume
+their corresponding business artefacts and apply only document structure,
+formatting, an optional template, and an output format. They add no knowledge
+and make no Decisions.
+
+All implemented and future document skills must conform to the bundle-owned
+[Shared Document Model](../plugins/project-design/shared/document-model/README.md).
 
 The naming convention is mandatory:
 
@@ -135,14 +144,16 @@ until its affected tests have been updated and reviewed.
 7. Define and test the initial `project-framing` methodology.
 8. Isolate the installable bundle from tests and development context.
 9. Iteration 8: implement `project-framing` and the Project Canvas artefact;
-   complete manual user validation.
+   combine its manual user validation with the advanced
+   `document-project-canvas` implementation.
 10. Iteration 9: define and test `functional-design` and its Functional Design
     artefact.
 11. Iteration 10: define and test `technical-design` and its Technical Design
     artefact as a complementary or parallel step.
 12. Iteration 11: define and test `product-backlog` and its Product Backlog
     artefact.
-13. Iteration 12: define and test `document-project-canvas`.
+13. Iteration 12: implementation advanced into the combined Iteration 8
+    validation; complete validation of `document-project-canvas`.
 14. Iteration 13: define and test `document-functional-design`.
 15. Iteration 14: define and test `document-technical-design`.
 16. Iteration 15: define and test `document-product-backlog`.

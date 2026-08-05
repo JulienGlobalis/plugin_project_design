@@ -59,3 +59,13 @@ it for `project-design` when orchestration or a shared contract changes.
   decisions, data treatment, continuity, and governance.
 - The Canvas identifies what functional and technical work can start without
   replacing framing with detailed design.
+
+## Document Project Canvas-Specific Observations
+
+- Existing, Target, and Transition content remains visibly distinct in the
+  final document.
+- Migration Options, historical Decisions of uncertain applicability, current
+  Issues, and future Risks retain their qualifications.
+- Page or table layout does not disconnect evidence from the statement it
+  supports.
+- The requested format is native and verified.
