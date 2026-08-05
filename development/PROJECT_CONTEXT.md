@@ -1,6 +1,6 @@
 # Project Design - Contexte de continuité
 
-Dernière mise à jour : 2026-07-24
+Dernière mise à jour : 2026-08-05
 
 ## Utilisation de ce fichier
 
@@ -31,13 +31,19 @@ structurer la conception de projets applicatifs et logiciels.
 Compétences prévues :
 
 - `project-design` : orchestration future ;
-- `project-framing` : cadrage projet ;
-- `functional-design` : conception fonctionnelle ;
-- `technical-design` : conception technique ;
+- `project-framing` : étape 1, cadrage et Project Canvas ;
+- `functional-design` : étape 2, conception fonctionnelle future ;
+- `technical-design` : étape 2 bis, conception technique future,
+  complémentaire ou parallèle ;
 - `product-backlog` : préparation du backlog ;
-- `document-output` : production documentaire.
+- `document-output` : orchestrateur documentaire futur provisoire ;
+- `document-functional-design` : restitution fonctionnelle future ;
+- `document-technical-design` : restitution technique future ;
+- `document-product-backlog` : restitution du backlog future.
 
-Chaque skill spécialisé doit rester utilisable indépendamment.
+Seuls les six répertoires de skills existants sont présents. Aucun squelette
+vide n'est créé pour annoncer une capacité future. Chaque skill spécialisé
+doit rester utilisable indépendamment.
 
 ## Architecture de référence
 
@@ -81,6 +87,19 @@ concurrent.
   Option/Decision ne doivent pas être confondus.
 - Les contradictions ne sont pas résolues sans preuve et autorité suffisantes.
 - Les Golden Outputs ne changent qu'après approbation humaine explicite.
+- Le Project Canvas est la sortie principale Markdown de `project-framing`.
+- Ses dix sections restent présentes ou explicitement insuffisamment
+  renseignées ; une structure obligatoire ne justifie jamais l'invention.
+- L'objectif métier de fiabilité à 80-90 % reste qualitatif et ne devient
+  jamais un score calculé ou affiché.
+- Les ajustements ultérieurs du Canvas doivent être tracés, justifiés, limités
+  et ne jamais réécrire silencieusement une information validée ou une
+  Decision.
+- La production de connaissance métier reste séparée de sa restitution
+  documentaire.
+- `document-output` est conservé provisoirement comme orchestrateur
+  documentaire potentiel ; sa nécessité sera réévaluée après preuve d'usage
+  des futurs skills documentaires.
 - Les exemples nécessaires au raisonnement d'un skill installé appartiennent
   à son répertoire `references/` et doivent être liés depuis son `SKILL.md`.
 - `development/examples/` ne contient que des exemples brouillons ou non
@@ -104,6 +123,7 @@ concurrent.
 | Extension linguistique | Compagnon terminologique français ajouté | Terminée |
 | 8 - `project-framing` | Premier skill métier complet, tests sur quatre fixtures et workbook manuel | Terminée |
 | 8.1 - Packaging Boundary | Bundle installable isolé des ressources de développement et du travail local | Terminée |
+| 8.2 - Project Canvas | Architecture prévisionnelle révisée et `project-framing` repositionné autour du Project Canvas | Implémentation terminée — validation manuelle utilisateur en attente |
 
 ## Historique des prompts directeurs
 
@@ -319,6 +339,73 @@ La convention retenue est :
 - aucun dossier racine `examples/` ajouté au bundle sans consommateur
   explicite.
 
+### Reprise de l'itération 8 - Project Canvas
+
+L'intervention du 2026-08-05 a repris `project-framing` afin de transformer son
+ancienne restitution flexible en Project Canvas obligatoire et exploitable.
+
+Le Canvas constitue désormais la sortie principale de l'étape 1 et couvre :
+
+1. contexte métier ;
+2. objectifs et valeur attendue ;
+3. parties prenantes du projet ;
+4. utilisateurs ;
+5. périmètre fonctionnel, avec MVP, hors MVP et périmètre non résolu ;
+6. contraintes techniques connues au cadrage ;
+7. risques ;
+8. décisions ;
+9. questions ;
+10. critères de succès.
+
+Une section insuffisamment renseignée reste visible comme telle. Le Canvas ne
+doit pas inventer une information, un découpage MVP, une valeur, un objectif,
+un critère de succès, un seuil ou une décision pour paraître complet.
+
+La fiabilité attendue de 80-90 % signifie qualitativement que l'information
+matérielle fournie est exploitée, les contradictions et inconnues sont
+visibles, les frontières sont compréhensibles et les étapes suivantes n'ont
+pas à refaire entièrement le cadrage. Aucun score n'est calculé.
+
+`functional-design` et `technical-design` pourront révéler de nouvelles
+informations fiables. Toute évolution du Canvas devra être tracée, justifiée
+par une source nouvelle ou corrigée, limitée à un enrichissement, une
+clarification ou une correction fondée, et ne jamais réécrire silencieusement
+une information validée ou une Decision.
+
+Références runtime ajoutées :
+
+- `plugins/project-design/skills/project-framing/references/project-canvas.md` ;
+- `plugins/project-design/skills/project-framing/references/project-canvas-example.md`.
+
+L'exemple est fictif, court, étranger aux fixtures et n'est ni un Golden
+Output ni une source de faits réutilisables.
+
+L'architecture prévisionnelle distingue désormais :
+
+```text
+project-design
+├── project-framing
+├── functional-design
+├── technical-design
+├── product-backlog
+├── document-output                  # statut provisoire
+├── document-functional-design       # futur
+├── document-technical-design        # futur
+└── document-product-backlog         # futur
+```
+
+Les trois futurs skills documentaires mettent en forme des artefacts métier
+sans les modifier. `document-output` est provisoirement conservé comme leur
+orchestrateur potentiel, mais cette recommandation devra être réévaluée après
+l'implémentation et le test d'au moins deux workflows documentaires concrets.
+
+Les quatre fixtures ont été rejouées avec succès. Les sorties brutes restent
+hors Git sous `.local/test-runs/2026-08-05-project-canvas/`. Les tests manuels
+ont été actualisés, mais leur rejeu par l'utilisateur reste requis.
+
+Rapport :
+[Project Canvas Evolution Review](tests/executions/2026-08-05-project-canvas-review.md).
+
 Commits principaux :
 
 | Commit | Contenu |
@@ -378,20 +465,38 @@ Le fichier courant est
 
 ## État de `project-framing`
 
-`project-framing` version 0.1 est implémenté et validé.
+`project-framing` version 0.2 est techniquement implémenté. Sa validation
+manuelle utilisateur reste en attente.
 
 Le skill :
 
 - accepte un Project View ou des sources projet ;
-- produit un premier cadrage sans questionnaire exhaustif ;
+- reprend et clarifie l'expression de besoin ;
+- produit un Project Canvas Markdown couvrant les dix sections obligatoires ;
+- produit un premier Canvas sans questionnaire exhaustif ;
 - préserve les contradictions et les incertitudes ;
-- distingue les informations bloquantes, nécessaires à la phase suivante et
-  différables ;
+- distingue les informations bloquantes, nécessaires avant la conception
+  fonctionnelle, la conception technique ou le backlog, et différables ;
+- indique la capacité du Canvas à alimenter chaque étape suivante ;
 - produit une restitution française naturelle ;
-- reste en dehors de la conception fonctionnelle, technique et backlog.
+- reste en dehors de la conception fonctionnelle, technique et backlog ;
+- encadre les ajustements ultérieurs par des règles de traçabilité et de
+  justification.
 
 Rapport :
-[Project Framing Skill Review](tests/executions/2026-07-23-project-framing-review.md).
+[Project Canvas Evolution Review](tests/executions/2026-08-05-project-canvas-review.md).
+
+## État Git de l'intervention Project Canvas
+
+- Branche : `main`.
+- Base et HEAD : `19f8abf` (`Document prompt history and runtime example
+  policy`).
+- État initial : propre et aligné avec `origin/main`.
+- État final attendu : modifications locales non commitées de l'intervention,
+  deux nouvelles références runtime, un nouveau rapport et sorties de fixture
+  ignorées sous `.local/`.
+- Commit : aucun.
+- Push : aucun.
 
 ## État Git de la série de packaging
 
@@ -501,13 +606,15 @@ Séquence métier prévue :
 
 | Itération | Objectif prévu | Garde-fous principaux |
 | --- | --- | --- |
-| 9 | Implémenter `functional-design` | Consommer le Project Model, ne pas refaire le cadrage et ne pas anticiper l'architecture technique |
-| 10 | Implémenter `technical-design` | Distinguer architecture, décisions, intégrations, qualités et risques sans redéfinir les besoins métier |
-| 11 | Implémenter `product-backlog` | Transformer le périmètre validé en backlog traçable sans inventer de priorité, estimation ou exigence |
-| 12 | Implémenter `document-output` | Assembler les artefacts, langues, assets et formats sans devenir propriétaire de leur méthodologie |
-| 13 | Implémenter l'orchestration `project-design` | Router les skills et maintenir la cohérence sans dupliquer leurs responsabilités |
-| 14 | Concevoir les adaptateurs optionnels | Conserver les dépendances vers Spec Kit et les plateformes hors du cœur |
-| 15 | Introduire l'automatisation justifiée | Automatiser les contrôles structurels seulement après stabilisation des contrats |
+| Validation 8.2 | Rejouer les tests manuels du Project Canvas | Ne pas déclarer la méthodologie pleinement validée avant retour utilisateur |
+| 9 | Implémenter `functional-design` | Consommer le Project Canvas et le Project Model, sans refaire le cadrage ni anticiper l'architecture technique |
+| 10 | Implémenter `technical-design` comme étape complémentaire ou parallèle | Consommer le Canvas, distinguer architecture, décisions, intégrations, qualités et risques sans redéfinir les besoins métier |
+| 11 | Implémenter `product-backlog` | Transformer le périmètre conçu et validé en backlog traçable sans inventer de priorité, estimation, exigence ou décision |
+| 12 | Concevoir les trois skills documentaires | Restituer sans inventer ni modifier le contenu métier ; modèles compatibles requis pour les formats externes |
+| 13 | Décider du statut définitif de `document-output` | Comparer l'orchestration documentaire aux appels directs sur la base d'usages testés |
+| 14 | Implémenter l'orchestration `project-design` | Router les skills et maintenir la cohérence sans dupliquer leurs responsabilités |
+| 15 | Concevoir les adaptateurs optionnels | Conserver les dépendances vers Spec Kit et les plateformes hors du cœur |
+| 16 | Introduire l'automatisation justifiée | Automatiser les contrôles structurels seulement après stabilisation des contrats |
 
 Chaque itération métier doit recevoir son propre prompt détaillé avant
 implémentation. Cette roadmap fixe l'ordre et les frontières, pas encore la
@@ -546,7 +653,10 @@ rendu CI clair.
 Ne crée aucun commit et ne pousse aucune modification sans instruction
 explicite.
 
-Reprends à la section "Roadmap prévue". La prochaine étape métier attendue est
-l'itération 9 consacrée à functional-design. Si son prompt détaillé n'est pas
-fourni, ne déduis pas sa méthodologie : demande les instructions.
+Reprends à la section "Roadmap prévue". La prochaine étape attendue est le
+rejeu manuel du Project Canvas avec
+development/tests/manual/project-framing.md. Après validation utilisateur,
+l'itération métier suivante sera consacrée à functional-design. Si son prompt
+détaillé n'est pas fourni, ne déduis pas sa méthodologie : demande les
+instructions.
 ```

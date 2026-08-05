@@ -31,14 +31,34 @@ whose handling of missing information or unsupported invention changes.
 
 ## Project Framing-Specific Observations
 
-- A useful first framing is produced before requesting non-blocking details.
+- The primary output is a Project Canvas with all ten required sections.
+- A useful first Canvas is produced before requesting non-blocking details.
 - Existing handling remains distinct from the proposed workspace.
-- Final scope, ownership, terminology, measures, service targets, integrations,
-  and governance remain provisional or unresolved.
+- Business Context covers the mailbox, messages, spreadsheet, lost requests,
+  workload concern, and incomplete timing without inventing a deadline.
+- Objectives and Expected Value do not invent measures or benefits beyond the
+  stated reduction of lost requests and workload visibility.
+- Project Stakeholders remain distinct from users, and missing requester,
+  security, support, legal, and data-governance representation stays visible.
+- Users are not silently normalized across ambiguous requester, volunteer,
+  coordinator, service-team, and site terms.
+- MVP, Outside MVP, and Unresolved Scope remain explicit; no complete split is
+  invented from the preliminary capability list.
+- Technical Constraints include only known environment or preferences and do
+  not become a technical architecture.
+- Final scope, ownership, terminology, success criteria, service targets,
+  integrations, and governance remain provisional or unresolved.
+- Confirmed current handling problems remain distinct from future Risks.
+- The Decisions section does not promote service-manager preferences to
+  authoritative Decisions.
 - Ambiguous terms such as request, ticket, case, requester, and site are not
   normalized silently.
-- Questions needed before framing approval are distinguished from details that
-  can wait for functional or technical design.
+- Questions use blocking, functional-design, technical-design,
+  backlog-preparation, or deferrable classifications.
 - Recommended next steps prioritize scope authority, participant coverage,
   terminology, and critical information requirements without inventing a
   delivery plan.
+- Success Criteria states missing measures explicitly without inventing
+  thresholds.
+- The Canvas identifies responsible downstream work without performing
+  detailed functional or technical design.

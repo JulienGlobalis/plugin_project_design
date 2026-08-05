@@ -1,6 +1,6 @@
 ---
 name: functional-design
-description: Structure the functional design of an application or software product, including actors, modules, features, user journeys, business rules, requirements, and acceptance criteria. Use when defining or clarifying expected system behavior independently of technical implementation.
+description: Structure the future functional design of one or more applications or products, including modules, features, target users, processes, journeys, business rules, functional data, exceptions, dependencies, requirements, and acceptance criteria. Use when defining or clarifying expected system behavior from a Project Canvas independently of technical implementation.
 ---
 
 # Functional Design
@@ -13,17 +13,21 @@ The detailed functional-design methodology and output templates are TO BE DEFINE
 
 ## Purpose
 
-Eventually transform validated project context into a coherent description of expected behavior and user value.
+Eventually transform a Project Canvas and validated project context into a
+coherent description of products or applications, expected behavior, user
+value, and remaining functional questions.
 
 ## Expected Inputs
 
-- Project framing, stakeholder needs, existing requirements, or observed workflows.
+- Project Canvas, stakeholder needs, existing requirements, or observed workflows.
 - Known actors, terminology, constraints, business rules, and desired outcomes.
 
 ## Expected Outputs
 
 - A structured functional-design artefact.
-- Traceable actors, modules, features, journeys, business rules, requirements, and acceptance criteria.
+- Traceable products or applications, modules, features, users, Processes,
+  journeys, Business Rules, functional data, exceptions, dependencies,
+  Requirements, and acceptance criteria.
 
 Output structures are TO BE DEFINED.
 
@@ -33,6 +37,8 @@ Output structures are TO BE DEFINED.
 - Remain fully usable without GitHub Spec Kit.
 - Do not prescribe architecture, implementation tasks, or detailed methodology in this iteration.
 - Do not infer unsupported requirements.
+- Do not repeat complete project framing or silently rewrite validated Canvas
+  information; identify any founded adjustment for traceable upstream review.
 
 ## Shared References
 

@@ -1,28 +1,38 @@
 ---
 name: document-output
-description: Plan and assemble consistent project-design documents from artefacts produced by other skills, including output language, asset selection, branding, formatting, and cross-document consistency. Use when the requested deliverable is a composed project document rather than the underlying design analysis itself.
+description: Provisionally coordinate future document-specific project-design restitution from validated domain artefacts, including document routing, output language, asset selection, branding, formatting, and cross-document consistency. Use only for composed project-document concerns rather than the underlying framing, functional, technical, or backlog analysis.
 ---
 
 # Document Output
 
 ## Status
 
-UNDER CONSTRUCTION
+UNDER CONSTRUCTION - provisional responsibility
 
-The assembly process, localization resolution, templates, and exporter behavior are TO BE DEFINED.
+The need for a generic documentary orchestrator, its routing, template
+contracts, localization resolution, and exporter behavior are TO BE DEFINED.
 
 ## Purpose
 
-Eventually assemble coherent user-facing documents while preserving source traceability and respecting language and asset conventions.
+Potentially coordinate future document-specific restitution while preserving
+source meaning, status, traceability, language, assets, and cross-document
+consistency.
+
+The current recommendation is provisional. Reassess this skill after
+`document-functional-design`, `document-technical-design`, and
+`document-product-backlog` provide concrete usage evidence. Direct invocation
+of those future skills must remain possible.
 
 ## Expected Inputs
 
-- One or more validated project-design artefacts.
+- One or more validated Project Canvas, functional-design, technical-design,
+  or Product Backlog artefacts.
 - Requested document type, output language, branding, assets, and formatting constraints.
 
 ## Expected Outputs
 
-- A planned or assembled project document with consistent structure and terminology.
+- Future routing to the applicable document-specific skill and a consistent
+  cross-document presentation plan.
 - Explicit handling of unavailable localized assets.
 
 Output formats are TO BE DEFINED.
@@ -33,6 +43,8 @@ Output formats are TO BE DEFINED.
 - Remain fully usable without GitHub Spec Kit.
 - Do not perform exports, implement localization resolution, or alter source methodology in this iteration.
 - Never silently fall back to an unrelated language.
+- Do not invent, reinterpret, or modify business or technical content owned by
+  design skills.
 
 ## Shared References
 

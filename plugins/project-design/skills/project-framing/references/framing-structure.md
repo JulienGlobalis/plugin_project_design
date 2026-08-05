@@ -1,171 +1,130 @@
-# Project Framing Structure Reference
+# Project Canvas Presentation Reference
 
-Use this reference to select and compose framing sections. Do not treat it as
-a mandatory template.
+Use this reference to present the required Project Canvas content clearly.
+The content contract remains defined by
+[the Project Canvas reference](project-canvas.md).
 
 ## Contents
 
-- [Selection principles](#selection-principles)
-- [Recommended structure](#recommended-structure)
+- [Presentation principles](#presentation-principles)
+- [Review context](#review-context)
+- [Section presentation](#section-presentation)
 - [Registers and tables](#registers-and-tables)
-- [Question priority](#question-priority)
+- [Question classification](#question-classification)
+- [Readiness statement](#readiness-statement)
 - [Status and language](#status-and-language)
 
-## Selection Principles
+## Presentation Principles
 
-- Start with the smallest structure that makes the project understandable.
-- Include a section only when source or normalized project information
-  justifies it.
-- Merge context, problem, and existing situation for a simple new project.
-- Keep Existing, Target, and Transition separate for modernization or
+- Represent every required Canvas section or state explicitly that its
+  information is insufficient.
+- Use the required order unless another order clearly improves readability.
+- Keep Existing, Target, and Transition visibly distinct for modernization or
   replacement.
-- Keep Scope, exclusions, and unresolved Scope visibly distinct.
-- Prefer one uncertainty register over repeated warnings in every section.
-- Preserve a concise source basis for material claims.
+- Keep MVP, outside MVP, explicit exclusions, future Options, and unresolved
+  Scope distinct.
+- Prefer one concise uncertainty or question register over repeated warnings.
+- Preserve a compact source basis for material statements.
+- Avoid repeating the same fact in an executive summary and every section.
+- Keep the default Canvas concise enough for stakeholder review while
+  retaining the information needed by downstream skills.
 
-## Recommended Structure
+## Review Context
 
-### Title and Review Context
+Start with the project name and, when known:
 
-State the project name, framing purpose, audience, requested language, and
-review context when known.
+- Canvas purpose and intended audience;
+- requested language;
+- source or Project View baseline;
+- review date or context;
+- explicit warning that provisional or unresolved information remains.
 
-Indicate plainly when the document contains provisional or unresolved
-information. Do not invent a maturity score.
+Do not publish a maturity, completeness, or reliability percentage.
 
-### Executive Framing
+An optional short opening paragraph may summarize why the Project exists, its
+most consequential boundary, and its most important unresolved matter. It
+must not replace or introduce information absent from the ten sections.
 
-Summarize:
+## Section Presentation
 
-- why the project exists;
-- the problem or opportunity;
-- the intended outcome;
-- the most consequential Scope boundary;
-- the most important unresolved matter.
+### Business Context
 
-Keep this section short and avoid introducing information that does not appear
-later.
+Use short prose for the situation, relevant Existing state, main Issues, and
+business rationale. Use a register only when Constraints or dependencies need
+comparison.
 
-### Context and Existing Situation
+### Objectives and Expected Value
 
-Describe the organization, current process or solution, observed Issues, and
-relevant operating context. For a new application, describe the current
-business handling without inventing a legacy system.
+Use bullets or a table when Objectives have different statuses, owners, or
+measures. Keep unapproved value claims and missing success measures explicit.
 
-### Objectives and Expected Outcomes
+### Project Stakeholders and Users
 
-List Objectives and the outcomes they are intended to produce. Keep missing
-measures or targets visible. Do not convert an expected outcome into a
-validated benefit or metric.
+Keep these as separate sections. A combined participant table is acceptable
+only if its columns still distinguish project interest or authority from
+system interaction.
 
-### Scope
+### Functional Scope
 
-Separate:
+Always display MVP, Outside MVP, and Unresolved Scope separately. A status
+column is useful when authority is material.
 
-- established or provisional in-scope items;
-- explicit exclusions;
-- unresolved boundaries;
-- future Options that are not commitments.
+### Technical Constraints
 
-Use a status column when Scope authority or approval is material.
+List known framing-time Constraints and their source or qualification. State
+that the section is unresolved when no technical Constraint was supplied;
+do not fill it with design recommendations.
 
-### Stakeholders, Actors, and Users
+### Risks
 
-Keep governance and system interaction distinct. A person or role may be both
-a Stakeholder and an Actor, but do not assume one role from the other.
+List Risks separately from confirmed Issues. Confirmed Issues may be
+referenced from Business Context or shown in a companion register when this
+improves clarity.
 
-Record authority, ownership, or representation gaps only when supported.
+### Decisions
 
-### Target Vision
+Use a Decision register when authority, date, applicability, alternatives, or
+consequences require comparison. Keep unresolved Options outside the Decision
+list.
 
-Describe the intended target condition and high-level Capabilities. Avoid
-screens, detailed journeys, acceptance criteria, and architecture choices.
+### Questions
 
-### Transition Considerations
+Use a register that makes impact classification and the next clarification
+action visible. Do not name an owner or date when unknown.
 
-Include this section when migration, rollout, cutover, continuity, adoption,
-training, data treatment, or retirement affects framing.
+### Success Criteria
 
-Keep Transition Options separate from Decisions.
-
-### Constraints, Assumptions, and Dependencies
-
-Separate non-negotiable Constraints from provisional Assumptions.
-
-Describe dependencies as relationships or external reliance. Do not invent a
-dependency owner or classify a preference as a Constraint.
-
-### Decisions and Options
-
-List material Decisions already made, their authority when known, and the
-direction they establish. List unresolved Options separately.
-
-Do not present a historical Decision as still binding when applicability is
-unknown.
-
-### Risks and Confirmed Issues
-
-Use separate lists or tables:
-
-- Risk: uncertain event or condition;
-- confirmed Issue: currently observed problem or deficiency.
-
-Do not add probability, impact, severity, or owner values unless the sources
-or user provide them.
-
-### Unresolved Questions
-
-Phrase each question as a concrete information or decision need. Include:
-
-- why it matters;
-- priority category;
-- known owner or authority;
-- recommended next clarification action.
-
-Do not repeat questions already answered elsewhere in the framing.
-
-### Recommended Next Steps
-
-Prioritize practical clarification, validation, and downstream design work.
-Name an owner or date only when known.
-
-Recommend a downstream skill without performing its methodology.
-
-### Evidence and Source Basis
-
-Provide a compact source list or section-level references. Preserve material
-supporting, qualifying, and opposing sources.
-
-Use human-readable source names and locations. Keep internal model identifiers
-out of normal stakeholder-facing output.
+Present supported criteria and explicitly identify missing baselines,
+measures, targets, or approval. Never add numeric thresholds to make the
+section look complete.
 
 ## Registers and Tables
 
-Use only the tables that improve review.
+Use only the registers that improve review.
 
 ### Scope Register
 
 | Area | Position | Status | Basis or qualification |
 | --- | --- | --- | --- |
-| Example | In, out, or unresolved | Established, Provisional, or Unresolved | Source or condition |
+| Example | MVP, outside MVP, or unresolved | Established, Provisional, or Unresolved | Source, authority, or condition |
 
 ### Participant Register
 
-| Party or role | Stakeholder interest or authority | Actor interaction | Status or gap |
+| Party or role | Stakeholder interest or authority | User or Actor interaction | Status or gap |
 | --- | --- | --- | --- |
 | Example | Known governance role | Known system role | Established, provisional, or unresolved |
 
-### Constraint and Assumption Register
+### Constraint Register
 
-| Type | Statement | Status or validation need | Basis |
+| Constraint | Domain | Status or applicability | Basis |
 | --- | --- | --- | --- |
-| Constraint or Assumption | Concise statement | Applicable qualification | Source |
+| Concise statement | Business, organizational, regulatory, or technical | Qualification | Source |
 
-### Decision and Option Register
+### Decision Register
 
-| Type | Position | Authority or status | Consequence |
-| --- | --- | --- | --- |
-| Decision or Option | Concise statement | Known authority or unresolved status | Framing impact |
+| Decision | Authority and date | Consequence | Status or applicability | Basis |
+| --- | --- | --- | --- | --- |
+| Concise authoritative choice | Known or not supplied | Framing impact | Established, provisional, or unresolved applicability | Source |
 
 ### Risk and Issue Register
 
@@ -173,24 +132,51 @@ Use only the tables that improve review.
 | --- | --- | --- | --- |
 | Risk or confirmed Issue | Concise statement | Do not invent severity | Source |
 
-### Clarification Register
+### Question Register
 
-| Question | Why it matters | Priority | Owner or authority | Next action |
+| Question | Why it matters | Classification | Owner or authority | Next action |
 | --- | --- | --- | --- | --- |
-| Concrete question | Decision or design impact | Approval, next phase, or deferred | Known or unresolved | Practical action |
+| Project-specific question | Decision or design impact | Blocking, functional, technical, backlog, or deferrable | Known or unresolved | Practical action |
 
-## Question Priority
+### Success Register
+
+| Criterion or direction | Measure or evidence | Status | Gap or next clarification |
+| --- | --- | --- | --- |
+| Source-supported result | Known or unresolved | Established, Provisional, or Unresolved | Do not invent a target |
+
+## Question Classification
 
 Use these meanings:
 
-- **Required before framing approval:** purpose, material boundary, authority,
-  or critical Constraint cannot be agreed reliably without the answer.
-- **Required before the next design phase:** the framing remains reviewable,
-  but responsible functional, technical, or backlog work needs the answer.
-- **Can be deferred:** the answer is useful later and does not currently
-  change framing decisions.
+- **Blocking further progress:** a reliable shared frame or any responsible
+  next design work cannot continue without the answer.
+- **Required before functional design:** Actors, Needs, Processes, Scope,
+  Business Rules, functional data, or detailed behavior cannot be designed
+  responsibly without the answer.
+- **Required before technical design:** architecture, System Elements,
+  Integrations, quality concerns, security, deployment, or technical
+  feasibility cannot be designed responsibly without the answer.
+- **Required before backlog preparation:** validated Scope, ordering inputs,
+  or traceability is insufficient for backlog transformation.
+- **Deferrable:** the answer is useful later and does not currently change a
+  framing or downstream decision.
 
-Do not call every unknown item blocking. Explain the consequence of delay.
+A question may carry more than one classification. Do not call every unknown
+item blocking. Explain the consequence of delay.
+
+## Readiness Statement
+
+End with a short downstream-readiness statement when the next use matters.
+Assess `functional-design`, `technical-design`, and backlog preparation
+separately. State:
+
+- what can proceed;
+- which explicit gaps qualify or block it;
+- which Canvas information should be handed off;
+- why the next stage need not repeat the complete framing effort.
+
+Do not claim that the Project is universally complete or publish a numeric
+reliability score.
 
 ## Status and Language
 

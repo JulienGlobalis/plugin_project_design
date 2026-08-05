@@ -32,15 +32,30 @@ it for `project-design` when orchestration or a shared contract changes.
 
 ## Project Framing-Specific Observations
 
+- The primary output is a Project Canvas with all ten required sections.
 - Existing application, processes, interfaces, workarounds, Issues, and
   operational constraints are summarized without turning the framing into a
   technical design.
 - Target maintainability, security, workflow, and reporting outcomes remain
   distinct from current behavior.
+- Advisors, supervisors, administrators, support staff, and governance parties
+  are represented without conflating users with project Stakeholders.
+- Functional Scope does not invent a replacement sequence, MVP split, or
+  approved target module design.
+- Known technical Constraints cover current systems, interfaces, security,
+  continuity, data, performance, and operation only at framing level.
 - Migration, continuity, rollback, archive, training, adoption, and parallel
   operation remain Transition considerations rather than approved plans.
 - Historical Decisions are not assumed to remain binding when applicability
   is unknown.
 - The reopening contradiction and Central Intake divergence remain visible.
+- Current production deficiencies remain confirmed Issues; uncertain migration
+  or continuity outcomes remain Risks.
+- Questions are classified according to their impact on functional design,
+  technical design, backlog preparation, or overall progress.
+- Success Criteria preserves known continuity and outcome directions but does
+  not invent adoption, quality, security, or migration targets.
 - Recommended next steps prioritize current-state validation, transition
   decisions, data treatment, continuity, and governance.
+- The Canvas identifies what functional and technical work can start without
+  replacing framing with detailed design.

@@ -17,7 +17,8 @@ Eventually produce or improve a traceable Product Backlog aligned with validated
 
 ## Expected Inputs
 
-- Project framing, functional or technical requirements, and existing backlog material.
+- Project Canvas, designed functional or technical Requirements, and existing
+  backlog material.
 - Prioritization, estimation, ownership, and traceability constraints when known.
 
 ## Expected Outputs
@@ -34,6 +35,8 @@ Detailed semantics are TO BE DEFINED.
 - Remain fully usable without GitHub Spec Kit.
 - Do not define detailed backlog rules, export formats, or platform integrations in this iteration.
 - Do not invent priority, effort, value, or acceptance information.
+- Do not create new Requirements or Decisions while transforming the designed
+  and validated Scope.
 
 ## Shared References
 

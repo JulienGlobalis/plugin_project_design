@@ -1,117 +1,136 @@
-# Version 0.1.0 Specification
+# Version 0.1.0 Unreleased Specification
 
 ## Iteration Objective
 
-Isolate the installable `project-design` bundle from versioned development
-resources and ignored local work without changing the accepted methodology or
-shared information architecture.
+Revise the forecast skill architecture and resume the `project-framing`
+iteration so its primary output becomes a ten-section Project Canvas that is
+reliable enough for downstream functional and technical design while
+preserving uncertainty, contradiction, traceability, and skill boundaries.
 
 ## In Scope
 
-- Codex and Claude Code plugin manifests.
-- One orchestration skill skeleton and five specialized skill skeletons.
-- Shared-resource directories and conventions.
-- Codex, Claude Code, and GitHub Spec Kit integration documentation.
-- Repository documentation, contribution rules, and validation scope.
-- A shared documentation-first testing strategy and anonymized regression
-  corpus.
-- An evidence-aware common information-architecture decision.
-- A minimal Canonical Domain Model shared by future models and skills.
-- A minimal conceptual Knowledge Model for assertions, provenance, epistemic
-  state, and inter-assertion relationships.
-- A minimal normalized Project Model for coherent project elements,
-  relationships, normalization status, lifecycle perspective, and Knowledge
-  Model traceability.
-- An initial French terminology companion for canonical concepts and shared
-  model labels.
-- A complete `project-framing` methodology for concise, traceable,
-  uncertainty-aware project framing.
-- Four fixture scenarios, a detailed quality checklist, and a lightweight
-  real-project manual test file for `project-framing`.
-- An installable bundle under `plugins/project-design/`.
-- Versioned tests, context, plans, specifications, and examples under
+- Document the three responsibility levels: global orchestration, design
+  skills, and document-restitution skills.
+- Retain `project-design` as the future global orchestrator.
+- Position `project-framing` as the first design step.
+- Make Markdown Project Canvas the primary `project-framing` artefact.
+- Define the ten required Canvas sections, filling rules, qualitative
+  readiness, and traceable later-adjustment rules.
+- Add a runtime Project Canvas reference and, when useful, a short fictional
+  structural example unrelated to permanent fixtures.
+- Document `functional-design` and `technical-design` as future complementary
+  steps without implementing their methodologies.
+- Document future `document-functional-design`,
+  `document-technical-design`, and `document-product-backlog` responsibilities
+  without creating empty skill scaffolding.
+- Evaluate and document the provisional future role of `document-output`.
+- Update repository documentation, skill descriptions, scenarios, quality
+  checklists, manual tests, execution evidence, and continuity context.
+- Re-run `project-framing` against exactly four permanent fixtures.
+- Preserve the isolated installable bundle and its independence from
   `development/`.
-- An ignored `.local/` directory for temporary or confidential local work.
-- A repository marketplace entry pointing only to the installable bundle.
 
 ## Out of Scope
 
-- Detailed `functional-design`, `technical-design`, `product-backlog`,
-  `document-output`, and orchestration methodologies.
-- Executable workflows or generic workflow engines.
-- Runtime code or language packages.
-- Hooks, custom agents, slash commands, MCP servers, and API integrations.
-- Exporters, persistence, and automatic document conversion.
-- Spec Kit installation, commands, template changes, synchronization, or artefact conversion.
+- Implementing `functional-design`, `technical-design`, `product-backlog`, or
+  any document-specific skill.
+- Implementing complete `project-design` or `document-output` orchestration.
+- Creating Google Docs, Google Sheets, or DOCX integrations or generators.
+- Creating empty future-skill directories.
+- Executable workflows, runtime code, language packages, templating engines,
+  exporters, persistence, APIs, MCP servers, hooks, agents, commands, or Spec
+  Kit automation.
+- Changing the Information Architecture ADR, Canonical Domain Model,
+  Knowledge Model, Project Model, or French canonical terminology.
+- Creating, replacing, or approving Golden Outputs.
+- Changing plugin version, tags, or release policy before the separate version
+  governance decision.
+
+## Project Canvas Contract
+
+The required sections are:
+
+1. Business Context;
+2. Objectives and Expected Value;
+3. Project Stakeholders;
+4. Users;
+5. Functional Scope with MVP, Outside MVP, and Unresolved Scope;
+6. Technical Constraints;
+7. Risks;
+8. Decisions;
+9. Questions;
+10. Success Criteria.
+
+Every section is present or explicitly states that information is missing,
+contradictory, unsupported, or awaiting a Decision. The Canvas must never
+invent content to appear complete.
 
 ## Acceptance Criteria
 
-- Both manifests identify `project-design` at version `0.1.0`.
-- All six skills have valid front matter and distinct triggering descriptions.
-- All specialized skills state that they are independently callable and do not require Spec Kit.
-- Shared and platform-specific content are separated.
-- Spec Kit standalone, companion, and integration modes are documented.
-- No executable runtime or platform dependency is introduced.
-- Planned behavior is marked `UNDER CONSTRUCTION` or `TO BE DEFINED`.
-- Exactly four permanent anonymized, multi-artefact fixtures support shared
-  Codex and Claude Code scenarios.
-- Repository-wide and skill-specific quality criteria evaluate methodology
-  without requiring identical wording.
-- Golden outputs require explicit human approval.
-- Source documents, extracted knowledge, normalized project information, and
-  generated artefacts have distinct responsibilities.
-- The accepted architecture preserves end-to-end provenance without coupling
-  shared models to a skill, platform, or Spec Kit.
-- Canonical concepts are justified by the permanent corpus or cross-skill
-  responsibility.
-- The Canonical Domain Model defines vocabulary and relationships without
-  implementing knowledge state, project instances, schemas, or methodology.
-- The Knowledge Model preserves assertions, provenance, confidence,
-  uncertainty, validation, contradictions, and coexistence without
-  normalizing project truth.
-- Knowledge Model constructions reuse the unchanged Canonical Domain Model
-  and remain independent from storage, platform, methodology, and
-  serialization.
-- The Project Model consolidates knowledge into canonical project elements
-  and relationships without copying every assertion.
-- Established, Provisional, and Unresolved normalized information remains
-  distinguishable from Knowledge Model validation and confidence.
-- Existing, Target, and Transition perspectives can coexist in one current
-  Project View.
-- Every material normalized element and relationship remains traceable to
-  supporting, qualifying, and opposing knowledge.
-- The Project Model remains independent from skill methodology, storage,
-  platform, and serialization.
-- Localized terminology maps all canonical concepts without modifying their
-  English names or definitions.
-- Missing requested-language terminology is explicit and never falls back
-  silently to an unrelated localized language.
+- Both manifests continue to identify `project-design` at version `0.1.0`.
+- All six existing skills retain valid front matter and distinct triggering
+  descriptions.
+- Future document-specific skills are documented but have no empty
+  scaffolding.
+- `project-design` remains a future global orchestrator and does not duplicate
+  specialized methodology.
+- `document-output` is retained without irreversible transformation and its
+  documentary-orchestration status is explicitly provisional.
 - `project-framing` accepts an existing Project View or available project
   sources and remains independently callable.
-- The framing output covers only justified context, objectives, Scope,
-  participants, lifecycle perspectives, uncertainty, decisions, Risks,
-  Issues, questions, and next steps.
-- The framing distinguishes Established, Provisional, and Unresolved
-  information and Existing, Target, and Transition perspectives.
-- Contradictory or missing information remains visible and no unsupported
-  project information is invented.
-- Preliminary questions are limited to useful blockers and the user can
-  continue with an incomplete framing.
+- `project-framing` explicitly reworks and clarifies the expression of need
+  rather than only summarizing sources.
+- The primary output is an autonomous, Markdown-native Project Canvas.
+- The ten required sections are represented or explicitly insufficiently
+  informed.
+- Project Stakeholders and users remain distinct.
+- MVP, Outside MVP, explicit exclusions, future Options, and unresolved Scope
+  remain distinct.
+- Known technical Constraints are represented without producing detailed
+  technical design.
+- No Objective, value claim, success criterion, threshold, MVP split,
+  Requirement, Business Rule, priority, owner, date, or Decision is invented.
+- Risks remain distinct from confirmed Issues.
+- Decisions remain distinct from Assumptions, preferences, proposals, and
+  Options.
+- Established, Provisional, and Unresolved information remains distinguishable.
+- Existing, Target, and Transition perspectives remain distinguishable.
+- Contradictory or missing information remains visible and traceable.
+- Questions are project-specific and classified as blocking, required before
+  functional design, required before technical design, required before
+  backlog preparation, or deferrable.
+- Qualitative 80-90% reliability is not represented as a calculated score.
+- The Canvas states purpose-specific readiness for downstream steps and can
+  remain usable despite explicit non-blocking unknowns.
+- Later Canvas adjustments must be traceable, justified, limited, and must not
+  silently rewrite validated information or Decisions.
 - Detailed functional, technical, backlog, and document methodology remains
   outside `project-framing`.
-- A concise manual test file supports real-project validation without
-  introducing a second automated suite.
-- The installable bundle contains manifests, skills, shared models,
-  terminology, and runtime quality contracts only.
+- Future Google Docs and Microsoft Word targets remain documented as
+  template-dependent capabilities, not current behavior.
+- All four permanent fixture scenarios are re-run and documented.
+- The manual test file remains one flat Markdown file, retains
+  `PF-MAN-001` through `PF-MAN-005`, bilingual criteria, allowed statuses,
+  result areas, and the confidentiality rule.
+- No Golden Output changes without explicit human approval.
 - No installable skill or shared resource depends on `development/`.
-- Tests and continuity context remain versioned without being included in the
-  marketplace source path.
-- The repository marketplace resolves `project-design` from
-  `./plugins/project-design`.
-- `.local/` is excluded from Git.
+- The Canonical Domain Model, Knowledge Model, Project Model, Information
+  Architecture ADR, and French canonical terminology remain unchanged.
+- No commit or push is performed.
 
-## Unresolved Design
+## Open Decisions
 
-The remaining skill methodologies, orchestration, shared-model representation
-and versioning, detailed schemas, artefact mappings, external distribution,
-license, and automation implementation are TO BE DEFINED.
+- Whether `document-output` remains the long-term documentary orchestrator
+  after document-specific skill behavior is implemented and observed.
+- Whether the Unreleased changes remain in version `0.1.0` or require a new
+  version.
+- Which compatible template contracts will eventually support Google Docs,
+  Google Sheets, and Microsoft Word outputs.
+- Which Project Canvas changes discovered downstream require a future stable
+  identity or version representation.
+
+## Validation Status
+
+Technical implementation and fixture validation may complete in this
+iteration. Full methodology validation remains pending until the user returns
+the requested manual test results.

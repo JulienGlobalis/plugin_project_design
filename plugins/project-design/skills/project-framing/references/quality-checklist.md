@@ -8,30 +8,50 @@
 - [ ] Raw sources are organized according to the Knowledge Model and Project
       Model without introducing a private model or new layer.
 - [ ] The skill does not ask for information already available.
-- [ ] A useful first framing is produced without a preliminary questionnaire
-      when the available information permits it.
+- [ ] A useful first Project Canvas is produced without a preliminary
+      questionnaire when the available information permits it.
 - [ ] Any preliminary questions are limited, high-value, and explain why the
       answer matters.
-- [ ] The user can continue with an explicitly incomplete framing.
+- [ ] The user can continue with an explicitly incomplete Canvas.
 
-## Framing Content
+## Required Project Canvas Structure
 
-- [ ] The project context and problem or opportunity are clear and
+- [ ] The primary output is identified as a Project Canvas.
+- [ ] Business Context is present or explicitly insufficiently informed.
+- [ ] Objectives and Expected Value is present or explicitly insufficiently
+      informed.
+- [ ] Project Stakeholders is present or explicitly insufficiently informed.
+- [ ] Users is present or explicitly insufficiently informed.
+- [ ] Functional Scope is present and separates MVP, Outside MVP, and
+      Unresolved Scope.
+- [ ] Technical Constraints is present or explicitly insufficiently informed.
+- [ ] Risks is present or explicitly insufficiently informed.
+- [ ] Decisions is present or explicitly insufficiently informed.
+- [ ] Questions is present and uses the required impact classifications.
+- [ ] Success Criteria is present or explicitly insufficiently informed.
+
+## Content and Semantic Quality
+
+- [ ] The Canvas clarifies and structures the expression of need rather than
+      merely summarizing source documents.
+- [ ] The business context and relevant Existing situation are clear and
       source-supported.
-- [ ] Objectives remain distinct from Needs, outcomes, Requirements, and
-      measures.
-- [ ] Scope, explicit exclusions, unresolved boundaries, and future Options
-      remain distinct.
-- [ ] Stakeholders, Actors, and users are identified without invention or
-      silent merging.
-- [ ] Existing situation, target vision, and Transition considerations remain
-      distinct when relevant.
-- [ ] Constraints, Assumptions, and dependencies remain distinguishable.
-- [ ] Decisions remain distinct from Options and informal proposals.
+- [ ] Objectives remain distinct from Needs, outcomes, value, Requirements,
+      and measures.
+- [ ] Expected value is not invented from a proposed solution.
+- [ ] Stakeholders remain distinct from Actors and users.
+- [ ] User populations, roles, Needs, rights, and responsibilities are not
+      enriched beyond the evidence.
+- [ ] MVP, explicit exclusions, deferred items, future Options, and unresolved
+      boundaries remain distinct.
+- [ ] No MVP or outside-MVP classification is invented.
+- [ ] Business and technical Constraints remain distinct from preferences and
+      proposed designs.
+- [ ] Existing, Target, and Transition perspectives remain distinct.
+- [ ] Decisions remain distinct from Options, Assumptions, and informal
+      proposals.
 - [ ] Risks remain distinct from confirmed Issues.
-- [ ] Missing ownership, evidence, measures, or decision authority remains
-      visible.
-- [ ] Recommended next steps are practical and proportionate.
+- [ ] Success criteria, measures, baselines, and targets are not invented.
 
 ## Information Quality and Traceability
 
@@ -46,41 +66,58 @@
 - [ ] Source absence is not presented as proof that information does not
       exist.
 - [ ] No owner, date, volume, priority, Constraint, Business Rule,
-      Requirement, or Decision is invented.
-- [ ] Empty or unsupported sections are omitted.
+      Requirement, Decision, value claim, or success criterion is invented.
+- [ ] Required sections with material gaps state those gaps explicitly rather
+      than receiving generic filler.
 
-## Clarification and Readiness
+## Questions and Downstream Readiness
 
-- [ ] Every unresolved question is concrete and actionable.
-- [ ] Questions required before framing approval are distinguished from those
-      required before the next design phase.
+- [ ] Every unresolved question is concrete, project-specific, and
+      actionable.
+- [ ] Questions are classified as blocking, required before functional
+      design, required before technical design, required before backlog
+      preparation, or deferrable.
+- [ ] A question may identify multiple affected stages when justified.
 - [ ] Deferrable questions are not presented as immediate blockers.
 - [ ] Question priority reflects decision impact, Risk, and dependency rather
       than missing detail alone.
 - [ ] Owners or authorities are named only when known.
-- [ ] Proposed clarification actions do not invent commitments or dates.
+- [ ] The Canvas states whether functional design, technical design, and
+      backlog preparation can proceed and which gaps qualify them.
+- [ ] Readiness is qualitative and purpose-specific; no artificial 80-90%
+      score or universal completeness claim is produced.
+- [ ] The Canvas remains usable by the next applicable stage despite explicit
+      non-blocking unknowns.
 
 ## Language and Presentation
 
-- [ ] The framing uses the requested language.
-- [ ] French output uses the localized canonical terminology while keeping
-      prose natural and professional.
+- [ ] Markdown is the native default output.
+- [ ] The Canvas uses the requested language.
+- [ ] French output uses localized canonical terminology while keeping prose
+      natural and professional.
 - [ ] Project-specific Domain Terms remain faithful to source vocabulary.
 - [ ] Missing requested-language terminology or fallback is explicit.
 - [ ] Internal canonical identifiers and model mechanics do not burden normal
       stakeholder-facing prose.
-- [ ] The default framing is concise, structured, actionable, and suitable for
-      consultant review.
+- [ ] The default Canvas is autonomous, concise, structured, actionable, and
+      suitable for stakeholder review.
+- [ ] Google Docs or Microsoft Word output is not claimed without a future
+      compatible template-based document capability.
 
-## Boundaries and Handoffs
+## Boundaries, Adjustments, and Handoffs
 
-- [ ] The output does not produce detailed functional specifications, screens,
-      exhaustive journeys, technical architecture, or a complete backlog.
+- [ ] The output does not produce detailed products, modules, features,
+      screens, exhaustive journeys, functional data models, exception
+      catalogs, acceptance criteria, architecture, APIs, components,
+      deployment design, or a complete backlog.
 - [ ] Framing-relevant Requirements and Business Rules are included only at
-      the level needed for boundaries, feasibility, governance, Risk, or
-      handoff.
+      the level needed for context, boundaries, feasibility, governance,
+      Risk, or handoff.
 - [ ] Functional, technical, backlog, and document work is handed off without
       being executed.
-- [ ] The skill remains independently callable and Spec Kit independent.
+- [ ] Any later Canvas adjustment is traceable, justified, limited, and does
+      not silently rewrite validated information or Decisions.
+- [ ] The skill remains independently callable, Spec Kit independent, and
+      free of runtime dependency on development-only resources.
 - [ ] The Canonical Domain Model, Knowledge Model, Project Model, and localized
       terminology remain unchanged.

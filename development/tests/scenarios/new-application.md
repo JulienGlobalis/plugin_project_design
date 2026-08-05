@@ -32,16 +32,31 @@ it for `project-design` when orchestration or a shared contract changes.
 
 ## Project Framing-Specific Observations
 
+- The primary output is a Project Canvas with all ten required sections.
 - Current business handling is described without inventing a legacy
   application.
 - Proposed MVP Scope remains provisional until the required authority
   approves it.
 - Explicit exclusions remain distinct from future Options.
+- Project Stakeholders remain distinct from direct and indirect users.
+- User populations and Needs remain grounded in interviews and personas
+  without inventing additional personas or permissions.
 - Objectives, expected outcomes, target Capabilities, Constraints,
   Requirements, and Business Rules remain distinguishable.
+- Known technical Constraints cover identity, accessibility, language,
+  security, privacy, service quality, browser, recovery, and uncertain
+  interfaces without selecting architecture or technology.
+- Decisions remain distinct from the proposed MVP and future ideas.
+- Risks remain distinct from unresolved integration facts or confirmed Issues.
 - Product ownership, volume, rollout, waiting lists, approval delegation,
   integrations, retention, support, hosting, success measures, and language
   selection remain unresolved where applicable.
+- Questions use the required impact classifications and do not repeat the Open
+  Decision Log mechanically.
+- Success Criteria preserves the stated success direction and supplied service
+  targets but does not invent business baselines or target values.
+- The Canvas states which functional and technical work may proceed and which
+  decisions block backlog preparation.
 - When French output is requested, terminology is natural and consistent with
   the French companion without translating project-specific Domain Terms
   mechanically.

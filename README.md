@@ -1,6 +1,10 @@
 # Project Design
 
-`project-design` is a methodology-first, Markdown-first plugin foundation for application and software project design. It is intended to make project framing, functional design, technical design, Product Backlog preparation, and document assembly modular, reusable, and traceable.
+`project-design` is a methodology-first, Markdown-first plugin foundation for
+application and software project design. It separates the production of
+project knowledge from its documentary restitution so framing, functional
+design, technical design, Product Backlog preparation, and document delivery
+remain modular, reusable, and traceable.
 
 ## Problem Addressed
 
@@ -8,18 +12,41 @@ Project-design knowledge is often spread across briefs, workshops, requirements,
 
 ## Architecture
 
-The plugin contains one future orchestration skill and five specialized
-skills:
+The target architecture distinguishes global orchestration, design skills,
+and document-restitution skills.
 
-- `project-design` will select and coordinate specialized skills.
-- `project-framing` structures project context, objectives, boundaries,
-  participants, uncertainty, and next clarification activities.
-- `functional-design` will structure expected system behavior.
-- `technical-design` will structure architecture and technical decisions.
-- `product-backlog` will structure and harmonize backlog items.
-- `document-output` will assemble consistent project documents.
+- `project-design` will select and coordinate the necessary design and
+  restitution steps without duplicating their methodologies.
+- `project-framing` is the implemented first design step. It clarifies the
+  expression of need and produces the Project Canvas.
+- `functional-design` will structure products, modules, features, users,
+  processes, journeys, rules, functional data, exceptions, and dependencies.
+- `technical-design` will structure architecture, technologies, components,
+  integrations, APIs, flows, security, performance, deployment, decisions,
+  and technical risks. It may run in parallel with or complement functional
+  design when the available inputs permit it.
+- `product-backlog` will transform designed and validated Scope into traceable
+  backlog items without inventing requirements, priority, value, or effort.
+- `document-functional-design`, `document-technical-design`, and
+  `document-product-backlog` are future document-specific restitution skills.
+- `document-output` is provisionally retained as their possible documentary
+  orchestrator; this responsibility remains to be confirmed through usage.
 
-Each specialized skill is independently callable. Users will be able to request a complete workflow, one skill, or an explicit subset of skills.
+Only the six existing skill directories are currently present. Future skills
+are documented without empty scaffolding. Every specialized skill remains
+independently callable, and future orchestration must preserve direct use.
+
+```text
+project-design
+├── project-framing
+├── functional-design
+├── technical-design
+├── product-backlog
+├── document-output                  # provisional future orchestrator
+├── document-functional-design       # future
+├── document-technical-design        # future
+└── document-product-backlog         # future
+```
 
 All skills will rely on the accepted
 [common information architecture](plugins/project-design/shared/project-model/information-architecture.md):
@@ -100,15 +127,17 @@ never silently fall back to an unrelated localized language.
 
 UNDER CONSTRUCTION
 
-Version 0.1.0 provides manifests, valid skill skeletons, shared-resource
+Version 0.1.0 provides manifests, valid skill foundations, shared-resource
 placeholders, integration boundaries, repository documentation, a
 documentation-first testing strategy, a permanent multi-artefact reference
 corpus, the common information-architecture decision, version 0.1 of the
 Canonical Domain Model, version 0.1 of the conceptual Knowledge Model, and
 version 0.1 of the Minimal Normalized Project Model. It also provides the
 initial French canonical terminology companion and the first complete
-business methodology, `project-framing` version 0.1. It does not provide the
-remaining detailed skill methodologies, executable orchestration, schemas,
+business methodology, `project-framing`. Its current unreleased evolution
+defines the Project Canvas as the primary framing artefact and awaits manual
+user validation. It does not provide the remaining detailed skill
+methodologies, documentary skills, executable orchestration, schemas,
 exporters, persistence, API integrations, MCP servers, hooks, agents,
 commands, or Spec Kit automation.
 
@@ -126,9 +155,11 @@ are explicitly designed.
 
 ## Roadmap
 
-The next business iteration should implement `functional-design`, consuming
-validated project framing and the shared Project Model without duplicating
-the framing methodology.
+Complete manual validation of the revised Project Canvas first. The next
+business iteration should then implement `functional-design`, while
+`technical-design` is prepared as a complementary or parallel step. Both must
+consume the Project Canvas and shared Project Model without repeating
+framing.
 
 ## Installation
 

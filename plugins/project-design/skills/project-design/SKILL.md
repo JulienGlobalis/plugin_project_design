@@ -9,11 +9,14 @@ description: Coordinate a complete or partial application and software project-d
 
 UNDER CONSTRUCTION
 
-Only the orchestration contract is defined in version 0.1.0. Detailed routing and methodology are TO BE DEFINED.
+Only the forecast orchestration contract is defined in version 0.1.0.
+Detailed routing and methodology are TO BE DEFINED.
 
 ## Purpose
 
-Eventually analyze a project-design request, select the required specialized skills, order their use, and preserve consistency between their artefacts without duplicating their methodology.
+Eventually analyze a project-design request, select the required specialized
+skills, transmit their artefacts, order or parallelize their use, and preserve
+global consistency without duplicating their methodology.
 
 Support three invocation patterns:
 
@@ -41,6 +44,21 @@ Output structures are TO BE DEFINED.
 - Do not require GitHub Spec Kit or any agent-specific runtime.
 - Do not execute workflows, convert artefacts, persist project state, or invoke external systems in this iteration.
 - Do not invent unsupported project information.
+
+## Forecast Routing
+
+The intended design sequence is:
+
+1. `project-framing` produces the Project Canvas.
+2. `functional-design` and `technical-design` consume it as complementary
+   steps and may run in parallel when inputs permit.
+3. `product-backlog` transforms designed and validated Scope.
+4. Future document-specific skills restitute the validated domain artefacts.
+
+`document-output` is provisionally retained as a possible documentary
+orchestrator. Future `document-functional-design`,
+`document-technical-design`, and `document-product-backlog` skills may also be
+invoked directly. Do not implement this routing in the current version.
 
 ## Shared References
 

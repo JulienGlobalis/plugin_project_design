@@ -1,7 +1,8 @@
 # Manual Validation
 
-Manual test files guide lightweight validation on real project material
-after repository and fixture testing.
+Manual test files guide independent user replay after repository fixture
+testing. They may cover fixture scenarios and controlled real-project
+material.
 
 They are not automated suites, permanent fixtures, or Golden Outputs. Do not
 store confidential source material, completed client test records, or raw

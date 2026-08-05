@@ -226,11 +226,12 @@ not:
 Add automation only after the corresponding methodology and contracts are
 stable. Until then, manual evidence and review are authoritative.
 
-## Manual Real-Project Validation
+## Manual User Validation
 
-Use a manual test file after fixture validation when a skill needs practical
-review on real project material. Keep it concise and complete it during or
-immediately after the test.
+Use a manual test file after repository fixture validation when a skill needs
+an independent user replay, practical review on controlled project material,
+or both. Keep it directly usable and complete it during or immediately after
+the test.
 
 Manual test files:
 
@@ -241,5 +242,7 @@ Manual test files:
 - may support a later skill change only when feedback is traceable and
   reviewed.
 
-The current manual test file is
-[Project Framing](manual/project-framing.md).
+The current [Project Framing](manual/project-framing.md) file contains four
+fixture replay cases and one controlled real-project case for validating the
+Project Canvas. Its results remain pending until the user completes and
+returns them.

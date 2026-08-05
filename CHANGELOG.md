@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+- Repositioned `project-framing` as the first project-design step and made a
+  ten-section Project Canvas its primary Markdown artefact.
+- Added runtime Project Canvas guidance and a short fictional structural
+  example, including readiness and traceable later-adjustment rules.
+- Documented the separation between design skills and future
+  document-specific restitution skills.
+- Provisionally retained `document-output` as a possible documentary
+  orchestrator pending evidence from future document skills.
+- Updated the four fixture scenarios, quality contracts, and manual tests for
+  Project Canvas validation without changing Golden Outputs.
 - Added the documentation-first testing strategy.
 - Added four fictional, fully anonymized, multi-artefact permanent regression
   fixtures representing realistic consulting inputs.
