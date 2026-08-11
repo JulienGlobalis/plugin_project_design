@@ -1,23 +1,24 @@
 ---
 name: project-framing
-description: Transform project briefs, discovery notes, source documents, or an existing Project View into a traceable Project Canvas that clarifies the business context, objectives and value, stakeholders, users, MVP and non-MVP scope, known technical constraints, risks, decisions, unresolved questions, and success criteria. Use as the first project-design step for application or software discovery, initiation, alignment, clarification, or reframing before functional design, technical design, or backlog preparation.
+description: Transform project briefs, discovery notes, source documents, or an existing Project View into a concise, decision-ready Project Canvas that defines the project's current validated position across business context, objectives and value, stakeholders, users, functional scope, technical constraints, risks, decisions, essential decision questions, and success criteria. Use as the first project-design step for application or software discovery, initiation, alignment, clarification, or reframing before functional design, technical design, or backlog preparation. Produce audit traceability only when explicitly requested and keep it separate from the standard Canvas.
 ---
 
 # Project Framing
 
 ## Status
 
-IMPLEMENTED - methodology version 0.2. Manual user validation is required.
+IMPLEMENTED - methodology version 0.3. Manual user validation is required.
 
 ## Purpose
 
 Act as the first project-design step. Rework, clarify, and structure the
-expression of need into a shared, evidence-aware Project Canvas before
+expression of need into a simple, outcome-oriented Project Canvas before
 detailed functional design, technical design, or backlog decomposition.
 
-Do more than summarize sources: reconcile compatible information, expose
-material conflicts and gaps, make project boundaries understandable, and
-prepare responsible downstream work without inventing missing content.
+Use evidence, normalization status, conflicts, and source history during
+analysis, but project only the current validated project position into the
+standard Canvas. Do not expose the analysis process, source identifiers,
+competing formulations, or decision history in that business artefact.
 
 ## Invocation Brief and Delivery
 
@@ -78,10 +79,10 @@ Apply these contracts without redefining them:
 Before composing or revising a Project Canvas, read the
 [Project Canvas reference](references/project-canvas.md). Read the
 [framing structure reference](references/framing-structure.md) when organizing
-artefact sections, registers, visible status, or logical order.
+the ten business sections and their concise reading order.
 
-When an example would help interpret the required structure, status handling,
-or level of detail, read the
+When an example would help interpret the current-position projection or level
+of detail, read the
 [short fictional Project Canvas example](references/project-canvas-example.md).
 Treat it as a structural illustration, never as a template for project facts.
 
@@ -151,10 +152,11 @@ When a Project View is supplied:
 
 - use it as the normalized input;
 - preserve its Project Elements, Relationships, Normalization Status,
-  Lifecycle Perspective, and Knowledge Basis;
-- use linked knowledge or sources to explain qualifications and conflicts;
-- report a material discrepancy with new sources instead of silently
-  overriding the supplied view.
+  Lifecycle Perspective, and Knowledge Basis in the working analysis;
+- use linked knowledge or sources to assess authority, qualifications, and
+  conflicts internally;
+- update the current position only from an authorized Decision or other
+  sufficiently validated basis.
 
 When only raw or partially structured sources are supplied:
 
@@ -169,7 +171,9 @@ When only raw or partially structured sources are supplied:
 - do not create a framing-specific competing truth or a new shared model.
 
 Treat this preparation as use of the shared contracts, not as a separate
-deliverable or methodology layer.
+deliverable or methodology layer. Never copy its status labels, source paths,
+assertion identifiers, opposing formulations, or normalization rationale into
+the standard Canvas.
 
 ### 4. Rework the Expression of Need
 
@@ -198,9 +202,9 @@ governance, risk, or handoff.
 Represent dependencies as relationships between project elements. Do not
 introduce a new canonical Dependency concept.
 
-### 5. Assess Information Quality
+### 5. Establish the Current Project Position
 
-For every material statement:
+For every material concern, use the shared models internally to:
 
 - preserve its normalization status;
 - preserve its lifecycle perspective when relevant;
@@ -210,6 +214,19 @@ For every material statement:
 - distinguish Risk from confirmed Issue;
 - distinguish Assumption from established information;
 - distinguish Option or preference from Decision.
+
+Then project the result into the standard Canvas using these rules:
+
+- include established current information and authorized Decision results;
+- state an authorized Decision directly, without its discarded alternatives,
+  source history, rationale chronology, or former wording;
+- exclude Assumptions, preferences, proposals, and merely provisional Scope
+  from statements that define the Project;
+- when an undecided point is indispensable to functional design, technical
+  design, or backlog preparation, express one concise decision question;
+- when required-section information is absent but does not justify a decision
+  question, write `To be defined` or its requested-language equivalent;
+- expose neither normalization labels nor source identifiers in the Canvas.
 
 Do not:
 
@@ -221,9 +238,11 @@ Do not:
 - classify an item as MVP or outside MVP without a source-supported position;
 - turn missing information into a negative fact.
 
-When an authorized Decision resolves a conflict, present the normalized
-position and retain the material opposing evidence in the traceability basis.
-Otherwise keep the matter unresolved.
+When an authorized Decision resolves a conflict, present only the resulting
+current position in the standard Canvas and retain opposing evidence only in
+the internal traceability basis. Without an authorized resolution, do not
+narrate the conflict; create one concise decision question if the matter
+conditions downstream design, otherwise write `To be defined`.
 
 ### 6. Co-construct the Canvas Through Iterations
 
@@ -271,13 +290,26 @@ order preserves them:
 9. Questions;
 10. Success Criteria.
 
-If a required section lacks sufficient information, keep the section and
-state what is unknown, unsupported, contradictory, or awaiting a Decision.
-Do not fill it with generic content.
+If a required section lacks usable validated information, keep the section and
+write only `To be defined` or its requested-language equivalent. Add a concise
+question in section 9 only when a Decision genuinely conditions functional
+design, technical design, or backlog preparation.
 
 Keep the default Canvas concise, autonomous, reviewable, and reusable. Use
-tables only when they improve comparison, status, ownership, or actionability.
-Do not repeat the same information across sections.
+short paragraphs and bullets by default. Use a table only when several
+comparable items materially become clearer; never create a status, evidence,
+contradiction, or decision-history table in the standard Canvas. Do not repeat
+the same information across sections.
+
+The standard Canvas must not contain:
+
+- source or assertion identifiers such as `S1`, `S2`, or `S3`;
+- source references, Knowledge Basis details, or audit trails;
+- `Established`, `Provisional`, `Unresolved`, `Établi`, `Provisoire`, or
+  `Non résolu` labels;
+- competing source formulations, contradiction narratives, rejected
+  alternatives, or decision chronology;
+- unvalidated information phrased as current Project definition.
 
 For French output:
 
@@ -294,12 +326,12 @@ Treat the intended 80-90% reliability as a qualitative business expectation,
 never as a calculated score, confidence percentage, or permission to complete
 gaps.
 
-The Canvas is ready for downstream use when all material supplied information
-has been used, important contradictions and unknowns are explicit, Decisions
-remain distinct from Assumptions and Options, boundaries are understandable,
-and the next skill can proceed without repeating the complete framing effort.
+The Canvas is ready for downstream use when the current validated position is
+clear, unvalidated proposals have not entered the Project definition,
+boundaries are understandable, and every still-required Decision appears as a
+concise question without requiring the next skill to repeat source analysis.
 
-Classify each question as:
+During analysis, classify potential questions as:
 
 - blocking further progress;
 - required before `functional-design`;
@@ -307,10 +339,11 @@ Classify each question as:
 - required before backlog preparation;
 - deferrable.
 
-A question may name more than one affected stage. Prioritize by decision
-impact, Risk, and dependency. Identify an owner or decision authority only
-when known. Recommend a concrete clarification action without inventing dates
-or commitments.
+A question may affect more than one stage. Retain in the Canvas only questions
+whose answer changes or conditions functional design, technical design, or
+backlog preparation. Omit deferrable detail and generic information requests.
+Phrase each retained item as a short decision question; name an authority only
+when known and useful.
 
 ### 9. Verify Before Delivery
 
@@ -326,7 +359,9 @@ Confirm that:
 - every material claim is supportable;
 - every required Canvas section is present or explicitly not sufficiently
   informed;
-- opposing information remains visible;
+- authorized Decisions appear only as their current result;
+- unresolved source disagreements become concise decision questions or `To be
+  defined`, never contradiction narratives;
 - MVP, outside MVP, explicit exclusions, future Options, and unresolved Scope
   are not conflated;
 - Stakeholders and users remain distinct;
@@ -334,8 +369,13 @@ Confirm that:
 - Risks and Issues are separate;
 - Decisions and proposals are separate;
 - success criteria are source-supported or explicitly unresolved;
-- questions are project-specific, classified, non-duplicative, and
-  proportionate;
+- questions are project-specific, concise, non-duplicative, and restricted to
+  Decisions that condition functional design, technical design, or backlog
+  preparation;
+- proposals and provisional Capabilities are not presented as validated
+  Project Scope;
+- no source identifier, traceability trail, normalization status label,
+  analysis history, or decision chronology appears in the standard Canvas;
 - the user was able to review the progressively updated Canvas and explicitly
   validate delivery or defer the remaining questions;
 - no detailed functional, technical, backlog, or document methodology was
@@ -353,7 +393,7 @@ contract belongs under `_project-design/` according to the shared workspace
 delivery rules. This storage convention does not turn the artefact into a
 formatted final document or give `project-framing` document-format ownership.
 
-The Canvas must be autonomous, structured, versionable, traceable, and
+The Canvas must be autonomous, structured, versionable, concise, and
 suitable as input to `functional-design`, `technical-design`,
 `product-backlog`, and `document-project-canvas`. `project-framing` owns the
 framing knowledge only. It does not select a document format, apply a
@@ -364,9 +404,9 @@ recorded format/template choice to `document-project-canvas` after saving the
 Markdown business artefact. Do not delay or merge the Markdown Canvas into its
 documentary representation.
 
-## Traceability
+## Internal Traceability and Separate Audit Output
 
-Keep each material Canvas statement traceable through:
+Keep each material Canvas statement traceable during analysis through:
 
 ```text
 Project Canvas statement
@@ -375,9 +415,12 @@ Project Canvas statement
     -> Source location
 ```
 
-Use concise source references suitable for review. Do not overload a
-client-facing Canvas with internal identifiers unless the user requests an
-audit-oriented output.
+Do not display this chain, source identifiers, opposing evidence, or analysis
+history in the standard Canvas. If the user explicitly requests an audit
+restitution, produce it as a separate companion artefact, by default
+`_project-design/project-canvas-audit.md`. Never append audit content to
+`_project-design/project-canvas.md`, and never make the audit companion a
+prerequisite for downstream use of the business Canvas.
 
 A reviewed Canvas does not automatically become source evidence. If
 stakeholders approve or amend it, treat the accepted artefact as a new source
@@ -386,10 +429,10 @@ in a later Knowledge Model and Project Model update.
 ## Later Adjustments
 
 `functional-design` or `technical-design` may expose reliable information
-that requires a later Canvas revision. Any adjustment must be traceable,
-justified by new or corrected evidence, limited to a founded enrichment,
-clarification, or correction, and must never silently rewrite validated
-information or Decisions.
+that requires a later Canvas revision. Reassess the internal evidence and
+update only the affected current position. The standard Canvas shows the new
+current result, not a change log or former formulations. Preserve change
+history outside the Canvas when governance requires it.
 
 ## Boundaries
 
@@ -403,6 +446,8 @@ information or Decisions.
 - Do not resolve contradictions without sufficient authority and evidence.
 - Do not treat Assumptions, Options, preferences, or proposed Scope as
   approved direction.
+- Do not expose source analysis, traceability, normalization status, opposing
+  formulations, or decision history in the standard Canvas.
 - Do not modify the Canonical Domain Model, Knowledge Model, Project Model,
   or localized terminology.
 - Do not depend on development-only resources or a platform-specific

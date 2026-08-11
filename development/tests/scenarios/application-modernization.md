@@ -48,11 +48,13 @@ it for `project-design` when orchestration or a shared contract changes.
   operation remain Transition considerations rather than approved plans.
 - Historical Decisions are not assumed to remain binding when applicability
   is unknown.
-- The reopening contradiction and Central Intake divergence remain visible.
+- Reopening and Central Intake differences remain internal; when they require
+  an immediate Decision, the Canvas asks a concise question without narrating
+  the contradiction.
 - Current production deficiencies remain confirmed Issues; uncertain migration
   or continuity outcomes remain Risks.
-- Questions are classified according to their impact on functional design,
-  technical design, backlog preparation, or overall progress.
+- Questions are selected internally by their downstream impact and displayed
+  without classification labels.
 - Success Criteria preserves known continuity and outcome directions but does
   not invent adoption, quality, security, or migration targets.
 - Recommended next steps prioritize current-state validation, transition
@@ -64,8 +66,7 @@ it for `project-design` when orchestration or a shared contract changes.
 
 - Existing, Target, and Transition content remains visibly distinct in the
   final document.
-- Migration Options, historical Decisions of uncertain applicability, current
-  Issues, and future Risks retain their qualifications.
-- Page or table layout does not disconnect evidence from the statement it
-  supports.
+- Migration Options and historical Decisions of uncertain applicability do
+  not define the current Project. Current Issues and validated Risks remain.
+- Page or table layout does not add evidence or history to the Canvas.
 - The requested format is native and verified.

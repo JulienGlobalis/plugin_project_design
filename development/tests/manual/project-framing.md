@@ -52,9 +52,10 @@ Use this prompt after the selected case has produced its Project Canvas:
 
 ```text
 Use document-project-canvas to transform the supplied validated Project
-Canvas into a final Project Canvas document in [format]. Preserve every
-material statement, status, lifecycle perspective, contradiction, Decision,
-question classification, readiness qualification, and traceability reference.
+Canvas into a final Project Canvas document in [format]. Preserve the ten
+business sections and every current validated statement, Decision, concise
+decision question, and `To be defined` gap. Do not add source identifiers,
+normalization statuses, contradiction narratives, or arbitration history.
 Apply the default professional structure unless a compatible template is also
 supplied. Do not add, remove, resolve, approve, or reinterpret project
 knowledge. Verify the finished document before delivery.
@@ -121,18 +122,19 @@ preserving material conflicts and refusing unsupported Decisions.
 
 ```text
 Use project-framing to produce an English Project Canvas from all supplied
-sources. Preserve every material contradiction, separate authoritative
-Decisions from preferences and assumptions, keep MVP and outside-MVP scope
-unresolved where necessary, and classify the Decisions or information needed
-before functional design, technical design, and backlog preparation.
+sources. Present only the current validated position. State authoritative
+Decisions directly, omit preferences and assumptions, and turn only Decisions
+needed before functional design, technical design, or backlog preparation into
+concise questions. Keep source analysis out of the Canvas.
 ```
 
 **Expected controls:**
 
 - all ten Canvas sections are present;
-- two-, three-, five-, and seven-year retention positions remain visible;
+- competing retention positions remain internal and produce one concise
+  Decision question when required;
 - access, approval, response time, reporting, rollout, cutover, dates, and
-  priority conflicts are not silently resolved;
+  priority conflicts are neither silently resolved nor narrated in the Canvas;
 - identity and interface assumptions are not promoted to business Decisions;
 - success criteria do not reuse conflicting targets as approved measures;
 - downstream readiness is qualified by the unresolved authority and Scope.
@@ -163,9 +165,9 @@ keeping the Canvas at framing level.
 ```text
 Use project-framing to produce an English Project Canvas for this
 modernization. Distinguish Existing, Target, and Transition information,
-separate confirmed Issues from Risks, preserve contradictions and the unknown
-applicability of historical Decisions, and stop before detailed functional or
-technical design. State the readiness of each downstream step.
+separate confirmed Issues from Risks, present only currently applicable
+Decisions, and stop before detailed functional or technical design. Express
+only consequential undecided matters as concise questions.
 ```
 
 **Expected controls:**
@@ -175,7 +177,8 @@ technical design. State the readiness of each downstream step.
   distinct from target outcomes;
 - migration, rollback, archive, training, adoption, and parallel operation
   remain Transition concerns or Options rather than an approved plan;
-- the reopening and Central Intake contradictions remain visible;
+- reopening and Central Intake differences remain internal and become concise
+  Decision questions only if they condition downstream design;
 - no target modules, architecture, technology stack, or MVP sequence is
   invented;
 - known continuity and service expectations are preserved without inventing
@@ -244,11 +247,10 @@ the repository.
 ```text
 Use project-framing on all supplied project sources. Produce the Project
 Canvas in the project language for [audience] so it can support [review
-purpose]. Preserve source traceability, contradictions, uncertainty, MVP and
-outside-MVP distinctions, known business and technical constraints, Decisions,
-Risks, questions, and success criteria. Classify each important question and
-state downstream readiness. Do not perform detailed functional or technical
-design and do not invent missing content.
+purpose]. Present only the current validated position, with validated MVP and
+authorized outside-MVP distinctions, known constraints, Decisions, Risks,
+essential decision questions, and success criteria. Keep traceability and
+source analysis internal. Do not perform detailed design or invent content.
 ```
 
 Replace `[audience]` and `[review purpose]` with the actual controlled test
@@ -257,7 +259,7 @@ context.
 **Expected controls:**
 
 - the Canvas can be reviewed without repeating the complete source analysis;
-- every important source statement is represented once and remains traceable;
+- every current validated project statement is represented once;
 - explicit gaps are understandable and do not make the document unusable;
 - the Canvas supports a concrete functional or technical next step;
 - the level of detail is useful without becoming a specification;
@@ -308,18 +310,18 @@ Enter one allowed result and concise evidence or reservations for every row.
 | The primary output is a Project Canvas | La sortie principale est un Project Canvas | Use `project-framing` on all supplied sources and produce a structured Project Canvas, not a free-form report. |  |  |
 | All ten required sections are present or explicitly insufficiently informed | Les dix sections obligatoires sont présentes ou explicitement signalées comme insuffisamment renseignées | Produce the ten-section Project Canvas and keep every unsupported or missing section explicitly visible. |  |  |
 | The Canvas clarifies the expression of need instead of only summarizing sources | Le Canvas clarifie l'expression de besoin au lieu de seulement résumer les sources | Clarify the business problem, objectives, value, and boundaries from the supplied sources instead of only summarizing them. |  |  |
-| Content remains faithful and traceable to source material | Le contenu reste fidèle et traçable aux sources | Preserve source fidelity and provide concise traceability for every material Canvas statement. |  |  |
+| Content remains faithful while traceability stays internal | Le contenu reste fidèle tandis que la traçabilité reste interne | Preserve source fidelity during analysis but do not display source identifiers or evidence references in the standard Canvas. |  |  |
 | No unsupported information is invented | Aucune information non étayée n'est inventée | Do not invent missing owners, dates, measures, budgets, Constraints, Requirements, or Decisions; expose them as gaps or questions. |  |  |
 | Objectives and expected value are correct and distinct | Les objectifs et la valeur attendue sont corrects et distincts | Separate supported Objectives from expected value and do not turn benefits into unsupported commitments. |  |  |
 | Project Stakeholders and users are correctly distinguished | Les parties prenantes du projet et les utilisateurs sont correctement distingués | Distinguish Project Stakeholders, authority, contributors, direct users, and indirect users from the supplied evidence. |  |  |
-| MVP, outside MVP, explicit exclusions, future Options, and unresolved Scope are distinct | Le MVP, le hors MVP, les exclusions explicites, les options futures et le périmètre non résolu sont distincts | Separate MVP, Outside MVP, explicit exclusions, future Options, and Unresolved Scope without inventing approval. |  |  |
+| Validated MVP and authorized exclusions are distinct | Le MVP validé et les exclusions autorisées sont distincts | Separate validated MVP from authorized Outside MVP and omit proposed or undecided Capabilities. |  |  |
 | Known business and technical Constraints are represented without detailed design | Les contraintes métier et techniques connues sont représentées sans conception détaillée | Represent known business and technical Constraints at framing level and stop before detailed solution design. |  |  |
 | Existing, Target, and Transition are correctly distinguished | L'existant, la cible et la transition sont correctement distingués | Distinguish Existing, Target, and Transition information wherever mixing them would change meaning. |  |  |
 | Decisions remain distinct from Assumptions, preferences, and proposals | Les décisions restent distinctes des hypothèses, préférences et propositions | Keep authoritative Decisions separate from Assumptions, preferences, proposals, and Options. |  |  |
 | Risks and confirmed Issues are correctly distinguished | Les risques et les problèmes avérés sont correctement distingués | Separate uncertain Risks from confirmed current Issues and retain their supported impacts. |  |  |
-| Established, Provisional, and Unresolved statuses remain visible | Les statuts Établi, Provisoire et Non résolu restent visibles | Preserve Established, Provisional, and Unresolved status for every material statement where status affects use. |  |  |
-| Contradictions remain visible without unsupported resolution | Les contradictions restent visibles sans résolution non étayée | Expose every material contradiction and do not resolve it without sufficient evidence and authority. |  |  |
-| Questions are project-specific, useful, and classified by impact | Les questions sont propres au projet, utiles et classées selon leur impact | Produce project-specific Open Questions and classify each by downstream impact and known decision authority. |  |  |
+| Normalization statuses stay out of the standard Canvas | Les statuts de normalisation restent hors du Canvas standard | Verify that Established, Provisional, Unresolved and their French equivalents do not appear in the standard Canvas. |  |  |
+| Contradictions stay internal | Les contradictions restent internes | Preserve contradictions during analysis; display only an authorized current result or one concise Decision question. |  |  |
+| Questions are concise and condition downstream design | Les questions sont concises et conditionnent la conception suivante | Keep only project-specific Decisions required for functional design, technical design, or backlog preparation. |  |  |
 | Success criteria are supported or explicitly unresolved without invented thresholds | Les critères de succès sont étayés ou explicitement non résolus sans seuil inventé | Include only source-supported success criteria and leave missing measures or thresholds explicitly unresolved. |  |  |
 | The Canvas remains outside detailed functional and technical design | Le Canvas reste en dehors de la conception fonctionnelle et technique détaillée | Produce framing only; do not create detailed features, journeys, architecture, APIs, components, or backlog items. |  |  |
 | French terminology is natural and professionally appropriate when requested | La terminologie française est naturelle et adaptée à un contexte professionnel lorsqu'elle est demandée | Produce the Canvas in natural professional French while preserving canonical distinctions and project-specific terms. |  |  |
@@ -328,8 +330,8 @@ Enter one allowed result and concise evidence or reservations for every row.
 | Backlog-preparation readiness is stated and justified | La capacité à préparer le backlog est indiquée et justifiée | State and justify whether backlog preparation can start without pretending that insufficiently designed Scope is ready. |  |  |
 | The Canvas is usable despite explicit non-blocking unknowns | Le Canvas reste exploitable malgré des inconnues non bloquantes explicites | Produce a useful first Canvas despite non-blocking unknowns and identify only the questions that truly block progress. |  |  |
 | Later adjustments can be traced and do not silently rewrite validated information | Les ajustements ultérieurs peuvent être tracés et ne réécrivent pas silencieusement les informations validées | Revise the supplied Canvas from new founded evidence, trace the adjustment, and never silently rewrite validated information or Decisions. |  |  |
-| The final document preserves every material Canvas element without changing business meaning | Le document final préserve chaque élément matériel du Canvas sans modifier le sens métier | Use `document-project-canvas` on the validated Canvas and preserve every material element, status, contradiction, question, readiness qualification, and traceability reference. |  |  |
-| The ten sections, explicit gaps, statuses, contradictions, Decisions, and questions remain visible in the document | Les dix sections, les lacunes explicites, les statuts, les contradictions, les décisions et les questions restent visibles dans le document | Produce the final document with all ten sections and keep every explicit gap, status, contradiction, Decision, and question visible. |  |  |
+| The final document preserves the current Canvas without adding audit content | Le document final préserve le Canvas courant sans ajouter de contenu d'audit | Preserve every current validated element, Decision, concise question, and `To be defined` gap without adding statuses, sources, or history. |  |  |
+| The ten sections and current business position remain visible | Les dix sections et la position métier courante restent visibles | Produce the final document with all ten sections and keep Decisions, essential questions, and brief gaps visible. |  |  |
 | The document hierarchy, registers, and tables are readable and consistent | La hiérarchie, les registres et les tableaux du document sont lisibles et cohérents | Apply the default professional structure in `[format]` and verify headings, registers, lists, and tables for readability. |  |  |
 | No title metadata, template field, summary, owner, date, or approval is invented | Aucun titre, champ de template, résumé, responsable, date ou approbation n'est inventé | Apply the supplied template or default structure without inventing metadata, summaries, owners, dates, approvals, or missing content. |  |  |
 | The requested format is native and verified rather than simulated | Le format demandé est natif et vérifié plutôt que simulé | Produce the Project Canvas document in `[format]` and verify the actual native Markdown, Word, or Google Docs result before delivery. |  |  |

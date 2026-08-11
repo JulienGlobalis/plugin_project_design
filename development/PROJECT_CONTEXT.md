@@ -1131,6 +1131,41 @@ méthodologie des skills futurs.
   trois skills documentaires encore futurs avant d'annoncer ces formats comme
   disponibles.
 
+## Itération 8.11 — Project Canvas orienté état courant
+
+Décision méthodologique durable du 2026-08-11 : le Project Canvas standard est
+un document métier court qui définit uniquement la position courante validée
+du projet. Les dix parties restent obligatoires et le chemin canonique reste
+`_project-design/project-canvas.md`.
+
+La traçabilité, les identifiants de sources, les statuts de normalisation, les
+formulations contradictoires et l'historique d'arbitrage restent disponibles
+pendant l'analyse dans le Knowledge Model et le Project Model. Ils ne sont pas
+projetés dans le Canvas standard. Une restitution d'audit doit être demandée
+explicitement et produite séparément, par défaut dans
+`_project-design/project-canvas-audit.md`.
+
+Règles de projection validées :
+
+- afficher directement le résultat d'une décision autorisée ;
+- exclure les hypothèses, préférences, propositions et capacités simplement
+  proposées de la définition courante du projet ;
+- transformer un point indispensable non décidé en question concise seulement
+  s'il conditionne la conception fonctionnelle, technique ou le backlog ;
+- écrire `À définir` lorsqu'une partie obligatoire manque d'information
+  validée et ne justifie pas une question de décision ;
+- privilégier les phrases et puces courtes, sans tableau de statut, de preuve
+  ou d'historique.
+
+`project-framing` passe en méthodologie 0.3. La machine d'état, le workflow de
+validation humaine et les modèles partagés n'ont pas été modifiés. Les 33
+tests automatisés, le validateur Skill Creator et le validateur Plugin Creator
+passent. Le rapport est conservé dans
+`development/tests/executions/2026-08-11-project-canvas-current-view-review.md`.
+
+Les modifications de cette itération sont livrées sur `main`. Le bundle source
+n'a pas été réinstallé dans le cache Codex après cette évolution.
+
 ## Prompt de reprise
 
 ```text

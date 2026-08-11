@@ -4,40 +4,25 @@ Use this reference to organize the required Project Canvas business content.
 The content contract remains defined by
 [the Project Canvas reference](project-canvas.md).
 
-## Contents
-
-- [Structure principles](#structure-principles)
-- [Review context](#review-context)
-- [Section organization](#section-organization)
-- [Registers and tables](#registers-and-tables)
-- [Question classification](#question-classification)
-- [Readiness statement](#readiness-statement)
-- [Status and language](#status-and-language)
-
 ## Structure Principles
 
-- Represent every required Canvas section or state explicitly that its
-  information is insufficient.
-- Use the required order unless another order clearly improves readability.
+- Represent all ten required sections in their required order.
+- Write `To be defined` when an indispensable section has no validated content.
 - Keep Existing, Target, and Transition visibly distinct for modernization or
   replacement.
-- Keep MVP, outside MVP, explicit exclusions, future Options, and unresolved
-  Scope distinct.
-- Prefer one concise uncertainty or question register over repeated warnings.
-- Preserve a compact source basis for material statements.
+- Keep validated MVP and authorized exclusions distinct.
+- Omit proposals, assumptions, and non-authorized Options from the project
+  definition.
+- Keep only concise Questions that condition a downstream stage.
 - Avoid repeating the same fact in an executive summary and every section.
-- Keep the default Canvas concise enough for stakeholder review while
-  retaining the information needed by downstream skills.
+- Prefer short paragraphs and bullets; avoid tables when they add no material
+  clarity.
+- Keep evidence and analysis mechanics outside the standard Canvas.
 
 ## Review Context
 
-Start with the project name and, when known:
-
-- Canvas purpose and intended audience;
-- requested language;
-- source or Project View baseline;
-- review date or context;
-- explicit warning that provisional or unresolved information remains.
+Start with the project name. Add only a short business-oriented opening when
+it improves comprehension.
 
 Do not publish a maturity, completeness, or reliability percentage.
 
@@ -55,8 +40,8 @@ comparison.
 
 ### Objectives and Expected Value
 
-Keep Objectives with different statuses, owners, or measures distinct. Keep
-unapproved value claims and missing success measures explicit.
+Present validated Objectives and value. Use `To be defined` for an
+indispensable missing measure; do not expose status mechanics.
 
 ### Project Stakeholders and Users
 
@@ -66,14 +51,14 @@ system interaction.
 
 ### Functional Scope
 
-Always display MVP, Outside MVP, and Unresolved Scope separately. A status
-column is useful when authority is material.
+Display validated MVP content and authorized Outside MVP content separately.
+Do not create an Unresolved Scope register; move only a consequential decision
+need to Questions.
 
 ### Technical Constraints
 
-List known framing-time Constraints and their source or qualification. State
-that the section is unresolved when no technical Constraint was supplied;
-do not fill it with design recommendations.
+List validated framing-time Constraints. Write `To be defined` when none is
+available; do not fill the section with design recommendations.
 
 ### Risks
 
@@ -83,71 +68,32 @@ improves clarity.
 
 ### Decisions
 
-Use a Decision register when authority, date, applicability, alternatives, or
-consequences require comparison. Keep unresolved Options outside the Decision
-list.
+State each current Decision result directly. Do not display authority history,
+dates, former alternatives, rejected formulations, or source references.
 
 ### Questions
 
-Use a register that makes impact classification and the next clarification
-action visible. Do not name an owner or date when unknown.
+Use a short bullet list. Retain only Decisions required before functional
+design, technical design, or backlog preparation, without displaying an
+impact-classification label.
 
 ### Success Criteria
 
-Present supported criteria and explicitly identify missing baselines,
-measures, targets, or approval. Never add numeric thresholds to make the
-section look complete.
+Present validated criteria. Write `To be defined` when indispensable criteria
+are unavailable. Never add numeric thresholds to make the section look
+complete.
 
-## Logical Registers
+## Registers and Tables
 
-Use only the logical registers that improve review. Their final document
-representation belongs to `document-project-canvas`.
-
-### Scope Register
-
-| Area | Position | Status | Basis or qualification |
-| --- | --- | --- | --- |
-| Example | MVP, outside MVP, or unresolved | Established, Provisional, or Unresolved | Source, authority, or condition |
-
-### Participant Register
-
-| Party or role | Stakeholder interest or authority | User or Actor interaction | Status or gap |
-| --- | --- | --- | --- |
-| Example | Known governance role | Known system role | Established, provisional, or unresolved |
-
-### Constraint Register
-
-| Constraint | Domain | Status or applicability | Basis |
-| --- | --- | --- | --- |
-| Concise statement | Business, organizational, regulatory, or technical | Qualification | Source |
-
-### Decision Register
-
-| Decision | Authority and date | Consequence | Status or applicability | Basis |
-| --- | --- | --- | --- | --- |
-| Concise authoritative choice | Known or not supplied | Framing impact | Established, provisional, or unresolved applicability | Source |
-
-### Risk and Issue Register
-
-| Type | Statement | Potential or observed effect | Basis |
-| --- | --- | --- | --- |
-| Risk or confirmed Issue | Concise statement | Do not invent severity | Source |
-
-### Question Register
-
-| Question | Why it matters | Classification | Owner or authority | Next action |
-| --- | --- | --- | --- | --- |
-| Project-specific question | Decision or design impact | Blocking, functional, technical, backlog, or deferrable | Known or unresolved | Practical action |
-
-### Success Register
-
-| Criterion or direction | Measure or evidence | Status | Gap or next clarification |
-| --- | --- | --- | --- |
-| Source-supported result | Known or unresolved | Established, Provisional, or Unresolved | Do not invent a target |
+Do not use a register by default. Prefer a few bullets or sentences. A table is
+acceptable only when several current validated items share dimensions that a
+reader must compare. Never create columns for status, source, evidence,
+authority history, contradictions, or arbitration history.
 
 ## Question Classification
 
-Use these meanings:
+Use these meanings internally to decide whether a Question belongs in the
+Canvas; do not display the classification label by default:
 
 - **Blocking further progress:** a reliable shared frame or any responsible
   next design work cannot continue without the answer.
@@ -159,39 +105,27 @@ Use these meanings:
   feasibility cannot be designed responsibly without the answer.
 - **Required before backlog preparation:** validated Scope, ordering inputs,
   or traceability is insufficient for backlog transformation.
-- **Deferrable:** the answer is useful later and does not currently change a
-  framing or downstream decision.
+- **Deferrable:** omit it from the standard Canvas because it does not
+  currently change a framing or downstream decision.
 
-A question may carry more than one classification. Do not call every unknown
-item blocking. Explain the consequence of delay.
+A question may affect more than one stage. Keep its wording direct and do not
+narrate the source disagreement or clarification history.
 
 ## Readiness Statement
 
-End with a short downstream-readiness statement when the next use matters.
-Assess `functional-design`, `technical-design`, and backlog preparation
-separately. State:
-
-- what can proceed;
-- which explicit gaps qualify or block it;
-- which Canvas information should be handed off;
-- why the next stage need not repeat the complete framing effort.
-
-Do not claim that the Project is universally complete or publish a numeric
-reliability score.
+Do not add an eleventh Canvas section. Report downstream readiness separately
+in the interaction when useful. The Questions section itself carries the
+decisions that condition the next stages.
 
 ## Status and Language
 
 Use internal English canonical references for reasoning. Present natural
 labels in the requested output language.
 
-For English, use `Established`, `Provisional`, and `Unresolved` when status
-labels are useful.
-
-For French, use `Établi`, `Provisoire`, and `Non résolu` where explicit status
-is needed, but prefer natural prose in client-facing passages. For example,
-`Problème avéré` is a precise register label for `Issue`; use `problème
-constaté` in prose when it reads more naturally and preserves the same
-meaning.
+Use `Established`, `Provisional`, and `Unresolved` internally when normalizing
+information. Never display these labels, or their French equivalents `Établi`,
+`Provisoire`, and `Non résolu`, in the standard Canvas. Express only the
+current validated meaning in natural business language.
 
 Never translate a project-specific Domain Term without source or approved
 glossary authority.

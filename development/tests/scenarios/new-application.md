@@ -65,8 +65,8 @@ it for `project-design` when orchestration or a shared contract changes.
 
 - The final document preserves the requested language and natural French
   terminology without changing project-specific Domain Terms.
-- Proposed MVP, explicit exclusions, future Options, and Unresolved Scope
-  remain distinct in the documentary layout.
+- Validated MVP and authorized exclusions remain distinct; proposed
+  Capabilities and future Options do not define the Project.
 - Supplied service targets remain separate from missing business baselines and
   no presentation placeholder becomes project knowledge.
 - The requested format is native and verified.

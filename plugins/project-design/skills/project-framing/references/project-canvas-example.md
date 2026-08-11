@@ -1,85 +1,64 @@
 # Short Fictional Project Canvas Example
 
-This example demonstrates structure and status handling only. It is not a
-Golden Output, fixture result, or source of reusable project facts.
+This example demonstrates the standard current-state business view. It is not
+a Golden Output, fixture result, or source of reusable project facts.
 
-## Project Canvas — Community Room Booking
+## Project Canvas — Muzzo
 
-### 1. Business Context
+### 1. Contexte métier
 
-The fictional North Quay Community Centre currently accepts room requests by
-email. Staff manually reconcile availability, which causes confirmed double
-bookings. The current handling is **Established (Existing)** from the supplied
-operations note.
+Le centre associatif gère actuellement les demandes de réservation de salles
+par courriel. Le rapprochement manuel des disponibilités provoque des doubles
+réservations.
 
-### 2. Objectives and Expected Value
+### 2. Objectifs et valeur attendue
 
-- **Established:** reduce confirmed double bookings.
-- **Provisional:** give community groups visibility of request status.
-- No approved baseline or numeric target was supplied.
+- Réduire les doubles réservations confirmées.
+- Donner aux associations une visibilité sur le traitement de leur demande.
 
-### 3. Project Stakeholders
+### 3. Parties prenantes
 
-| Party | Role or authority | Status |
-| --- | --- | --- |
-| Centre manager | Sponsor and scope authority | Established |
-| Facilities team | Maintains rooms and closures | Established |
-| Data-protection contact | Required contributor; person not identified | Unresolved |
+- La direction du centre porte le projet et décide du périmètre.
+- L'équipe d'accueil traite les demandes.
+- L'équipe logistique tient les disponibilités des salles à jour.
 
-### 4. Users
+### 4. Utilisateurs
 
-- Community coordinators submit booking requests.
-- Reception staff review requests and record decisions.
-- The needs of occasional external organizers are not sufficiently described.
+- Les responsables associatifs déposent une demande de réservation.
+- Les agents d'accueil examinent la demande et enregistrent la réponse.
 
-### 5. Functional Scope
+### 5. Périmètre fonctionnel
 
 #### MVP
 
-- **Provisional:** request submission, availability review, staff decision,
-  and status visibility.
+- Dépôt d'une demande de réservation.
+- Consultation des disponibilités.
+- Acceptation ou refus par un agent.
+- Consultation de l'état de la demande.
 
 #### Outside MVP
 
-- **Established exclusion:** online payments.
-- **Future Option:** automated access-code delivery.
+- Les paiements en ligne sont exclus du MVP.
 
-#### Unresolved Scope
+### 6. Contraintes techniques
 
-- Recurring bookings require a decision before functional design.
+À définir.
 
-### 6. Technical Constraints
+### 7. Risques
 
-- **Established:** staff sign-in must use the existing organizational identity
+- Des disponibilités incorrectes peuvent encore provoquer des doubles
+  réservations.
+
+### 8. Décisions
+
+- Le nom officiel est Muzzo.
+- Les paiements en ligne sont exclus du MVP.
+
+### 9. Questions à décider
+
+- Quel mode d'approbation des demandes doit être retenu pour le MVP ?
+
+### 10. Critères de succès
+
+- Le nombre de doubles réservations confirmées diminue après la mise en
   service.
-- Hosting and integration constraints were not supplied.
-
-### 7. Risks
-
-- **Risk:** incorrect room data could continue to permit conflicting bookings.
-- **Confirmed Issue:** double bookings already occur; this is not a Risk.
-
-### 8. Decisions
-
-- Online payments are excluded from the MVP by the centre manager.
-- No architecture or technology Decision has been made.
-
-### 9. Questions
-
-| Question | Why it matters | Classification |
-| --- | --- | --- |
-| Are recurring bookings included? | Changes Processes and Scope | Required before functional design |
-| What room system, if any, must be integrated? | Changes technical feasibility | Required before technical design |
-| Who approves retention rules? | Required for responsible delivery | Blocking further progress |
-
-### 10. Success Criteria
-
-- Fewer confirmed double bookings is the source-supported success direction.
-- Baseline, measure, and target are **Unresolved** and must not be invented.
-
-## Downstream Readiness
-
-The Canvas can start functional discussion of the established booking flow,
-but recurring-booking Scope remains unresolved. Technical design should wait
-for the existing-system question. Backlog preparation is not yet responsible
-because the MVP boundary is incomplete.

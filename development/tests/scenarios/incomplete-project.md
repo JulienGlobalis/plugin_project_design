@@ -43,19 +43,20 @@ unsupported invention changes.
   security, support, legal, and data-governance representation stays visible.
 - Users are not silently normalized across ambiguous requester, volunteer,
   coordinator, service-team, and site terms.
-- MVP, Outside MVP, and Unresolved Scope remain explicit; no complete split is
-  invented from the preliminary capability list.
+- Validated MVP and authorized Outside MVP remain explicit; preliminary or
+  undecided Capabilities are omitted and no complete split is invented.
 - Technical Constraints include only known environment or preferences and do
   not become a technical architecture.
-- Final scope, ownership, terminology, success criteria, service targets,
-  integrations, and governance remain provisional or unresolved.
+- Indispensable missing scope, ownership, terminology, success criteria,
+  service targets, integrations, and governance use `To be defined` or a
+  concise Decision question.
 - Confirmed current handling problems remain distinct from future Risks.
 - The Decisions section does not promote service-manager preferences to
   authoritative Decisions.
 - Ambiguous terms such as request, ticket, case, requester, and site are not
   normalized silently.
-- Questions use blocking, functional-design, technical-design,
-  backlog-preparation, or deferrable classifications.
+- Questions are limited to Decisions conditioning functional design, technical
+  design, or backlog preparation; classification labels remain internal.
 - Recommended next steps prioritize scope authority, participant coverage,
   terminology, and critical information requirements without inventing a
   delivery plan.
@@ -68,7 +69,8 @@ unsupported invention changes.
 
 - The final document preserves all explicit gaps and does not fill empty
   sections through presentation content.
-- Ambiguous terms, Provisional positions, and Unresolved Scope remain visible.
+- Ambiguous terms and undecided positions are not presented as defining the
+  Project; indispensable items become concise Questions.
 - The documentary hierarchy makes the ten sections reviewable without adding
   metadata, owners, dates, or approval status.
 - The requested format is native and verified.

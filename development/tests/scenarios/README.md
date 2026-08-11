@@ -5,6 +5,7 @@ wording or platform-specific behavior.
 
 - [Incomplete information](incomplete-project.md)
 - [Contradictory information](contradictory-project.md)
+- [Current-view Canvas contract](project-canvas-current-view.md)
 - [Application modernization](application-modernization.md)
 - [New application](new-application.md)
 

@@ -35,23 +35,21 @@ decision handling changes.
 
 - The primary output is a Project Canvas with all ten required sections.
 - The Canvas remains coherent without selecting a winner for unresolved
-  conflicts.
-- Retention alternatives of two, three, five, and seven years remain visible.
-- Approval, eligibility, response target, reporting interface, rollout,
-  cutover, launch date, and priority conflicts remain visible.
-- Established project context is separated from provisional or unresolved
-  direction.
+  conflicts or narrating their opposing formulations.
+- Conflicting retention, approval, eligibility, response, reporting, rollout,
+  cutover, launch-date, and priority positions become concise Decision
+  questions only when they condition a downstream stage.
+- Only the current validated project context defines the Project.
 - Stakeholders remain distinct from employee and partner user populations.
-- MVP, Outside MVP, and Unresolved Scope do not select conflicting access,
+- MVP and Outside MVP contain no conflicting or merely proposed access,
   approval, reporting, historical-data, or rollout positions.
 - Technical identity and interface assumptions remain technical Constraints,
   Assumptions, or Options rather than business Decisions.
 - Risks remain distinct from current Issues and no severity is invented.
 - The Decisions section contains only authoritative positions whose current
   applicability is supportable; conflicting preferences remain outside it.
-- Clarification requests identify the required decision or authority when
-  known, use the required impact classifications, and do not ask for details
-  already supplied.
+- Clarification requests identify the required Decision concisely and do not
+  display source identifiers, conflict history, or status labels.
 - Success Criteria does not invent targets from conflicting response times,
   delivery dates, or retention positions.
 - The next steps focus on governance and conflict resolution rather than
@@ -61,10 +59,7 @@ decision handling changes.
 
 ## Document Project Canvas-Specific Observations
 
-- The final document preserves every material opposing position and its
-  qualification without selecting or visually privileging a winner.
-- Decision, Assumption, Option, and unresolved-conflict presentation remains
-  distinct and readable.
-- Tables do not merge conflicting retention, access, approval, rollout,
-  cutover, response, or priority positions.
+- The final document preserves the current business position without adding
+  opposing formulations, source references, or analysis history.
+- Concise Decision questions remain readable without an audit register.
 - The requested format is native and verified.

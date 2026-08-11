@@ -22,12 +22,13 @@
       informed.
 - [ ] Project Stakeholders is present or explicitly insufficiently informed.
 - [ ] Users is present or explicitly insufficiently informed.
-- [ ] Functional Scope is present and separates MVP, Outside MVP, and
-      Unresolved Scope.
+- [ ] Functional Scope is present and separates validated MVP content from
+      authorized Outside MVP content.
 - [ ] Technical Constraints is present or explicitly insufficiently informed.
 - [ ] Risks is present or explicitly insufficiently informed.
 - [ ] Decisions is present or explicitly insufficiently informed.
-- [ ] Questions is present and uses the required impact classifications.
+- [ ] Questions is present and contains only Decisions that condition
+      functional design, technical design, or backlog preparation.
 - [ ] Success Criteria is present or explicitly insufficiently informed.
 
 ## Content and Semantic Quality
@@ -42,8 +43,9 @@
 - [ ] Stakeholders remain distinct from Actors and users.
 - [ ] User populations, roles, Needs, rights, and responsibilities are not
       enriched beyond the evidence.
-- [ ] MVP, explicit exclusions, deferred items, future Options, and unresolved
-      boundaries remain distinct.
+- [ ] Validated MVP content and authorized exclusions remain distinct.
+- [ ] Proposed Capabilities and undecided Options are not presented as part of
+      the validated Project.
 - [ ] No MVP or outside-MVP classification is invented.
 - [ ] Business and technical Constraints remain distinct from preferences and
       proposed designs.
@@ -53,37 +55,38 @@
 - [ ] Risks remain distinct from confirmed Issues.
 - [ ] Success criteria, measures, baselines, and targets are not invented.
 
-## Information Quality and Traceability
+## Current Position and Internal Traceability
 
-- [ ] Established, Provisional, and Unresolved information is presented
-      according to the Project Model.
+- [ ] The standard Canvas presents only the current validated position.
+- [ ] `Established`, `Provisional`, `Unresolved`, `Établi`, `Provisoire`, and
+      `Non résolu` do not appear in the standard Canvas.
 - [ ] Facts, interpretations, Assumptions, proposals, Decisions, and Open
       Questions are not conflated.
-- [ ] Contradictory information remains visible unless an authorized,
-      traceable resolution exists.
-- [ ] Material statements remain traceable through Project Model information
-      and Knowledge Basis to source locations.
+- [ ] A resolved conflict is represented only by the current Decision result.
+- [ ] An indispensable unresolved conflict becomes one concise Decision
+      question without a contradiction narrative.
+- [ ] Source identifiers, evidence references, and arbitration history remain
+      internal and do not appear in the standard Canvas.
+- [ ] A requested audit restitution is produced separately from the Canvas.
 - [ ] Source absence is not presented as proof that information does not
       exist.
 - [ ] No owner, date, volume, priority, Constraint, Business Rule,
       Requirement, Decision, value claim, or success criterion is invented.
-- [ ] Required sections with material gaps state those gaps explicitly rather
-      than receiving generic filler.
+- [ ] Required sections with material gaps use a brief `To be defined` rather
+      than generic filler.
 
 ## Questions and Downstream Readiness
 
 - [ ] Every unresolved question is concrete, project-specific, and
       actionable.
-- [ ] Questions are classified as blocking, required before functional
-      design, required before technical design, required before backlog
-      preparation, or deferrable.
-- [ ] A question may identify multiple affected stages when justified.
-- [ ] Deferrable questions are not presented as immediate blockers.
+- [ ] Question impact is classified internally; status labels are not displayed
+      in the standard Canvas.
+- [ ] Deferrable questions are omitted from the standard Canvas.
 - [ ] Question priority reflects decision impact, Risk, and dependency rather
       than missing detail alone.
-- [ ] Owners or authorities are named only when known.
-- [ ] The Canvas states whether functional design, technical design, and
-      backlog preparation can proceed and which gaps qualify them.
+- [ ] Owners or authorities are named only when useful and known.
+- [ ] Downstream readiness, when useful, is reported outside the ten Canvas
+      sections.
 - [ ] Readiness is qualitative and purpose-specific; no artificial 80-90%
       score or universal completeness claim is produced.
 - [ ] The Canvas remains usable by the next applicable stage despite explicit
@@ -117,8 +120,8 @@
       Risk, or handoff.
 - [ ] Functional, technical, backlog, and document work is handed off without
       being executed.
-- [ ] Any later Canvas adjustment is traceable, justified, limited, and does
-      not silently rewrite validated information or Decisions.
+- [ ] Any later Canvas adjustment replaces the visible current position while
+      its evidence and history remain internal or in a separate audit output.
 - [ ] The skill remains independently callable, Spec Kit independent, and
       free of runtime dependency on development-only resources.
 - [ ] The Canonical Domain Model, Knowledge Model, Project Model, and localized
