@@ -11,8 +11,8 @@ business methodology or the three remaining document placeholders.
 
 | Skill | Status in version 0.1.0 | Capability statement |
 | --- | --- | --- |
-| `project-design` | Stateful guided entry version 0.2 | Presents skills, obtains consent, initializes the workspace, persists and enforces phases, proposes `project-framing`, and hands off; complete routing is not implemented |
-| `project-framing` | Implemented methodology version 0.2 | Produces the ten-section Project Canvas business artefact; manual user validation remains pending |
+| `project-design` | Stateful guided entry version 0.4 | Presents skills, obtains consent, initializes the workspace, persists and enforces phases including pending framing answers, proposes `project-framing`, and hands off; complete routing is not implemented |
+| `project-framing` | Implemented methodology version 0.4 | Produces the ten-section Project Canvas business artefact and maintains complete necessary question batches; manual user validation remains pending |
 | `functional-design` | Installed placeholder | Future structured functional-design methodology |
 | `technical-design` | Installed placeholder | Future complementary or parallel technical-design methodology |
 | `product-backlog` | Installed placeholder | Future transformation of designed and validated Scope into traceable backlog items |
@@ -71,8 +71,11 @@ architecture-stabilizing placeholders and provide no operational capability.
   out of the state file.
 - Make `project-framing` present the ten Canvas chapters, resolve optional
   Word or Google Docs delivery, accept a prompt description or sources, and
-  co-construct the Canvas in question-and-answer rounds of at most three
-  questions.
+  co-construct the Canvas through explicit question batches containing every
+  necessary non-duplicated decision question.
+- Persist question-batch control counts without business text, resume pending
+  questions from the Canvas across conversations, support partial answers and
+  explicit deferrals, and reject premature or ambiguous closure.
 
 ## Out of Scope
 
@@ -181,6 +184,12 @@ verified native Markdown, Microsoft Word, or Google Docs document.
 - Questions are project-specific and classified as blocking, required before
   functional design, required before technical design, required before
   backlog preparation, or deferrable.
+- Every necessary question is written to the Canvas and presented in one
+  explicit batch without a numeric cap; decorative or merely generic
+  questions remain excluded.
+- Pending batches survive conversation changes, partial answers preserve the
+  remaining questions, and only explicit deferrals reduce the pending count.
+- Question, answer, and project text never enters the workflow state.
 - Qualitative 80-90% reliability is not represented as a calculated score.
 - The Canvas states purpose-specific readiness for downstream steps and can
   remain usable despite explicit non-blocking unknowns.

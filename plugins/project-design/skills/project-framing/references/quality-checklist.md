@@ -10,8 +10,9 @@
 - [ ] The skill does not ask for information already available.
 - [ ] A useful first Project Canvas is produced without a preliminary
       questionnaire when the available information permits it.
-- [ ] Any preliminary questions are limited, high-value, and explain why the
-      answer matters.
+- [ ] Any preliminary question batch contains every necessary high-value
+      Decision question, excludes generic or decorative requests, and explains
+      why each answer matters.
 - [ ] The user can continue with an explicitly incomplete Canvas.
 
 ## Required Project Canvas Structure
@@ -79,6 +80,9 @@
 
 - [ ] Every unresolved question is concrete, project-specific, and
       actionable.
+- [ ] Every question presented in an active guided batch exists in the Canvas,
+      answered questions are removed only after their result is incorporated,
+      and pending questions resume without duplication.
 - [ ] Question impact is classified internally; status labels are not displayed
       in the standard Canvas.
 - [ ] Deferrable questions are omitted from the standard Canvas.

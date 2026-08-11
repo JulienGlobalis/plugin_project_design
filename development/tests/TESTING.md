@@ -16,9 +16,11 @@ Tests verify methodological quality, not identical wording. They evaluate:
 - clarity of the pre-execution skill, input, output, and template brief;
 - correct placement of durable Markdown outputs under `_project-design/`;
 - explicit consent before workspace initialization and idempotent creation;
-- default stage selection and focused iterative framing dialogue;
+- default stage selection and explicit resumable framing-question batches;
 - persisted phase transitions that reject skipped or invalid steps;
 - absence of business or source content from the workflow state;
+- partial-answer and explicit-deferral accounting without question or answer
+  text in the workflow state;
 - Canvas and external-document completion gates.
 
 A skill change is incomplete until its affected tests and documentation have

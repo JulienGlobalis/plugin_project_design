@@ -2,9 +2,11 @@
 
 ## Unreleased
 
-- Added a persistent workflow state machine that rejects skipped phases,
-  resumes across conversations, limits framing rounds to three questions, and
-  gates completion on Canvas approval and any requested native document.
+- Added explicit framing-iteration preparation, pending-answer,
+  question-batch closure, and iteration-completion phases so existing Canvas
+  questions resume safely across conversations, partial answers and explicit
+  deferrals remain distinct, and every necessary question can be presented
+  without an arbitrary numeric cap.
 - Added `_project-design/project-design-state.json` for non-business control
   state only, with atomic updates and no project, source, question, answer, or
   Canvas content.

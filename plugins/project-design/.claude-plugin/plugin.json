@@ -1,7 +1,7 @@
 {
   "name": "project-design",
   "version": "0.1.0",
-  "description": "Implemented Project Canvas framing and document restitution, plus separate business-artefact and discipline-specific skill placeholders.",
+  "description": "Implemented Project Canvas framing with resumable question batches and document restitution, plus separate business-artefact and discipline-specific skill placeholders.",
   "author": {
     "name": "Project Design Contributors"
   },

@@ -1,5 +1,29 @@
 # Project Design Checklist
 
+## Implemented Guided Workflow
+
+- [ ] A framing iteration is opened before new analysis or Canvas mutation.
+- [ ] The complete necessary, non-duplicated question batch is written to the
+      Canvas and presented before its count is recorded.
+- [ ] `awaiting_framing_answers` persists across conversations and `status`
+      directs the agent to the existing Canvas questions without creating a
+      batch or iteration.
+- [ ] Question batches may contain any non-negative count; relevance and
+      downstream decision impact, not a numeric ceiling, control inclusion.
+- [ ] Partial answers reduce only the pending count and preserve unanswered
+      Canvas questions.
+- [ ] Deferrals require explicit user intent and remain separate from answers.
+- [ ] A technical transition request or conversation change does not count as
+      an answer or deferral.
+- [ ] A batch cannot close until answers plus explicit deferrals cover every
+      presented question.
+- [ ] A completed batch and a completed iteration are separate transitions.
+- [ ] The state contains only workflow-control metadata and no project
+      description, source content, question text, answer text, or Canvas body.
+- [ ] Migration from older state schemas is idempotent, preserves existing
+      choices and history, and enters cautious recovery when framing state is
+      ambiguous.
+
 ## Forecast Contract — Not Yet Implemented
 
 - [ ] The request is classified as complete workflow, one specialized skill,

@@ -32,7 +32,7 @@ statement, Decision, or other project knowledge.
 | Ordered transitions | PASS | Commands reject unexpected current phases |
 | Resume behavior | PASS | Existing state is returned without reset |
 | Input and template gates | PASS | Missing inputs and invalid local or Drive templates are rejected |
-| Iteration limit | PASS | One to three questions accepted; four rejected |
+| Legacy iteration guard | PASS | The then-current bounded-round rule was enforced; it is superseded by the pending-answer workflow |
 | Canvas gate | PASS | Explicit approval and non-empty Markdown required |
 | Document gate | PASS | Verified Word path or native Google Docs URL required |
 | Skill validation | PASS | All nine skills pass official validation |

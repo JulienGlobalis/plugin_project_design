@@ -32,13 +32,15 @@ During repository validation, also confirm that:
       template choice are resolved before requesting the initial description
       or source documents;
 - [ ] the user may start from a prompt description, source documents, or both;
-- [ ] question-and-answer rounds contain at most three high-value questions,
-      update the Canvas progressively, avoid repetition, and preserve deferred
-      unknowns;
-- [ ] in a guided flow, framing starts only in `framing_iterations` and every
-      round is recorded after the working Canvas is updated;
-- [ ] more than three questions in one recorded round are rejected by the
-      state machine;
+- [ ] each question batch contains every high-value question that conditions
+      framing, downstream design, backlog preparation, or Canvas validation,
+      without decorative questions or a numeric cap;
+- [ ] in a guided flow, each framing iteration is explicitly opened, prepared,
+      presented, answered or deferred, closed, and completed after the working
+      Canvas is updated;
+- [ ] pending question batches resume from the Canvas without duplication,
+      partial answers preserve the remaining questions, and deferral requires
+      explicit user intent;
 - [ ] Canvas approval requires an explicit user confirmation and a non-empty
       `_project-design/project-canvas.md`;
 - [ ] durable Markdown delivery uses `_project-design/project-canvas.md` or a

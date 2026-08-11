@@ -7,7 +7,7 @@ description: Transform project briefs, discovery notes, source documents, or an 
 
 ## Status
 
-IMPLEMENTED - methodology version 0.3. Manual user validation is required.
+IMPLEMENTED - methodology version 0.4. Manual user validation is required.
 
 ## Purpose
 
@@ -40,14 +40,20 @@ already completed it in the current project flow.
 Remain independently callable, but when
 `_project-design/project-design-state.json` exists or the user invoked the
 guided plugin flow, use the state machine at
-`../project-design/scripts/workflow.py`. Run `status` before framing and proceed
-only when the phase is `framing_iterations`.
+`../project-design/scripts/workflow.py`. Run `status` before framing. Let
+`project-design` open an iteration from `framing_iterations`, then perform new
+analysis only in `framing_iteration_preparation`.
 
-After every question-and-answer round, update
-`_project-design/project-canvas.md`, then run `record-iteration` with the actual
-number of questions and answers. Use `--ready-for-review` only when the Canvas
-is ready for explicit review. Never edit the state file directly or record
-question and answer content in it.
+Write every necessary decision question to
+`_project-design/project-canvas.md`, present that exact batch, and let the
+orchestrator record its count with `present-questions`. In
+`awaiting_framing_answers`, read and resume only the unanswered questions
+already in the Canvas. After a substantive partial or complete answer, update
+only the affected Canvas content and let the orchestrator record the received
+count. Preserve unaddressed questions. A deferral must be explicit and is
+recorded separately. Finish the Canvas update in
+`framing_iteration_completion` before the orchestrator closes the iteration.
+Never edit the state file directly or record question or answer text in it.
 
 When the phase is `awaiting_canvas_approval`, wait for explicit user approval.
 After approval, run `approve-canvas --confirmed`; do not invoke documentary
@@ -252,19 +258,26 @@ rounds to improve it progressively.
 
 For every round:
 
-- ask at most three high-value questions at a time;
+- identify and present every high-value question that genuinely conditions
+  framing, downstream design, backlog preparation, or Canvas validation,
+  without a numeric cap;
 - explain briefly why each answer matters;
 - never repeat a question already answered by the inputs;
-- let the user decline or defer an answer;
+- accept partial answers and explicit deferrals while retaining every other
+  question as pending;
 - update the affected Canvas chapters from the answers without rewriting
   unrelated validated content;
 - summarize what changed and keep unresolved points visible;
 - prioritize questions that change Scope, authority, value, Decisions, Risks,
   success criteria, or downstream readiness.
 
-In a guided workflow, save the updated working Canvas and record the successful
-iteration transition before starting another round. If the transition is
-rejected, stop and follow the state machine's returned phase.
+In a guided workflow, save the updated working Canvas before recording the
+corresponding transition. Once a batch has been presented, do not formulate a
+new batch or open another iteration until every presented question has been
+answered or explicitly deferred and the current iteration is complete. On
+resumption, read the pending questions from the Canvas and present exactly
+those questions without duplication. If a transition is rejected, stop and
+follow the state machine's returned phase.
 
 Continue until the user validates the Canvas for delivery, asks to stop, or
 the remaining questions can be explicitly deferred. Do not demand complete

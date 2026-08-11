@@ -31,7 +31,7 @@ methodologies.
   information, and raw source artefacts
 - Supported output languages: requested language when terminology support is
   available, with English as the internal canonical reference
-- Preliminary questions: at most three high-value questions at a time, only
+- Preliminary questions: focused high-value questions, only
   when needed before drafting
 - Clarification priorities: before framing approval, before the next design
   phase, or deferrable

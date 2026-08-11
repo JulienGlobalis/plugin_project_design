@@ -18,7 +18,8 @@ or placeholder methodology was implemented.
   optional choices collected before project content.
 - The ten Canvas chapters are presented before asking for a prompt description
   or source documents.
-- Framing uses progressive rounds of at most three high-value questions.
+- Framing uses progressive focused question batches. The former numeric cap is
+  superseded by the current pending-answer workflow.
 - Documentary choices are handed to `document-project-canvas` without merging
   business and documentary responsibilities.
 

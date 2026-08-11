@@ -21,9 +21,10 @@ for the consolidated layer, model, skill, ownership, flow, and dependency
 reference.
 
 - `project-design` now provides the guided entry: skill presentation, explicit
-  consent, safe workspace initialization, persisted phase enforcement, stage
-  selection with `project-framing` by default, and handoff. Complete
-  cross-stage orchestration remains future work.
+  consent, safe workspace initialization, persisted phase enforcement,
+  resumable framing-question batches, stage selection with `project-framing`
+  by default, and handoff. Complete cross-stage orchestration remains future
+  work.
 - `project-framing` is the implemented first design step. It clarifies the
   expression of need and produces the Project Canvas.
 - `functional-design` will structure products, modules, features, users,
@@ -177,7 +178,8 @@ integrations/             Platform notes and optional integration boundaries
 `_project-design/` and its `documents/` subdirectory are initialized in a
 target project only after the user explicitly confirms use of the plugin for
 their specifications. The guided flow stores non-business control state in
-`_project-design/project-design-state.json`; it contains no source or Canvas
+`_project-design/project-design-state.json`; it contains control counters for
+active question batches but no question text, answer text, source, or Canvas
 content. Initialization creates no placeholder artefact. The workspace is not
 a repository-development or plugin-cache directory.
 
@@ -214,7 +216,7 @@ business methodology, `project-framing`, plus the first document methodology,
 Project Canvas as the primary framing artefact and supports its verified
 Markdown, Microsoft Word, or Google Docs restitution. Combined manual user
 validation remains pending. It does not provide the remaining detailed skill
-methodologies, executable orchestration, general exporters, persistence, API
+methodologies, complete cross-stage orchestration, general exporters, API
 integrations, MCP servers, hooks, agents, commands, or Spec Kit automation.
 
 ## Development Approach

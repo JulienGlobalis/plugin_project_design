@@ -43,11 +43,12 @@ structurer la conception de projets applicatifs et logiciels.
 
 Compétences prévues :
 
-- `project-design` : entrée guidée avec machine d'état version 0.3 implémentée
+- `project-design` : entrée guidée avec machine d'état version 0.4 implémentée
   pour présenter les skills, obtenir le consentement, initialiser le répertoire,
   imposer les transitions, reprendre entre conversations et transmettre au
   skill spécialisé ; orchestration complète multi-disciplines future ;
-- `project-framing` : étape 1, cadrage et Project Canvas ;
+- `project-framing` : étape 1, cadrage et Project Canvas, méthodologie version
+  0.4 ;
 - `functional-design` : placeholder installé pour l'étape 2, conception
   fonctionnelle future ;
 - `technical-design` : placeholder installé pour l'étape 2 bis, conception
@@ -210,7 +211,7 @@ concurrent.
   avant la collecte du contenu projet.
 - `project-framing` présente les dix chapitres, accepte une description dans le
   prompt, des documents sources ou les deux, puis co-construit le Canvas par
-  rondes de trois questions au maximum.
+  lots explicites contenant toutes les questions de décision nécessaires.
 - Le workflow guidé persiste uniquement son état de contrôle dans
   `_project-design/project-design-state.json` et l'actualise atomiquement.
 - Ce fichier ne contient aucune description projet, source, question, réponse,
@@ -219,6 +220,19 @@ concurrent.
   sur la seule base de l'historique conversationnel.
 - Une reprise commence par la commande `status` et suit uniquement
   `next_action`. Il n'existe volontairement aucune commande de réinitialisation.
+- Le cadrage distingue désormais l'ouverture, la préparation, la présentation
+  des questions, l'attente des réponses, la clôture du lot et la clôture de
+  l'itération. `awaiting_framing_answers` reprend exactement les questions
+  encore présentes dans le Canvas, sans en créer une nouvelle série.
+- Aucun plafond numérique ne limite les questions de cadrage : un lot contient
+  toutes les questions de décision réellement nécessaires et aucune question
+  générique ou décorative.
+- Les réponses partielles et les reports explicites réduisent séparément le
+  compteur restant. Une demande technique ou un changement de conversation ne
+  constitue jamais un report métier.
+- Le schéma d'état version 3 conserve uniquement les compteurs du lot actif et
+  ses horodatages. Le texte des questions, réponses, sources et du Canvas reste
+  exclu du JSON.
 - La phase `complete` exige un Canvas non vide explicitement approuvé puis, si
   demandé, un `.docx` sous `_project-design/documents/` ou un lien Google Docs
   natif vérifié.
@@ -245,6 +259,7 @@ concurrent.
 | 8.7 - Entrée guidée | Consentement, initialisation sûre, choix d'étape, options documentaires et cadrage itératif implémentés | Validation technique terminée — rejeu manuel utilisateur en attente |
 | 8.8 - Workflow guidé persistant | Machine d'état, transitions obligatoires, reprise, validations du Canvas et du document implémentées | Validation technique terminée — rejeu manuel utilisateur en attente |
 | 8.9 - Espace de sources optionnel | Stratégie de sources obligatoire et `_sources/` privé, indexé et Git-ignoré implémentés | Validation technique et recette terminées — rejeu manuel utilisateur en attente |
+| 8.12 - Reprise des questions de cadrage | Cycle explicite des lots, réponses partielles, reports, migration prudente et reprise multi-conversations | Validation technique terminée — rejeu dans un nouveau fil requis |
 
 ## Historique des prompts directeurs
 
@@ -665,7 +680,7 @@ sans mettre en œuvre l'orchestration complète :
   structure professionnelle par défaut ;
 - `project-framing` présente les dix chapitres, demande ensuite une description
   projet ou des documents sources, construit un premier Canvas et l'améliore
-  par rondes de trois questions à forte valeur au maximum ;
+  par lots ciblés de questions de décision nécessaires ;
 - `document-project-canvas` réutilise le choix documentaire sans redemander et
   conserve Word sous `_project-design/documents/project-canvas.docx` ou livre
   le lien Google Docs natif.
@@ -721,8 +736,8 @@ Contrats durables :
 - Word ou Google Docs exige un mode de modèle ; un modèle local doit exister et
   un modèle Drive doit utiliser une URL Google ;
 - au moins une description ou un document doit être réellement disponible ;
-- une ronde de cadrage contient entre une et trois questions ; seuls les
-  compteurs sont persistés ;
+- les lots de cadrage conservent uniquement leurs compteurs de contrôle ; le
+  texte des questions et réponses reste dans le Canvas ou la conversation ;
 - l'approbation exige `_project-design/project-canvas.md` non vide et une
   confirmation explicite ;
 - Word exige un `.docx` existant sous `_project-design/documents/` et Google
@@ -1163,8 +1178,41 @@ tests automatisés, le validateur Skill Creator et le validateur Plugin Creator
 passent. Le rapport est conservé dans
 `development/tests/executions/2026-08-11-project-canvas-current-view-review.md`.
 
-Les modifications de cette itération sont livrées sur `main`. Le bundle source
-n'a pas été réinstallé dans le cache Codex après cette évolution.
+Les modifications métier de cette itération sont livrées sur `main`. Le bundle
+a ensuite été réinstallé dans Codex en version
+`0.1.0+codex.20260811151422`. Le cache installé contient bien
+`project-framing` en méthodologie 0.3.
+
+## Itération 8.12 — Reprise des questions entre conversations
+
+Le workflow utilise le schéma d'état version 3 et sépare désormais les phases
+`framing_iterations`, `framing_iteration_preparation`,
+`awaiting_framing_answers` et `framing_iteration_completion`. Les commandes
+`open-iteration`, `present-questions`, `record-answers`, `defer-questions`,
+`close-question-batch` et `complete-iteration` remplacent l'ancienne transition
+unique et ambiguë.
+
+`status` demande explicitement, pendant `awaiting_framing_answers`, de relire
+les questions non répondues dans `_project-design/project-canvas.md`, de
+présenter exactement ce lot et de n'ouvrir aucune nouvelle itération. Le JSON
+ne conserve que les compteurs de questions présentées, répondues, reportées et
+restantes. Les réponses partielles et les reports explicites sont distincts.
+
+La limite numérique des questions est supprimée. `project-framing` version 0.4
+doit présenter toutes les questions de décision nécessaires, sans questions
+génériques, décoratives ou simplement différables. Les anciens états ambigus
+passent par `framing_recovery` sans déduction automatique de réponse, report ou
+question restante.
+
+Les 51 tests Python, les neuf validations Skill Creator, les validateurs Codex
+et Claude, la recherche d'ancienne limite, les contrôles Git et le scénario de
+reprise sur trois conversations passent. Le rapport est conservé dans
+`development/tests/executions/2026-08-11-framing-question-resumption-review.md`.
+
+Le bundle a été réinstallé depuis le marketplace local en version
+`0.1.0+codex.20260811161924`. La relecture du cache confirme le schéma 3, la
+phase d'attente dédiée et la version 0.4. Un nouveau fil Codex est requis pour
+charger ce registre mis à jour.
 
 ## Prompt de reprise
 

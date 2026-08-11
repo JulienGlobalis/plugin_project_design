@@ -135,6 +135,12 @@ question directly, without narrating contradictory formulations or prior
 exchanges. Avoid generic questionnaires, deferrable details, and questions
 already answered by an authorized Decision.
 
+During an active guided question batch, keep every unanswered question in this
+section. Remove a question only after its answer has been incorporated into the
+current Canvas position. Keep an explicitly deferred question when its Decision
+still conditions validation or a downstream stage. The workflow state may
+count these questions but never contains their wording.
+
 ### 10. Success Criteria
 
 Describe source-supported project or MVP success criteria, which may concern

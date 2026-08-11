@@ -1,7 +1,7 @@
 {
   "name": "project-design",
-  "version": "0.1.0+codex.20260811141829",
-  "description": "Statefully guided project specification setup, private source intake, Project Canvas framing, and document restitution with enforced phase and artefact boundaries.",
+  "version": "0.1.0+codex.20260811161924",
+  "description": "Statefully guided project specification setup, private source intake, resumable Project Canvas question batches, and document restitution with enforced phase and artefact boundaries.",
   "author": {
     "name": "Project Design Contributors"
   },
