@@ -43,7 +43,7 @@ structurer la conception de projets applicatifs et logiciels.
 
 Compétences prévues :
 
-- `project-design` : entrée guidée avec machine d'état version 0.2 implémentée
+- `project-design` : entrée guidée avec machine d'état version 0.3 implémentée
   pour présenter les skills, obtenir le consentement, initialiser le répertoire,
   imposer les transitions, reprendre entre conversations et transmettre au
   skill spécialisé ; orchestration complète multi-disciplines future ;
@@ -193,6 +193,16 @@ concurrent.
   réutiliser `_project-design/` pour un nouveau parcours. Un refus ne crée rien.
 - L'initialisation est idempotente et ne crée que `_project-design/` et
   `_project-design/documents/`, sans artefact vide.
+- Après le choix documentaire, le workflow impose une stratégie de sources :
+  conserver les originaux en place ou centraliser dans `_sources/`.
+- La centralisation exige une confirmation explicite, crée
+  `_sources/documents/`, `_sources/source-index.md` et `_sources/links.md`, et
+  ajoute `/_sources/` au `.gitignore` du projet cible par défaut.
+- Chaque copie locale exige un accord explicite, n'écrase jamais une copie
+  existante et inscrit le chemin d'origine et le SHA-256 dans l'index. Les
+  sources Drive natives restent des liens sans export automatique.
+- `_sources/` reste distinct de `_project-design/` : le premier organise les
+  intrants privés, le second contient les livrables générés.
 - Le choix d'étape propose `project-framing` comme étape 1 par défaut. Les
   placeholders restent visibles mais ne sont jamais présentés comme exécutables.
 - Le Markdown métier reste obligatoire. Word ou Google Docs est un complément
@@ -234,6 +244,7 @@ concurrent.
 | 8.6 - Plugin Architecture & Coherence Review v1.0 | Modèles, skills, propriétaires, flux, dépendances et roadmap audités et documentés | Revue terminée — architecture prête pour `functional-design` avec réserves documentaires non bloquantes |
 | 8.7 - Entrée guidée | Consentement, initialisation sûre, choix d'étape, options documentaires et cadrage itératif implémentés | Validation technique terminée — rejeu manuel utilisateur en attente |
 | 8.8 - Workflow guidé persistant | Machine d'état, transitions obligatoires, reprise, validations du Canvas et du document implémentées | Validation technique terminée — rejeu manuel utilisateur en attente |
+| 8.9 - Espace de sources optionnel | Stratégie de sources obligatoire et `_sources/` privé, indexé et Git-ignoré implémentés | Validation technique et recette terminées — rejeu manuel utilisateur en attente |
 
 ## Historique des prompts directeurs
 
@@ -693,6 +704,7 @@ Phases implémentées :
 ```text
 awaiting_stage
 -> awaiting_delivery
+-> awaiting_source_strategy
 -> awaiting_sources
 -> framing_iterations
 -> awaiting_canvas_approval
@@ -740,6 +752,52 @@ Un nouveau fil Codex est nécessaire pour charger cette version.
 
 Livraison Git : l'utilisateur a demandé le commit et le push de l'ensemble de
 la série le 11 août 2026. Le journal Git constitue la source de vérité pour
+l'identifiant du commit et l'état de synchronisation avec `origin/main`.
+
+### Itération 8.9 - Espace de sources optionnel
+
+Le workflow demande désormais, après le choix documentaire et avant les
+intrants projet, si les sources restent à leur emplacement d'origine ou sont
+centralisées. La nouvelle phase `awaiting_source_strategy` ne peut pas être
+contournée. Les états version 1 sont migrés vers le schéma version 2 sans
+perdre leur historique ; un parcours déjà avancé conserve ses sources comme
+externes, tandis qu'un parcours encore en attente d'intrants repasse par le
+choix explicite.
+
+En mode centralisé, `source_workspace.py` initialise de façon idempotente :
+
+```text
+_sources/
+├── source-index.md
+├── links.md
+└── documents/
+```
+
+Le script ajoute `/_sources/` au `.gitignore` du projet cible sans doublon.
+Une copie locale exige `--confirmed-copy`, conserve l'original, refuse tout
+écrasement et inscrit le chemin d'origine et le SHA-256. Une source Google
+Drive, Docs, Sheets ou Slides est inscrite comme lien sans export. Le fichier
+d'état ne conserve que le mode et le chemin logique, jamais les URL ni le
+contenu des sources.
+
+Les 27 tests unitaires passent. Les neuf skills et le plugin passent leurs
+validateurs officiels. La recette Markdown et l'onglet `project-framing` du
+Google Sheet `Recette` comptent 43 critères ; la relecture connecteur confirme
+les quatre nouveaux prompts, la mise en forme et les validations natives de
+résultat.
+
+Le cachebuster généré et réinstallé depuis le marketplace local
+`project-design` est `0.1.0+codex.20260811141829`, sous
+`/Users/julienoger/.codex/plugins/cache/project-design/project-design/`. La
+relecture du cache confirme la version guidée 0.3, la phase
+`awaiting_source_strategy` et le script `source_workspace.py`. Un nouveau fil
+Codex est requis pour charger ce registre mis à jour.
+
+Rapport :
+[Optional Source Workspace Review](tests/executions/2026-08-11-source-workspace-review.md).
+
+Livraison Git : l'utilisateur a demandé le commit et le push de l'itération
+8.9 le 11 août 2026. Le journal Git constitue la source de vérité pour
 l'identifiant du commit et l'état de synchronisation avec `origin/main`.
 
 ### Formalisation du Shared Document Model

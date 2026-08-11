@@ -535,6 +535,9 @@ passes through Knowledge Model and Project Model review.
   target project.
 - Treat `_project-design/` as a delivery workspace, not as a new semantic
   model, evidence source, orchestration layer, or ownership boundary.
+- When the user explicitly selects centralized source intake, use the separate
+  root-level `_sources/` workspace for approved local copies and remote source
+  links. Keep it Git-ignored by default and treat originals as authoritative.
 - Do not create output files for placeholder skills or silently overwrite an
   unrelated existing deliverable.
 

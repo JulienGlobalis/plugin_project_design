@@ -21,26 +21,29 @@ Allowed results:
 3. Inspect `_project-design/project-design-state.json`, start a new
    conversation if desired, and verify that the workflow resumes at the same
    phase without storing project or source content.
-4. Select the optional documentary output and template mode, then select one
-   case below.
-5. Provide every listed source artefact, excluding the fixture `README.md`.
-6. Use the supplied prompt or the applicable entry in the `Prompt` column
+4. Select the optional documentary output and template mode.
+5. Choose whether sources stay at their original locations or are centralized
+   in `_sources/`. For centralization, confirm creation, verify Git exclusion,
+   approve each local copy separately, and keep Drive-native sources as links.
+6. Select one case below and provide every listed source artefact, excluding
+   the fixture `README.md`.
+7. Use the supplied prompt or the applicable entry in the `Prompt` column
    without adding the expected observations or this checklist to the model
    context.
-7. Preserve the initial skill launch brief and verify that it identifies the
+8. Preserve the initial skill launch brief and verify that it identifies the
    skill, inputs, deliverables, and required or optional models or templates.
-8. Verify that durable Markdown outputs are grouped under `_project-design/`
+9. Verify that durable Markdown outputs are grouped under `_project-design/`
    at the target project root.
-9. Complete at least one focused question-and-answer iteration and preserve
+10. Complete at least one focused question-and-answer iteration and preserve
    the progressively updated Canvas.
-10. Preserve the generated Project Canvas artefact before documentary
+11. Preserve the generated Project Canvas artefact before documentary
    restitution.
-11. Invoke `document-project-canvas` with that artefact and the documentary
+12. Invoke `document-project-canvas` with that artefact and the documentary
    prompt below. Preserve the produced document separately.
-12. Complete the case controls and the bilingual verification grid against
+13. Complete the case controls and the bilingual verification grid against
    both the artefact and final document.
-13. Record concrete evidence, the result, and any reservations.
-14. Return the completed results, generated Canvas, and final document for the
+14. Record concrete evidence, the result, and any reservations.
+15. Return the completed results, generated Canvas, and final document for the
    intervention report without committing confidential material.
 
 ## Documentary Prompt
@@ -274,6 +277,7 @@ context.
 | Tester |  |
 | ChatGPT model or environment |  |
 | Source documents or information used |  |
+| Source strategy: original locations or `_sources/` |  |
 | Requested language |  |
 | Review purpose |  |
 | Intended audience |  |
@@ -291,6 +295,10 @@ Enter one allowed result and concise evidence or reservations for every row.
 | The state file contains no project or source business content | Le fichier d'état ne contient aucun contenu métier du projet ou des sources | Inspect project-design-state.json and verify that it contains only consent, phase, choices, presence flags, counts, approvals, references, and transition history. |  |  |
 | The state machine enforces one to three questions per framing round | La machine d'état impose une à trois questions par ronde de cadrage | During framing, try to record four questions in one iteration and verify that it is rejected; then record a valid round of at most three questions. |  |  |
 | Completion is gated by Canvas approval and the requested native document | La finalisation exige l'approbation du Canvas et le document natif demandé | Try to approve without a saved non-empty Canvas and, when Word or Google Docs is selected, try to complete without the verified file or URL; both attempts must fail. |  |  |
+| Source strategy is selected before project inputs are requested | La stratégie des sources est choisie avant la demande des intrants projet | After documentary delivery is selected, ask whether sources remain at their original locations or are centralized in `_sources/`; do not request project content before that choice. |  |  |
+| Centralized sources use a separate private initialized workspace | Les sources centralisées utilisent un espace privé initialisé séparément | Select centralization and verify `_sources/documents/`, `source-index.md`, `links.md`, and exactly one `/_sources/` rule in `.gitignore`. |  |  |
+| Every local source copy requires approval and cannot overwrite | Chaque copie de source locale exige un accord et ne peut pas écraser | Refuse a local copy first, then approve it, verify its origin and SHA-256 in the index, and confirm that a duplicate destination is rejected. |  |  |
+| Drive-native sources remain links and stay out of workflow state | Les sources Drive natives restent des liens et sont absentes de l'état du workflow | Register a Google Drive-native source without exporting it, then verify the link is indexed and neither its URL nor content appears in `project-design-state.json`. |  |  |
 | The plugin requests explicit consent before initializing its project workspace | Le plugin demande un consentement explicite avant d'initialiser son espace projet | Present the project-design skills and ask me to confirm that I want to use the plugin for my project specifications. Do not create any directory before my answer. |  |  |
 | Stage selection proposes step 1 project-framing by default | Le choix de l'étape propose par défaut l'étape 1 project-framing | Ask which project-design stage I want to perform, propose step 1 project-framing by default, and clearly identify the stages that are not implemented yet. |  |  |
 | The optional document format and template source are resolved before framing input | Le format documentaire optionnel et la source du modèle sont définis avant les entrées de cadrage | Before requesting project content, ask whether I also want Word or Google Docs and whether I will supply a local template, a Drive template, or use the default structure. |  |  |

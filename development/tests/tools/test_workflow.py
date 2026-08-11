@@ -41,6 +41,7 @@ class WorkflowTests(unittest.TestCase):
         if output_format != "none":
             delivery.extend(["--template-mode", "default"])
         self.run_cli("set-delivery", *delivery)
+        self.run_cli("set-source-strategy", "--mode", "external")
         self.run_cli("confirm-inputs", "--description-provided")
 
     def test_start_requires_confirmation_and_creates_nothing(self) -> None:
@@ -55,6 +56,19 @@ class WorkflowTests(unittest.TestCase):
         self.assertEqual(first["phase"], "awaiting_stage")
         self.assertEqual(second["state"]["created_at"], first["state"]["created_at"])
         self.assertTrue((self.root / "_project-design" / "project-design-state.json").is_file())
+
+    def test_v1_state_migrates_to_source_strategy_without_losing_history(self) -> None:
+        initial = self.start()["state"]
+        initial["schema_version"] = 1
+        initial["phase"] = "awaiting_sources"
+        initial.pop("source_workspace")
+        state_path = self.root / "_project-design" / "project-design-state.json"
+        state_path.write_text(json.dumps(initial), encoding="utf-8")
+        result, output = self.run_cli("status")
+        self.assertEqual(result.returncode, 0)
+        self.assertEqual(output["state"]["schema_version"], 2)
+        self.assertEqual(output["phase"], "awaiting_source_strategy")
+        self.assertEqual(output["state"]["history"][0]["event"], "workflow_started")
 
     def test_steps_cannot_be_skipped(self) -> None:
         self.start()
@@ -100,9 +114,40 @@ class WorkflowTests(unittest.TestCase):
         self.start()
         self.run_cli("select-stage", "--stage", "project-framing")
         self.run_cli("set-delivery", "--additional-format", "none")
+        self.run_cli("set-source-strategy", "--mode", "external")
         result, output = self.run_cli("confirm-inputs")
         self.assertEqual(result.returncode, 2)
         self.assertIn("description", output["error"])
+
+    def test_source_strategy_is_required_before_inputs(self) -> None:
+        self.start()
+        self.run_cli("select-stage", "--stage", "project-framing")
+        _, delivery = self.run_cli("set-delivery", "--additional-format", "none")
+        self.assertEqual(delivery["phase"], "awaiting_source_strategy")
+        result, output = self.run_cli("confirm-inputs", "--description-provided")
+        self.assertEqual(result.returncode, 2)
+        self.assertIn("awaiting_sources", output["error"])
+
+    def test_centralized_source_strategy_requires_confirmation(self) -> None:
+        self.start()
+        self.run_cli("select-stage", "--stage", "project-framing")
+        self.run_cli("set-delivery", "--additional-format", "none")
+        result, output = self.run_cli("set-source-strategy", "--mode", "centralized")
+        self.assertEqual(result.returncode, 2)
+        self.assertIn("explicit confirmation", output["error"])
+        self.assertFalse((self.root / "_sources").exists())
+
+    def test_centralized_source_strategy_initializes_private_workspace(self) -> None:
+        self.start()
+        self.run_cli("select-stage", "--stage", "project-framing")
+        self.run_cli("set-delivery", "--additional-format", "none")
+        result, output = self.run_cli(
+            "set-source-strategy", "--mode", "centralized", "--confirmed"
+        )
+        self.assertEqual(result.returncode, 0)
+        self.assertEqual(output["phase"], "awaiting_sources")
+        self.assertTrue((self.root / "_sources" / "documents").is_dir())
+        self.assertIn("/_sources/", (self.root / ".gitignore").read_text(encoding="utf-8"))
 
     def test_iteration_rejects_more_than_three_questions(self) -> None:
         self.advance_to_iterations()

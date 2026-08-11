@@ -12,6 +12,7 @@ import tempfile
 from typing import Any
 
 from init_workspace import WorkspaceError, initialize_workspace, resolve_project_root
+from source_workspace import initialize_source_workspace
 
 
 STATE_NAME = "project-design-state.json"
@@ -44,6 +45,27 @@ def load_state(root: Path) -> dict[str, Any]:
         raise WorkflowError(f"workflow state is unreadable: {error}") from error
     if state.get("project_root") != str(root):
         raise WorkflowError("workflow state belongs to a different project root")
+    schema_version = state.get("schema_version", 1)
+    if schema_version == 1:
+        state["source_workspace"] = {
+            "mode": None,
+            "path": None,
+            "gitignored": False,
+        }
+        if state.get("phase") == "awaiting_sources":
+            state["phase"] = "awaiting_source_strategy"
+        elif state.get("phase") in {
+            "framing_iterations", "awaiting_canvas_approval",
+            "awaiting_document", "complete"
+        }:
+            state["source_workspace"]["mode"] = "external"
+        state["schema_version"] = 2
+        state.setdefault("history", []).append(
+            {"event": "workflow_state_migrated_to_v2", "at": now()}
+        )
+        save_state(root, state)
+    elif schema_version != 2:
+        raise WorkflowError(f"unsupported workflow schema version: {schema_version}")
     return state
 
 
@@ -70,7 +92,8 @@ def next_action(state: dict[str, Any]) -> str:
     return {
         "awaiting_stage": "Ask the user to select a stage; propose project-framing by default.",
         "awaiting_delivery": "Ask whether Word or Google Docs is required in addition to Markdown and resolve the template mode.",
-        "awaiting_sources": "Ask for a project description, source documents, or both.",
+        "awaiting_source_strategy": "Ask whether sources should remain at their original locations or be centralized in _sources.",
+        "awaiting_sources": "Collect the project description and source references using the selected source strategy.",
         "framing_iterations": "Use project-framing, ask at most three high-value questions, update the working Canvas, then record the iteration.",
         "awaiting_canvas_approval": "Ask the user to approve the saved Project Canvas or continue framing iterations.",
         "awaiting_document": "Use document-project-canvas with the recorded delivery choice, verify the native result, then record delivery.",
@@ -98,7 +121,7 @@ def start(root: Path, confirmed: bool) -> dict[str, Any]:
         return load_state(root)
     timestamp = now()
     state: dict[str, Any] = {
-        "schema_version": 1,
+        "schema_version": 2,
         "project_root": str(root),
         "phase": "awaiting_stage",
         "consent": {"confirmed": True, "confirmed_at": timestamp},
@@ -110,6 +133,7 @@ def start(root: Path, confirmed: bool) -> dict[str, Any]:
             "template_reference": None,
         },
         "inputs": {"description_provided": False, "documents_provided": False},
+        "source_workspace": {"mode": None, "path": None, "gitignored": False},
         "framing": {"iterations": [], "canvas_approved": False},
         "document": {"file": None, "url": None},
         "history": [{"event": "workflow_started", "at": timestamp}],
@@ -159,8 +183,32 @@ def set_delivery(
             "template_reference": template_reference,
         }
     )
-    state["phase"] = "awaiting_sources"
+    state["phase"] = "awaiting_source_strategy"
     append_event(state, "delivery_selected")
+
+
+def set_source_strategy(
+    root: Path, state: dict[str, Any], mode: str, confirmed: bool
+) -> None:
+    require_phase(state, "awaiting_source_strategy")
+    if mode == "centralized":
+        if not confirmed:
+            raise WorkflowError("explicit confirmation is required to create or reuse _sources")
+        initialize_source_workspace(root)
+        state["source_workspace"] = {
+            "mode": mode,
+            "path": "_sources",
+            "gitignored": True,
+        }
+        append_event(state, "source_workspace_initialized")
+    else:
+        state["source_workspace"] = {
+            "mode": "external",
+            "path": None,
+            "gitignored": False,
+        }
+        append_event(state, "external_sources_selected")
+    state["phase"] = "awaiting_sources"
 
 
 def confirm_inputs(state: dict[str, Any], description: bool, documents: bool) -> None:
@@ -270,6 +318,9 @@ def build_parser() -> argparse.ArgumentParser:
     input_parser = command("confirm-inputs")
     input_parser.add_argument("--description-provided", action="store_true")
     input_parser.add_argument("--documents-provided", action="store_true")
+    source_parser = command("set-source-strategy")
+    source_parser.add_argument("--mode", choices=("external", "centralized"), required=True)
+    source_parser.add_argument("--confirmed", action="store_true")
     iteration_parser = command("record-iteration")
     iteration_parser.add_argument("--questions-asked", type=int, required=True)
     iteration_parser.add_argument("--answers-received", type=int, required=True)
@@ -302,6 +353,8 @@ def main() -> int:
                 confirm_inputs(
                     state, args.description_provided, args.documents_provided
                 )
+            elif args.command == "set-source-strategy":
+                set_source_strategy(root, state, args.mode, args.confirmed)
             elif args.command == "record-iteration":
                 record_iteration(
                     state, args.questions_asked, args.answers_received,

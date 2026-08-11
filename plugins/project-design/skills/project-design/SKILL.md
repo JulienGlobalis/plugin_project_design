@@ -7,7 +7,7 @@ description: Run a strongly guided application or software specification workflo
 
 ## Status
 
-IMPLEMENTED — STATEFUL GUIDED ENTRY VERSION 0.2; COMPLETE ORCHESTRATION NOT IMPLEMENTED
+IMPLEMENTED — STATEFUL GUIDED ENTRY VERSION 0.3; COMPLETE ORCHESTRATION NOT IMPLEMENTED
 
 Use the bundled state machine to enforce the implemented guided chain. Do not
 replace its transitions with conversational memory or an informal checklist.
@@ -29,7 +29,7 @@ _project-design/project-design-state.json
 
 The state file records consent, current phase, selected stage, documentary
 choice, presence of inputs, iteration counts, approval, delivery references,
-and transition history. It must not contain the project description, source
+source-workspace mode, and transition history. It must not contain the project description, source
 contents, question text, answers, or Canvas business knowledge.
 
 Before every substantive workflow action, run:
@@ -117,7 +117,35 @@ python3 scripts/workflow.py set-delivery \
   --template-mode default
 ```
 
-### 4. Obtain Initial Project Inputs
+### 4. Choose the Source Strategy
+
+When the phase is `awaiting_source_strategy`, ask whether sources should:
+
+- remain at their original locations (`external`); or
+- be centralized in the optional root-level `_sources/` workspace
+  (`centralized`).
+
+Centralization requires explicit confirmation. Record the choice with:
+
+```text
+python3 scripts/workflow.py set-source-strategy \
+  --project-root <project-root> \
+  --mode centralized \
+  --confirmed
+```
+
+Use `--mode external` without `--confirmed` when originals remain in place.
+For centralized mode, the command creates `_sources/documents/`,
+`_sources/source-index.md`, and `_sources/links.md`, then adds `/_sources/` to
+the target project's `.gitignore` without duplicating the rule.
+
+Use `scripts/source_workspace.py add-local` only after explicit consent to
+copy each local file. It never overwrites an existing destination and records
+the original path and SHA-256 in the index. Use `add-link` for native Google
+Drive, Docs, Sheets, or Slides sources; record the link without exporting it.
+Never modify an original source.
+
+### 5. Obtain Initial Project Inputs
 
 When the phase is `awaiting_sources`, ask for a project description in the
 conversation, source documents, or both. Do not store their contents in the
@@ -126,7 +154,7 @@ state file.
 After at least one input form is actually available, run `confirm-inputs` with
 `--description-provided`, `--documents-provided`, or both.
 
-### 5. Run Iterative Project Framing
+### 6. Run Iterative Project Framing
 
 When the phase is `framing_iterations`, invoke `project-framing`. Build or
 update the working Markdown Canvas and ask one to three high-value questions.
@@ -149,7 +177,7 @@ If the user requests another iteration from `awaiting_canvas_approval`, run:
 python3 scripts/workflow.py continue-framing --project-root <project-root>
 ```
 
-### 6. Approve the Canvas
+### 7. Approve the Canvas
 
 When the phase is `awaiting_canvas_approval`, ask the user to approve the
 current saved Canvas. After explicit approval, run:
@@ -164,7 +192,7 @@ Approval is rejected unless `_project-design/project-canvas.md` exists and is
 non-empty. Markdown-only delivery then becomes `complete`; an external format
 moves to `awaiting_document`.
 
-### 7. Produce and Record the Optional Document
+### 8. Produce and Record the Optional Document
 
 When the phase is `awaiting_document`, invoke `document-project-canvas` using
 the recorded format and template choice. After native verification, record:
@@ -189,6 +217,8 @@ requires an explicit future recovery policy.
   in `document-project-canvas`.
 - Store no project knowledge, confidential source text, questions, or answers
   in the workflow state.
+- Keep `_sources/` separate from the `_project-design/` delivery workspace and
+  ignore it from Git by default.
 - Never advance a phase without a successful script transition.
 - Never initialize before explicit consent or reset an existing state.
 - Never execute a placeholder methodology.

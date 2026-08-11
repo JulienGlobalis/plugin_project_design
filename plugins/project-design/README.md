@@ -20,8 +20,9 @@ skills/
 
 `project-design` implements the guided entry into the plugin: it presents the
 skills, obtains explicit consent, initializes `_project-design/`, proposes
-step 1 `project-framing` by default, captures document preferences, persists
-each required transition, and hands work to an implemented specialized skill.
+step 1 `project-framing` by default, captures document preferences and the
+source-storage strategy, persists each required transition, and hands work to
+an implemented specialized skill.
 Complete cross-step orchestration remains future work.
 
 The four specialized business skills produce format-neutral business
@@ -54,6 +55,12 @@ initialization script creates this workspace and `documents/`; refusal creates
 nothing. Its state machine stores the current phase and non-business choices in
 `_project-design/project-design-state.json`, rejects skipped transitions, and
 allows a new conversation to resume from the recorded next action.
+
+Before source intake, the workflow asks whether originals stay in place or an
+optional private `_sources/` workspace is initialized. Centralized sources use
+`_sources/documents/`, `source-index.md`, and `links.md`; local files require
+per-file copy approval, Drive-native documents remain links, and `/_sources/`
+is added to the target project's `.gitignore` by default.
 
 ## Current Status
 

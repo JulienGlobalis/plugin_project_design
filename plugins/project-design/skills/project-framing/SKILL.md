@@ -116,7 +116,11 @@ captured an answer:
 2. If yes, ask whether to use a supplied local template, a Google Drive
    template link, or the default professional structure. Record the choice for
    `document-project-canvas`; do not apply it during framing.
-3. Ask the user to provide either a project description directly in the
+3. Ask whether source documents should remain at their original locations or
+   be centralized in the optional `_sources/` workspace. If centralized, use
+   the project-design source-workspace script and require explicit approval
+   before copying each local file. Keep Drive-native sources as links.
+4. Ask the user to provide either a project description directly in the
    conversation or one or more source documents. Accept both together.
 
 This opening is a short intake, not an exhaustive questionnaire. Do not ask

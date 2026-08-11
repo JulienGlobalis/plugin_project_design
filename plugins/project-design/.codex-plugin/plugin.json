@@ -1,7 +1,7 @@
 {
   "name": "project-design",
-  "version": "0.1.0+codex.20260811123622",
-  "description": "Statefully guided project specification setup, Project Canvas framing, and document restitution with enforced phase and artefact boundaries.",
+  "version": "0.1.0+codex.20260811141829",
+  "description": "Statefully guided project specification setup, private source intake, Project Canvas framing, and document restitution with enforced phase and artefact boundaries.",
   "author": {
     "name": "Project Design Contributors"
   },
@@ -9,7 +9,7 @@
   "interface": {
     "displayName": "Project Design",
     "shortDescription": "Structure application and software project design.",
-    "longDescription": "Project Design persists and enforces consent, workspace initialization, stage and delivery selection, iterative Project Canvas framing, approval, and optional Microsoft Word or Google Docs restitution. Complete cross-stage orchestration and six specialized methodologies remain future work.",
+    "longDescription": "Project Design persists and enforces consent, workspace initialization, stage, delivery and source-strategy selection, optional private source centralization, iterative Project Canvas framing, approval, and optional Microsoft Word or Google Docs restitution. Complete cross-stage orchestration and six specialized methodologies remain future work.",
     "developerName": "Project Design Contributors",
     "category": "Productivity",
     "capabilities": [],
