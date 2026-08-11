@@ -20,8 +20,10 @@ See the
 for the consolidated layer, model, skill, ownership, flow, and dependency
 reference.
 
-- `project-design` will select and coordinate the necessary business and
-  document skills without producing business content or documents.
+- `project-design` now provides the guided entry: skill presentation, explicit
+  consent, safe workspace initialization, persisted phase enforcement, stage
+  selection with `project-framing` by default, and handoff. Complete
+  cross-stage orchestration remains future work.
 - `project-framing` is the implemented first design step. It clarifies the
   expression of need and produces the Project Canvas.
 - `functional-design` will structure products, modules, features, users,
@@ -40,16 +42,22 @@ reference.
   `document-product-backlog` remain installed placeholders for future
   document restitution from their corresponding business artefacts.
 
-Exactly nine skill directories are installed. `project-framing` and
-`document-project-canvas` are implemented; the other seven entries are
-explicit placeholders. Every specialized skill remains independently
+Exactly nine skill directories are installed. The `project-design` guided
+entry, `project-framing`, and `document-project-canvas` are implemented; the
+other six entries are explicit placeholders. Every specialized skill remains independently
 callable, and future orchestration must preserve direct use.
+
+Before work begins, the selected skill gives a short operational brief:
+skill and purpose, available or missing inputs, deliverables to be generated,
+and models or templates the user must provide. Durable Markdown outputs are
+stored together under `_project-design/` at the root of the target project;
+documentary Markdown uses `_project-design/documents/`.
 
 ### Current Availability
 
 | Skill | Installed entry | Current status | Current or forecast responsibility |
 | --- | --- | --- | --- |
-| `project-design` | Yes | Placeholder | Future global orchestration; full routing is not implemented |
+| `project-design` | Yes | Stateful guided entry implemented | Consent, persistent phase enforcement, workspace initialization, stage selection, and handoff; full routing is not implemented |
 | `project-framing` | Yes | Implemented; manual user validation pending | Step 1; produces the Project Canvas business artefact |
 | `functional-design` | Yes | Placeholder | Future structured functional-design methodology |
 | `technical-design` | Yes | Placeholder | Future complementary or parallel technical-design methodology |
@@ -165,6 +173,13 @@ development/              Versioned resources excluded from installation
 .agents/plugins/          Repository marketplace metadata
 integrations/             Platform notes and optional integration boundaries
 ```
+
+`_project-design/` and its `documents/` subdirectory are initialized in a
+target project only after the user explicitly confirms use of the plugin for
+their specifications. The guided flow stores non-business control state in
+`_project-design/project-design-state.json`; it contains no source or Canvas
+content. Initialization creates no placeholder artefact. The workspace is not
+a repository-development or plugin-cache directory.
 
 The repository marketplace points only to `plugins/project-design/`.
 Development resources remain versioned in Git but are not part of the

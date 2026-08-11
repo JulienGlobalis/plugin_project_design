@@ -11,6 +11,15 @@ PLACEHOLDER — FUTURE METHODOLOGY NOT IMPLEMENTED
 
 The detailed technical-design methodology and artefact structure are TO BE DEFINED.
 
+## Invocation Brief
+
+When invoked, apply the shared
+[Invocation Brief and Project Workspace Delivery contract](../../shared/quality-rules/README.md).
+Briefly identify the forecast inputs, the future Technical Design artefact,
+and that no document template is expected from this business skill. State that
+the methodology is not implemented, so no `_project-design/technical-design.md`
+file or other artefact will be generated.
+
 ## Purpose
 
 Eventually describe a coherent technical direction that is traceable to the

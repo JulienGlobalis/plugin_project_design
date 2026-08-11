@@ -2,7 +2,7 @@
 
 ## Iteration Objective
 
-Implement `document-project-canvas` as the documentary counterpart of the
+Implement the guided `project-design` entry and `document-project-canvas` as the documentary counterpart of the
 validated Project Canvas business artefact so `project-framing` and final
 document restitution can be tested sequentially, without changing the
 business methodology or the three remaining document placeholders.
@@ -11,7 +11,7 @@ business methodology or the three remaining document placeholders.
 
 | Skill | Status in version 0.1.0 | Capability statement |
 | --- | --- | --- |
-| `project-design` | Installed placeholder | Forecast global orchestration only; complete routing is not implemented |
+| `project-design` | Stateful guided entry version 0.2 | Presents skills, obtains consent, initializes the workspace, persists and enforces phases, proposes `project-framing`, and hands off; complete routing is not implemented |
 | `project-framing` | Implemented methodology version 0.2 | Produces the ten-section Project Canvas business artefact; manual user validation remains pending |
 | `functional-design` | Installed placeholder | Future structured functional-design methodology |
 | `technical-design` | Installed placeholder | Future complementary or parallel technical-design methodology |
@@ -21,8 +21,8 @@ business methodology or the three remaining document placeholders.
 | `document-technical-design` | Installed placeholder | Future technical specifications in Markdown, Word, or Google Docs |
 | `document-product-backlog` | Installed placeholder | Future backlog document in Markdown, Google Sheets, Excel, Word, or Google Docs |
 
-`project-framing` and `document-project-canvas` are implemented. Their combined
-manual user validation remains pending. The other seven entries remain
+The guided entry, `project-framing`, and `document-project-canvas` are implemented. Their combined
+manual user validation remains pending. The other six entries remain
 architecture-stabilizing placeholders and provide no operational capability.
 
 ## In Scope
@@ -31,7 +31,10 @@ architecture-stabilizing placeholders and provide no operational capability.
   families.
 - Define the discipline-neutral Shared Document Model as the common contract
   for every implemented and future document skill.
-- Retain `project-design` as the future global orchestrator.
+- Implement `project-design` consent, idempotent workspace initialization,
+  persistent state, phase validation, stage selection, documentary-choice
+  capture, framing and approval gates, and specialized-skill handoff while
+  retaining complete orchestration as future work.
 - Position `project-framing` as the first design step.
 - Keep the Project Canvas as the primary `project-framing` business artefact.
 - Define the ten required Canvas sections, filling rules, qualitative
@@ -54,6 +57,22 @@ architecture-stabilizing placeholders and provide no operational capability.
   manifests, execution evidence, and continuity context.
 - Preserve the isolated installable bundle and its independence from
   `development/`.
+- Require a concise pre-execution brief naming the selected skill, available
+  and missing inputs, expected deliverables, and required or optional models
+  or templates.
+- Store every durable generated Markdown output beneath `_project-design/` at
+  the root of the target project, with documentary outputs below
+  `_project-design/documents/`.
+- Require explicit consent before workspace initialization and create no
+  placeholder output during initialization.
+- Persist only workflow-control metadata in
+  `_project-design/project-design-state.json`, atomically update it through the
+  bundled script, reject skipped transitions, and keep all project knowledge
+  out of the state file.
+- Make `project-framing` present the ten Canvas chapters, resolve optional
+  Word or Google Docs delivery, accept a prompt description or sources, and
+  co-construct the Canvas in question-and-answer rounds of at most three
+  questions.
 
 ## Out of Scope
 
@@ -68,7 +87,7 @@ architecture-stabilizing placeholders and provide no operational capability.
   integration to `document-project-canvas` without a demonstrated need.
 - Adding methodology, templates, examples, scripts, or integrations to the
   three remaining document placeholders.
-- Executable workflows, runtime code, language packages, templating engines,
+- General-purpose workflow engines, language packages, templating engines,
   exporters, persistence, APIs, MCP servers, hooks, agents, commands, or Spec
   Kit automation.
 - Changing the Information Architecture ADR, Canonical Domain Model,
@@ -135,8 +154,8 @@ verified native Markdown, Microsoft Word, or Google Docs document.
   Document Model without changing its methodology.
 - The other three document skills remain placeholders containing only
   `SKILL.md`.
-- `project-design` remains a future global orchestrator and does not duplicate
-  specialized methodology.
+- `project-design` owns the guided entry and remains the future complete global
+  orchestrator; it does not duplicate specialized methodology.
 - The former generic documentary skill directory is removed because its
   absence does not break plugin discovery or manifests.
 - `project-framing` accepts an existing Project View or available project
@@ -179,6 +198,14 @@ verified native Markdown, Microsoft Word, or Google Docs document.
   criteria, allowed statuses, result areas, and the confidentiality rule.
 - No Golden Output changes without explicit human approval.
 - No installable skill or shared resource depends on `development/`.
+- Every installed skill applies the shared invocation brief; placeholders say
+  that they generate no output.
+- `project-framing` targets `_project-design/project-canvas.md` for durable
+  Markdown delivery.
+- `document-project-canvas` targets
+  `_project-design/documents/project-canvas.md` for Markdown delivery.
+- Existing files are not overwritten silently, and an unavailable project
+  root is reported instead of claiming a successful save.
 - The Canonical Domain Model, Knowledge Model, Project Model, Information
   Architecture ADR, and French canonical terminology remain unchanged.
 - No commit or push is performed.

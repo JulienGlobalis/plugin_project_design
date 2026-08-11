@@ -12,7 +12,14 @@ Tests verify methodological quality, not identical wording. They evaluate:
   and open questions;
 - quality of reasoning and handling of uncertainty;
 - compliance with skill responsibilities and boundaries;
-- absence of unsupported invention.
+- absence of unsupported invention;
+- clarity of the pre-execution skill, input, output, and template brief;
+- correct placement of durable Markdown outputs under `_project-design/`;
+- explicit consent before workspace initialization and idempotent creation;
+- default stage selection and focused iterative framing dialogue;
+- persisted phase transitions that reject skipped or invalid steps;
+- absence of business or source content from the workflow state;
+- Canvas and external-document completion gates.
 
 A skill change is incomplete until its affected tests and documentation have
 also been updated.
@@ -115,6 +122,9 @@ For each run:
    expected observations.
 3. Preserve the raw output before review.
 4. Evaluate it with `repository-quality.md` and the selected skill checklist.
+   Confirm that the invocation brief appears before substantive work and that
+   any durable Markdown file uses the target project's `_project-design/`
+   workspace.
 5. Compare it with the matching approved golden output, if one exists.
 6. Record platform, skill version or commit, scenario, reviewer, result,
    differences, and unresolved issues under `executions/`.

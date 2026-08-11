@@ -18,6 +18,39 @@ Own document structure, presentation, template application, format creation,
 and document-level quality only. Keep `project-framing` as the sole owner of
 the Canvas business content.
 
+## Invocation Brief and Delivery
+
+Before inspecting the artefact, apply the shared
+[Invocation Brief and Project Workspace Delivery contract](../../shared/quality-rules/README.md).
+State briefly that `document-project-canvas` is being used, identify the
+validated Canvas and requested format, name the document that will be
+generated, and tell the user whether a template is required, optional, or
+replaced by the default professional structure. A compatible template is
+optional unless the user explicitly requires one.
+
+Save a generated Markdown document to
+`_project-design/documents/project-canvas.md` at the target project root. When
+an external format is requested, also save any durable Markdown source that is
+actually generated for that delivery under this directory; do not create an
+artificial Markdown duplicate solely to satisfy the storage convention.
+Save a local Word delivery by default as
+`_project-design/documents/project-canvas.docx`. Deliver a native Google Doc
+through its verified Google Drive link.
+
+## Guided Workflow State
+
+Remain independently callable, but when
+`_project-design/project-design-state.json` exists or the user invoked the
+guided plugin flow, read it through
+`../project-design/scripts/workflow.py status` before document work. Proceed
+only when the phase is `awaiting_document`. Reuse the recorded format,
+template mode, and template reference without asking again.
+
+After native verification and delivery, run `complete-document` with the
+verified `.docx` path or native Google Docs URL. Do not report the guided flow
+as complete unless that transition succeeds. Never place business content or
+document body text in the state file.
+
 ## Required Input
 
 Require:
@@ -83,6 +116,11 @@ presentation slots, not permission to invent content.
 
 When no template is supplied, apply the default structure in
 [document structure](references/document-structure.md).
+
+A template choice may already have been captured by `project-design` or
+`project-framing`. Reuse it without asking again. Otherwise, for Word or Google
+Docs, ask whether the user wants to supply a local template, a Google Drive
+template link, or use the default professional structure.
 
 ### 3. Build a Content-Preservation Map
 
@@ -153,8 +191,17 @@ user. State:
 - the document-validation result;
 - any unresolved documentary limitation.
 
+For Markdown delivery, report the `_project-design/` relative path when the
+file was saved. For external delivery, report any durable companion Markdown
+path only when such a file was actually generated.
+
 Do not present the document as business-approved merely because its
 formatting passed validation.
+
+For a guided workflow, record the verified delivery with the state-machine
+command before reporting completion. If the command rejects the file or URL,
+keep the phase `awaiting_document` and correct the delivery or report the
+blocker.
 
 ## Boundaries
 

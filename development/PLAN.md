@@ -28,6 +28,12 @@ The consolidated current architecture is documented in the
 - Keep the installable plugin bundle physically isolated from versioned
   development resources and ignored local work.
 - Prefer Markdown, YAML, and JSON until executable behavior is justified.
+- Start every skill invocation with a concise summary of the selected skill,
+  inputs, generated deliverables, and required or optional user-supplied
+  models or templates.
+- Group every durable generated Markdown output under `_project-design/` at
+  the root of the target project without conflating business artefacts and
+  documentary representations.
 - Isolate optional integrations so dependencies point toward external
   platforms, never into the core.
 
@@ -35,11 +41,13 @@ The consolidated current architecture is documented in the
 
 ### Global Orchestration
 
-- `project-design`: installed placeholder for future orchestration, routing,
-  artefact transmission, cross-step consistency, and traceable returns to an
-  earlier stage when reliable new information appears. Full orchestration is
-  not implemented. It produces neither business content nor documents and
-  must not duplicate specialized methodology.
+- `project-design`: guided entry implemented for consent, safe workspace
+  initialization, persistent transition enforcement, stage selection with
+  `project-framing` by default, delivery preferences, and specialized-skill
+  handoff. Full routing, artefact
+  transmission, cross-step consistency, and traceable returns remain future
+  work. It produces neither business content nor documents and must not
+  duplicate specialized methodology.
 
 ### Business Skills
 
@@ -74,10 +82,9 @@ perform exports, or contain presentation logic.
 - `document-product-backlog`: future backlog document in Markdown, Google
   Sheets, Microsoft Excel, Microsoft Word, or Google Docs.
 
-`project-framing` has an implemented business methodology and
-`document-project-canvas` has an implemented documentary methodology. Their
-combined manual validation remains pending. The other seven installed entries
-are placeholders or under-construction contracts. Document skills consume
+The guided entry, `project-framing`, and `document-project-canvas` are
+implemented. Their combined manual validation remains pending. The other six
+installed entries are placeholders. Document skills consume
 their corresponding business artefacts and apply only document structure,
 formatting, an optional template, and an output format. They add no knowledge
 and make no Decisions.
@@ -116,6 +123,10 @@ adjustments rather than silently rewriting validated framing.
 The plugin will support standalone use, optional preparation alongside GitHub
 Spec Kit, and a future isolated Spec Kit adapter. It will also support one
 skill, several selected skills, or a complete orchestrated workflow.
+
+All usage modes apply the shared invocation brief. Implemented skills store
+durable Markdown artefacts under `_project-design/`; placeholder skills state
+their non-operational status and create no output directory or file.
 
 ## Extension Points
 
@@ -157,5 +168,8 @@ until its affected tests have been updated and reviewed.
 14. Iteration 13: define and test `document-functional-design`.
 15. Iteration 14: define and test `document-technical-design`.
 16. Iteration 15: define and test `document-product-backlog`.
-17. Iteration 16: define global `project-design` orchestration and
+17. Guided-entry increment: implement consent, workspace initialization,
+    persistent workflow state, default stage selection, delivery choice,
+    framing iterations, approval gates, and documentary completion.
+18. Iteration 16: define complete global `project-design` orchestration and
     cross-artefact consistency after specialized contracts are stable.

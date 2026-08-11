@@ -10,6 +10,9 @@
       being silently repaired.
 - [ ] The skill remains independently callable and does not perform global
       orchestration.
+- [ ] The response first identifies `document-project-canvas`, the validated
+      Canvas input, requested output, and whether a supplied template is
+      required, optional, or replaced by the default structure.
 
 ## Content Preservation
 
@@ -42,6 +45,10 @@
       or explicit user instruction.
 - [ ] A supplied template is compatible, introduces no stale facts, and does
       not suppress any required role.
+- [ ] A format or template choice captured upstream is reused without asking
+      the user again.
+- [ ] In a guided flow, document generation starts only in
+      `awaiting_document` and uses the state-recorded format and template.
 
 ## Format Verification
 
@@ -49,12 +56,20 @@
 - [ ] Markdown headings, tables, links, and fences are valid when applicable.
 - [ ] Word output is a real `.docx` and every rendered page is visually
       inspected when applicable.
+- [ ] A local Word file uses `_project-design/documents/project-canvas.docx`
+      or a justified qualified filename.
 - [ ] Google Docs output is native and its structure and material text are
       read back after writing when applicable.
 - [ ] The delivered file or link is the verified output; no external format
       is simulated or claimed without verification.
+- [ ] The state becomes `complete` only after the verified `.docx` path or
+      native Google Docs URL is accepted by `complete-document`.
 
 ## Validation Status
+
+- [ ] Markdown delivery uses
+      `_project-design/documents/project-canvas.md` or a justified qualified
+      filename without silent overwrite.
 
 Classify the result as `PASS`, `PASS WITH RESERVATIONS`, or `FAIL`. Documentary
 validation does not constitute business approval of the Project Canvas.

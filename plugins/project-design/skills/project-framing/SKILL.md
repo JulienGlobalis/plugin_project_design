@@ -19,6 +19,39 @@ Do more than summarize sources: reconcile compatible information, expose
 material conflicts and gaps, make project boundaries understandable, and
 prepare responsible downstream work without inventing missing content.
 
+## Invocation Brief and Delivery
+
+Before analysis, apply the shared
+[Invocation Brief and Project Workspace Delivery contract](../../shared/quality-rules/README.md).
+State briefly that `project-framing` is being used, which sources or Project
+View are available, that one Project Canvas business artefact will be produced,
+and that no document template is required. Save the durable Markdown artefact
+to `_project-design/project-canvas.md` at the target project root unless an
+explicit compatible project-qualified or versioned filename is needed.
+
+When invoked directly and the target has no initialized `_project-design/`
+workspace, briefly present the plugin workspace and obtain explicit consent
+before creating it. Do not repeat this consent gate when `project-design` has
+already completed it in the current project flow.
+
+## Guided Workflow State
+
+Remain independently callable, but when
+`_project-design/project-design-state.json` exists or the user invoked the
+guided plugin flow, use the state machine at
+`../project-design/scripts/workflow.py`. Run `status` before framing and proceed
+only when the phase is `framing_iterations`.
+
+After every question-and-answer round, update
+`_project-design/project-canvas.md`, then run `record-iteration` with the actual
+number of questions and answers. Use `--ready-for-review` only when the Canvas
+is ready for explicit review. Never edit the state file directly or record
+question and answer content in it.
+
+When the phase is `awaiting_canvas_approval`, wait for explicit user approval.
+After approval, run `approve-canvas --confirmed`; do not invoke documentary
+restitution unless the resulting phase is `awaiting_document`.
+
 ## Inputs
 
 Accept any useful combination of:
@@ -57,7 +90,40 @@ When French output is requested, also read the
 
 ## Workflow
 
-### 1. Establish the Request Context
+### 1. Start the Guided Framing Conversation
+
+Before analyzing project content, present `project-framing` as the first
+project-design step and explain that its Markdown output is
+`_project-design/project-canvas.md`. Name the ten Canvas chapters that will be
+built:
+
+1. Business Context;
+2. Objectives and Expected Value;
+3. Project Stakeholders;
+4. Users;
+5. Functional Scope;
+6. Technical Constraints;
+7. Risks;
+8. Decisions;
+9. Questions;
+10. Success Criteria.
+
+Then resolve the interaction in this order, unless `project-design` already
+captured an answer:
+
+1. Ask whether the user also wants a final Word or native Google Docs document
+   in addition to the mandatory Markdown Canvas.
+2. If yes, ask whether to use a supplied local template, a Google Drive
+   template link, or the default professional structure. Record the choice for
+   `document-project-canvas`; do not apply it during framing.
+3. Ask the user to provide either a project description directly in the
+   conversation or one or more source documents. Accept both together.
+
+This opening is a short intake, not an exhaustive questionnaire. Do not ask
+about project substance before the user supplies the initial description or
+sources.
+
+### 2. Establish the Request Context
 
 Identify:
 
@@ -75,7 +141,7 @@ indicates another choice. When a requested language resource is missing,
 state the limitation and obtain an explicit fallback choice; never silently
 use an unrelated localized language.
 
-### 2. Prepare the Working Project View
+### 3. Prepare the Working Project View
 
 When a Project View is supplied:
 
@@ -101,7 +167,7 @@ When only raw or partially structured sources are supplied:
 Treat this preparation as use of the shared contracts, not as a separate
 deliverable or methodology layer.
 
-### 3. Rework the Expression of Need
+### 4. Rework the Expression of Need
 
 Identify the information needed to make the project understandable and usable
 for the next design steps:
@@ -128,7 +194,7 @@ governance, risk, or handoff.
 Represent dependencies as relationships between project elements. Do not
 introduce a new canonical Dependency concept.
 
-### 4. Assess Information Quality
+### 5. Assess Information Quality
 
 For every material statement:
 
@@ -155,26 +221,34 @@ When an authorized Decision resolves a conflict, present the normalized
 position and retain the material opposing evidence in the traceability basis.
 Otherwise keep the matter unresolved.
 
-### 5. Decide Whether to Ask Before Drafting
+### 6. Co-construct the Canvas Through Iterations
 
-Produce a useful first Project Canvas without a preliminary questionnaire
-whenever possible.
+After receiving the initial description or sources, prepare a useful working
+Canvas from the available information. Then conduct focused question-and-answer
+rounds to improve it progressively.
 
-Ask before drafting only when a small amount of information is necessary to
-identify the project, understand its basic purpose, select the requested
-deliverable, or avoid a materially misleading Canvas.
-
-When questions are necessary:
+For every round:
 
 - ask at most three high-value questions at a time;
 - explain briefly why each answer matters;
 - never repeat a question already answered by the inputs;
 - let the user decline or defer an answer;
-- continue with an explicitly incomplete Canvas when the user chooses.
+- update the affected Canvas chapters from the answers without rewriting
+  unrelated validated content;
+- summarize what changed and keep unresolved points visible;
+- prioritize questions that change Scope, authority, value, Decisions, Risks,
+  success criteria, or downstream readiness.
 
-Do not delay the first draft for details that can remain unresolved.
+In a guided workflow, save the updated working Canvas and record the successful
+iteration transition before starting another round. If the transition is
+rejected, stop and follow the state machine's returned phase.
 
-### 6. Compose the Project Canvas
+Continue until the user validates the Canvas for delivery, asks to stop, or
+the remaining questions can be explicitly deferred. Do not demand complete
+answers before producing a useful draft, and do not invent content to end the
+conversation.
+
+### 7. Compose the Project Canvas
 
 Follow the required content and filling rules in the
 [Project Canvas reference](references/project-canvas.md).
@@ -210,7 +284,7 @@ For French output:
   changing its meaning;
 - keep English canonical references internal.
 
-### 7. Assess Readiness and Classify Questions
+### 8. Assess Readiness and Classify Questions
 
 Treat the intended 80-90% reliability as a qualitative business expectation,
 never as a calculated score, confidence percentage, or permission to complete
@@ -234,7 +308,7 @@ impact, Risk, and dependency. Identify an owner or decision authority only
 when known. Recommend a concrete clarification action without inventing dates
 or commitments.
 
-### 8. Verify Before Delivery
+### 9. Verify Before Delivery
 
 Check the output against:
 
@@ -258,6 +332,8 @@ Confirm that:
 - success criteria are source-supported or explicitly unresolved;
 - questions are project-specific, classified, non-duplicative, and
   proportionate;
+- the user was able to review the progressively updated Canvas and explicitly
+  validate delivery or defer the remaining questions;
 - no detailed functional, technical, backlog, or document methodology was
   introduced;
 - the result can support the next applicable design step without concealing
@@ -268,11 +344,21 @@ Confirm that:
 Produce one structured Project Canvas business artefact in the requested
 language.
 
+When filesystem delivery is available, the Markdown file governed by this
+contract belongs under `_project-design/` according to the shared workspace
+delivery rules. This storage convention does not turn the artefact into a
+formatted final document or give `project-framing` document-format ownership.
+
 The Canvas must be autonomous, structured, versionable, traceable, and
 suitable as input to `functional-design`, `technical-design`,
 `product-backlog`, and `document-project-canvas`. `project-framing` owns the
 framing knowledge only. It does not select a document format, apply a
 template, format a final document, convert, or export.
+
+When the user requested Word or Google Docs, hand the validated Canvas and the
+recorded format/template choice to `document-project-canvas` after saving the
+Markdown business artefact. Do not delay or merge the Markdown Canvas into its
+documentary representation.
 
 ## Traceability
 

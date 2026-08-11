@@ -11,6 +11,15 @@ PLACEHOLDER — FUTURE METHODOLOGY NOT IMPLEMENTED
 
 The detailed backlog methodology and artefact semantics are TO BE DEFINED.
 
+## Invocation Brief
+
+When invoked, apply the shared
+[Invocation Brief and Project Workspace Delivery contract](../../shared/quality-rules/README.md).
+Briefly identify the forecast designed inputs, the future Product Backlog
+artefact, and that no document template is expected from this business skill.
+State that the methodology is not implemented, so no
+`_project-design/product-backlog.md` file or other artefact will be generated.
+
 ## Purpose
 
 Eventually produce or improve a traceable Product Backlog aligned with

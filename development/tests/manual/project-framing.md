@@ -14,19 +14,33 @@ Allowed results:
 
 ## Test Procedure
 
-1. Select one case below.
-2. Provide every listed source artefact, excluding the fixture `README.md`.
-3. Use the supplied prompt or the applicable entry in the `Prompt` column
+1. Invoke `project-design` and confirm that no directory is initialized before
+   explicit consent.
+2. Confirm plugin use, verify workspace initialization, and accept the default
+   step 1 `project-framing`.
+3. Inspect `_project-design/project-design-state.json`, start a new
+   conversation if desired, and verify that the workflow resumes at the same
+   phase without storing project or source content.
+4. Select the optional documentary output and template mode, then select one
+   case below.
+5. Provide every listed source artefact, excluding the fixture `README.md`.
+6. Use the supplied prompt or the applicable entry in the `Prompt` column
    without adding the expected observations or this checklist to the model
    context.
-4. Preserve the generated Project Canvas artefact before documentary
+7. Preserve the initial skill launch brief and verify that it identifies the
+   skill, inputs, deliverables, and required or optional models or templates.
+8. Verify that durable Markdown outputs are grouped under `_project-design/`
+   at the target project root.
+9. Complete at least one focused question-and-answer iteration and preserve
+   the progressively updated Canvas.
+10. Preserve the generated Project Canvas artefact before documentary
    restitution.
-5. Invoke `document-project-canvas` with that artefact and the documentary
+11. Invoke `document-project-canvas` with that artefact and the documentary
    prompt below. Preserve the produced document separately.
-6. Complete the case controls and the bilingual verification grid against
+12. Complete the case controls and the bilingual verification grid against
    both the artefact and final document.
-7. Record concrete evidence, the result, and any reservations.
-8. Return the completed results, generated Canvas, and final document for the
+13. Record concrete evidence, the result, and any reservations.
+14. Return the completed results, generated Canvas, and final document for the
    intervention report without committing confidential material.
 
 ## Documentary Prompt
@@ -272,6 +286,17 @@ Enter one allowed result and concise evidence or reservations for every row.
 
 | Criterion | Critères FR | Prompt | Result | Evidence, comments, or reservations |
 | --- | --- | --- | --- | --- |
+| The guided workflow persists and resumes its exact phase | Le workflow guidé persiste et reprend sa phase exacte | Start project-design, complete one transition, then continue in a new conversation and resume only from the next action recorded in project-design-state.json. |  |  |
+| A transition cannot skip a required phase | Une transition ne peut pas contourner une phase obligatoire | Before selecting the stage, try to choose the delivery format and verify that the workflow refuses the transition without changing its phase. |  |  |
+| The state file contains no project or source business content | Le fichier d'état ne contient aucun contenu métier du projet ou des sources | Inspect project-design-state.json and verify that it contains only consent, phase, choices, presence flags, counts, approvals, references, and transition history. |  |  |
+| The state machine enforces one to three questions per framing round | La machine d'état impose une à trois questions par ronde de cadrage | During framing, try to record four questions in one iteration and verify that it is rejected; then record a valid round of at most three questions. |  |  |
+| Completion is gated by Canvas approval and the requested native document | La finalisation exige l'approbation du Canvas et le document natif demandé | Try to approve without a saved non-empty Canvas and, when Word or Google Docs is selected, try to complete without the verified file or URL; both attempts must fail. |  |  |
+| The plugin requests explicit consent before initializing its project workspace | Le plugin demande un consentement explicite avant d'initialiser son espace projet | Present the project-design skills and ask me to confirm that I want to use the plugin for my project specifications. Do not create any directory before my answer. |  |  |
+| Stage selection proposes step 1 project-framing by default | Le choix de l'étape propose par défaut l'étape 1 project-framing | Ask which project-design stage I want to perform, propose step 1 project-framing by default, and clearly identify the stages that are not implemented yet. |  |  |
+| The optional document format and template source are resolved before framing input | Le format documentaire optionnel et la source du modèle sont définis avant les entrées de cadrage | Before requesting project content, ask whether I also want Word or Google Docs and whether I will supply a local template, a Drive template, or use the default structure. |  |  |
+| The Canvas is co-constructed through focused question-and-answer iterations | Le Canvas est co-construit par des itérations ciblées de questions-réponses | Build a first working Canvas from my description or sources, then ask at most three high-value questions per round and update the affected chapters after each answer. |  |  |
+| The response first presents the selected skill, available and missing inputs, expected deliverables, and required or optional models or templates | La réponse présente d'abord le skill sélectionné, les entrées disponibles ou manquantes, les livrables attendus et les modèles obligatoires ou optionnels | Before execution, briefly present the selected project-design skill, its available and missing inputs, the deliverables it will generate, and every required or optional model or template. |  |  |
+| Durable Markdown outputs are grouped under the target project's `_project-design/` directory without silent overwrite | Les sorties Markdown durables sont regroupées dans le répertoire `_project-design/` du projet cible sans écrasement silencieux | Save every durable Markdown artefact under `_project-design/` at the target project root, using the business-artefact and document paths defined by the plugin. |  |  |
 | The primary output is a Project Canvas | La sortie principale est un Project Canvas | Use `project-framing` on all supplied sources and produce a structured Project Canvas, not a free-form report. |  |  |
 | All ten required sections are present or explicitly insufficiently informed | Les dix sections obligatoires sont présentes ou explicitement signalées comme insuffisamment renseignées | Produce the ten-section Project Canvas and keep every unsupported or missing section explicitly visible. |  |  |
 | The Canvas clarifies the expression of need instead of only summarizing sources | Le Canvas clarifie l'expression de besoin au lieu de seulement résumer les sources | Clarify the business problem, objectives, value, and boundaries from the supplied sources instead of only summarizing them. |  |  |

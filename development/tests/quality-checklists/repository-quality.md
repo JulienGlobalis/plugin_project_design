@@ -41,6 +41,33 @@
       another skill's methodology.
 - [ ] The output does not require Spec Kit or a platform-specific runtime.
 
+## Invocation and Delivery
+
+- [ ] `project-design` obtains explicit user consent before creating the
+      `_project-design/` workspace, and a refusal creates nothing.
+- [ ] Workspace initialization is idempotent and creates no placeholder
+      artefact or document.
+- [ ] The guided workflow creates and resumes
+      `_project-design/project-design-state.json` without resetting it.
+- [ ] Every attempted transition outside its required phase fails without
+      advancing or corrupting the state.
+- [ ] The state contains control metadata only and no source content, project
+      description, question, answer, or business artefact content.
+- [ ] Stage selection explicitly proposes step 1 `project-framing` by default
+      and does not present placeholder stages as implemented.
+- [ ] Before substantive work, the response briefly names the selected skill,
+      available and missing inputs, expected deliverables, and required or
+      optional models or templates.
+- [ ] A placeholder clearly states that it generates no artefact or document.
+- [ ] Every durable generated Markdown file is stored beneath
+      `_project-design/` at the target project root.
+- [ ] Business artefacts and documentary representations use their distinct
+      default paths.
+- [ ] No existing file is silently overwritten and no unavailable save is
+      reported as successful.
+- [ ] The workflow reaches `complete` only after explicit Canvas approval and,
+      when requested, a verified native document reference.
+
 ## Methodological Quality
 
 - [ ] Structure supports review and future reuse.

@@ -1,6 +1,6 @@
 # Project Design - Contexte de continuité
 
-Dernière mise à jour : 2026-08-05
+Dernière mise à jour : 2026-08-11
 
 ## Utilisation de ce fichier
 
@@ -43,8 +43,10 @@ structurer la conception de projets applicatifs et logiciels.
 
 Compétences prévues :
 
-- `project-design` : placeholder installé pour l'orchestration globale
-  future, non implémentée ;
+- `project-design` : entrée guidée avec machine d'état version 0.2 implémentée
+  pour présenter les skills, obtenir le consentement, initialiser le répertoire,
+  imposer les transitions, reprendre entre conversations et transmettre au
+  skill spécialisé ; orchestration complète multi-disciplines future ;
 - `project-framing` : étape 1, cadrage et Project Canvas ;
 - `functional-design` : placeholder installé pour l'étape 2, conception
   fonctionnelle future ;
@@ -70,7 +72,9 @@ Chaque skill spécialisé doit rester utilisable indépendamment.
 
 L'architecture cible distingue trois catégories :
 
-1. **Orchestration globale** — `project-design` déterminera les étapes utiles,
+1. **Orchestration globale** — `project-design` assure désormais l'entrée
+   guidée, le consentement, l'initialisation et la sélection de l'étape. Il
+   déterminera ensuite les étapes utiles,
    appellera les skills spécialisés, transmettra leurs artefacts, maintiendra
    leur cohérence et organisera les retours tracés vers une étape précédente.
    Cette orchestration complète n'est pas implémentée et ne doit pas absorber
@@ -177,6 +181,37 @@ concurrent.
 - Aucun commit ou push n'est effectué sans demande explicite.
 - Après chaque modification, fournir un compte rendu de type CI indiquant
   clairement les contrôles passés, échoués ou non applicables.
+- Avant d'exécuter un skill, présenter très brièvement le skill ou l'ordre des
+  skills, les entrées disponibles ou manquantes, les livrables attendus et les
+  modèles ou templates obligatoires, optionnels ou remplacés par un défaut.
+- Tous les Markdown durables générés par le plugin sont regroupés sous
+  `_project-design/` à la racine du projet cible. Les artefacts métier utilisent
+  la racine de ce dossier et les documents `_project-design/documents/`.
+- Un placeholder annonce son statut et ses entrées/sorties prévisionnelles,
+  mais ne crée aucun fichier ni répertoire de livraison.
+- `project-design` doit obtenir un consentement explicite avant de créer ou
+  réutiliser `_project-design/` pour un nouveau parcours. Un refus ne crée rien.
+- L'initialisation est idempotente et ne crée que `_project-design/` et
+  `_project-design/documents/`, sans artefact vide.
+- Le choix d'étape propose `project-framing` comme étape 1 par défaut. Les
+  placeholders restent visibles mais ne sont jamais présentés comme exécutables.
+- Le Markdown métier reste obligatoire. Word ou Google Docs est un complément
+  optionnel dont le format et le modèle local, Drive ou par défaut sont choisis
+  avant la collecte du contenu projet.
+- `project-framing` présente les dix chapitres, accepte une description dans le
+  prompt, des documents sources ou les deux, puis co-construit le Canvas par
+  rondes de trois questions au maximum.
+- Le workflow guidé persiste uniquement son état de contrôle dans
+  `_project-design/project-design-state.json` et l'actualise atomiquement.
+- Ce fichier ne contient aucune description projet, source, question, réponse,
+  connaissance métier ou contenu du Canvas.
+- Chaque transition exige la phase attendue ; aucune étape ne peut être sautée
+  sur la seule base de l'historique conversationnel.
+- Une reprise commence par la commande `status` et suit uniquement
+  `next_action`. Il n'existe volontairement aucune commande de réinitialisation.
+- La phase `complete` exige un Canvas non vide explicitement approuvé puis, si
+  demandé, un `.docx` sous `_project-design/documents/` ou un lien Google Docs
+  natif vérifié.
 
 ## Historique des itérations
 
@@ -197,6 +232,8 @@ concurrent.
 | 8.4 / Itération 12 avancée - Document Project Canvas | `document-project-canvas` implémenté pour tester la chaîne complète avec `project-framing` | Implémentation et validation technique terminées — validation manuelle combinée en attente |
 | 8.5 - Shared Document Model | Contrat documentaire commun formalisé pour tous les skills documentaires | Fondation architecturale terminée — validation technique documentée |
 | 8.6 - Plugin Architecture & Coherence Review v1.0 | Modèles, skills, propriétaires, flux, dépendances et roadmap audités et documentés | Revue terminée — architecture prête pour `functional-design` avec réserves documentaires non bloquantes |
+| 8.7 - Entrée guidée | Consentement, initialisation sûre, choix d'étape, options documentaires et cadrage itératif implémentés | Validation technique terminée — rejeu manuel utilisateur en attente |
+| 8.8 - Workflow guidé persistant | Machine d'état, transitions obligatoires, reprise, validations du Canvas et du document implémentées | Validation technique terminée — rejeu manuel utilisateur en attente |
 
 ## Historique des prompts directeurs
 
@@ -538,7 +575,7 @@ La validation manuelle devient séquentielle : `project-framing`, conservation
 de l'artefact brut, puis `document-project-canvas`, conservation du document et
 évaluation séparée de la fidélité métier et de la qualité documentaire. Le
 fichier manuel Markdown et l'onglet `project-framing` du Google Sheet `Recette`
-comportent désormais une colonne `Prompt`. Chaque cas et chacun des 28 critères
+comportent désormais une colonne `Prompt`. Chaque cas et chacun des 30 critères
 proposent ainsi le ou les prompts types à exécuter. Les colonnes de résultat et
 de commentaires restent séparées, et les listes de validation de résultat du
 Google Sheet sont préservées. L'onglet conserve les critères métier et les cinq
@@ -547,9 +584,11 @@ non-invention et le format natif vérifié.
 
 Le marketplace Codex actif ne pointe plus vers l'ancien clone iCloud. Il
 référence désormais le bon dépôt sous
-`/Users/julienoger/Documents/Dev/project_design`. Après la formalisation du
-Shared Document Model, le cachebuster installé est
-`0.1.0+codex.20260805211133`. Il expose les neuf skills, le
+`/Users/julienoger/Documents/Dev/perso_project_design`. Le dépôt ayant été
+renommé, la source locale du marketplace a été corrigée puis le plugin a été
+réinstallé depuis ce chemin le 10 août 2026. Après la formalisation du
+Shared Document Model, le cachebuster installé après le retour de validation
+du 10 août 2026 est `0.1.0+codex.20260810124338`. Il expose les neuf skills, le
 `document-project-canvas` implémenté avec ses trois références runtime et la
 nouvelle fondation documentaire référencée par les quatre skills
 documentaires. Un nouveau fil Codex est nécessaire pour charger ce registre
@@ -558,6 +597,39 @@ mis à jour.
 Rapport :
 [Document Project Canvas Implementation Review](tests/executions/2026-08-05-document-project-canvas-implementation.md).
 
+### Retour de validation sur l'invocation et les livrables
+
+Le retour utilisateur du 10 août 2026 ajoute deux règles transverses sans
+modifier les modèles métier ou documentaires :
+
+- la première réponse d'un skill doit présenter rapidement le skill utilisé,
+  les éléments attendus en entrée, les livrables générés et les modèles ou
+  templates que l'utilisateur doit fournir ;
+- tous les Markdown durables générés par les skills `project-design` doivent
+  être regroupés dans `_project-design/` à la racine du projet cible.
+
+La convention d'emplacement est :
+
+```text
+_project-design/
+├── project-canvas.md
+├── functional-design.md
+├── technical-design.md
+├── product-backlog.md
+└── documents/
+    ├── project-canvas.md
+    ├── functional-design.md
+    ├── technical-design.md
+    └── product-backlog.md
+```
+
+Seuls les fichiers produits par des méthodologies implémentées et réellement
+demandés sont créés. La convention est portée par les règles qualité partagées
+et référencée par les neuf skills. Le test manuel Markdown et l'onglet
+`project-framing` du Google Sheet `Recette` contiennent deux critères
+supplémentaires pour cette présentation initiale et ce répertoire, portant la
+grille à 30 critères.
+
 État Git de cette implémentation :
 
 - branche : `main` ;
@@ -565,6 +637,110 @@ Rapport :
 - l'arbre de travail contient les modifications non commitées de
   `document-project-canvas`, de ses tests et de la documentation associée ;
 - aucun commit et aucun push n'ont été demandés ou effectués.
+
+### Itération 8.7 - Entrée guidée et cadrage itératif
+
+Le retour utilisateur du 11 août 2026 rend le démarrage du plugin directif
+sans mettre en œuvre l'orchestration complète :
+
+- `project-design` présente les skills et demande un consentement explicite
+  avant toute initialisation ;
+- après accord, le script installé
+  `skills/project-design/scripts/init_workspace.py` crée ou réutilise de façon
+  idempotente `_project-design/` et `_project-design/documents/` ;
+- le skill demande l'étape et propose `project-framing` par défaut ;
+- il présente l'étape, conserve le Markdown métier obligatoire et collecte le
+  choix éventuel Word ou Google Docs ainsi que le modèle local, Drive ou la
+  structure professionnelle par défaut ;
+- `project-framing` présente les dix chapitres, demande ensuite une description
+  projet ou des documents sources, construit un premier Canvas et l'améliore
+  par rondes de trois questions à forte valeur au maximum ;
+- `document-project-canvas` réutilise le choix documentaire sans redemander et
+  conserve Word sous `_project-design/documents/project-canvas.docx` ou livre
+  le lien Google Docs natif.
+
+Le script refuse de s'exécuter sans `--confirmed`, refuse la racine du système
+et le dossier personnel, n'écrase aucun fichier, prend en charge `--dry-run` et
+retourne un résultat JSON. Ses quatre tests unitaires passent.
+
+Le fichier manuel et l'onglet `project-framing` du Google Sheet `Recette`
+contiennent quatre critères supplémentaires, soit 34 critères : consentement,
+étape par défaut, restitution/modèle et construction itérative. La lecture
+après écriture confirme les valeurs, le retour à la ligne, les validations de
+résultat et la conservation des résultats précédents.
+
+Rapport :
+[Guided Project Design Workflow Review](tests/executions/2026-08-11-guided-project-design-workflow-review.md).
+
+Le cachebuster généré et réinstallé depuis le dépôt Documents est
+`0.1.0+codex.20260811094254`, sous
+`/Users/julienoger/.codex/plugins/cache/project-design/project-design/`.
+Un nouveau fil Codex est nécessaire pour charger ce registre de skills.
+
+État Git : modifications non commitées conservées ; aucun commit ni push n'a
+été demandé ou effectué.
+
+### Itération 8.8 - Workflow guidé persistant
+
+Après constat que le guidage 8.7 reposait encore en partie sur le respect des
+instructions par le LLM, l'utilisateur a demandé sa mise en œuvre technique.
+Le script installé `skills/project-design/scripts/workflow.py` fournit une
+machine d'état persistante et retourne systématiquement la phase et la
+`next_action` autorisée.
+
+Phases implémentées :
+
+```text
+awaiting_stage
+-> awaiting_delivery
+-> awaiting_sources
+-> framing_iterations
+-> awaiting_canvas_approval
+-> awaiting_document (si demandé)
+-> complete
+```
+
+Contrats durables :
+
+- `start --confirmed` crée le workspace et le fichier d'état ou reprend l'état
+  existant sans le réinitialiser ;
+- chaque commande refuse une phase inattendue sans faire avancer l'état ;
+- les placeholders sont refusés comme étapes exécutables ;
+- Word ou Google Docs exige un mode de modèle ; un modèle local doit exister et
+  un modèle Drive doit utiliser une URL Google ;
+- au moins une description ou un document doit être réellement disponible ;
+- une ronde de cadrage contient entre une et trois questions ; seuls les
+  compteurs sont persistés ;
+- l'approbation exige `_project-design/project-canvas.md` non vide et une
+  confirmation explicite ;
+- Word exige un `.docx` existant sous `_project-design/documents/` et Google
+  Docs un lien natif avant la phase `complete` ;
+- aucune commande de reset n'est exposée afin d'empêcher une perte silencieuse
+  de continuité.
+
+Les 16 tests unitaires couvrent l'initialisation, la reprise, les transitions
+hors ordre, les placeholders, les modèles, les intrants, la limite de trois
+questions, l'approbation du Canvas et les livraisons. Les neuf skills et le
+plugin passent leurs validateurs officiels.
+
+La recette Markdown et l'onglet `project-framing` du Google Sheet `Recette`
+comptent désormais 39 critères. Les cinq nouveaux contrôles portent sur la
+reprise, le refus de contournement, l'absence de contenu métier dans l'état, la
+limite de questions et les conditions de finalisation. La lecture connecteur
+confirme les valeurs, le retour à la ligne, les listes de validation et la
+conservation des lignes existantes.
+
+Rapport :
+[Stateful Guided Workflow Review](tests/executions/2026-08-11-stateful-guided-workflow-review.md).
+
+Le cachebuster stateful généré et réinstallé depuis le dépôt Documents est
+`0.1.0+codex.20260811123622`, sous
+`/Users/julienoger/.codex/plugins/cache/project-design/project-design/`.
+Un nouveau fil Codex est nécessaire pour charger cette version.
+
+Livraison Git : l'utilisateur a demandé le commit et le push de l'ensemble de
+la série le 11 août 2026. Le journal Git constitue la source de vérité pour
+l'identifiant du commit et l'état de synchronisation avec `origin/main`.
 
 ### Formalisation du Shared Document Model
 
@@ -691,6 +867,7 @@ Rapports d'itération et de revue :
 | Document Project Canvas | [Revue](tests/executions/2026-08-05-document-project-canvas-implementation.md) |
 | Shared Document Model | [Revue](tests/executions/2026-08-05-shared-document-model-review.md) |
 | Architecture globale v1.0 | [Revue](tests/executions/2026-08-05-plugin-architecture-coherence-review-v1.0.md) |
+| Invocation et répertoire de livrables | [Revue](tests/executions/2026-08-10-skill-invocation-workspace-review.md) |
 
 Les itérations 1 à 3 n'ont pas de rapport d'exécution dédié. Leur historique
 est conservé par les commits, la stratégie de test, les fixtures et la
@@ -923,4 +1100,6 @@ est fourni ; ne déduis pas sa méthodologie. Le rejeu manuel combiné de
 `project-framing` puis `document-project-canvas` avec
 development/tests/manual/project-framing.md reste un garde qualité en attente.
 Conserve séparément l'artefact Canvas et le document final lors de ce rejeu.
+Vérifie aussi la présentation initiale du skill et la création des sorties
+Markdown sous `_project-design/` à la racine du projet cible.
 ```

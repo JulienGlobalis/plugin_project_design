@@ -37,9 +37,13 @@ Nine skills are installed. Two have implemented methodologies:
 - `project-framing` produces the Project Canvas business artefact;
 - `document-project-canvas` produces its documentary representation.
 
-The other seven skills are explicit placeholders. A placeholder stabilizes
+The other six specialized skills are explicit placeholders. A placeholder stabilizes
 the architecture and discovery contract but provides no operational
 methodology.
+
+Every invocation also follows one shared interaction and workspace contract:
+give a concise launch brief before execution, then group durable Markdown
+outputs beneath `_project-design/` at the target project root.
 
 ## Architectural Layers
 
@@ -229,7 +233,7 @@ No shared model depends on a skill. No skill may redefine a shared model.
 ## Skill View
 
 ```text
-project-design (future orchestration only)
+project-design (stateful guided entry implemented; complete orchestration future)
         |
         +-> project-framing -> Project Canvas
         |        +-> document-project-canvas -> Project Canvas document
@@ -251,20 +255,27 @@ by `project-design`. Every specialized skill remains independently callable.
 
 ### `project-design`
 
-- **Role:** future global orchestration and cross-step coordination.
-- **Status:** installed placeholder; orchestration not implemented.
+- **Role:** stateful guided plugin entry now; future global orchestration and cross-step
+  coordination.
+- **Status:** consent, workspace initialization, persistent phase enforcement,
+  stage selection, delivery choice, framing and approval gates, and
+  specialized-skill handoff implemented; complete orchestration not implemented.
 - **Inputs:** project request, sources, existing artefacts, requested scope,
   selected skills, and constraints.
-- **Outputs:** future routing plan and coordinated collection of artefacts;
-  no current operational output.
+- **Outputs:** initialized project delivery workspace, non-business workflow
+  state, and selected-stage handoff; future routing plan and coordinated
+  collection of artefacts.
 - **Artefact produced or consumed:** will transmit artefacts but owns none.
 - **Document produced or consumed:** may route a document request but owns and
   produces no document.
 - **Direct dependencies:** Project Model, shared quality rules, terminology,
   and optional Spec Kit boundary.
 - **Consumers:** the user or external workflow receiving coordinated results.
-- **Responsibilities:** select steps, order or parallelize work, transmit
-  artefacts, preserve consistency, and route founded feedback upstream.
+- **Responsibilities:** present capabilities, obtain initialization consent,
+  create the workspace safely, persist and enforce the current phase, select
+  the stage, capture delivery choices, gate approval and delivery, and hand
+  off; future work will order or parallelize steps, transmit artefacts,
+  preserve consistency, and route founded feedback upstream.
 - **Excluded:** specialized methodology, business content, document content,
   persistence, external execution, and unsupported invention.
 
@@ -516,6 +527,16 @@ passes through Knowledge Model and Project Model review.
 - Runtime references belong inside the installable skill directory.
 - Development fixtures, tests, reports, and draft examples never become
   runtime dependencies.
+- Before execution, identify the skill or ordered skills, available and
+  missing inputs, generated deliverables, and required or optional models or
+  templates.
+- Store durable business-artefact Markdown at `_project-design/<artefact>.md`
+  and documentary Markdown at `_project-design/documents/<artefact>.md` in the
+  target project.
+- Treat `_project-design/` as a delivery workspace, not as a new semantic
+  model, evidence source, orchestration layer, or ownership boundary.
+- Do not create output files for placeholder skills or silently overwrite an
+  unrelated existing deliverable.
 
 ## Roadmap Readiness
 

@@ -9,6 +9,15 @@ description: Define the future documentary restitution of a validated Product Ba
 
 PLACEHOLDER — FUTURE DOCUMENT METHODOLOGY NOT IMPLEMENTED
 
+## Invocation Brief
+
+When invoked, apply the shared
+[Invocation Brief and Project Workspace Delivery contract](../../shared/quality-rules/README.md).
+Briefly identify the future validated Product Backlog input, forecast document
+formats, and future optional compatible template. State that the methodology
+is not implemented, so no `_project-design/documents/product-backlog.md` file
+or external document will be generated.
+
 ## Purpose
 
 Eventually transform the Product Backlog artefact produced by
