@@ -1,6 +1,6 @@
 # Project Design - Contexte de continuité
 
-Dernière mise à jour : 2026-08-11
+Dernière mise à jour : 2026-08-12
 
 ## Utilisation de ce fichier
 
@@ -1086,14 +1086,16 @@ project_design/
 │   ├── tests/
 │   └── examples/
 ├── .local/                   # Travail local ignoré
-├── .agents/plugins/          # Marketplace du dépôt
+├── .agents/plugins/          # Marketplace Codex du dépôt
+├── .claude-plugin/           # Marketplace Claude Code du dépôt
 ├── integrations/
 └── documentation du dépôt
 ```
 
-Le marketplace utilise `./plugins/project-design` comme source. Les règles
-nécessaires au fonctionnement sont autonomes dans le bundle. Les tests
-valident ces règles sans être une dépendance runtime.
+Les marketplaces Codex et Claude Code utilisent
+`./plugins/project-design` comme source. Les règles nécessaires au
+fonctionnement sont autonomes dans le bundle. Les tests valident ces règles
+sans être une dépendance runtime.
 
 ## Roadmap prévue
 
@@ -1213,6 +1215,27 @@ Le bundle a été réinstallé depuis le marketplace local en version
 `0.1.0+codex.20260811161924`. La relecture du cache confirme le schéma 3, la
 phase d'attente dédiée et la version 0.4. Un nouveau fil Codex est requis pour
 charger ce registre mis à jour.
+
+## Distribution GitHub pour Claude Code
+
+Le dépôt public GitHub `JulienGlobalis/plugin_project_design` distribue le
+plugin comme marketplace indépendante. Le catalogue Claude Code est
+`.claude-plugin/marketplace.json` et expose uniquement le bundle
+`./plugins/project-design`, comme le catalogue Codex
+`.agents/plugins/marketplace.json`.
+
+Installation Claude Code :
+
+```bash
+claude plugin marketplace add JulienGlobalis/plugin_project_design
+claude plugin install project-design@project-design
+```
+
+Le manifeste Claude conserve la version `0.1.0`. Toute future livraison Claude
+doit incrémenter cette version avant publication, puis être récupérée avec
+`claude plugin marketplace update project-design` et
+`claude plugin update project-design@project-design`. Un redémarrage de Claude
+Code est requis après installation ou mise à jour.
 
 ## Prompt de reprise
 

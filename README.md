@@ -171,7 +171,8 @@ development/              Versioned resources excluded from installation
   PLAN.md                 Project roadmap
   SPEC.md                 Current specification
 .local/                   Ignored local and confidential working files
-.agents/plugins/          Repository marketplace metadata
+.agents/plugins/          Codex marketplace metadata
+.claude-plugin/           Claude Code marketplace metadata
 integrations/             Platform notes and optional integration boundaries
 ```
 
@@ -183,9 +184,9 @@ active question batches but no question text, answer text, source, or Canvas
 content. Initialization creates no placeholder artefact. The workspace is not
 a repository-development or plugin-cache directory.
 
-The repository marketplace points only to `plugins/project-design/`.
-Development resources remain versioned in Git but are not part of the
-installed plugin copy.
+The Codex and Claude Code marketplace entries both point only to
+`plugins/project-design/`. Development resources remain versioned in Git but
+are not part of the installed plugin copy.
 
 ## Localization and Assets
 
@@ -248,10 +249,42 @@ are explicitly designed.
 
 ## Installation
 
-The repository includes a local marketplace entry at
-`.agents/plugins/marketplace.json`. It points to the isolated
-`plugins/project-design/` bundle so development tests and context files are
+The public GitHub repository is:
+
+```text
+JulienGlobalis/plugin_project_design
+```
+
+### Claude Code
+
+Add the GitHub repository as a marketplace, then install the plugin:
+
+```bash
+claude plugin marketplace add JulienGlobalis/plugin_project_design
+claude plugin install project-design@project-design
+```
+
+Restart Claude Code after installation. To retrieve a later release:
+
+```bash
+claude plugin marketplace update project-design
+claude plugin update project-design@project-design
+```
+
+The Claude marketplace catalog is
+`.claude-plugin/marketplace.json`. It points to the isolated
+`plugins/project-design/` bundle, so development tests and context files are
 not installed with the plugin.
 
-External publication, package releases, and automated installation remain TO
-BE DEFINED.
+### Codex
+
+The Codex marketplace catalog is `.agents/plugins/marketplace.json`. Add the
+GitHub repository as a marketplace and install the plugin with:
+
+```bash
+codex plugin marketplace add JulienGlobalis/plugin_project_design --ref main
+codex plugin add project-design@project-design
+```
+
+Submission to an official vendor-managed public directory remains separate
+from this independently distributed GitHub marketplace.

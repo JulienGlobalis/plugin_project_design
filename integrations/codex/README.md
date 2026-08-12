@@ -9,5 +9,13 @@ The shared `SKILL.md` files use only the cross-platform `name` and `description`
 
 The repository marketplace entry is defined in
 `.agents/plugins/marketplace.json` and points only to
-`plugins/project-design/`. External publication, product gating, icons,
-screenshots, and hosted metadata remain TO BE DEFINED.
+`plugins/project-design/`. The GitHub repository can be configured as an
+independent marketplace with:
+
+```bash
+codex plugin marketplace add JulienGlobalis/plugin_project_design --ref main
+codex plugin add project-design@project-design
+```
+
+Product gating, icons, screenshots, official-directory submission, and hosted
+metadata remain TO BE DEFINED.

@@ -1,0 +1,14 @@
+{
+  "name": "project-design",
+  "owner": {
+    "name": "Project Design Contributors"
+  },
+  "description": "Project design workflows for application and software framing, specification, and documentary restitution.",
+  "plugins": [
+    {
+      "name": "project-design",
+      "source": "./plugins/project-design",
+      "description": "Structure application and software project design through guided framing, resumable Project Canvas decisions, and document restitution."
+    }
+  ]
+}
