@@ -176,6 +176,11 @@ concurrent.
   `document-<discipline>` pour son document est définitive et obligatoire.
 - Les exemples nécessaires au raisonnement d'un skill installé appartiennent
   à son répertoire `references/` et doivent être liés depuis son `SKILL.md`.
+- Le README racine fournit une notice d'utilisation pour chacun des neuf
+  skills avec des prompts d'exemple indépendants de la plateforme. Les
+  exemples des trois skills implémentés sont exécutables ; ceux des six
+  placeholders sont limités à un contrôle de disponibilité et ne doivent
+  produire aucun artefact.
 - `development/examples/` ne contient que des exemples brouillons ou non
   approuvés ; les conclusions attendues des fixtures ne deviennent jamais des
   exemples runtime.
@@ -1236,6 +1241,23 @@ doit incrémenter cette version avant publication, puis être récupérée avec
 `claude plugin marketplace update project-design` et
 `claude plugin update project-design@project-design`. Un redémarrage de Claude
 Code est requis après installation ou mise à jour.
+
+## Notice d'utilisation des neuf skills
+
+Le README racine documente désormais chaque skill installé avec un contrat de
+lecture homogène : statut réel, cas d'utilisation, intrants, livrable,
+frontières et prompt d'exemple adaptable à Codex ou Claude Code.
+
+Les exemples de `project-design`, `project-framing` et
+`document-project-canvas` montrent des appels réellement disponibles, y
+compris le démarrage, la reprise persistée, le cadrage direct et la restitution
+Word. Les exemples des six placeholders demandent uniquement un contrôle de
+disponibilité : ils rappellent explicitement de ne créer aucun artefact tant
+que la méthodologie correspondante n'est pas implémentée.
+
+Cette documentation ne déplace aucun exemple runtime nécessaire au
+raisonnement d'un skill : ces références restent dans le répertoire du skill
+concerné et liées depuis son `SKILL.md`.
 
 ## Prompt de reprise
 

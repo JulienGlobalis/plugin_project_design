@@ -84,6 +84,254 @@ project-design
 └── document-product-backlog         # placeholder
 ```
 
+## Skill Usage Guide
+
+Skills can be invoked by naming them explicitly in a natural-language prompt
+in Codex or Claude Code. Use `project-design` for the guided workflow, or call
+an implemented specialized skill directly when its required input already
+exists. A direct call remains subject to the same consent, workspace, input,
+validation, and delivery rules as the guided workflow.
+
+Examples below are platform-neutral and ready to adapt. Replace paths,
+languages, formats, and source names with project-specific values. Only
+`project-design`, `project-framing`, and `document-project-canvas` execute a
+methodology today. Placeholder examples are explicitly marked and must not
+create an artefact.
+
+### `project-design` — Guided Workflow
+
+[Full skill instructions](plugins/project-design/skills/project-design/SKILL.md)
+
+- **Status:** implemented stateful guided entry; complete multi-stage
+  orchestration remains future work.
+- **Use it when:** starting, resuming, or checking a project specification
+  workflow and when the plugin should guide consent, setup, source intake,
+  framing, approval, and optional document delivery.
+- **Inputs:** the target project root, then the project description or source
+  documents requested by the workflow. Documentary preferences and the source
+  storage strategy are collected in order.
+- **Outputs:** `_project-design/project-design-state.json`, the initialized
+  workspace, and artefacts produced by implemented specialized skills. The
+  state file contains workflow control data, never project knowledge.
+- **Important:** on an existing workflow, the skill runs `status` first and
+  follows only its recorded `next_action`. It never resets or skips a phase
+  based on conversation history.
+
+Example — start a new guided workflow:
+
+```text
+Use the project-design skill to guide the specification of the application in
+/path/to/my-project. Present the available skills and workspace rules, then ask
+for my explicit consent before creating or reusing _project-design/.
+```
+
+Example — resume after a conversation change:
+
+```text
+Resume the project-design workflow in /path/to/my-project. Check the persisted
+status first and perform only the recorded next action. If framing answers are
+pending, present exactly the unanswered questions already stored in the
+Project Canvas.
+```
+
+### `project-framing` — Project Canvas
+
+[Full skill instructions](plugins/project-design/skills/project-framing/SKILL.md)
+
+- **Status:** implemented methodology version 0.4; manual user validation is
+  still required.
+- **Use it when:** clarifying a project brief, discovery material, an existing
+  application, or an early expression of need before functional design,
+  technical design, or backlog preparation.
+- **Inputs:** a project description, source documents, an existing Project
+  View, or any useful combination of them. No document template is required.
+- **Output:** the current validated project position in the ten-section
+  `_project-design/project-canvas.md` business artefact.
+- **Important:** the standard Canvas is concise and decision-oriented. It does
+  not expose audit mechanics or invent missing information. Any indispensable
+  unresolved point becomes a focused question; other missing content remains
+  `To be defined` in the requested output language.
+
+Example — direct framing from mixed sources:
+
+```text
+Use the project-framing skill for /path/to/my-project. Build a French Project
+Canvas from the brief in docs/brief.md and the workshop notes in
+docs/workshop-notes.md. Preserve unresolved decisions, ask every materially
+necessary decision question without an arbitrary limit, and save the durable
+business artefact to _project-design/project-canvas.md.
+```
+
+### `functional-design` — Functional Design
+
+[Full skill instructions](plugins/project-design/skills/functional-design/SKILL.md)
+
+- **Status:** placeholder; the methodology and artefact structure are not
+  implemented.
+- **Forecast use:** describe modules, features, actors, journeys, business
+  rules, functional data, exceptions, dependencies, requirements, and
+  acceptance criteria from a validated Project Canvas and project evidence.
+- **Forecast inputs:** Project Canvas, stakeholder needs, requirements,
+  observed workflows, terminology, constraints, rules, and desired outcomes.
+- **Forecast output:** `_project-design/functional-design.md` once the
+  methodology is implemented.
+- **Current behavior:** announce that the skill is unavailable and create no
+  file. It must not perform document formatting or silently redo framing.
+
+Example — current availability check, not design execution:
+
+```text
+Check the functional-design skill for /path/to/my-project. If it is still a
+placeholder, summarize its forecast inputs and outputs, identify what is
+missing for future use, and do not create _project-design/functional-design.md.
+```
+
+### `technical-design` — Technical Design
+
+[Full skill instructions](plugins/project-design/skills/technical-design/SKILL.md)
+
+- **Status:** placeholder; the methodology and artefact structure are not
+  implemented.
+- **Forecast use:** define a technical direction covering architecture,
+  components, integrations, APIs, flows, security, performance, hosting,
+  operations, deployment, decisions, risks, and non-functional requirements.
+- **Forecast inputs:** Project Canvas, functional requirements when available,
+  system context, standards, integrations, constraints, risks, and prior
+  decisions.
+- **Forecast output:** `_project-design/technical-design.md` once the
+  methodology is implemented.
+- **Current behavior:** announce that the skill is unavailable and create no
+  file. Proposals must remain distinct from approved technical decisions.
+
+Example — current availability check, not design execution:
+
+```text
+Check the technical-design skill for /path/to/my-project using the validated
+Project Canvas and the existing architecture notes. If the methodology is
+still a placeholder, explain the forecast coverage and do not generate a
+Technical Design artefact.
+```
+
+### `product-backlog` — Product Backlog Artefact
+
+[Full skill instructions](plugins/project-design/skills/product-backlog/SKILL.md)
+
+- **Status:** placeholder; backlog creation, harmonization, prioritization,
+  and estimation are not implemented.
+- **Forecast use:** transform validated designed Scope into a traceable Product
+  Backlog without inventing requirements, priority, value, or effort.
+- **Forecast inputs:** Project Canvas, validated functional or technical
+  design, existing backlog material, and known prioritization, estimation,
+  ownership, and traceability constraints.
+- **Forecast output:** `_project-design/product-backlog.md` once the
+  methodology is implemented.
+- **Current behavior:** announce that the skill is unavailable and create no
+  backlog artefact or backlog items.
+
+Example — current availability check, not backlog generation:
+
+```text
+Check whether the product-backlog skill can process the validated design in
+/path/to/my-project. If it is still a placeholder, list the forecast inputs
+and boundaries and do not create or prioritize backlog items.
+```
+
+### `document-project-canvas` — Project Canvas Document
+
+[Full skill instructions](plugins/project-design/skills/document-project-canvas/SKILL.md)
+
+- **Status:** implemented methodology; combined manual validation with
+  `project-framing` remains pending.
+- **Use it when:** a validated Project Canvas must be delivered as a polished
+  native Markdown, Microsoft Word, or Google Docs document.
+- **Input:** a validated Project Canvas business artefact. Language, audience,
+  output format, and a compatible optional template may also be supplied.
+- **Output:** Markdown under `_project-design/documents/`, a verified `.docx`
+  there, or a verified native Google Docs link.
+- **Important:** this skill formats and verifies the Canvas without adding,
+  resolving, removing, or changing project knowledge. A business defect is
+  returned to `project-framing` rather than corrected silently.
+
+Example — create a Word document without a supplied template:
+
+```text
+Use the document-project-canvas skill to turn the validated
+_project-design/project-canvas.md into a professional French Microsoft Word
+document. Use the default structure, preserve all business meaning and
+unresolved questions, save it to
+_project-design/documents/project-canvas.docx, and verify the native result
+before delivery.
+```
+
+### `document-functional-design` — Functional Specifications Document
+
+[Full skill instructions](plugins/project-design/skills/document-functional-design/SKILL.md)
+
+- **Status:** placeholder; document methodology, template contracts, and
+  format integrations are not implemented.
+- **Forecast use:** restitute a validated Functional Design as human-facing
+  functional specifications without changing its business knowledge.
+- **Forecast inputs:** validated Functional Design plus language, presentation,
+  optional compatible template, and output-format constraints.
+- **Forecast outputs:** Markdown, Microsoft Word, or Google Docs in a future
+  implementation.
+- **Current behavior:** announce that the skill is unavailable and create no
+  file or external document.
+
+Example — current availability check, not document generation:
+
+```text
+Check the document-functional-design skill for the validated Functional Design
+in /path/to/my-project. If it is still a placeholder, report the future format
+options and do not create a functional specifications document.
+```
+
+### `document-technical-design` — Technical Specifications Document
+
+[Full skill instructions](plugins/project-design/skills/document-technical-design/SKILL.md)
+
+- **Status:** placeholder; document methodology, template contracts, and
+  format integrations are not implemented.
+- **Forecast use:** restitute a validated Technical Design as human-facing
+  technical specifications without changing its technical decisions.
+- **Forecast inputs:** validated Technical Design plus language, presentation,
+  optional compatible template, and output-format constraints.
+- **Forecast outputs:** Markdown, Microsoft Word, or Google Docs in a future
+  implementation.
+- **Current behavior:** announce that the skill is unavailable and create no
+  file or external document.
+
+Example — current availability check, not document generation:
+
+```text
+Check the document-technical-design skill for the validated Technical Design
+in /path/to/my-project. If it is still a placeholder, report the forecast
+formats and boundaries and do not create a technical specifications document.
+```
+
+### `document-product-backlog` — Product Backlog Document
+
+[Full skill instructions](plugins/project-design/skills/document-product-backlog/SKILL.md)
+
+- **Status:** placeholder; document methodology, template contracts, and
+  format integrations are not implemented.
+- **Forecast use:** restitute a validated Product Backlog without creating,
+  reprioritizing, estimating, or changing backlog content.
+- **Forecast inputs:** validated Product Backlog plus language, presentation,
+  optional compatible template, and output-format constraints.
+- **Forecast outputs:** Markdown, Google Sheets, Microsoft Excel, Microsoft
+  Word, or Google Docs in a future implementation.
+- **Current behavior:** announce that the skill is unavailable and create no
+  file, spreadsheet, or external document.
+
+Example — current availability check, not document generation:
+
+```text
+Check the document-product-backlog skill for the validated backlog in
+/path/to/my-project. If it is still a placeholder, report its forecast native
+formats and do not create or modify any backlog document.
+```
+
 All skills will rely on the accepted
 [common information architecture](plugins/project-design/shared/project-model/information-architecture.md):
 
