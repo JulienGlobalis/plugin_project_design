@@ -62,3 +62,20 @@ réservations.
 
 - Le nombre de doubles réservations confirmées diminue après la mise en
   service.
+
+## Capacité à poursuivre
+
+### Conception fonctionnelle — Non prête
+
+Le mode d'approbation des demandes doit être décidé avant de détailler le
+processus fonctionnel.
+
+### Conception technique — Prête avec réserves
+
+L'étude de l'existant peut commencer, mais les contraintes techniques restent
+à définir avant de valider une architecture.
+
+### Préparation du backlog — Non prête
+
+Le découpage détaillé attend la décision sur le mode d'approbation et la
+conception fonctionnelle correspondante.

@@ -7,7 +7,8 @@ description: Transform project briefs, discovery notes, source documents, or an 
 
 ## Status
 
-IMPLEMENTED - methodology version 0.4. Manual user validation is required.
+IMPLEMENTED - methodology version 0.5. FIRST REAL-PROJECT REPLAY COMPLETED;
+CORRECTIVE MANUAL RE-TEST REQUIRED.
 
 ## Purpose
 
@@ -114,6 +115,14 @@ built:
 8. Decisions;
 9. Questions;
 10. Success Criteria.
+
+After the ten numbered sections, add one unnumbered `Downstream Readiness`
+block. This companion assessment is mandatory but is not an eleventh Canvas
+section. Qualify `functional-design`, `technical-design`, and backlog
+preparation separately as `Ready`, `Ready with reservations`, or `Not ready`,
+or use natural equivalents in the requested language. State the supported
+reason, distinguish blocking from non-blocking questions, and never invent a
+completion score or missing project fact.
 
 Then resolve the interaction in this order, unless `project-design` already
 captured an answer:
@@ -358,6 +367,14 @@ backlog preparation. Omit deferrable detail and generic information requests.
 Phrase each retained item as a short decision question; name an authority only
 when known and useful.
 
+Before delivery, always report the three stage-specific readiness conclusions
+in the unnumbered companion block after the ten Canvas sections. Base each
+conclusion only on the current validated position, explicit gaps, and retained
+questions. A stage may be ready with reservations when its work can start
+without resolving every non-blocking unknown. A stage is not ready when one or
+more unresolved Decisions prevent useful work from starting. Do not use one
+universal readiness conclusion for all three stages.
+
 ### 9. Verify Before Delivery
 
 Check the output against:
@@ -394,7 +411,10 @@ Confirm that:
 - no detailed functional, technical, backlog, or document methodology was
   introduced;
 - the result can support the next applicable design step without concealing
-  its limits.
+  its limits;
+- the unnumbered Downstream Readiness block separately qualifies functional
+  design, technical design, and backlog preparation, with blocking and
+  non-blocking questions distinguished.
 
 ## Artefact Contract
 

@@ -48,7 +48,7 @@ Compétences prévues :
   imposer les transitions, reprendre entre conversations et transmettre au
   skill spécialisé ; orchestration complète multi-disciplines future ;
 - `project-framing` : étape 1, cadrage et Project Canvas, méthodologie version
-  0.4 ;
+  0.5 ;
 - `functional-design` : placeholder installé pour l'étape 2, conception
   fonctionnelle future ;
 - `technical-design` : placeholder installé pour l'étape 2 bis, conception
@@ -56,9 +56,10 @@ Compétences prévues :
   complémentaire ou parallèle ;
 - `product-backlog` : placeholder installé pour la transformation future de
   la conception validée en backlog traçable ;
-- `document-project-canvas` : méthodologie documentaire version 0.1
+- `document-project-canvas` : méthodologie documentaire version 0.2
   implémentée pour restituer un Project Canvas validé en Markdown natif,
-  Microsoft Word ou Google Docs ; validation manuelle combinée en attente ;
+  Microsoft Word ou Google Docs ; premier rejeu manuel réalisé, corrections
+  appliquées et rejeu correctif ciblé en attente ;
 - `document-functional-design` : placeholder installé pour les futures
   spécifications fonctionnelles ;
 - `document-technical-design` : placeholder installé pour les futures
@@ -256,9 +257,9 @@ concurrent.
 | Extension linguistique | Compagnon terminologique français ajouté | Terminée |
 | 8 - `project-framing` | Premier skill métier complet, tests sur quatre fixtures et workbook manuel | Terminée |
 | 8.1 - Packaging Boundary | Bundle installable isolé des ressources de développement et du travail local | Terminée |
-| 8.2 - Project Canvas | Architecture prévisionnelle révisée et `project-framing` repositionné autour du Project Canvas | Implémentation terminée — validation manuelle utilisateur en attente |
+| 8.2 - Project Canvas | Architecture prévisionnelle révisée et `project-framing` repositionné autour du Project Canvas | Premier rejeu manuel réel terminé — corrections 0.5 appliquées, rejeu ciblé en attente |
 | 8.3 - Architecture documentaire définitive | Quatre placeholders `document-<discipline>` installés et ancien placeholder générique supprimé | Terminée techniquement — aucune méthodologie documentaire implémentée |
-| 8.4 / Itération 12 avancée - Document Project Canvas | `document-project-canvas` implémenté pour tester la chaîne complète avec `project-framing` | Implémentation et validation technique terminées — validation manuelle combinée en attente |
+| 8.4 / Itération 12 avancée - Document Project Canvas | `document-project-canvas` implémenté pour tester la chaîne complète avec `project-framing` | Premier rejeu manuel réel terminé — corrections 0.2 appliquées, rejeu ciblé en attente |
 | 8.5 - Shared Document Model | Contrat documentaire commun formalisé pour tous les skills documentaires | Fondation architecturale terminée — validation technique documentée |
 | 8.6 - Plugin Architecture & Coherence Review v1.0 | Modèles, skills, propriétaires, flux, dépendances et roadmap audités et documentés | Revue terminée — architecture prête pour `functional-design` avec réserves documentaires non bloquantes |
 | 8.7 - Entrée guidée | Consentement, initialisation sûre, choix d'étape, options documentaires et cadrage itératif implémentés | Validation technique terminée — rejeu manuel utilisateur en attente |
@@ -1259,6 +1260,32 @@ Cette documentation ne déplace aucun exemple runtime nécessaire au
 raisonnement d'un skill : ces références restent dans le répertoire du skill
 concerné et liées depuis son `SKILL.md`.
 
+## Corrections issues du premier rejeu manuel réel
+
+Le 13 août 2026, les 43 contrôles du Google Sheet `Recette`, onglet
+`project-framing`, ont été analysés après leur exécution sur un projet réel
+géré par IA : 29 `PASS`, 5 `PASS WITH RESERVATIONS` et 9 `FAIL`.
+
+Cinq échecs provenaient d'attendus de recette obsolètes : limite de trois
+questions, options ou périmètre non décidé affichés dans la position courante,
+statuts de normalisation visibles et récit des contradictions dans le Canvas.
+La feuille a été réalignée sur le contrat courant sans modifier les résultats
+ni les commentaires historiques.
+
+Quatre échecs ont révélé des défauts réels. `project-framing` version 0.5 exige
+désormais, après les dix sections numérotées, un bloc non numéroté qualifiant
+séparément la capacité à lancer la conception fonctionnelle, la conception
+technique et la préparation du backlog, avec distinction des blocages et des
+réserves non bloquantes. `document-project-canvas` version 0.2 impose un
+contrôle inverse : toute phrase non structurelle doit provenir du Canvas ou
+d'une métadonnée explicitement fournie ; aucun sous-titre, résumé, compteur de
+questions, énoncé de traçabilité ou contenu d'audit séparé ne peut être ajouté
+par dérivation.
+
+Le rapport durable est
+[Real-Project Manual Replay Corrections](tests/executions/2026-08-13-real-project-manual-replay-corrections.md).
+Un rejeu correctif ciblé reste requis avant de déclarer la chaîne validée.
+
 ## Prompt de reprise
 
 ```text
@@ -1282,10 +1309,11 @@ explicite.
 Reprends à la section "Roadmap prévue". La revue d'architecture 8.6 confirme
 qu'aucune fondation supplémentaire n'est nécessaire. La prochaine itération
 méthodologique est `functional-design`, uniquement lorsque son prompt détaillé
-est fourni ; ne déduis pas sa méthodologie. Le rejeu manuel combiné de
-`project-framing` puis `document-project-canvas` avec
-development/tests/manual/project-framing.md reste un garde qualité en attente.
-Conserve séparément l'artefact Canvas et le document final lors de ce rejeu.
+est fourni ; ne déduis pas sa méthodologie. Le premier rejeu manuel réel de
+`project-framing` puis `document-project-canvas` est terminé. Rejoue de façon
+ciblée les corrections 0.5/0.2 définies dans
+development/tests/executions/2026-08-13-real-project-manual-replay-corrections.md.
+Conserve séparément l'artefact Canvas, l'audit éventuel et le document final.
 Vérifie aussi la présentation initiale du skill et la création des sorties
 Markdown sous `_project-design/` à la racine du projet cible.
 ```

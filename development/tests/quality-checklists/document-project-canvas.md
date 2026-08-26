@@ -31,6 +31,13 @@
       traceability remain visible.
 - [ ] No metadata, owner, date, status, threshold, content, or approval is
       invented to fill the document or a template.
+- [ ] No derived subtitle, summary, question count, traceability statement,
+      approval statement, or other narrative is added unless supplied by the
+      Canvas or explicitly by the user.
+- [ ] Every non-structural sentence in the document maps back to exact Canvas
+      content or explicit user-supplied document metadata.
+- [ ] A separate audit or traceability artefact is not merged into the Canvas
+      document without an explicit request for combined scope.
 
 ## Documentary Structure and Presentation
 

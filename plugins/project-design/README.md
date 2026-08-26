@@ -66,7 +66,8 @@ is added to the target project's `.gitignore` by default.
 
 The guided `project-design` entry, the `project-framing` business methodology,
 and the `document-project-canvas` documentary methodology are implemented.
-Manual validation of the combined chain remains pending. The other six skill
+The first real-project manual replay identified readiness and documentary
+mapping corrections; their focused re-test remains pending. The other six skill
 entries are explicit placeholders; complete orchestration is also pending.
 
 Current Project Canvas document formats are native Markdown, Microsoft Word,

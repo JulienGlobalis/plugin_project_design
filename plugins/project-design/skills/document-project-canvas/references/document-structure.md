@@ -8,17 +8,19 @@ contract.
 
 Start with:
 
-- the document title, normally `Project Canvas` plus the supported project
-  name;
+- the neutral document title `Project Canvas`, optionally followed by the
+  project name only when that name is supplied by the Canvas or the user;
 - supplied document metadata that helps review, such as artefact baseline,
   review context, language, or confidentiality marking;
 - an explicit notice when Provisional or Unresolved content materially
-  qualifies the document.
+  qualifies the document and that notice already exists in the Canvas.
 
 Omit unsupported metadata rather than displaying invented placeholders.
 
-Do not add an executive summary unless one already exists in the Canvas or
-the same content can be relocated without interpretation or loss.
+Do not add a subtitle, tagline, executive summary, open-question count,
+traceability summary, approval statement, or other introductory narrative
+unless it exists in the Canvas or the user explicitly supplies it as document
+metadata. Do not synthesize such text from otherwise accurate Canvas content.
 
 ## Required Sections
 
@@ -71,6 +73,10 @@ Preserve the Canvas Knowledge Basis through concise source references,
 footnotes, endnotes, or a final traceability section. Do not expose internal
 identifiers in a stakeholder-facing document unless they are required for
 review or explicitly requested.
+
+When traceability belongs to a separate audit artefact rather than the Canvas,
+do not add it to this document unless the user explicitly requests a combined
+document.
 
 ## Presentation Hierarchy
 

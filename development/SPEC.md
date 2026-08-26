@@ -12,17 +12,18 @@ business methodology or the three remaining document placeholders.
 | Skill | Status in version 0.1.0 | Capability statement |
 | --- | --- | --- |
 | `project-design` | Stateful guided entry version 0.4 | Presents skills, obtains consent, initializes the workspace, persists and enforces phases including pending framing answers, proposes `project-framing`, and hands off; complete routing is not implemented |
-| `project-framing` | Implemented methodology version 0.4 | Produces the ten-section Project Canvas business artefact and maintains complete necessary question batches; manual user validation remains pending |
+| `project-framing` | Implemented methodology version 0.5 | Produces the ten-section Project Canvas business artefact, a separate three-stage readiness assessment, and complete necessary question batches; corrective manual re-test remains pending |
 | `functional-design` | Installed placeholder | Future structured functional-design methodology |
 | `technical-design` | Installed placeholder | Future complementary or parallel technical-design methodology |
 | `product-backlog` | Installed placeholder | Future transformation of designed and validated Scope into traceable backlog items |
-| `document-project-canvas` | Implemented methodology version 0.1 | Produces a verified Project Canvas document in native Markdown, Microsoft Word, or Google Docs |
+| `document-project-canvas` | Implemented methodology version 0.2 | Produces a verified Project Canvas document in native Markdown, Microsoft Word, or Google Docs with strict reverse mapping to the supplied Canvas |
 | `document-functional-design` | Installed placeholder | Future functional specifications in Markdown, Word, or Google Docs |
 | `document-technical-design` | Installed placeholder | Future technical specifications in Markdown, Word, or Google Docs |
 | `document-product-backlog` | Installed placeholder | Future backlog document in Markdown, Google Sheets, Excel, Word, or Google Docs |
 
-The guided entry, `project-framing`, and `document-project-canvas` are implemented. Their combined
-manual user validation remains pending. The other six entries remain
+The guided entry, `project-framing`, and `document-project-canvas` are implemented. Their first
+real-project manual replay identified and corrected readiness and documentary
+mapping defects; a focused corrective re-test remains pending. The other six entries remain
 architecture-stabilizing placeholders and provide no operational capability.
 
 ## In Scope

@@ -89,8 +89,14 @@
 - [ ] Question priority reflects decision impact, Risk, and dependency rather
       than missing detail alone.
 - [ ] Owners or authorities are named only when useful and known.
-- [ ] Downstream readiness, when useful, is reported outside the ten Canvas
-      sections.
+- [ ] One unnumbered Downstream Readiness block follows the ten Canvas
+      sections and separately qualifies functional design, technical design,
+      and backlog preparation.
+- [ ] Each readiness conclusion is `Ready`, `Ready with reservations`, or
+      `Not ready`, or a natural requested-language equivalent, and is justified
+      only by the current Canvas gaps and retained questions.
+- [ ] Blocking questions and non-blocking reservations are distinguished for
+      each downstream stage.
 - [ ] Readiness is qualitative and purpose-specific; no artificial 80-90%
       score or universal completeness claim is produced.
 - [ ] The Canvas remains usable by the next applicable stage despite explicit

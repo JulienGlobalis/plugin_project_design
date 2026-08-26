@@ -233,10 +233,19 @@ reliable for a downstream stage when:
 - questions identify what the stage must resolve or defer;
 - the downstream skill need not repeat the complete framing analysis.
 
-Report readiness per applicable stage outside the ten Canvas sections when it
-is useful to the interaction. Do not declare universal completeness. A
+After the ten numbered sections, always add one unnumbered `Downstream
+Readiness` companion block. It is not an eleventh Canvas section. Qualify
+functional design, technical design, and backlog preparation separately as
+`Ready`, `Ready with reservations`, or `Not ready`, using natural equivalents
+in the requested language. Give a concise evidence-based reason for each
+conclusion and identify the retained questions that block that stage. Keep
+non-blocking reservations distinct from blockers.
+
+Do not declare universal completeness or calculate a readiness score. A
 blocking question may prevent all further work; another gap may block only
-functional design, technical design, or backlog preparation.
+functional design, technical design, or backlog preparation. A stage may
+start with reservations when the remaining unknowns do not prevent useful
+work in that discipline.
 
 ## Later Adjustments
 

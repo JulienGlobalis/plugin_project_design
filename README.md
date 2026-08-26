@@ -59,11 +59,11 @@ documentary Markdown uses `_project-design/documents/`.
 | Skill | Installed entry | Current status | Current or forecast responsibility |
 | --- | --- | --- | --- |
 | `project-design` | Yes | Stateful guided entry implemented | Consent, persistent phase enforcement, workspace initialization, stage selection, and handoff; full routing is not implemented |
-| `project-framing` | Yes | Implemented; manual user validation pending | Step 1; produces the Project Canvas business artefact |
+| `project-framing` | Yes | Implemented; corrective manual re-test pending | Step 1; produces the Project Canvas business artefact and separate downstream-readiness conclusions |
 | `functional-design` | Yes | Placeholder | Future structured functional-design methodology |
 | `technical-design` | Yes | Placeholder | Future complementary or parallel technical-design methodology |
 | `product-backlog` | Yes | Placeholder | Future traceable transformation of designed and validated Scope |
-| `document-project-canvas` | Yes | Implemented; combined manual validation pending | Project Canvas document in Markdown, Microsoft Word, or Google Docs |
+| `document-project-canvas` | Yes | Implemented; corrective manual re-test pending | Project Canvas document in Markdown, Microsoft Word, or Google Docs |
 | `document-functional-design` | Yes | Placeholder | Future functional specifications document |
 | `document-technical-design` | Yes | Placeholder | Future technical specifications document |
 | `document-product-backlog` | Yes | Placeholder | Future Product Backlog document |
@@ -138,15 +138,17 @@ Project Canvas.
 
 [Full skill instructions](plugins/project-design/skills/project-framing/SKILL.md)
 
-- **Status:** implemented methodology version 0.4; manual user validation is
-  still required.
+- **Status:** implemented methodology version 0.5; corrective manual re-test
+  is required after the first real-project replay.
 - **Use it when:** clarifying a project brief, discovery material, an existing
   application, or an early expression of need before functional design,
   technical design, or backlog preparation.
 - **Inputs:** a project description, source documents, an existing Project
   View, or any useful combination of them. No document template is required.
 - **Output:** the current validated project position in the ten-section
-  `_project-design/project-canvas.md` business artefact.
+  `_project-design/project-canvas.md` business artefact, followed by a
+  separate unnumbered readiness assessment for functional design, technical
+  design, and backlog preparation.
 - **Important:** the standard Canvas is concise and decision-oriented. It does
   not expose audit mechanics or invent missing information. Any indispensable
   unresolved point becomes a focused question; other missing content remains
@@ -240,8 +242,8 @@ and boundaries and do not create or prioritize backlog items.
 
 [Full skill instructions](plugins/project-design/skills/document-project-canvas/SKILL.md)
 
-- **Status:** implemented methodology; combined manual validation with
-  `project-framing` remains pending.
+- **Status:** implemented methodology version 0.2; corrective combined manual
+  re-test with `project-framing` remains pending.
 - **Use it when:** a validated Project Canvas must be delivered as a polished
   native Markdown, Microsoft Word, or Google Docs document.
 - **Input:** a validated Project Canvas business artefact. Language, audience,
@@ -463,8 +465,10 @@ initial French canonical terminology companion and the first complete
 business methodology, `project-framing`, plus the first document methodology,
 `document-project-canvas`. Its current unreleased evolution defines the
 Project Canvas as the primary framing artefact and supports its verified
-Markdown, Microsoft Word, or Google Docs restitution. Combined manual user
-validation remains pending. It does not provide the remaining detailed skill
+Markdown, Microsoft Word, or Google Docs restitution. The first real-project
+manual replay has been completed; its confirmed readiness and documentary
+mapping defects are corrected, and a focused corrective re-test remains
+pending. It does not provide the remaining detailed skill
 methodologies, complete cross-stage orchestration, general exporters, API
 integrations, MCP servers, hooks, agents, commands, or Spec Kit automation.
 
@@ -484,7 +488,8 @@ are explicitly designed.
 ## Roadmap
 
 1. Iteration 8 and advanced Iteration 12: `project-framing` -> Project Canvas
-   -> `document-project-canvas`; combined manual validation remains pending.
+   -> `document-project-canvas`; complete the focused corrective re-test after
+   the first real-project manual replay.
 2. Iteration 9: `functional-design` -> Functional Design.
 3. Iteration 10: `technical-design` -> Technical Design.
 4. Iteration 11: `product-backlog` -> Product Backlog.

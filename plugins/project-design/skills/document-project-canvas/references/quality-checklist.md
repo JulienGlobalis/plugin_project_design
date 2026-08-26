@@ -28,6 +28,13 @@ Verify every applicable item before delivery.
 ## Documentary Quality
 
 - The title and metadata contain only supplied information.
+- No subtitle, summary, question count, traceability statement, approval
+  statement, or other derived narrative appears unless it was supplied in the
+  Canvas or explicitly by the user.
+- Every non-structural sentence maps back to exact Canvas content or explicit
+  user-supplied document metadata.
+- Separate audit or traceability artefacts have not been merged without an
+  explicit request for a combined document.
 - Heading hierarchy is complete, sequential, and consistent.
 - Tables and registers remain readable and preserve their logical rows.
 - Missing information is visible without decorative filler.

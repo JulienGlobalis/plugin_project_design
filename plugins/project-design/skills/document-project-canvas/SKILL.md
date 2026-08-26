@@ -7,7 +7,8 @@ description: Create, format, and validate a human-facing Project Canvas document
 
 ## Status
 
-IMPLEMENTED METHODOLOGY VERSION 0.1 — MANUAL USER VALIDATION PENDING
+IMPLEMENTED METHODOLOGY VERSION 0.2 — FIRST REAL-PROJECT REPLAY COMPLETED;
+CORRECTIVE MANUAL RE-TEST REQUIRED
 
 ## Purpose
 
@@ -93,6 +94,11 @@ business sections:
 Also preserve any downstream-readiness statement and Knowledge Basis supplied
 with the artefact.
 
+Treat a separately supplied audit, source index, or traceability report as a
+different artefact. Do not merge it into the Project Canvas document unless
+the user explicitly requests a combined document and confirms that broader
+documentary scope.
+
 If material content is absent, contradictory, or unresolved but correctly
 labelled, keep it that way. If the input is not a valid Canvas, do not repair
 it through documentary editing. Request a corrected artefact or route the
@@ -139,6 +145,14 @@ location. Preserve:
 - source basis or traceability references;
 - downstream-readiness qualifications.
 
+Also map every planned non-structural sentence in the document back to exact
+Canvas content or explicit user-supplied document metadata. Structural labels
+are limited to the document title, the ten required section headings, supplied
+subsection labels, and the readiness heading when readiness exists in the
+Canvas. Do not derive a subtitle, tagline, executive summary, open-question
+count, traceability summary, approval statement, or other narrative adornment
+from the Canvas, even when the derivation would be factually correct.
+
 Reorder content only to improve documentary readability. Do not summarize,
 merge, deduplicate, shorten, or rewrite when doing so could change meaning,
 authority, status, qualification, or traceability.
@@ -156,6 +170,11 @@ Keep the document concise and stakeholder-facing, but preserve every material
 Canvas statement. Include only metadata supplied by the artefact or user.
 Never invent an author, sponsor, owner, version, approval status, date,
 classification, or review decision.
+
+Do not add a summary or introductory sentence merely to improve presentation.
+Apart from the neutral document title and structural headings, every piece of
+body text must be mapped from the validated Canvas or explicitly supplied by
+the user for this document.
 
 ### 5. Produce the Requested Format
 
@@ -175,6 +194,10 @@ Use the runtime [quality checklist](references/quality-checklist.md).
 
 Compare the finished document with the input artefact and confirm that every
 material element appears exactly once or through an explicit cross-reference.
+Perform the reverse check as well: every non-structural sentence in the
+finished document must map to Canvas content or explicit user-supplied
+metadata. Remove any derived subtitle, summary, count, traceability statement,
+or audit content that fails this reverse mapping.
 For Word, render and inspect every page. For Google Docs, read back the native
 document structure and inspect the visible result when the platform permits.
 
@@ -211,6 +234,8 @@ blocker.
 - Do not change a Decision, Assumption, Option, Risk, Issue, Requirement,
   Scope position, success criterion, question, status, or traceability basis.
 - Do not create missing content to fill a document or template.
+- Do not merge a separate audit or traceability artefact into the Canvas
+  document without an explicit request for that combined scope.
 - Do not hide uncertainty, contradiction, non-readiness, or absent authority
   for visual simplicity.
 - Do not modify the Canonical Domain Model, Knowledge Model, Project Model, or
