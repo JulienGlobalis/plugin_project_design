@@ -1,6 +1,6 @@
 # Project Design - Contexte de continuité
 
-Dernière mise à jour : 2026-08-12
+Dernière mise à jour : 2026-09-03
 
 ## Utilisation de ce fichier
 
@@ -173,6 +173,13 @@ concurrent.
   `development/documentation/PLUGIN_ARCHITECTURE_OVERVIEW.md` ; elle consolide
   les contrats existants sans remplacer les modèles ou les `SKILL.md`
   normatifs.
+- Le guide utilisateur simple officiel est
+  `development/documentation/USER_GUIDE.md`. Toute modification du plugin doit
+  vérifier ce guide et le mettre à jour lorsqu'elle change une action prise en
+  charge, une étape utilisateur, une question posée, un intrant, un extrant,
+  un format, un chemin de livraison ou le statut d'un skill. Si aucun contenu
+  ne change, le compte rendu de validation doit indiquer que le guide a été
+  vérifié et reste à jour.
 - La convention `<discipline>` pour l'artefact métier et
   `document-<discipline>` pour son document est définitive et obligatoire.
 - Les exemples nécessaires au raisonnement d'un skill installé appartiennent
@@ -1285,6 +1292,32 @@ par dérivation.
 Le rapport durable est
 [Real-Project Manual Replay Corrections](tests/executions/2026-08-13-real-project-manual-replay-corrections.md).
 Un rejeu correctif ciblé reste requis avant de déclarer la chaîne validée.
+
+## Livraison documentaire et marketplace du 3 septembre 2026
+
+Le guide utilisateur français est désormais la notice simple officielle du
+plugin. Le README racine le référence et sa maintenance fait partie des
+contrôles obligatoires de toute évolution fonctionnelle du plugin.
+
+Le catalogue Codex du dépôt `.agents/plugins/marketplace.json` a été validé,
+enregistré comme marketplace locale `project-design`, puis le plugin a été
+réinstallé depuis ce catalogue. Le cachebuster actif est
+`0.1.0+codex.20260903113913`. La relecture de l'installation et la comparaison
+avec `plugins/project-design/` confirment que le bundle installé est identique
+à la source.
+
+Le catalogue Claude Code `.claude-plugin/marketplace.json` reste la source de
+distribution GitHub et expose le même bundle isolé. Le manifeste Claude reste
+en version `0.1.0`, conformément à la décision de gouvernance encore ouverte.
+Le marketplace local `project-design` a également été enregistré dans Claude
+Code et le plugin y a été installé au niveau utilisateur depuis le bundle du
+dépôt.
+Le guide utilisateur a été vérifié après le changement de cachebuster : aucun
+comportement, intrant, extrant, format ou chemin de livraison n'a changé.
+
+L'utilisateur a explicitement demandé le commit et le push de cette livraison
+sur GitLab et GitHub. Le journal Git reste la source de vérité pour
+l'identifiant du commit et l'état final des deux remotes.
 
 ## Prompt de reprise
 

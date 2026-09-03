@@ -20,6 +20,10 @@ See the
 for the consolidated layer, model, skill, ownership, flow, and dependency
 reference.
 
+For a simple end-user walkthrough with prompts, questions, inputs, and
+outputs, see the
+[French user guide](development/documentation/USER_GUIDE.md).
+
 - `project-design` now provides the guided entry: skill presentation, explicit
   consent, safe workspace initialization, persisted phase enforcement,
   resumable framing-question batches, stage selection with `project-framing`
