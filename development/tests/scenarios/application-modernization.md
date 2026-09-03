@@ -70,3 +70,16 @@ it for `project-design` when orchestration or a shared contract changes.
   not define the current Project. Current Issues and validated Risks remain.
 - Page or table layout does not add evidence or history to the Canvas.
 - The requested format is native and verified.
+
+## Functional Design-Specific Observations
+
+- Existing, Target, and Transition processes and feature behavior remain
+  distinguishable.
+- Current workarounds are not silently promoted into target Business Rules.
+- Unconfirmed reopening behavior remains an Open Question rather than a
+  nominal scenario or acceptance criterion.
+- Migration, rollback, archive, and parallel-operation concerns remain
+  functional dependencies or transition gaps without becoming a technical
+  design or delivery plan.
+- Updated features preserve their stable IDs and record affected changes
+  without renumbering the rest of the artefact.

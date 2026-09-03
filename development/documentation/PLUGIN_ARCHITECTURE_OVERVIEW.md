@@ -32,14 +32,17 @@ The architecture has four stable shared foundations:
 - the Project Model represents normalized project understanding;
 - the Shared Document Model governs faithful documentary restitution.
 
-Nine skills are installed. Two have implemented methodologies:
+Nine skills are installed. Three specialized skills have implemented
+methodologies:
 
 - `project-framing` produces the Project Canvas business artefact;
+- `functional-design` produces and evolves the Functional Design business
+  artefact;
 - `document-project-canvas` produces its documentary representation.
 
-The other six specialized skills are explicit placeholders. A placeholder stabilizes
-the architecture and discovery contract but provides no operational
-methodology.
+The guided `project-design` entry is also implemented. The other five
+specialized skills are explicit placeholders. A placeholder stabilizes the
+architecture and discovery contract but provides no operational methodology.
 
 Every invocation also follows one shared interaction and workspace contract:
 give a concise launch brief before execution, then group durable Markdown
@@ -282,7 +285,8 @@ by `project-design`. Every specialized skill remains independently callable.
 ### `project-framing`
 
 - **Role:** first business-design step; clarify the expression of need.
-- **Status:** implemented methodology version 0.2; manual validation pending.
+- **Status:** implemented methodology version 0.5; corrective manual re-test
+  pending.
 - **Inputs:** Project View, Knowledge Assertions, structured project data, raw
   sources, user clarifications, and output constraints.
 - **Outputs:** one structured, versionable, traceable Project Canvas.
@@ -301,25 +305,30 @@ by `project-design`. Every specialized skill remains independently callable.
 
 ### `functional-design`
 
-- **Role:** future functional design of products or applications and expected
-  behavior.
-- **Status:** installed placeholder; methodology and artefact structure not
-  implemented.
-- **Inputs:** Project Canvas, Project View, needs, Actors, terminology,
-  Constraints, Business Rules, existing Requirements, and workflows.
-- **Outputs:** future Functional Design business artefact.
+- **Role:** create, review, and evolve the functional design of products or
+  applications and their expected behavior.
+- **Status:** implemented methodology version 0.1; fixture and manual replay
+  pending.
+- **Inputs:** validated Project Canvas or equivalent position, Project View,
+  project evidence, and, for updates, the current Functional Design plus a
+  traceable change input.
+- **Outputs:** `_project-design/functional-design.md` as a living Functional
+  Design business artefact.
 - **Artefact produced or consumed:** consumes the Project Canvas and shared
-  project context; will solely own Functional Design.
+  project context; solely owns Functional Design.
 - **Document produced or consumed:** none.
-- **Direct dependencies:** Project Model, future shared schemas, shared
-  quality rules, and terminology.
+- **Direct dependencies:** Canonical Domain Model, Knowledge Model, Project
+  Model, shared quality rules, terminology, and its runtime references.
 - **Consumers:** `technical-design` when functional Requirements are useful,
   `product-backlog`, and `document-functional-design`.
-- **Responsibilities:** modules, features, users, Processes, journeys,
-  Business Rules, functional data, exceptions, dependencies, Requirements,
-  and supported acceptance concerns.
-- **Excluded:** architecture, implementation tasks, document formatting,
-  complete reframing, unsupported Requirements, and silent Canvas revision.
+- **Responsibilities:** stable IDs and controlled change history, Actors and
+  roles, global Processes, product-module-feature inventory, detailed nominal
+  and alternative behavior, errors and exceptions, acceptance criteria,
+  interfaces and fields, global and feature rules, message catalog,
+  traceability, and downstream readiness.
+- **Excluded:** architecture, APIs, database schemas, implementation tasks,
+  backlog priority or estimates, document formatting, complete reframing,
+  unsupported Requirements, and silent Canvas revision.
 
 ### `technical-design`
 
@@ -366,7 +375,7 @@ by `project-design`. Every specialized skill remains independently callable.
 ### `document-project-canvas`
 
 - **Role:** documentary restitution of a validated Project Canvas.
-- **Status:** implemented methodology version 0.1; combined manual validation
+- **Status:** implemented methodology version 0.2; combined manual validation
   pending.
 - **Inputs:** validated Project Canvas plus optional audience, language,
   metadata, compatible template, and delivery constraints.
@@ -544,13 +553,13 @@ passes through Knowledge Model and Project Model review.
 ## Roadmap Readiness
 
 The four shared architectural foundations are complete at their current
-conceptual scope. No additional shared foundation is required before
-`functional-design` methodology design begins.
+conceptual scope. `functional-design` methodology version 0.1 is implemented
+without changing those stable models. Its fixture and manual replay remain the
+next quality gate.
 
-The next logical methodology iteration is `functional-design`. Its detailed
-prompt must define the Functional Design artefact, readiness rules, minimum
-inputs, functional boundaries, traceability, and fixture validation without
-changing the stable models.
+The next logical methodology implementation is `technical-design`, after the
+Functional Design replay confirms its producer-consumer boundary and any
+founded corrections are applied.
 
 The combined manual validation of `project-framing` and
 `document-project-canvas` remains an outstanding quality gate. It does not

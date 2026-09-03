@@ -148,11 +148,11 @@ class WorkflowTests(unittest.TestCase):
         self.assertEqual(result.returncode, 2)
         self.assertIn("requires phase awaiting_delivery", output["error"])
 
-    def test_placeholder_stage_is_rejected(self) -> None:
+    def test_unsupported_guided_stage_is_rejected(self) -> None:
         self.start()
         result, output = self.run_cli("select-stage", "--stage", "functional-design")
         self.assertEqual(result.returncode, 2)
-        self.assertIn("not implemented", output["error"])
+        self.assertIn("not supported by the guided workflow", output["error"])
 
     def test_external_delivery_requires_template_mode(self) -> None:
         self.start()

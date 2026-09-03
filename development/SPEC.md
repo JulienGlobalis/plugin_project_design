@@ -2,10 +2,11 @@
 
 ## Iteration Objective
 
-Implement the guided `project-design` entry and `document-project-canvas` as the documentary counterpart of the
-validated Project Canvas business artefact so `project-framing` and final
-document restitution can be tested sequentially, without changing the
-business methodology or the three remaining document placeholders.
+Implement the guided `project-design` entry, `functional-design`, and
+`document-project-canvas` as the documentary counterpart of the validated
+Project Canvas business artefact. Functional Design must remain a living,
+traceable business artefact, independently callable while guided routing and
+the five remaining placeholders stay unchanged.
 
 ## Current Capability Status
 
@@ -13,7 +14,7 @@ business methodology or the three remaining document placeholders.
 | --- | --- | --- |
 | `project-design` | Stateful guided entry version 0.4 | Presents skills, obtains consent, initializes the workspace, persists and enforces phases including pending framing answers, proposes `project-framing`, and hands off; complete routing is not implemented |
 | `project-framing` | Implemented methodology version 0.5 | Produces the ten-section Project Canvas business artefact, a separate three-stage readiness assessment, and complete necessary question batches; corrective manual re-test remains pending |
-| `functional-design` | Installed placeholder | Future structured functional-design methodology |
+| `functional-design` | Implemented methodology version 0.1 | Creates, reviews, and evolves the living `_project-design/functional-design.md` artefact from a validated Canvas and project evidence |
 | `technical-design` | Installed placeholder | Future complementary or parallel technical-design methodology |
 | `product-backlog` | Installed placeholder | Future transformation of designed and validated Scope into traceable backlog items |
 | `document-project-canvas` | Implemented methodology version 0.2 | Produces a verified Project Canvas document in native Markdown, Microsoft Word, or Google Docs with strict reverse mapping to the supplied Canvas |
@@ -21,10 +22,12 @@ business methodology or the three remaining document placeholders.
 | `document-technical-design` | Installed placeholder | Future technical specifications in Markdown, Word, or Google Docs |
 | `document-product-backlog` | Installed placeholder | Future backlog document in Markdown, Google Sheets, Excel, Word, or Google Docs |
 
-The guided entry, `project-framing`, and `document-project-canvas` are implemented. Their first
-real-project manual replay identified and corrected readiness and documentary
-mapping defects; a focused corrective re-test remains pending. The other six entries remain
-architecture-stabilizing placeholders and provide no operational capability.
+The guided entry, `project-framing`, `functional-design`, and
+`document-project-canvas` are implemented. The first framing/document
+real-project replay identified and corrected defects; a focused re-test
+remains pending. Functional-design fixture and manual replay are pending. The
+other five entries remain architecture-stabilizing placeholders and provide
+no operational capability.
 
 ## In Scope
 
@@ -42,8 +45,14 @@ architecture-stabilizing placeholders and provide no operational capability.
   readiness, and traceable later-adjustment rules.
 - Add a runtime Project Canvas reference and, when useful, a short fictional
   structural example unrelated to permanent fixtures.
-- Document `functional-design` and `technical-design` as future complementary
-  steps without implementing their methodologies.
+- Implement `functional-design` as a living business artefact with stable
+  identifiers, controlled change history, actors and roles, global Processes,
+  a product-module-feature inventory, detailed feature specifications,
+  interfaces and fields, Business Rules, acceptance criteria, and a global
+  message catalog.
+- Preserve nominal, alternative valid, error, and exception behavior as
+  distinct concepts; define messages once and reference them by stable ID.
+- Keep `technical-design` as a future complementary step.
 - Remove the generic documentary placeholder and every active architectural
   dependency on it.
 - Implement `document-project-canvas` with a default documentary structure,
@@ -51,8 +60,9 @@ architecture-stabilizing placeholders and provide no operational capability.
   Google Docs routing, content-preservation rules, and format verification.
 - Keep `document-functional-design`, `document-technical-design`, and
   `document-product-backlog` as non-operational placeholders.
-- Extend the four fixture scenarios and the manual replay to validate
-  `project-framing` followed by `document-project-canvas`.
+- Extend the four fixture scenarios and add manual replay coverage for
+  Functional Design creation and controlled evolution, without changing
+  Golden Outputs.
 - Apply the mandatory `<discipline>` / `document-<discipline>` convention.
 - Update repository documentation, skill descriptions, quality checklists,
   manifests, execution evidence, and continuity context.
@@ -80,7 +90,7 @@ architecture-stabilizing placeholders and provide no operational capability.
 
 ## Out of Scope
 
-- Implementing `functional-design`, `technical-design`, `product-backlog`,
+- Implementing `technical-design`, `product-backlog`,
   `document-functional-design`, `document-technical-design`, or
   `document-product-backlog` methodology.
 - Implementing complete `project-design` orchestration.
@@ -123,6 +133,21 @@ invent content to appear complete.
 `document-project-canvas` consumes the validated artefact and produces its
 verified native Markdown, Microsoft Word, or Google Docs document.
 
+## Functional Design Contract
+
+`functional-design` consumes a validated Project Canvas or equivalent current
+project position and produces `_project-design/functional-design.md`. The
+artefact contains evolution controls, Actors and roles, general
+specifications, a product-module-feature inventory, one detailed section per
+feature, global Business Rules, a global message catalog, and separate
+technical-design and backlog-preparation readiness.
+
+Stable project-local identifiers and cross-references survive updates.
+Changes are limited to affected sections and classified as additions,
+clarifications, corrections, deprecations, or replacements. The skill does
+not invent missing behavior, silently change the Canvas, create technical
+architecture or backlog items, or own final-document formatting.
+
 ## Design and Restitution Boundary
 
 - The
@@ -158,6 +183,21 @@ verified native Markdown, Microsoft Word, or Google Docs document.
   Document Model without changing its methodology.
 - The other three document skills remain placeholders containing only
   `SKILL.md`.
+- `functional-design` contains an implemented methodology, runtime structure,
+  quality checklist, and fictional example with no runtime dependency on
+  `development/`.
+- Every inventory feature maps to one detailed section or a justified
+  deferral, and all rule, interface, field, message, and acceptance references
+  resolve through stable identifiers.
+- Functional Design updates preserve unaffected meaning and identifiers while
+  recording the affected IDs and known reason.
+- Alternative valid scenarios remain distinct from errors and exceptions.
+- Messages are defined once in the global annex catalog and referenced from
+  features and fields.
+- Functional Design contains no architecture, API, database schema,
+  implementation task, prioritization, estimate, sprint, release plan, or
+  documentary formatting.
+- Technical-design and backlog-preparation readiness are assessed separately.
 - `project-design` owns the guided entry and remains the future complete global
   orchestrator; it does not duplicate specialized methodology.
 - The former generic documentary skill directory is removed because its
@@ -197,15 +237,17 @@ verified native Markdown, Microsoft Word, or Google Docs document.
 - Later Canvas adjustments must be traceable, justified, limited, and must not
   silently rewrite validated information or Decisions.
 - Detailed functional, technical, backlog, and document methodology remains
-  outside `project-framing`.
+  outside `project-framing`; `functional-design` owns only functional design.
 - `project-framing`, `functional-design`, `technical-design`, and
   `product-backlog` contain no document format, export, or template ownership.
 - Project Canvas Markdown, Microsoft Word, and Google Docs are documented as
   current behavior; formats forecast for the remaining document skills remain
   explicitly non-operational.
-- The combined manual test file remains one flat Markdown file, retains
+- The combined framing/document manual test file remains one flat Markdown file, retains
   `PF-MAN-001` through `PF-MAN-005`, bilingual business and documentary
   criteria, allowed statuses, result areas, and the confidentiality rule.
+- The functional-design manual test covers all four permanent fixtures plus a
+  controlled real project and includes at least one stable-ID update check.
 - No Golden Output changes without explicit human approval.
 - No installable skill or shared resource depends on `development/`.
 - Every installed skill applies the shared invocation brief; placeholders say

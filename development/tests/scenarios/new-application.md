@@ -70,3 +70,16 @@ it for `project-design` when orchestration or a shared contract changes.
 - Supplied service targets remain separate from missing business baselines and
   no presentation placeholder becomes project knowledge.
 - The requested format is native and verified.
+
+## Functional Design-Specific Observations
+
+- Actors, global Processes, and the product-module-feature inventory are
+  derived from the validated MVP rather than every proposed future idea.
+- Every inventory feature has a matching detailed section or explicit
+  justified deferral.
+- Nominal, alternative, error, and exception behavior remain distinct.
+- Field rules and acceptance criteria preserve supplied service rules without
+  inventing permissions, volumes, retention periods, or thresholds.
+- Transactional e-mail, notification, and screen messages are defined once in
+  the annex catalog and referenced by stable IDs.
+- Technical-design and backlog-preparation readiness are assessed separately.

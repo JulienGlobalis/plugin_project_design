@@ -197,7 +197,7 @@ def start(root: Path, confirmed: bool) -> dict[str, Any]:
 def select_stage(state: dict[str, Any], stage: str) -> None:
     require_phase(state, "awaiting_stage")
     if stage != "project-framing":
-        raise WorkflowError(f"stage is not implemented: {stage}")
+        raise WorkflowError(f"stage is not supported by the guided workflow: {stage}")
     state["stage"] = stage
     state["phase"] = "awaiting_delivery"
     append_event(state, "stage_selected")

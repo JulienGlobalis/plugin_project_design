@@ -8,7 +8,7 @@
     {
       "name": "project-design",
       "source": "./plugins/project-design",
-      "description": "Structure application and software project design through guided framing, resumable Project Canvas decisions, and document restitution."
+      "description": "Structure application and software projects through guided framing, living Functional Design, and Project Canvas document restitution."
     }
   ]
 }

@@ -49,8 +49,9 @@ Compétences prévues :
   skill spécialisé ; orchestration complète multi-disciplines future ;
 - `project-framing` : étape 1, cadrage et Project Canvas, méthodologie version
   0.5 ;
-- `functional-design` : placeholder installé pour l'étape 2, conception
-  fonctionnelle future ;
+- `functional-design` : méthodologie métier version 0.1 implémentée pour
+  créer, revoir et faire évoluer un Functional Design vivant à partir d'un
+  Canvas validé ; rejeu des quatre fixtures et test manuel en attente ;
 - `technical-design` : placeholder installé pour l'étape 2 bis, conception
   technique future,
   complémentaire ou parallèle ;
@@ -81,12 +82,12 @@ L'architecture cible distingue trois catégories :
    leur cohérence et organisera les retours tracés vers une étape précédente.
    Cette orchestration complète n'est pas implémentée et ne doit pas absorber
    les méthodologies spécialisées.
-2. **Skills métier** — `project-framing` est la seule méthodologie métier
-   implémentée. Elle produit l'artefact Project Canvas. `functional-design`,
-   `technical-design` et `product-backlog` restent des placeholders installés
-   dont les méthodologies et artefacts structurés sont futurs. Aucun skill
-   métier ne connaît un format documentaire, un template, une mise en forme
-   finale ou un export.
+2. **Skills métier** — `project-framing` produit le Project Canvas et
+   `functional-design` produit le Functional Design vivant. `technical-design`
+   et `product-backlog` restent des placeholders installés dont les
+   méthodologies et artefacts structurés sont futurs. Aucun skill métier ne
+   connaît un format documentaire, un template, une mise en forme finale ou
+   un export.
 3. **Skills documentaires** — `document-project-canvas` met en forme le Canvas
    validé sans en devenir propriétaire. Les trois autres skills documentaires
    restent des placeholders. Aucun ne peut inventer de contenu, résoudre une
@@ -186,7 +187,7 @@ concurrent.
   à son répertoire `references/` et doivent être liés depuis son `SKILL.md`.
 - Le README racine fournit une notice d'utilisation pour chacun des neuf
   skills avec des prompts d'exemple indépendants de la plateforme. Les
-  exemples des trois skills implémentés sont exécutables ; ceux des six
+  exemples des quatre skills implémentés sont exécutables ; ceux des cinq
   placeholders sont limités à un contrôle de disponibilité et ne doivent
   produire aucun artefact.
 - `development/examples/` ne contient que des exemples brouillons ou non
@@ -217,8 +218,10 @@ concurrent.
   sources Drive natives restent des liens sans export automatique.
 - `_sources/` reste distinct de `_project-design/` : le premier organise les
   intrants privés, le second contient les livrables générés.
-- Le choix d'étape propose `project-framing` comme étape 1 par défaut. Les
-  placeholders restent visibles mais ne sont jamais présentés comme exécutables.
+- Le choix d'étape propose `project-framing` comme étape 1 par défaut. La
+  machine d'état guidée ne route pas encore `functional-design`, qui reste
+  directement appelable. Les placeholders restent visibles mais ne sont
+  jamais présentés comme exécutables.
 - Le Markdown métier reste obligatoire. Word ou Google Docs est un complément
   optionnel dont le format et le modèle local, Drive ou par défaut sont choisis
   avant la collecte du contenu projet.
@@ -273,6 +276,7 @@ concurrent.
 | 8.8 - Workflow guidé persistant | Machine d'état, transitions obligatoires, reprise, validations du Canvas et du document implémentées | Validation technique terminée — rejeu manuel utilisateur en attente |
 | 8.9 - Espace de sources optionnel | Stratégie de sources obligatoire et `_sources/` privé, indexé et Git-ignoré implémentés | Validation technique et recette terminées — rejeu manuel utilisateur en attente |
 | 8.12 - Reprise des questions de cadrage | Cycle explicite des lots, réponses partielles, reports, migration prudente et reprise multi-conversations | Validation technique terminée — rejeu dans un nouveau fil requis |
+| 9 - `functional-design` | Méthodologie 0.1, artefact vivant, références runtime, contrats automatisés, scénarios et test manuel | Implémentation terminée — rejeu des quatre fixtures et test manuel en attente |
 
 ## Historique des prompts directeurs
 
@@ -1256,12 +1260,13 @@ Le README racine documente désormais chaque skill installé avec un contrat de
 lecture homogène : statut réel, cas d'utilisation, intrants, livrable,
 frontières et prompt d'exemple adaptable à Codex ou Claude Code.
 
-Les exemples de `project-design`, `project-framing` et
+Les exemples de `project-design`, `project-framing`, `functional-design` et
 `document-project-canvas` montrent des appels réellement disponibles, y
-compris le démarrage, la reprise persistée, le cadrage direct et la restitution
-Word. Les exemples des six placeholders demandent uniquement un contrôle de
-disponibilité : ils rappellent explicitement de ne créer aucun artefact tant
-que la méthodologie correspondante n'est pas implémentée.
+compris le démarrage, la reprise persistée, le cadrage direct, la conception
+fonctionnelle vivante et la restitution Word. Les exemples des cinq
+placeholders demandent uniquement un contrôle de disponibilité : ils
+rappellent explicitement de ne créer aucun artefact tant que la méthodologie
+correspondante n'est pas implémentée.
 
 Cette documentation ne déplace aucun exemple runtime nécessaire au
 raisonnement d'un skill : ces références restent dans le répertoire du skill
@@ -1302,7 +1307,7 @@ contrôles obligatoires de toute évolution fonctionnelle du plugin.
 Le catalogue Codex du dépôt `.agents/plugins/marketplace.json` a été validé,
 enregistré comme marketplace locale `project-design`, puis le plugin a été
 réinstallé depuis ce catalogue. Le cachebuster actif est
-`0.1.0+codex.20260903113913`. La relecture de l'installation et la comparaison
+`0.1.0+codex.20260903155050`. La relecture de l'installation et la comparaison
 avec `plugins/project-design/` confirment que le bundle installé est identique
 à la source.
 
@@ -1311,13 +1316,47 @@ distribution GitHub et expose le même bundle isolé. Le manifeste Claude reste
 en version `0.1.0`, conformément à la décision de gouvernance encore ouverte.
 Le marketplace local `project-design` a également été enregistré dans Claude
 Code et le plugin y a été installé au niveau utilisateur depuis le bundle du
-dépôt.
+dépôt. Après l'implémentation de `functional-design`, la copie Claude Code a
+été désinstallée puis réinstallée parce que son gestionnaire ne rafraîchit pas
+un cache lorsque la version de base `0.1.0` reste identique. Les copies Codex
+et Claude Code sont identiques au bundle source après réinstallation.
 Le guide utilisateur a été vérifié après le changement de cachebuster : aucun
 comportement, intrant, extrant, format ou chemin de livraison n'a changé.
 
 L'utilisateur a explicitement demandé le commit et le push de cette livraison
 sur GitLab et GitHub. Le journal Git reste la source de vérité pour
 l'identifiant du commit et l'état final des deux remotes.
+
+## Itération 9 - Functional Design vivant
+
+Le 3 septembre 2026, l'utilisateur a validé une structure fonctionnelle conçue
+pour évoluer avec le projet. `functional-design` version 0.1 produit ou met à
+jour `_project-design/functional-design.md` avec :
+
+- contrôles d'évolution, identifiants stables et historique concis ;
+- acteurs et rôles ;
+- processus globaux, inventaire produits-modules-fonctionnalités et règles
+  globales ;
+- une fiche détaillée par fonctionnalité couvrant informations générales,
+  scénario nominal, variantes valides, erreurs et exceptions, critères
+  d'acceptation, questions et décisions, interfaces et champs, règles propres
+  et références de messages ;
+- un catalogue global unique des e-mails transactionnels, SMS, notifications
+  et informations à l'écran ;
+- une capacité à alimenter la conception technique et le backlog évaluée
+  séparément.
+
+Une mise à jour conserve les identifiants et le contenu non concerné, puis
+classe le changement comme ajout, clarification, correction, dépréciation ou
+remplacement. Le skill ne modifie pas silencieusement le Canvas, ne crée ni
+architecture ni backlog et ne met pas en forme un document final. Il reste
+directement appelable : l'orchestrateur guidé continue de router uniquement
+`project-framing`.
+
+Les références runtime, la checklist de développement, les observations des
+quatre scénarios, le test manuel et les contrôles automatisés sont présents.
+Aucun Golden Output n'a été créé ou modifié. Le rejeu réel des fixtures et le
+test manuel restent nécessaires avant validation méthodologique complète.
 
 ## Prompt de reprise
 
@@ -1339,10 +1378,10 @@ rendu CI clair.
 Ne crée aucun commit et ne pousse aucune modification sans instruction
 explicite.
 
-Reprends à la section "Roadmap prévue". La revue d'architecture 8.6 confirme
-qu'aucune fondation supplémentaire n'est nécessaire. La prochaine itération
-méthodologique est `functional-design`, uniquement lorsque son prompt détaillé
-est fourni ; ne déduis pas sa méthodologie. Le premier rejeu manuel réel de
+Reprends à la section "Roadmap prévue". `functional-design` version 0.1 est
+implémenté ; sa prochaine étape est le rejeu des quatre fixtures et le test
+manuel de création puis d'évolution avec conservation des identifiants. Ne
+commence pas `technical-design` avant instruction explicite. Le premier rejeu manuel réel de
 `project-framing` puis `document-project-canvas` est terminé. Rejoue de façon
 ciblée les corrections 0.5/0.2 définies dans
 development/tests/executions/2026-08-13-real-project-manual-replay-corrections.md.

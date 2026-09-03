@@ -53,9 +53,11 @@ The consolidated current architecture is documented in the
 
 - `project-framing`: implemented step 1; clarifies the expression of need and
   produces the Project Canvas.
-- `functional-design`: future step 2; products or applications, modules,
-  features, users, Processes, journeys, Business Rules, functional data,
-  exceptions, dependencies, and remaining functional questions.
+- `functional-design`: implemented step 2; creates, reviews, and evolves a
+  living Functional Design with Actors and roles, global Processes, a
+  product-module-feature inventory, detailed feature behavior, interfaces and
+  fields, Business Rules, messages, exceptions, acceptance criteria, and
+  remaining functional Decisions.
 - `technical-design`: future step 2 bis; architecture, technologies,
   components, Integrations, APIs, flows, Constraints, security, performance,
   deployment, technical Decisions, and technical Risks. It may complement or
@@ -82,9 +84,10 @@ perform exports, or contain presentation logic.
 - `document-product-backlog`: future backlog document in Markdown, Google
   Sheets, Microsoft Excel, Microsoft Word, or Google Docs.
 
-The guided entry, `project-framing`, and `document-project-canvas` are
-implemented. Their combined manual validation remains pending. The other six
-installed entries are placeholders. Document skills consume
+The guided entry, `project-framing`, `functional-design`, and
+`document-project-canvas` are implemented. Framing/document corrective
+validation and functional-design fixture/manual replay remain pending. The
+other five installed entries are placeholders. Document skills consume
 their corresponding business artefacts and apply only document structure,
 formatting, an optional template, and an output format. They add no knowledge
 and make no Decisions.
@@ -125,8 +128,9 @@ Spec Kit, and a future isolated Spec Kit adapter. It will also support one
 skill, several selected skills, or a complete orchestrated workflow.
 
 All usage modes apply the shared invocation brief. Implemented skills store
-durable Markdown artefacts under `_project-design/`; placeholder skills state
-their non-operational status and create no output directory or file.
+durable Markdown artefacts under `_project-design/`; `functional-design` is
+directly callable until guided routing is implemented. Placeholder skills
+state their non-operational status and create no output directory or file.
 
 ## Extension Points
 
@@ -157,8 +161,8 @@ until its affected tests have been updated and reviewed.
 9. Iteration 8: implement `project-framing` and the Project Canvas artefact;
    combine its manual user validation with the advanced
    `document-project-canvas` implementation.
-10. Iteration 9: define and test `functional-design` and its Functional Design
-    artefact.
+10. Iteration 9: implement `functional-design` and its living Functional
+    Design artefact; complete fixture and manual replay.
 11. Iteration 10: define and test `technical-design` and its Technical Design
     artefact as a complementary or parallel step.
 12. Iteration 11: define and test `product-backlog` and its Product Backlog

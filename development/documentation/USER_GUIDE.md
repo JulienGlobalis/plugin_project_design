@@ -11,8 +11,8 @@ Dernière vérification : 3 septembre 2026.
 | --- | --- | --- | --- |
 | `project-design` | Disponible | Guide le parcours et mémorise son avancement | État du parcours et livrables des skills appelés |
 | `project-framing` | Disponible | Clarifie le besoin et construit le Project Canvas | `_project-design/project-canvas.md` |
+| `functional-design` | Disponible directement | Crée, vérifie ou fait évoluer la conception fonctionnelle | `_project-design/functional-design.md` |
 | `document-project-canvas` | Disponible | Met en forme un Canvas validé sans changer son contenu | Markdown, Word ou Google Docs |
-| `functional-design` | Placeholder | Future conception fonctionnelle | Aucun actuellement |
 | `technical-design` | Placeholder | Future conception technique | Aucun actuellement |
 | `product-backlog` | Placeholder | Future création du Product Backlog | Aucun actuellement |
 | `document-functional-design` | Placeholder | Futur document fonctionnel | Aucun actuellement |
@@ -21,7 +21,8 @@ Dernière vérification : 3 septembre 2026.
 
 Un placeholder explique son futur rôle, ses intrants et ses extrants, mais ne
 crée aucun fichier. Le rejeu correctif ciblé des dernières adaptations de
-`project-framing` et `document-project-canvas` reste à réaliser.
+`project-framing` et `document-project-canvas`, ainsi que le rejeu des fixtures
+et le test manuel de `functional-design`, restent à réaliser.
 
 ## Démarrer le parcours guidé
 
@@ -124,6 +125,28 @@ Le skill conserve strictement le contenu du Canvas. Il n'invente ni résumé, ni
 sous-titre, ni métadonnée, ni approbation et ne fusionne pas un audit séparé
 sans demande explicite.
 
+## Extrant de conception fonctionnelle
+
+`functional-design` s'utilise directement à partir d'un Project Canvas validé.
+La machine d'état guidée ne route pas encore cette étape. Le skill crée ou met
+à jour `_project-design/functional-design.md` comme un document vivant :
+
+- acteurs et rôles ;
+- processus globaux ;
+- tableau des produits, modules et fonctionnalités ;
+- spécification détaillée de chaque fonctionnalité, avec scénario nominal,
+  variantes valides, erreurs, exceptions, critères d'acceptation, questions,
+  interfaces, champs, règles et références de messages ;
+- catalogue global des e-mails transactionnels, SMS, notifications et
+  informations à l'écran ;
+- capacité à alimenter séparément la conception technique et le backlog.
+
+Les éléments conservent des identifiants stables. Une mise à jour modifie
+uniquement les sections concernées et ajoute un historique concis ; elle ne
+renumérote pas les fonctionnalités et n'efface pas silencieusement les
+décisions antérieures. Ce skill ne produit ni architecture, ni tâches de
+backlog, ni document Word ou Google Docs.
+
 ## Prompts utiles
 
 ### Reprendre un parcours
@@ -153,10 +176,25 @@ défaut, conserve strictement le contenu et vérifie le fichier natif avant de l
 livrer dans _project-design/documents/project-canvas.docx.
 ```
 
-### Vérifier un placeholder
+### Créer ou faire évoluer la conception fonctionnelle
 
 ```text
-Vérifie si functional-design est disponible. S'il s'agit encore d'un
+Utilise functional-design à partir du Canvas validé
+_project-design/project-canvas.md et des sources du projet. Produis en français
+la conception fonctionnelle vivante dans
+_project-design/functional-design.md. Utilise des identifiants stables,
+référence chaque message depuis le catalogue global, conserve les questions
+non résolues et n'ajoute ni architecture ni backlog.
+```
+
+Pour une évolution, fournissez aussi le Functional Design actuel et la source
+de changement : décision approuvée, compte rendu, règle corrigée ou instruction
+explicite.
+
+### Vérifier un placeholder restant
+
+```text
+Vérifie si technical-design est disponible. S'il s'agit encore d'un
 placeholder, explique ses futurs intrants et extrants sans créer de fichier.
 ```
 
@@ -167,6 +205,7 @@ mon-projet/
 ├── _project-design/
 │   ├── project-design-state.json
 │   ├── project-canvas.md
+│   ├── functional-design.md      # si le skill direct est demandé
 │   └── documents/
 │       └── project-canvas.docx   # seulement si Word est demandé
 └── _sources/                     # seulement si la centralisation est choisie

@@ -16,9 +16,9 @@ uncertainty visible.
 
 ## Applicable Skills
 
-Run this scenario for `project-framing`, `document-project-canvas`, and
-`project-design`, and for any skill whose handling of missing information or
-unsupported invention changes.
+Run this scenario for `project-framing`, `functional-design`,
+`document-project-canvas`, and `project-design`, and for any skill whose
+handling of missing information or unsupported invention changes.
 
 ## Expected Observations
 
@@ -74,3 +74,17 @@ unsupported invention changes.
 - The documentary hierarchy makes the ten sections reviewable without adding
   metadata, owners, dates, or approval status.
 - The requested format is native and verified.
+
+## Functional Design-Specific Observations
+
+- A validated Canvas or equivalent baseline is required before detailed work;
+  blocking framing gaps are returned upstream.
+- The feature inventory and detailed sections contain only supportable
+  behavior; absent prerequisites, rules, fields, and acceptance conditions
+  remain `To be defined` or focused questions.
+- Ambiguous requester, volunteer, coordinator, service-team, and site roles
+  are not silently merged or assigned invented permissions.
+- Message and interface entries use stable IDs without inventing exact wording
+  or a complete data model.
+- Backlog preparation may remain not ready even when some functional analysis
+  can proceed.

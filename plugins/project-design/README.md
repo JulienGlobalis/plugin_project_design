@@ -64,10 +64,11 @@ is added to the target project's `.gitignore` by default.
 
 ## Current Status
 
-The guided `project-design` entry, the `project-framing` business methodology,
-and the `document-project-canvas` documentary methodology are implemented.
-The first real-project manual replay identified readiness and documentary
-mapping corrections; their focused re-test remains pending. The other six skill
+The guided `project-design` entry, the `project-framing` and
+`functional-design` business methodologies, and the `document-project-canvas`
+documentary methodology are implemented. The first framing/document manual
+replay identified corrections and its focused re-test remains pending.
+Functional-design fixture and manual replay are pending. The other five skill
 entries are explicit placeholders; complete orchestration is also pending.
 
 Current Project Canvas document formats are native Markdown, Microsoft Word,

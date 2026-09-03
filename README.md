@@ -31,8 +31,10 @@ outputs, see the
   work.
 - `project-framing` is the implemented first design step. It clarifies the
   expression of need and produces the Project Canvas.
-- `functional-design` will structure products, modules, features, users,
-  processes, journeys, rules, functional data, exceptions, and dependencies.
+- `functional-design` is the implemented second business step. It creates or
+  evolves a traceable Functional Design covering actors, global processes,
+  the product-module-feature inventory, detailed feature behavior,
+  interfaces, rules, messages, exceptions, and acceptance criteria.
 - `technical-design` will structure architecture, technologies, components,
   integrations, APIs, flows, security, performance, deployment, decisions,
   and technical risks. It may run in parallel with or complement functional
@@ -48,9 +50,10 @@ outputs, see the
   document restitution from their corresponding business artefacts.
 
 Exactly nine skill directories are installed. The `project-design` guided
-entry, `project-framing`, and `document-project-canvas` are implemented; the
-other six entries are explicit placeholders. Every specialized skill remains independently
-callable, and future orchestration must preserve direct use.
+entry, `project-framing`, `functional-design`, and `document-project-canvas`
+are implemented; the other five entries are explicit placeholders. Every
+specialized skill remains independently callable, and future orchestration
+must preserve direct use.
 
 Before work begins, the selected skill gives a short operational brief:
 skill and purpose, available or missing inputs, deliverables to be generated,
@@ -64,7 +67,7 @@ documentary Markdown uses `_project-design/documents/`.
 | --- | --- | --- | --- |
 | `project-design` | Yes | Stateful guided entry implemented | Consent, persistent phase enforcement, workspace initialization, stage selection, and handoff; full routing is not implemented |
 | `project-framing` | Yes | Implemented; corrective manual re-test pending | Step 1; produces the Project Canvas business artefact and separate downstream-readiness conclusions |
-| `functional-design` | Yes | Placeholder | Future structured functional-design methodology |
+| `functional-design` | Yes | Implemented; fixture and manual replay pending | Creates, reviews, or evolves `_project-design/functional-design.md` from a validated Canvas |
 | `technical-design` | Yes | Placeholder | Future complementary or parallel technical-design methodology |
 | `product-backlog` | Yes | Placeholder | Future traceable transformation of designed and validated Scope |
 | `document-project-canvas` | Yes | Implemented; corrective manual re-test pending | Project Canvas document in Markdown, Microsoft Word, or Google Docs |
@@ -79,7 +82,7 @@ shared `skills/` directory.
 ```text
 project-design
 ├── project-framing
-├── functional-design
+├── functional-design                # implemented
 ├── technical-design
 ├── product-backlog
 ├── document-project-canvas          # implemented
@@ -97,10 +100,10 @@ exists. A direct call remains subject to the same consent, workspace, input,
 validation, and delivery rules as the guided workflow.
 
 Examples below are platform-neutral and ready to adapt. Replace paths,
-languages, formats, and source names with project-specific values. Only
-`project-design`, `project-framing`, and `document-project-canvas` execute a
-methodology today. Placeholder examples are explicitly marked and must not
-create an artefact.
+languages, formats, and source names with project-specific values.
+`project-design`, `project-framing`, `functional-design`, and
+`document-project-canvas` execute a methodology today. Placeholder examples
+are explicitly marked and must not create an artefact.
 
 ### `project-design` — Guided Workflow
 
@@ -172,24 +175,29 @@ business artefact to _project-design/project-canvas.md.
 
 [Full skill instructions](plugins/project-design/skills/functional-design/SKILL.md)
 
-- **Status:** placeholder; the methodology and artefact structure are not
-  implemented.
-- **Forecast use:** describe modules, features, actors, journeys, business
-  rules, functional data, exceptions, dependencies, requirements, and
-  acceptance criteria from a validated Project Canvas and project evidence.
-- **Forecast inputs:** Project Canvas, stakeholder needs, requirements,
-  observed workflows, terminology, constraints, rules, and desired outcomes.
-- **Forecast output:** `_project-design/functional-design.md` once the
-  methodology is implemented.
-- **Current behavior:** announce that the skill is unavailable and create no
-  file. It must not perform document formatting or silently redo framing.
+- **Status:** implemented methodology version 0.1; fixture and manual replay
+  remain pending.
+- **Use it when:** creating, reviewing, or evolving functional specifications
+  from a validated Project Canvas and supporting evidence.
+- **Inputs:** validated Canvas or equivalent project position; an update also
+  requires the current Functional Design and a traceable change input.
+- **Output:** `_project-design/functional-design.md`, with stable identifiers,
+  concise change history, general specifications, detailed specifications per
+  feature, a global message catalog, and separate downstream readiness.
+- **Important:** the artefact is living and preserves unaffected content and
+  identifiers. The skill creates neither technical design, backlog items, nor
+  final-document formatting. The guided state machine does not route this
+  stage yet, so invoke the skill directly.
 
-Example — current availability check, not design execution:
+Example — create the first Functional Design:
 
 ```text
-Check the functional-design skill for /path/to/my-project. If it is still a
-placeholder, summarize its forecast inputs and outputs, identify what is
-missing for future use, and do not create _project-design/functional-design.md.
+Use functional-design for /path/to/my-project. Build the French Functional
+Design from the validated _project-design/project-canvas.md and the supplied
+project evidence. Use stable identifiers, preserve unresolved Decisions,
+define messages once in the annex catalog, and save the living artefact to
+_project-design/functional-design.md without producing architecture or backlog
+items.
 ```
 
 ### `technical-design` — Technical Design
@@ -466,13 +474,15 @@ corpus, the common information-architecture decision, version 0.1 of the
 Canonical Domain Model, version 0.1 of the conceptual Knowledge Model, and
 version 0.1 of the Minimal Normalized Project Model. It also provides the
 initial French canonical terminology companion and the first complete
-business methodology, `project-framing`, plus the first document methodology,
-`document-project-canvas`. Its current unreleased evolution defines the
+business methodology, `project-framing`, the living `functional-design`
+methodology, plus the first document methodology, `document-project-canvas`.
+Its current unreleased evolution defines the
 Project Canvas as the primary framing artefact and supports its verified
 Markdown, Microsoft Word, or Google Docs restitution. The first real-project
 manual replay has been completed; its confirmed readiness and documentary
 mapping defects are corrected, and a focused corrective re-test remains
-pending. It does not provide the remaining detailed skill
+pending. Functional-design fixture and manual replay are also pending. It does
+not provide the remaining detailed skill
 methodologies, complete cross-stage orchestration, general exporters, API
 integrations, MCP servers, hooks, agents, commands, or Spec Kit automation.
 
@@ -484,6 +494,8 @@ Every change follows [the shared testing strategy](development/tests/TESTING.md)
 Combined real-project validation of `project-framing` and
 `document-project-canvas` uses the
 [manual test file](development/tests/manual/project-framing.md).
+Functional-design creation and evolution use the
+[functional manual test file](development/tests/manual/functional-design.md).
 Development continuity between conversations is maintained in
 [PROJECT_CONTEXT.md](development/PROJECT_CONTEXT.md).
 Planned capability remains `TO BE DEFINED` until its behavior and contracts
@@ -494,7 +506,8 @@ are explicitly designed.
 1. Iteration 8 and advanced Iteration 12: `project-framing` -> Project Canvas
    -> `document-project-canvas`; complete the focused corrective re-test after
    the first real-project manual replay.
-2. Iteration 9: `functional-design` -> Functional Design.
+2. Iteration 9: `functional-design` -> Functional Design implemented;
+   complete fixture and manual replay.
 3. Iteration 10: `technical-design` -> Technical Design.
 4. Iteration 11: `product-backlog` -> Product Backlog.
 5. Iteration 12: `document-project-canvas` implementation advanced into the

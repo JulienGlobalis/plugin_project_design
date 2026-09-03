@@ -54,10 +54,13 @@ Apply the shared
 Briefly present:
 
 - `project-framing` — implemented step 1, producing the Project Canvas;
+- `functional-design` — implemented, independently callable creation, review,
+  and controlled evolution of the Functional Design; the current guided state
+  machine does not route it yet;
 - `document-project-canvas` — implemented optional Markdown, Word, or Google
   Docs restitution of a validated Canvas;
-- `functional-design`, `technical-design`, `product-backlog`, and their
-  document skills — installed placeholders whose methodologies do not run.
+- `technical-design`, `product-backlog`, and the three remaining document
+  skills — installed placeholders whose methodologies do not run.
 
 Explain the `_project-design/` workspace and state file. Ask the user to
 confirm use of the plugin for the project specifications. This is a mandatory
@@ -76,9 +79,9 @@ the state file on first use, and resumes it unchanged on later calls.
 
 ### 2. Select the Stage
 
-When the state phase is `awaiting_stage`, ask which stage to perform and
-propose `project-framing` explicitly as the default. Do not present a
-placeholder as executable.
+When the state phase is `awaiting_stage`, explain that the current guided
+state machine supports `project-framing` only and propose it explicitly as
+the default. Do not present an unsupported route or placeholder as executable.
 
 After the user selects the implemented stage, run:
 
@@ -296,13 +299,15 @@ counters.
   ignore it from Git by default.
 - Never advance a phase without a successful script transition.
 - Never initialize before explicit consent or reset an existing state.
-- Never execute a placeholder methodology.
+- Never execute a placeholder methodology or invent an unsupported guided
+  transition. `functional-design` remains directly callable outside this
+  state machine when its input contract is satisfied.
 - Do not require GitHub Spec Kit or a platform-specific runtime.
 - Do not invent unsupported project information.
 
 ## Future Routing
 
-Complete routing across functional design, technical design, and backlog work,
+Guided routing across functional design, technical design, and backlog work,
 automatic cross-artefact consistency, and founded upstream revision remain
 future orchestration. The current executable chain is only:
 

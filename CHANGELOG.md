@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+- Implemented `functional-design` methodology version 0.1 for creation,
+  review, and controlled evolution of a living Functional Design artefact.
+- Added stable identifiers, change-history rules, actors and roles, global
+  Processes, the product-module-feature inventory, detailed feature
+  specifications, interfaces and fields, Business Rules, acceptance criteria,
+  and a single global message catalog.
+- Added runtime structure, quality checklist, fictional example, automated
+  contract checks, all-four-fixture observations, and a manual creation/update
+  replay without changing Golden Outputs.
+
 - Added explicit framing-iteration preparation, pending-answer,
   question-batch closure, and iteration-completion phases so existing Canvas
   questions resume safely across conversations, partial answers and explicit

@@ -16,9 +16,9 @@ uncertainty visible.
 
 ## Applicable Skills
 
-Run this scenario for `project-framing`, `document-project-canvas`, and
-`project-design`, and for any skill whose traceability, consistency, or
-decision handling changes.
+Run this scenario for `project-framing`, `functional-design`,
+`document-project-canvas`, and `project-design`, and for any skill whose
+traceability, consistency, or decision handling changes.
 
 ## Expected Observations
 
@@ -63,3 +63,15 @@ decision handling changes.
   opposing formulations, source references, or analysis history.
 - Concise Decision questions remain readable without an audit register.
 - The requested format is native and verified.
+
+## Functional Design-Specific Observations
+
+- Conflicting access, approval, response, retention, reporting, rollout, and
+  cutover behavior is not selected or merged without authority.
+- Affected feature sections retain focused questions and do not encode one
+  competing proposal as the nominal scenario or a Business Rule.
+- Technical identity limitations remain dependencies or constraints rather
+  than invented functional Decisions.
+- Acceptance criteria do not embed disputed targets.
+- Downstream readiness identifies the unresolved authority and affected stable
+  IDs.
