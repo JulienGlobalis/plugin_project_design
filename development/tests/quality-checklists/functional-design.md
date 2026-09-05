@@ -68,3 +68,9 @@ Use this checklist with the repository-wide checklist for every
 - [ ] The output is `_project-design/functional-design.md`, created only after
       workspace consent and never silently overwritten.
 - [ ] The skill remains independently callable and Spec Kit independent.
+
+## Project Manager Support
+
+- [ ] Apply the interaction criteria in the skill runtime quality checklist.
+- [ ] Run the [interaction replay](../scenarios/project-manager-interaction.md)
+      and distinguish executed phases from pending manual validation.

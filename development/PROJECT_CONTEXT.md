@@ -1,6 +1,6 @@
 # Project Design - Contexte de continuité
 
-Dernière mise à jour : 2026-09-03
+Dernière mise à jour : 2026-09-05
 
 ## Utilisation de ce fichier
 
@@ -43,13 +43,13 @@ structurer la conception de projets applicatifs et logiciels.
 
 Compétences prévues :
 
-- `project-design` : entrée guidée avec machine d'état version 0.4 implémentée
+- `project-design` : entrée guidée version 0.5, machine d'état schéma 3 implémentée
   pour présenter les skills, obtenir le consentement, initialiser le répertoire,
   imposer les transitions, reprendre entre conversations et transmettre au
   skill spécialisé ; orchestration complète multi-disciplines future ;
 - `project-framing` : étape 1, cadrage et Project Canvas, méthodologie version
-  0.5 ;
-- `functional-design` : méthodologie métier version 0.1 implémentée pour
+  0.6 ;
+- `functional-design` : méthodologie métier version 0.2 implémentée pour
   créer, revoir et faire évoluer un Functional Design vivant à partir d'un
   Canvas validé ; rejeu des quatre fixtures et test manuel en attente ;
 - `technical-design` : placeholder installé pour l'étape 2 bis, conception
@@ -1359,6 +1359,57 @@ Aucun Golden Output n'a été créé ou modifié. Le rejeu réel des fixtures et
 test manuel restent nécessaires avant validation méthodologique complète.
 
 ## Prompt de reprise
+
+### Évaluation et soutien au chef de projet — 5 septembre 2026
+
+La demande utilisateur porte sur l'évaluation du plugin, ses corrections et
+les axes d'amélioration pour un soutien plus directif et interactif du chef
+de projet. La base Git de cette intervention est `921f4ba`, avec un arbre
+initialement propre.
+
+Livrables de développement :
+
+- [Évaluation et priorités proposées](documentation/PLUGIN_PM_EVALUATION.fr.md) ;
+- [Compte rendu CI et limites de validation](tests/executions/2026-09-05-project-manager-support-review.md).
+
+Un contrat runtime d'interaction, sous
+`skills/project-design/references/project-manager-interaction.md`, est partagé
+par l'orchestrateur, le cadrage et le fonctionnel. Il prescrit la recommandation
+fondée, les conséquences des choix, la réutilisation des décisions d'intake
+déjà fournies, l'aide aux réponses progressives et la prochaine action utile.
+Les recommandations restent des propositions ; les décisions métier et les
+autorisations requises ne sont jamais déduites du silence.
+
+Les questions actives et explicitement reportées se distinguent dans la
+section 9 du Canvas, sans tableau de statuts de normalisation. Une question
+comptée doit correspondre à une décision indépendamment répondable. Les
+compteurs restent seuls dans le JSON, qui conserve le schéma 3. La reprise
+rapproche les questions actives du compteur avant toute transition.
+
+La référence `framing-structure.md` a été corrigée pour rendre obligatoire le
+bloc de préparation des étapes suivantes dans le Canvas sauvegardé. La
+spécification est alignée sur la projection de la position courante validée.
+La livraison Word vérifie désormais la structure OOXML élémentaire et refuse
+les faux `.docx` sans modifier l'état ; le rendu et la fidélité restent à
+vérifier par le skill documentaire.
+
+Les 62 tests Python, les neuf validateurs Skill Creator, le validateur Codex,
+le validateur Claude et les liens runtime passent. PyYAML 6.0.3 a été installé
+uniquement dans un environnement temporaire pour les validateurs officiels.
+Le rejeu indépendant du premier échange des quatre fixtures a été exécuté,
+avec des réserves de granularité des questions et de couverture des sources ;
+voir le rapport pour le rejeu correctif ciblé. Cela ne valide ni une recette
+utilisateur complète, ni les widgets interactifs, ni le cycle fonctionnel
+création/mise à jour, ni un rejeu comportemental Claude Code.
+
+La priorité proposée est le routage guidé vers `functional-design`, puis la
+révision contrôlée après approbation et une vue de pilotage à la demande. Ces
+évolutions ne sont pas implémentées. Les cinq placeholders, les fondations,
+les Golden Outputs et les manifests sont conservés. Le guide utilisateur est
+mis à jour. Aucun commit, push ou remplacement des copies installées n'est
+effectué ; les tests ont utilisé directement le bundle du dépôt.
+
+### Prompt historique, à adapter aux résultats de l'évaluation ci-dessus
 
 ```text
 Tu reprends le développement du plugin project-design.

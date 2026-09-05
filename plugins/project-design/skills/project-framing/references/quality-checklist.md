@@ -2,6 +2,15 @@
 
 ## Input Use and Interaction
 
+- [ ] Material questions include grounded options and consequences, with a
+      recommendation when supported, or an explicit evidence limitation.
+- [ ] Recommendations remain conversational proposals until authorized;
+      they do not enter the Canvas as validated project definition.
+- [ ] Already supplied choices are reused; complete batches are ordered by
+      impact and remain answerable progressively without implicit deferrals.
+- [ ] Each counted question is one independently answerable decision; topic
+      grouping does not merge separate decisions into one pending counter.
+
 - [ ] Every supplied source artefact is considered.
 - [ ] The skill uses an existing Project View when supplied and does not
       silently override it.
@@ -89,6 +98,8 @@
 - [ ] Question priority reflects decision impact, Risk, and dependency rather
       than missing detail alone.
 - [ ] Owners or authorities are named only when useful and known.
+- [ ] Active and explicitly deferred questions are distinguishable; resumption
+      asks only the active subset and preserves deferred blocking consequences.
 - [ ] One unnumbered Downstream Readiness block follows the ten Canvas
       sections and separately qualifies functional design, technical design,
       and backlog preparation.

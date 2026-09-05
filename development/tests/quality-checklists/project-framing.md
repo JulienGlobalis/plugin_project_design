@@ -45,3 +45,9 @@ During repository validation, also confirm that:
       `_project-design/project-canvas.md`;
 - [ ] durable Markdown delivery uses `_project-design/project-canvas.md` or a
       justified qualified filename without silent overwrite.
+
+## Project Manager Support
+
+- [ ] Apply the interaction criteria in the skill runtime quality checklist.
+- [ ] Run the [interaction replay](../scenarios/project-manager-interaction.md)
+      and distinguish executed phases from pending manual validation.

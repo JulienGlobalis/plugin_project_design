@@ -2,6 +2,12 @@
 
 ## Inputs and Baseline
 
+- [ ] Review order is recommended from dependencies and uncertainty without
+      inventing backlog priority or requiring approval for every feature.
+- [ ] Material decisions expose grounded alternatives and consequences;
+      recommendations never silently replace validated behavior.
+- [ ] Answers update affected identifiers only; review-only mode writes nothing.
+
 - [ ] A validated Project Canvas or equivalent project position is identified.
 - [ ] Every supplied relevant source and existing Functional Design is used.
 - [ ] Canvas Scope, Decisions, Constraints, Risks, and unresolved Questions are
@@ -83,4 +89,3 @@
 - [ ] The artefact is saved under `_project-design/functional-design.md` only
       after workspace consent and without silent overwrite.
 - [ ] The skill remains independently callable and Spec Kit independent.
-

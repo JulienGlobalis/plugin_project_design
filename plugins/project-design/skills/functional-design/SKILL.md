@@ -7,7 +7,7 @@ description: Create, review, or evolve a traceable Functional Design artefact fr
 
 ## Status
 
-IMPLEMENTED — METHODOLOGY VERSION 0.1; FIXTURE AND MANUAL REPLAY PENDING
+IMPLEMENTED — METHODOLOGY VERSION 0.2; FIXTURE AND MANUAL REPLAY PENDING
 
 ## Purpose
 
@@ -183,6 +183,18 @@ features need the same definitions. Do not create an exhaustive data model or
 technical schema.
 
 ### 5. Manage Gaps and Decisions
+
+Apply the [Project Manager Interaction contract](../project-design/references/project-manager-interaction.md)
+to functional decisions without adopting the framing state machine. Present
+the supported inventory and recommend the next feature or coherent process
+to review based on functional dependencies, uncertainty, and the user's
+objective; this review order is not backlog priority. Do not add a mandatory
+approval between features when the user already authorized the full design.
+Ask only for decisions that change behavior or readiness, offer grounded
+alternatives and consequences, and preserve unresolved choices in the artefact.
+On an update, explain affected identifiers and consequences before seeking any
+missing business decision; preserve already authorized changes and continue
+unaffected work. In review-only mode, report findings without modifying files.
 
 Write `To be defined` or the natural requested-language equivalent when a
 required field lacks validated content and does not justify an actionable

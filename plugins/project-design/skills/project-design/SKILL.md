@@ -1,13 +1,13 @@
 ---
 name: project-design
-description: Run a strongly guided application or software specification workflow by presenting project-design skills, obtaining explicit consent, persisting and enforcing each workflow transition, resuming pending framing-question batches across conversations, proposing project-framing as the default first stage, collecting documentary choices and project inputs in order, and handing business and document work to implemented specialized skills. Use when starting, resuming, or checking a project-design specification workflow. Complete multi-discipline orchestration remains under construction.
+description: Guide a project manager through application or software framing with recommended next actions, supported decision choices, resumable questions, Canvas approval, and optional document delivery. Use when starting, resuming, or checking the project-design specification workflow. The persistent guided route covers framing; functional design is directly callable and complete multi-discipline orchestration remains future work.
 ---
 
 # Project Design
 
 ## Status
 
-IMPLEMENTED — STATEFUL GUIDED ENTRY VERSION 0.4; COMPLETE ORCHESTRATION NOT IMPLEMENTED
+IMPLEMENTED — STATEFUL GUIDED ENTRY VERSION 0.5; COMPLETE ORCHESTRATION NOT IMPLEMENTED
 
 Use the bundled state machine to enforce the implemented guided chain. Do not
 replace its transitions with conversational memory or an informal checklist.
@@ -18,6 +18,11 @@ Guide the user through consent, project workspace initialization, stage
 selection, delivery choice, source intake, iterative framing, Canvas approval,
 and optional documentary restitution. Persist non-business workflow state so a
 new conversation can resume without losing or skipping the current step.
+
+Before guiding the conversation, read and apply the
+[Project Manager Interaction contract](references/project-manager-interaction.md)
+for recommendations, decision support, progressive answers, explicit deferrals,
+and actionable handoffs. Preserve the mandatory transitions below.
 
 ## Mandatory State Machine
 
@@ -63,8 +68,9 @@ Briefly present:
   skills — installed placeholders whose methodologies do not run.
 
 Explain the `_project-design/` workspace and state file. Ask the user to
-confirm use of the plugin for the project specifications. This is a mandatory
-stop point. A refusal creates nothing.
+confirm use of the plugin for the project specifications if that explicit
+consent has not already been given for this scope. This is a mandatory
+consent gate, not a repeated confirmation. A refusal creates nothing.
 
 After explicit agreement, run:
 
@@ -83,6 +89,8 @@ When the state phase is `awaiting_stage`, explain that the current guided
 state machine supports `project-framing` only and propose it explicitly as
 the default. Do not present an unsupported route or placeholder as executable.
 
+Reuse an explicit framing request as the stage selection; do not ask for the
+same choice again. Otherwise recommend it and obtain the missing choice.
 After the user selects the implemented stage, run:
 
 ```text
@@ -198,7 +206,8 @@ python3 scripts/workflow.py record-answers \
 ```
 
 For questions the user explicitly defers, retain the unresolved questions as
-appropriate in the Canvas and run:
+appropriate under a separate short deferred-questions subheading in Canvas
+section 9, so resumption can distinguish them from active questions. Then run:
 
 ```text
 python3 scripts/workflow.py defer-questions \
@@ -240,7 +249,8 @@ python3 scripts/workflow.py continue-framing --project-root <project-root>
 ### 7. Approve the Canvas
 
 When the phase is `awaiting_canvas_approval`, ask the user to approve the
-current saved Canvas. After explicit approval, run:
+current saved Canvas after linking it and presenting material changes, remaining
+blockers, and the three readiness conclusions. After explicit approval, run:
 
 ```text
 python3 scripts/workflow.py approve-canvas \
@@ -262,6 +272,11 @@ the recorded format and template choice. After native verification, record:
 
 The state becomes `complete` only when the required native delivery reference
 passes validation.
+
+For Word, the script checks basic OOXML package structure. This does not
+replace native rendering and semantic verification by `document-project-canvas`.
+At completion, apply the interaction contract's actionable handoff; do not
+describe the entire project as completed merely because framing is complete.
 
 ## Recovery and Resumption
 

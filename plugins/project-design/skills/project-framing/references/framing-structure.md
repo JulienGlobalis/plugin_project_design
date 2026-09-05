@@ -113,9 +113,12 @@ narrate the source disagreement or clarification history.
 
 ## Readiness Statement
 
-Do not add an eleventh Canvas section. Report downstream readiness separately
-in the interaction when useful. The Questions section itself carries the
-decisions that condition the next stages.
+Do not add an eleventh numbered Canvas section. Always append the unnumbered
+Downstream Readiness block to the saved Canvas and qualify functional design,
+technical design, and backlog preparation separately, with blocking and
+non-blocking questions distinguished. Relay these conclusions in the
+interaction before approval. The Questions section carries the decisions
+that condition the next stages.
 
 ## Status and Language
 

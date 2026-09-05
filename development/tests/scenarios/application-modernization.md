@@ -83,3 +83,8 @@ it for `project-design` when orchestration or a shared contract changes.
   design or delivery plan.
 - Updated features preserve their stable IDs and record affected changes
   without renumbering the rest of the artefact.
+
+## Project Manager Interaction
+
+For guided decision support and progressive answers, also run the
+[interaction replay](project-manager-interaction.md) using this same fixture.

@@ -10,6 +10,8 @@ import os
 from pathlib import Path
 import tempfile
 from typing import Any
+from xml.etree import ElementTree
+from zipfile import BadZipFile, ZipFile
 
 from init_workspace import WorkspaceError, initialize_workspace, resolve_project_root
 from source_workspace import initialize_source_workspace
@@ -130,20 +132,22 @@ def next_action(state: dict[str, Any]) -> str:
             "answers or an explicit deferral, update the Canvas only from answers actually "
             "received, and record only the corresponding counts. Do not open or record a "
             "new iteration while this batch is pending. A conversation change or technical "
-            "transition request is neither an answer nor a deferral."
+            "transition request is neither an answer nor a deferral. Exclude explicitly "
+            "deferred questions from the active subset; reconcile it with the pending "
+            "count before recording answers."
         )
     return {
-        "awaiting_stage": "Ask the user to select a stage; propose project-framing by default.",
-        "awaiting_delivery": "Ask whether Word or Google Docs is required in addition to Markdown and resolve the template mode.",
-        "awaiting_source_strategy": "Ask whether sources should remain at their original locations or be centralized in _sources.",
-        "awaiting_sources": "Collect the project description and source references using the selected source strategy.",
+        "awaiting_stage": "Record project-framing when the user already explicitly selected framing; otherwise recommend it and ask for the missing stage choice.",
+        "awaiting_delivery": "Reuse an explicit delivery choice already supplied; otherwise recommend Markdown-only and ask whether Word or Google Docs is required. Resolve the template mode for an external format.",
+        "awaiting_source_strategy": "Reuse an explicit source strategy already supplied; otherwise recommend keeping originals in place and ask for the choice. Centralizing in _sources requires explicit confirmation.",
+        "awaiting_sources": "Use the project description or sources already available; collect only missing initial inputs using the selected source strategy.",
         "framing_iterations": "Open one framing iteration before analyzing sources or changing the working Canvas.",
         "framing_iteration_preparation": "Use project-framing to analyze the available information, update _project-design/project-canvas.md, identify every necessary decision question, present the complete non-duplicated batch to the user, then record the number actually presented.",
         "framing_iteration_completion": "Update the Canvas from the recorded answers, keep unresolved or explicitly deferred questions visible as appropriate, then complete the active iteration and choose another iteration or Canvas review.",
         "framing_recovery": "This migrated framing state is ambiguous. Read the Questions section of _project-design/project-canvas.md without changing or duplicating it, then explicitly recover the existing presented batch with its observed count or confirm that a new iteration may be prepared. Do not infer answers, deferrals, or pending counts from legacy counters.",
-        "awaiting_canvas_approval": "Ask the user to approve the saved Project Canvas or continue framing iterations.",
+        "awaiting_canvas_approval": "Link the saved Project Canvas, summarize material changes, remaining blockers, and separate downstream readiness, then ask for approval or continue framing iterations.",
         "awaiting_document": "Use document-project-canvas with the recorded delivery choice, verify the native result, then record delivery.",
-        "complete": "Report the completed guided workflow and preserve the state file for future continuation.",
+        "complete": "Report the completed framing delivery and preserve the state file. Use the Canvas readiness to recommend the next useful action; functional-design is directly callable with a validated ready Canvas, not a guided transition. Do not claim that the whole project is complete.",
     }[phase]
 
 
@@ -432,6 +436,38 @@ def approve_canvas(root: Path, state: dict[str, Any], confirmed: bool) -> None:
     append_event(state, "canvas_approved")
 
 
+def validate_docx(path: Path) -> None:
+    """Check basic Word package structure; native visual QA remains required."""
+    try:
+        with ZipFile(path) as package:
+            content_types = ElementTree.fromstring(package.read("[Content_Types].xml"))
+            document = ElementTree.fromstring(package.read("word/document.xml"))
+        namespace = "http://schemas.openxmlformats.org/package/2006/content-types"
+        main_type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"
+        if content_types.tag != f"{{{namespace}}}Types" or not any(
+            item.get("PartName") == "/word/document.xml"
+            and item.get("ContentType") == main_type
+            for item in content_types.findall(f"{{{namespace}}}Override")
+        ):
+            raise ValueError("missing Word main-document content type")
+        # Accept both transitional and strict OOXML Word namespaces.
+        word_namespaces = (
+            "http://schemas.openxmlformats.org/wordprocessingml/2006/main",
+            "http://purl.oclc.org/ooxml/wordprocessingml/main",
+        )
+        if not any(
+            document.tag == f"{{{namespace}}}document"
+            and document.find(f"{{{namespace}}}body") is not None
+            for namespace in word_namespaces
+        ):
+            raise ValueError("missing Word document body")
+    except (OSError, BadZipFile, KeyError, ElementTree.ParseError, ValueError,
+            RuntimeError, NotImplementedError) as error:
+        raise WorkflowError(
+            "Word delivery requires a readable OOXML .docx package with a document body"
+        ) from error
+
+
 def complete_document(
     root: Path, state: dict[str, Any], document_file: str | None,
     document_url: str | None
@@ -450,6 +486,7 @@ def complete_document(
             raise WorkflowError(
                 "Word delivery must be stored under _project-design/documents"
             ) from error
+        validate_docx(path)
         state["document"]["file"] = str(path)
     elif output_format == "google-docs":
         if not document_url or not document_url.startswith("https://docs.google.com/document/"):

@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+- Added a project-manager interaction contract for grounded recommendations,
+  decision consequences, progressive answers, reuse of explicit setup choices,
+  reviewable approval, and an actionable direct functional-design handoff.
+- Distinguished active and explicitly deferred Canvas questions on resumption
+  and corrected a conflicting reference that made saved readiness optional.
+- Reject invalid Word packages before recording completed delivery; retain
+  native rendering and semantic verification as separate required checks.
+- Advanced guided-entry/framing/functional methodology revisions to 0.5/0.6/0.2;
+  plugin release versions and installed copies are unchanged.
+
 - Implemented `functional-design` methodology version 0.1 for creation,
   review, and controlled evolution of a living Functional Design artefact.
 - Added stable identifiers, change-history rules, actors and roles, global

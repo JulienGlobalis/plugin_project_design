@@ -6,6 +6,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from zipfile import ZipFile
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
@@ -347,7 +348,59 @@ class WorkflowTests(unittest.TestCase):
         result, _ = self.run_cli("complete-document")
         self.assertEqual(result.returncode, 2)
         document = self.root / "_project-design" / "documents" / "project-canvas.docx"
-        document.write_bytes(b"PK test")
+        self.write_docx(document)
+        result, output = self.run_cli("complete-document", "--document-file", str(document))
+        self.assertEqual(result.returncode, 0)
+        self.assertEqual(output["phase"], "complete")
+
+    @staticmethod
+    def write_docx(path: Path, *, strict: bool = False, body: bool = True) -> None:
+        namespace = (
+            "http://purl.oclc.org/ooxml/wordprocessingml/main" if strict
+            else "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+        )
+        with ZipFile(path, "w") as package:
+            package.writestr("[Content_Types].xml", (
+                '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'
+                '<Override PartName="/word/document.xml" ContentType="application/vnd.'
+                'openxmlformats-officedocument.wordprocessingml.document.main+xml"/>'
+                '</Types>'
+            ))
+            package.writestr("word/document.xml", (
+                f'<w:document xmlns:w="{namespace}">'
+                + ('<w:body><w:p><w:r><w:t>Canvas</w:t></w:r></w:p></w:body>' if body else '')
+                + '</w:document>'
+            ))
+
+    def test_invalid_word_packages_preserve_pending_delivery(self) -> None:
+        self.advance_to_iterations("docx")
+        self.complete_answered_iteration(1, ready=True)
+        (self.root / "_project-design" / "project-canvas.md").write_text(
+            "# Project Canvas\n", encoding="utf-8"
+        )
+        self.run_cli("approve-canvas", "--confirmed")
+        document = self.root / "_project-design" / "documents" / "project-canvas.docx"
+        before = self.state_file().read_bytes()
+        for kind in ("empty", "renamed-text", "unrelated-zip", "malformed-xml", "no-body", "wrong-content-type"):
+            with self.subTest(kind=kind):
+                if kind == "empty":
+                    document.write_bytes(b"")
+                elif kind == "renamed-text":
+                    document.write_bytes(b"PK test")
+                elif kind == "no-body":
+                    self.write_docx(document, body=False)
+                else:
+                    with ZipFile(document, "w") as package:
+                        package.writestr("[Content_Types].xml", "<Types/>")
+                        if kind == "malformed-xml":
+                            package.writestr("word/document.xml", "<broken")
+                        elif kind == "wrong-content-type":
+                            package.writestr("word/document.xml", '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body/></w:document>')
+                result, output = self.run_cli("complete-document", "--document-file", str(document))
+                self.assertEqual(result.returncode, 2)
+                self.assertIn("OOXML", output["error"])
+                self.assertEqual(self.state_file().read_bytes(), before)
+        self.write_docx(document, strict=True)
         result, output = self.run_cli("complete-document", "--document-file", str(document))
         self.assertEqual(result.returncode, 0)
         self.assertEqual(output["phase"], "complete")

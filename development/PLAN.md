@@ -143,6 +143,13 @@ force a reorganization of the shared skills.
 
 ## Testing Strategy
 
+The September 2026 project-manager review adds decision support and actionable
+handoffs to the implemented skills. See the
+[evaluation and improvement priorities](documentation/PLUGIN_PM_EVALUATION.fr.md).
+Full guided functional routing, post-approval revision, and project steering
+capabilities remain proposals; this increment does not implement the five
+placeholders or change the stable shared models.
+
 All skill development uses the shared fixtures, scenarios, quality
 checklists, Golden Output policy, and regression workflow defined in
 [`tests/TESTING.md`](tests/TESTING.md). A methodology change is incomplete

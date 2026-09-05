@@ -7,7 +7,7 @@ description: Transform project briefs, discovery notes, source documents, or an 
 
 ## Status
 
-IMPLEMENTED - methodology version 0.5. FIRST REAL-PROJECT REPLAY COMPLETED;
+IMPLEMENTED - methodology version 0.6. FIRST REAL-PROJECT REPLAY COMPLETED;
 CORRECTIVE MANUAL RE-TEST REQUIRED.
 
 ## Purpose
@@ -260,6 +260,12 @@ narrate the conflict; create one concise decision question if the matter
 conditions downstream design, otherwise write `To be defined`.
 
 ### 6. Co-construct the Canvas Through Iterations
+
+Apply the [Project Manager Interaction contract](../project-design/references/project-manager-interaction.md).
+Support each material decision with grounded options, consequences, and a
+recommendation when evidence permits. Keep these proposals in the conversation,
+outside the standard Canvas. Distinguish active from explicitly deferred
+questions in section 9 so only the active subset resumes automatically.
 
 After receiving the initial description or sources, prepare a useful working
 Canvas from the available information. Then conduct focused question-and-answer

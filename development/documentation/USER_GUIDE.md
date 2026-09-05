@@ -3,7 +3,7 @@
 Ce guide résume les actions prises en charge par le plugin, les questions qu'il
 pose, les informations à lui fournir et les livrables obtenus.
 
-Dernière vérification : 3 septembre 2026.
+Dernière vérification : 5 septembre 2026.
 
 ## Capacités disponibles
 
@@ -47,6 +47,23 @@ de créer ou réutiliser le dossier _project-design/.
 | 7. Validation | Approbation du Canvas ou demande d'une nouvelle itération | Accord ou corrections | Canvas validé |
 | 8. Document | Rien de plus si le format et le modèle sont déjà enregistrés | Éventuelles contraintes de présentation déjà annoncées | Document natif vérifié |
 
+Les choix explicites déjà fournis sont réutilisés sans vous les redemander.
+Si vous n'avez pas encore choisi, le plugin recommande un démarrage par le
+cadrage, un Canvas Markdown seul et les sources conservées en place. Il
+enregistre les transitions dans l'ordre et attend les accords nécessaires.
+
+### Un appui pour décider
+
+À chaque point important, le plugin indique le livrable en cours, ce qui bloque
+et la prochaine action recommandée. Pour une décision, il explique les options
+et leurs conséquences, puis recommande une option lorsque les sources le
+permettent. Sinon, il précise l'information manquante pour se prononcer.
+Vous pouvez choisir une autre réponse ou reporter explicitement la décision.
+Une recommandation ne devient jamais automatiquement une décision du projet.
+
+Les choix peuvent être présentés dans une interface interactive lorsque
+l'environnement le permet, ou directement dans la conversation.
+
 ### Questions posées pendant le cadrage
 
 Le plugin pose uniquement les questions dont la réponse conditionne le projet,
@@ -61,6 +78,13 @@ Il n'applique aucune limite arbitraire au nombre de questions. Vous pouvez
 répondre à tout le lot, répondre partiellement ou reporter explicitement une
 question. Les questions restantes sont conservées dans le Canvas et reprises
 à l'identique dans une conversation suivante.
+
+Le lot est ordonné selon les blocages et les dépendances : le plugin indique
+par où commencer, sans masquer les autres questions nécessaires. Après une
+réponse, il résume le changement et les décisions encore attendues. Les
+questions explicitement reportées restent distinctes des questions actives et
+ne sont pas automatiquement reposées à la reprise. Un report ne supprime pas
+son éventuel effet bloquant.
 
 Exemple de réponse :
 
@@ -113,6 +137,12 @@ Le Canvas décrit uniquement la position courante validée. Un audit demandé
 explicitement reste séparé dans
 `_project-design/project-canvas-audit.md`.
 
+Avant votre approbation, le plugin fournit le lien du Canvas enregistré,
+résume les changements et rappelle les blocages et la capacité à poursuivre.
+Après livraison, il recommande la prochaine action possible. Si le Canvas
+validé le permet, il propose un prompt prêt à utiliser pour `functional-design`.
+La fin du cadrage ne signifie pas que toute la conception du projet est terminée.
+
 ## Extrant documentaire optionnel
 
 Après approbation du Canvas, `document-project-canvas` peut produire :
@@ -124,6 +154,10 @@ Après approbation du Canvas, `document-project-canvas` peut produire :
 Le skill conserve strictement le contenu du Canvas. Il n'invente ni résumé, ni
 sous-titre, ni métadonnée, ni approbation et ne fusionne pas un audit séparé
 sans demande explicite.
+
+Le parcours refuse un faux fichier Word simplement renommé en `.docx` ou un
+paquet Word illisible. Ce contrôle de structure complète la vérification
+visuelle et la fidélité au Canvas ; il ne les remplace pas.
 
 ## Extrant de conception fonctionnelle
 
@@ -146,6 +180,12 @@ uniquement les sections concernées et ajoute un historique concis ; elle ne
 renumérote pas les fonctionnalités et n'efface pas silencieusement les
 décisions antérieures. Ce skill ne produit ni architecture, ni tâches de
 backlog, ni document Word ou Google Docs.
+
+Le plugin recommande un ordre de revue des fonctionnalités selon leurs
+dépendances et les incertitudes, puis vous aide à trancher les comportements
+manquants. Cet ordre de revue ne constitue pas une priorité de backlog. Une
+revue seule ne modifie pas le fichier ; une évolution conserve les identifiants
+et les parties non concernées.
 
 ## Prompts utiles
 

@@ -22,7 +22,7 @@ class FunctionalDesignContractTests(unittest.TestCase):
         cls.example = EXAMPLE.read_text(encoding="utf-8")
 
     def test_skill_is_implemented_and_links_runtime_references(self) -> None:
-        self.assertIn("IMPLEMENTED — METHODOLOGY VERSION 0.1", self.skill)
+        self.assertRegex(self.skill, r"IMPLEMENTED — METHODOLOGY VERSION \d+\.\d+")
         self.assertNotIn("installed entry is a placeholder", self.skill.lower())
         for reference in (
             "references/functional-design.md",

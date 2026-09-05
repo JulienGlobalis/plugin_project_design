@@ -141,6 +141,11 @@ current Canvas position. Keep an explicitly deferred question when its Decision
 still conditions validation or a downstream stage. The workflow state may
 count these questions but never contains their wording.
 
+When both exist, separate active and explicitly deferred questions using short
+subheadings within this section. Resume only the active subset and reconcile
+it with the pending count. An explicit deferral does not resolve the Decision
+or remove its blocking consequence from downstream readiness.
+
 ### 10. Success Criteria
 
 Describe source-supported project or MVP success criteria, which may concern

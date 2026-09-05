@@ -83,3 +83,8 @@ it for `project-design` when orchestration or a shared contract changes.
 - Transactional e-mail, notification, and screen messages are defined once in
   the annex catalog and referenced by stable IDs.
 - Technical-design and backlog-preparation readiness are assessed separately.
+
+## Project Manager Interaction
+
+For guided decision support and progressive answers, also run the
+[interaction replay](project-manager-interaction.md) using this same fixture.

@@ -12,9 +12,9 @@ the five remaining placeholders stay unchanged.
 
 | Skill | Status in version 0.1.0 | Capability statement |
 | --- | --- | --- |
-| `project-design` | Stateful guided entry version 0.4 | Presents skills, obtains consent, initializes the workspace, persists and enforces phases including pending framing answers, proposes `project-framing`, and hands off; complete routing is not implemented |
-| `project-framing` | Implemented methodology version 0.5 | Produces the ten-section Project Canvas business artefact, a separate three-stage readiness assessment, and complete necessary question batches; corrective manual re-test remains pending |
-| `functional-design` | Implemented methodology version 0.1 | Creates, reviews, and evolves the living `_project-design/functional-design.md` artefact from a validated Canvas and project evidence |
+| `project-design` | Stateful guided entry version 0.5 | Presents skills, obtains consent, initializes the workspace, persists and enforces phases including pending framing answers, proposes `project-framing`, and hands off; complete routing is not implemented |
+| `project-framing` | Implemented methodology version 0.6 | Produces the ten-section Project Canvas business artefact, a separate three-stage readiness assessment, and complete necessary question batches; corrective manual re-test remains pending |
+| `functional-design` | Implemented methodology version 0.2 | Creates, reviews, and evolves the living `_project-design/functional-design.md` artefact from a validated Canvas and project evidence |
 | `technical-design` | Installed placeholder | Future complementary or parallel technical-design methodology |
 | `product-backlog` | Installed placeholder | Future transformation of designed and validated Scope into traceable backlog items |
 | `document-project-canvas` | Implemented methodology version 0.2 | Produces a verified Project Canvas document in native Markdown, Microsoft Word, or Google Docs with strict reverse mapping to the supplied Canvas |
@@ -87,6 +87,13 @@ no operational capability.
 - Persist question-batch control counts without business text, resume pending
   questions from the Canvas across conversations, support partial answers and
   explicit deferrals, and reject premature or ambiguous closure.
+- Support the project manager with grounded recommendations, decision
+  consequences, progressive responses, reused explicit setup choices, and a
+  reviewable Canvas approval and next-action handoff. Keep agent proposals
+  separate from authorized project decisions.
+- Distinguish active and explicitly deferred questions during resumption.
+- Check basic OOXML Word package structure before recording delivery, without
+  replacing native rendering or semantic verification.
 
 ## Out of Scope
 
@@ -118,16 +125,20 @@ The required sections are:
 2. Objectives and Expected Value;
 3. Project Stakeholders;
 4. Users;
-5. Functional Scope with MVP, Outside MVP, and Unresolved Scope;
+5. Functional Scope with validated MVP and authorized Outside MVP;
 6. Technical Constraints;
 7. Risks;
 8. Decisions;
 9. Questions;
 10. Success Criteria.
 
-Every section is present or explicitly states that information is missing,
-contradictory, unsupported, or awaiting a Decision. The Canvas must never
-invent content to appear complete.
+Every section is present. Missing validated information is `To be defined`;
+an indispensable undecided scope boundary or contradiction becomes a concise
+question in section 9. Proposals, normalization labels, and conflict history
+remain outside the standard Canvas. After its ten numbered sections, a
+mandatory unnumbered block qualifies readiness for functional design, technical
+design, and backlog preparation separately. Never invent content to appear
+complete.
 
 `project-framing` owns this business artefact and no document format.
 `document-project-canvas` consumes the validated artefact and produces its
@@ -174,7 +185,8 @@ architecture or backlog items, or own final-document formatting.
 
 ## Acceptance Criteria
 
-- Both manifests continue to identify `project-design` at version `0.1.0`.
+- Both manifests continue to identify `project-design` with base release
+  version `0.1.0`; the Codex manifest retains its existing cachebuster suffix.
 - All nine installed skills retain valid front matter and distinct triggering
   descriptions.
 - `document-project-canvas` contains an implemented methodology and only the
@@ -219,9 +231,11 @@ architecture or backlog items, or own final-document formatting.
 - Risks remain distinct from confirmed Issues.
 - Decisions remain distinct from Assumptions, preferences, proposals, and
   Options.
-- Established, Provisional, and Unresolved information remains distinguishable.
+- Established, Provisional, and Unresolved information remains distinguishable
+  internally and is not displayed as normalization labels in the standard Canvas.
 - Existing, Target, and Transition perspectives remain distinguishable.
-- Contradictory or missing information remains visible and traceable.
+- Contradictory or missing information remains traceable internally and appears
+  as a concise necessary decision question or `To be defined` in the Canvas.
 - Questions are project-specific and classified as blocking, required before
   functional design, required before technical design, required before
   backlog preparation, or deferrable.

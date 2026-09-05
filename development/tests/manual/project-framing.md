@@ -338,6 +338,22 @@ Enter one allowed result and concise evidence or reservations for every row.
 
 ## Feedback Summary
 
+### Project Manager Support Extension (existing PF-MAN-001 to PF-MAN-005)
+
+Use the [interaction replay](../scenarios/project-manager-interaction.md) with
+each existing case; do not create another permanent fixture. Preserve the raw
+conversation and the Canvas separately. Results remain pending until replayed.
+
+| Criterion | Critères FR | Result | Evidence |
+| --- | --- | --- | --- |
+| Reuses explicit setup choices and recommends the next useful action | Réutilise les choix fournis et recommande la prochaine action utile | | |
+| Grounds options, consequences, and recommendations without inventing a Decision | Argumente les options et conséquences sans inventer de décision | | |
+| Orders the complete batch by impact and supports progressive answers | Ordonne le lot complet par impact et accepte les réponses progressives | | |
+| Resumes only active questions and preserves explicit deferrals | Reprend uniquement les questions actives et conserve les reports explicites | | |
+| Links the saved Canvas and explains blockers before approval | Fournit le Canvas et ses blocages avant approbation | | |
+| Offers a usable next-step prompt without running a placeholder | Propose un prompt utilisable pour la suite sans exécuter de placeholder | | |
+| Rejects an invalid Word file and still verifies native appearance and meaning | Refuse un faux Word et vérifie le rendu et la fidélité métier | | |
+
 | Topic | Notes |
 | --- | --- |
 | What worked well / Points positifs |  |

@@ -56,6 +56,19 @@ separate technical-design and backlog-readiness conclusions match the known
 project position. Return the generated artefact and review record to the
 project owner without committing them here.
 
+## Project Manager Support Extension
+
+Apply the [functional interaction extension](../scenarios/project-manager-interaction.md)
+to the existing cases after their Canvas validation. Do not infer Canvas
+approval from the fact that a fixture exists.
+
+| Criterion | Critères FR | Result | Evidence |
+| --- | --- | --- | --- |
+| Recommends review order from dependencies without backlog prioritization | Recommande un ordre de revue fondé sur les dépendances sans prioriser le backlog | | |
+| Presents grounded behavior options and consequences | Présente des options de comportement et des conséquences fondées | | |
+| Approved change preserves IDs and unaffected behavior | Le changement approuvé préserve les identifiants et comportements non concernés | | |
+| Advice stays provisional and review-only mode leaves files unchanged | Le conseil reste provisoire et la revue seule ne modifie aucun fichier | | |
+
 | Case | Platform | Initial result | Update result | Reservations or evidence |
 | --- | --- | --- | --- | --- |
 | FD-MAN-001 |  |  |  |  |

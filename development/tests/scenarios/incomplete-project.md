@@ -88,3 +88,8 @@ handling of missing information or unsupported invention changes.
   or a complete data model.
 - Backlog preparation may remain not ready even when some functional analysis
   can proceed.
+
+## Project Manager Interaction
+
+For guided decision support and progressive answers, also run the
+[interaction replay](project-manager-interaction.md) using this same fixture.

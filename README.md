@@ -24,6 +24,9 @@ For a simple end-user walkthrough with prompts, questions, inputs, and
 outputs, see the
 [French user guide](development/documentation/USER_GUIDE.md).
 
+The [project-manager evaluation](development/documentation/PLUGIN_PM_EVALUATION.fr.md)
+records the September 2026 interaction corrections and proposed next priorities.
+
 - `project-design` now provides the guided entry: skill presentation, explicit
   consent, safe workspace initialization, persisted phase enforcement,
   resumable framing-question batches, stage selection with `project-framing`
@@ -145,7 +148,7 @@ Project Canvas.
 
 [Full skill instructions](plugins/project-design/skills/project-framing/SKILL.md)
 
-- **Status:** implemented methodology version 0.5; corrective manual re-test
+- **Status:** implemented methodology version 0.6; corrective manual re-test
   is required after the first real-project replay.
 - **Use it when:** clarifying a project brief, discovery material, an existing
   application, or an early expression of need before functional design,
@@ -175,7 +178,7 @@ business artefact to _project-design/project-canvas.md.
 
 [Full skill instructions](plugins/project-design/skills/functional-design/SKILL.md)
 
-- **Status:** implemented methodology version 0.1; fixture and manual replay
+- **Status:** implemented methodology version 0.2; fixture and manual replay
   remain pending.
 - **Use it when:** creating, reviewing, or evolving functional specifications
   from a validated Project Canvas and supporting evidence.

@@ -75,3 +75,8 @@ traceability, consistency, or decision handling changes.
 - Acceptance criteria do not embed disputed targets.
 - Downstream readiness identifies the unresolved authority and affected stable
   IDs.
+
+## Project Manager Interaction
+
+For guided decision support and progressive answers, also run the
+[interaction replay](project-manager-interaction.md) using this same fixture.

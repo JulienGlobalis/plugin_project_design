@@ -2,6 +2,18 @@
 
 ## Implemented Guided Workflow
 
+- [ ] Explicit setup choices and consent are reused without duplicate questions;
+      missing decisions are recommended but never silently accepted.
+- [ ] Progress explains the current deliverable, blocker, and next useful action
+      without exposing state-machine commands in the normal conversation.
+- [ ] Decision support offers grounded alternatives, consequences, and a
+      recommendation or evidence limitation; proposals stay unvalidated.
+- [ ] Deferred questions remain distinct from active questions across resumption.
+- [ ] Approval refers to the saved Canvas, material changes, and readiness;
+      completion recommends an available next action without running placeholders.
+- [ ] Invalid Word packages cannot complete delivery or mutate its pending state;
+      basic package validation does not replace native visual and content QA.
+
 - [ ] A framing iteration is opened before new analysis or Canvas mutation.
 - [ ] The complete necessary, non-duplicated question batch is written to the
       Canvas and presented before its count is recorded.
