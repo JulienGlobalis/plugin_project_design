@@ -1,563 +1,224 @@
-# Project Design
+# Globalis Project Design
 
-`project-design` is a methodology-first, Markdown-first plugin foundation for
-application and software project design. It separates the production of
-project knowledge from its documentary restitution so framing, functional
-design, technical design, Product Backlog preparation, and document delivery
-remain modular, reusable, and traceable.
+Marketplace Globalis fournissant le plugin `project-design` pour Codex et
+Claude Code.
 
-## Problem Addressed
+Le plugin structure la conception de projets applicatifs et logiciels : cadrage
+et Project Canvas, conception fonctionnelle vivante, puis restitution
+documentaire en Markdown, Microsoft Word ou Google Docs. Il sépare la
+production de la connaissance projet de sa mise en forme, ne crée rien sans
+consentement explicite et regroupe tous ses livrables sous `_project-design/`
+à la racine du projet cible.
 
-Project-design knowledge is often spread across briefs, workshops, requirements, architecture notes, and delivery tools. This plugin will provide a shared information architecture and focused skills without coupling the methodology to one AI agent, document format, or orchestration framework.
+## Installation recommandée pour une équipe
 
-## Architecture
+Pour des utilisateurs non techniques dans un workspace ChatGPT/Codex, un
+administrateur peut installer ce plugin puis le publier dans le workspace en
+sélectionnant les rôles autorisés. Les utilisateurs l'installent ensuite depuis
+le répertoire graphique des plugins, sans manipuler de ligne de commande.
 
-The official architecture distinguishes global orchestration, business skills,
-and document skills.
+Le dépôt GitLab est privé : chaque installation directe depuis GitLab nécessite
+un accès valide au groupe `globalis-ms` et une clé SSH enregistrée sur GitLab.
 
-See the
-[Plugin Architecture Overview v1.0](development/documentation/PLUGIN_ARCHITECTURE_OVERVIEW.md)
-for the consolidated layer, model, skill, ownership, flow, and dependency
-reference.
+La marketplace et le plugin portent tous deux le nom `project-design`.
+L'identifiant d'installation est donc `project-design@project-design`.
 
-For a simple end-user walkthrough with prompts, questions, inputs, and
-outputs, see the
-[French user guide](development/documentation/USER_GUIDE.md).
+## Installation dans Codex
 
-The [project-manager evaluation](development/documentation/PLUGIN_PM_EVALUATION.fr.md)
-records the September 2026 interaction corrections and proposed next priorities.
-
-- `project-design` now provides the guided entry: skill presentation, explicit
-  consent, safe workspace initialization, persisted phase enforcement,
-  resumable framing-question batches, stage selection with `project-framing`
-  by default, and handoff. Complete cross-stage orchestration remains future
-  work.
-- `project-framing` is the implemented first design step. It clarifies the
-  expression of need and produces the Project Canvas.
-- `functional-design` is the implemented second business step. It creates or
-  evolves a traceable Functional Design covering actors, global processes,
-  the product-module-feature inventory, detailed feature behavior,
-  interfaces, rules, messages, exceptions, and acceptance criteria.
-- `technical-design` will structure architecture, technologies, components,
-  integrations, APIs, flows, security, performance, deployment, decisions,
-  and technical risks. It may run in parallel with or complement functional
-  design when the available inputs permit it.
-- `product-backlog` will transform designed and validated Scope into traceable
-  backlog items without inventing requirements, priority, value, or effort.
-- `document-project-canvas` is the implemented documentary counterpart of
-  `project-framing`. It produces a verified Markdown, Microsoft Word, or
-  Google Docs document from a validated Project Canvas without changing its
-  business knowledge.
-- `document-functional-design`, `document-technical-design`, and
-  `document-product-backlog` remain installed placeholders for future
-  document restitution from their corresponding business artefacts.
-
-Exactly nine skill directories are installed. The `project-design` guided
-entry, `project-framing`, `functional-design`, and `document-project-canvas`
-are implemented; the other five entries are explicit placeholders. Every
-specialized skill remains independently callable, and future orchestration
-must preserve direct use.
-
-Before work begins, the selected skill gives a short operational brief:
-skill and purpose, available or missing inputs, deliverables to be generated,
-and models or templates the user must provide. Durable Markdown outputs are
-stored together under `_project-design/` at the root of the target project;
-documentary Markdown uses `_project-design/documents/`.
-
-### Current Availability
-
-| Skill | Installed entry | Current status | Current or forecast responsibility |
-| --- | --- | --- | --- |
-| `project-design` | Yes | Stateful guided entry implemented | Consent, persistent phase enforcement, workspace initialization, stage selection, and handoff; full routing is not implemented |
-| `project-framing` | Yes | Implemented; corrective manual re-test pending | Step 1; produces the Project Canvas business artefact and separate downstream-readiness conclusions |
-| `functional-design` | Yes | Implemented; fixture and manual replay pending | Creates, reviews, or evolves `_project-design/functional-design.md` from a validated Canvas |
-| `technical-design` | Yes | Placeholder | Future complementary or parallel technical-design methodology |
-| `product-backlog` | Yes | Placeholder | Future traceable transformation of designed and validated Scope |
-| `document-project-canvas` | Yes | Implemented; corrective manual re-test pending | Project Canvas document in Markdown, Microsoft Word, or Google Docs |
-| `document-functional-design` | Yes | Placeholder | Future functional specifications document |
-| `document-technical-design` | Yes | Placeholder | Future technical specifications document |
-| `document-product-backlog` | Yes | Placeholder | Future Product Backlog document |
-
-An installed placeholder is discoverable but does not provide the future
-methodology. The manifests expose all nine installed entries through their
-shared `skills/` directory.
-
-```text
-project-design
-├── project-framing
-├── functional-design                # implemented
-├── technical-design
-├── product-backlog
-├── document-project-canvas          # implemented
-├── document-functional-design       # placeholder
-├── document-technical-design        # placeholder
-└── document-product-backlog         # placeholder
-```
-
-## Skill Usage Guide
-
-Skills can be invoked by naming them explicitly in a natural-language prompt
-in Codex or Claude Code. Use `project-design` for the guided workflow, or call
-an implemented specialized skill directly when its required input already
-exists. A direct call remains subject to the same consent, workspace, input,
-validation, and delivery rules as the guided workflow.
-
-Examples below are platform-neutral and ready to adapt. Replace paths,
-languages, formats, and source names with project-specific values.
-`project-design`, `project-framing`, `functional-design`, and
-`document-project-canvas` execute a methodology today. Placeholder examples
-are explicitly marked and must not create an artefact.
-
-### `project-design` — Guided Workflow
-
-[Full skill instructions](plugins/project-design/skills/project-design/SKILL.md)
-
-- **Status:** implemented stateful guided entry; complete multi-stage
-  orchestration remains future work.
-- **Use it when:** starting, resuming, or checking a project specification
-  workflow and when the plugin should guide consent, setup, source intake,
-  framing, approval, and optional document delivery.
-- **Inputs:** the target project root, then the project description or source
-  documents requested by the workflow. Documentary preferences and the source
-  storage strategy are collected in order.
-- **Outputs:** `_project-design/project-design-state.json`, the initialized
-  workspace, and artefacts produced by implemented specialized skills. The
-  state file contains workflow control data, never project knowledge.
-- **Important:** on an existing workflow, the skill runs `status` first and
-  follows only its recorded `next_action`. It never resets or skips a phase
-  based on conversation history.
-
-Example — start a new guided workflow:
-
-```text
-Use the project-design skill to guide the specification of the application in
-/path/to/my-project. Present the available skills and workspace rules, then ask
-for my explicit consent before creating or reusing _project-design/.
-```
-
-Example — resume after a conversation change:
-
-```text
-Resume the project-design workflow in /path/to/my-project. Check the persisted
-status first and perform only the recorded next action. If framing answers are
-pending, present exactly the unanswered questions already stored in the
-Project Canvas.
-```
-
-### `project-framing` — Project Canvas
-
-[Full skill instructions](plugins/project-design/skills/project-framing/SKILL.md)
-
-- **Status:** implemented methodology version 0.6; corrective manual re-test
-  is required after the first real-project replay.
-- **Use it when:** clarifying a project brief, discovery material, an existing
-  application, or an early expression of need before functional design,
-  technical design, or backlog preparation.
-- **Inputs:** a project description, source documents, an existing Project
-  View, or any useful combination of them. No document template is required.
-- **Output:** the current validated project position in the ten-section
-  `_project-design/project-canvas.md` business artefact, followed by a
-  separate unnumbered readiness assessment for functional design, technical
-  design, and backlog preparation.
-- **Important:** the standard Canvas is concise and decision-oriented. It does
-  not expose audit mechanics or invent missing information. Any indispensable
-  unresolved point becomes a focused question; other missing content remains
-  `To be defined` in the requested output language.
-
-Example — direct framing from mixed sources:
-
-```text
-Use the project-framing skill for /path/to/my-project. Build a French Project
-Canvas from the brief in docs/brief.md and the workshop notes in
-docs/workshop-notes.md. Preserve unresolved decisions, ask every materially
-necessary decision question without an arbitrary limit, and save the durable
-business artefact to _project-design/project-canvas.md.
-```
-
-### `functional-design` — Functional Design
-
-[Full skill instructions](plugins/project-design/skills/functional-design/SKILL.md)
-
-- **Status:** implemented methodology version 0.2; fixture and manual replay
-  remain pending.
-- **Use it when:** creating, reviewing, or evolving functional specifications
-  from a validated Project Canvas and supporting evidence.
-- **Inputs:** validated Canvas or equivalent project position; an update also
-  requires the current Functional Design and a traceable change input.
-- **Output:** `_project-design/functional-design.md`, with stable identifiers,
-  concise change history, general specifications, detailed specifications per
-  feature, a global message catalog, and separate downstream readiness.
-- **Important:** the artefact is living and preserves unaffected content and
-  identifiers. The skill creates neither technical design, backlog items, nor
-  final-document formatting. The guided state machine does not route this
-  stage yet, so invoke the skill directly.
-
-Example — create the first Functional Design:
-
-```text
-Use functional-design for /path/to/my-project. Build the French Functional
-Design from the validated _project-design/project-canvas.md and the supplied
-project evidence. Use stable identifiers, preserve unresolved Decisions,
-define messages once in the annex catalog, and save the living artefact to
-_project-design/functional-design.md without producing architecture or backlog
-items.
-```
-
-### `technical-design` — Technical Design
-
-[Full skill instructions](plugins/project-design/skills/technical-design/SKILL.md)
-
-- **Status:** placeholder; the methodology and artefact structure are not
-  implemented.
-- **Forecast use:** define a technical direction covering architecture,
-  components, integrations, APIs, flows, security, performance, hosting,
-  operations, deployment, decisions, risks, and non-functional requirements.
-- **Forecast inputs:** Project Canvas, functional requirements when available,
-  system context, standards, integrations, constraints, risks, and prior
-  decisions.
-- **Forecast output:** `_project-design/technical-design.md` once the
-  methodology is implemented.
-- **Current behavior:** announce that the skill is unavailable and create no
-  file. Proposals must remain distinct from approved technical decisions.
-
-Example — current availability check, not design execution:
-
-```text
-Check the technical-design skill for /path/to/my-project using the validated
-Project Canvas and the existing architecture notes. If the methodology is
-still a placeholder, explain the forecast coverage and do not generate a
-Technical Design artefact.
-```
-
-### `product-backlog` — Product Backlog Artefact
-
-[Full skill instructions](plugins/project-design/skills/product-backlog/SKILL.md)
-
-- **Status:** placeholder; backlog creation, harmonization, prioritization,
-  and estimation are not implemented.
-- **Forecast use:** transform validated designed Scope into a traceable Product
-  Backlog without inventing requirements, priority, value, or effort.
-- **Forecast inputs:** Project Canvas, validated functional or technical
-  design, existing backlog material, and known prioritization, estimation,
-  ownership, and traceability constraints.
-- **Forecast output:** `_project-design/product-backlog.md` once the
-  methodology is implemented.
-- **Current behavior:** announce that the skill is unavailable and create no
-  backlog artefact or backlog items.
-
-Example — current availability check, not backlog generation:
-
-```text
-Check whether the product-backlog skill can process the validated design in
-/path/to/my-project. If it is still a placeholder, list the forecast inputs
-and boundaries and do not create or prioritize backlog items.
-```
-
-### `document-project-canvas` — Project Canvas Document
-
-[Full skill instructions](plugins/project-design/skills/document-project-canvas/SKILL.md)
-
-- **Status:** implemented methodology version 0.2; corrective combined manual
-  re-test with `project-framing` remains pending.
-- **Use it when:** a validated Project Canvas must be delivered as a polished
-  native Markdown, Microsoft Word, or Google Docs document.
-- **Input:** a validated Project Canvas business artefact. Language, audience,
-  output format, and a compatible optional template may also be supplied.
-- **Output:** Markdown under `_project-design/documents/`, a verified `.docx`
-  there, or a verified native Google Docs link.
-- **Important:** this skill formats and verifies the Canvas without adding,
-  resolving, removing, or changing project knowledge. A business defect is
-  returned to `project-framing` rather than corrected silently.
-
-Example — create a Word document without a supplied template:
-
-```text
-Use the document-project-canvas skill to turn the validated
-_project-design/project-canvas.md into a professional French Microsoft Word
-document. Use the default structure, preserve all business meaning and
-unresolved questions, save it to
-_project-design/documents/project-canvas.docx, and verify the native result
-before delivery.
-```
-
-### `document-functional-design` — Functional Specifications Document
-
-[Full skill instructions](plugins/project-design/skills/document-functional-design/SKILL.md)
-
-- **Status:** placeholder; document methodology, template contracts, and
-  format integrations are not implemented.
-- **Forecast use:** restitute a validated Functional Design as human-facing
-  functional specifications without changing its business knowledge.
-- **Forecast inputs:** validated Functional Design plus language, presentation,
-  optional compatible template, and output-format constraints.
-- **Forecast outputs:** Markdown, Microsoft Word, or Google Docs in a future
-  implementation.
-- **Current behavior:** announce that the skill is unavailable and create no
-  file or external document.
-
-Example — current availability check, not document generation:
-
-```text
-Check the document-functional-design skill for the validated Functional Design
-in /path/to/my-project. If it is still a placeholder, report the future format
-options and do not create a functional specifications document.
-```
-
-### `document-technical-design` — Technical Specifications Document
-
-[Full skill instructions](plugins/project-design/skills/document-technical-design/SKILL.md)
-
-- **Status:** placeholder; document methodology, template contracts, and
-  format integrations are not implemented.
-- **Forecast use:** restitute a validated Technical Design as human-facing
-  technical specifications without changing its technical decisions.
-- **Forecast inputs:** validated Technical Design plus language, presentation,
-  optional compatible template, and output-format constraints.
-- **Forecast outputs:** Markdown, Microsoft Word, or Google Docs in a future
-  implementation.
-- **Current behavior:** announce that the skill is unavailable and create no
-  file or external document.
-
-Example — current availability check, not document generation:
-
-```text
-Check the document-technical-design skill for the validated Technical Design
-in /path/to/my-project. If it is still a placeholder, report the forecast
-formats and boundaries and do not create a technical specifications document.
-```
-
-### `document-product-backlog` — Product Backlog Document
-
-[Full skill instructions](plugins/project-design/skills/document-product-backlog/SKILL.md)
-
-- **Status:** placeholder; document methodology, template contracts, and
-  format integrations are not implemented.
-- **Forecast use:** restitute a validated Product Backlog without creating,
-  reprioritizing, estimating, or changing backlog content.
-- **Forecast inputs:** validated Product Backlog plus language, presentation,
-  optional compatible template, and output-format constraints.
-- **Forecast outputs:** Markdown, Google Sheets, Microsoft Excel, Microsoft
-  Word, or Google Docs in a future implementation.
-- **Current behavior:** announce that the skill is unavailable and create no
-  file, spreadsheet, or external document.
-
-Example — current availability check, not document generation:
-
-```text
-Check the document-product-backlog skill for the validated backlog in
-/path/to/my-project. If it is still a placeholder, report its forecast native
-formats and do not create or modify any backlog document.
-```
-
-All skills will rely on the accepted
-[common information architecture](plugins/project-design/shared/project-model/information-architecture.md):
-
-```text
-Source documents -> Knowledge Model -> Project Model -> Skills -> Generated artefacts
-```
-
-The Knowledge Model preserves extracted evidence, provenance, uncertainty,
-and conflicts. The Project Model provides normalized project information.
-Neither model belongs to an individual skill.
-
-### Design Artefacts and Document Restitution
-
-Business skills own the structured project knowledge they produce. They do
-not generate final documents, select output formats, apply templates, export,
-or contain document-format logic. Document skills consume one corresponding
-validated business artefact and may present it for people or external tools,
-but must not invent content, resolve a business question, change a Decision,
-or become owners of business methodology.
-
-Version 0.1 of the
-[Shared Document Model](plugins/project-design/shared/document-model/README.md)
-defines this discipline-neutral artefact-to-document contract for every
-implemented and future document skill.
-
-Markdown is the native default. `document-project-canvas` currently supports
-native Markdown, Microsoft Word, and Google Docs through available native
-document tooling, with a default professional structure or a compatible
-supplied template. The rules are:
-
-- `document-project-canvas`: Markdown by default; verified native Google Docs
-  or Microsoft Word on explicit request;
-- `document-functional-design`: Markdown by default; Google Docs or Microsoft
-  Word only in a future implementation when a compatible template is
-  supplied;
-- `document-technical-design`: the same future format rule for the technical
-  artefact;
-- `document-product-backlog`: Markdown by default; Google Sheets, Microsoft
-  Excel, Google Docs, or Microsoft Word in a future implementation.
-
-The formats for the remaining three document skills are forecast only. Those
-placeholders contain no methodology, template, example, generator,
-conversion, export, or integration.
-
-Version 0.1 of the
-[Minimal Knowledge Model](plugins/project-design/shared/knowledge-model/README.md) defines how
-assertions and their epistemic state are preserved before normalization.
-
-Version 0.1 of the
-[Minimal Normalized Project Model](plugins/project-design/shared/project-model/README.md) defines the
-shared current project view consumed by future skills.
-
-The
-[Canonical Domain Model](plugins/project-design/shared/terminology/canonical-domain-model.md)
-defines the vocabulary shared by both models and all skills. It governs
-semantics but is not an additional processing layer.
-
-Localized terminology companions, starting with
-[French canonical terminology](plugins/project-design/shared/terminology/canonical-terms.fr.md),
-provide output labels without changing that semantic contract.
-
-## Platforms
-
-Version 0.1.0 targets Codex and Claude Code. Both platforms discover the same
-`plugins/project-design/skills/` implementation. Installable manifests live
-inside the plugin bundle, while platform notes and optional adapters remain
-outside it under `integrations/`.
-
-## Standalone and Spec Kit Use
-
-The plugin is standalone by design and does not require GitHub Spec Kit. Spec Kit is an optional future companion or integration target; it does not own the methodology. See [the Spec Kit integration boundary](integrations/spec-kit/README.md).
-
-## Repository Structure
-
-```text
-plugins/project-design/   Installable plugin bundle
-  .codex-plugin/          Codex manifest
-  .claude-plugin/         Claude Code manifest
-  skills/                 Platform-independent skill foundations
-  shared/                 Models, assets, schemas, rules, and terminology
-development/              Versioned resources excluded from installation
-  PROJECT_CONTEXT.md      Cross-conversation continuity
-  tests/                  Fixtures, scenarios, checklists, and evidence
-  examples/               Draft examples excluded from installation
-  PLAN.md                 Project roadmap
-  SPEC.md                 Current specification
-.local/                   Ignored local and confidential working files
-.agents/plugins/          Codex marketplace metadata
-.claude-plugin/           Claude Code marketplace metadata
-integrations/             Platform notes and optional integration boundaries
-```
-
-`_project-design/` and its `documents/` subdirectory are initialized in a
-target project only after the user explicitly confirms use of the plugin for
-their specifications. The guided flow stores non-business control state in
-`_project-design/project-design-state.json`; it contains control counters for
-active question batches but no question text, answer text, source, or Canvas
-content. Initialization creates no placeholder artefact. The workspace is not
-a repository-development or plugin-cache directory.
-
-The Codex and Claude Code marketplace entries both point only to
-`plugins/project-design/`. Development resources remain versioned in Git but
-are not part of the installed plugin copy.
-
-## Localization and Assets
-
-Normative plugin source content and canonical names are English. User-facing
-assets and terminology companions may be localized. Localized resources
-follow `<asset-name>.<language-code>.<extension>`, with optional regional tags
-such as `fr-FR`.
-
-Resolution prefers an exact regional language and then its base language.
-Missing requested-language content must be explicit. English is the default
-when no output language is requested and is a fallback for a requested
-language only through an explicit rule or user acceptance. Resolution must
-never silently fall back to an unrelated localized language.
-
-## Current Status
-
-UNDER CONSTRUCTION
-
-Version 0.1.0 provides manifests, valid skill foundations, shared-resource
-placeholders, integration boundaries, repository documentation, a
-documentation-first testing strategy, a permanent multi-artefact reference
-corpus, the common information-architecture decision, version 0.1 of the
-Canonical Domain Model, version 0.1 of the conceptual Knowledge Model, and
-version 0.1 of the Minimal Normalized Project Model. It also provides the
-initial French canonical terminology companion and the first complete
-business methodology, `project-framing`, the living `functional-design`
-methodology, plus the first document methodology, `document-project-canvas`.
-Its current unreleased evolution defines the
-Project Canvas as the primary framing artefact and supports its verified
-Markdown, Microsoft Word, or Google Docs restitution. The first real-project
-manual replay has been completed; its confirmed readiness and documentary
-mapping defects are corrected, and a focused corrective re-test remains
-pending. Functional-design fixture and manual replay are also pending. It does
-not provide the remaining detailed skill
-methodologies, complete cross-stage orchestration, general exporters, API
-integrations, MCP servers, hooks, agents, commands, or Spec Kit automation.
-
-## Development Approach
-
-Develop one responsibility per skill, reuse shared concepts, preserve
-evidence and traceability, and validate methodology before adding automation.
-Every change follows [the shared testing strategy](development/tests/TESTING.md).
-Combined real-project validation of `project-framing` and
-`document-project-canvas` uses the
-[manual test file](development/tests/manual/project-framing.md).
-Functional-design creation and evolution use the
-[functional manual test file](development/tests/manual/functional-design.md).
-Development continuity between conversations is maintained in
-[PROJECT_CONTEXT.md](development/PROJECT_CONTEXT.md).
-Planned capability remains `TO BE DEFINED` until its behavior and contracts
-are explicitly designed.
-
-## Roadmap
-
-1. Iteration 8 and advanced Iteration 12: `project-framing` -> Project Canvas
-   -> `document-project-canvas`; complete the focused corrective re-test after
-   the first real-project manual replay.
-2. Iteration 9: `functional-design` -> Functional Design implemented;
-   complete fixture and manual replay.
-3. Iteration 10: `technical-design` -> Technical Design.
-4. Iteration 11: `product-backlog` -> Product Backlog.
-5. Iteration 12: `document-project-canvas` implementation advanced into the
-   combined Iteration 8 validation; complete that validation.
-6. Iteration 13: implement `document-functional-design`.
-7. Iteration 14: implement `document-technical-design`.
-8. Iteration 15: implement `document-product-backlog`.
-9. Iteration 16: implement complete `project-design` orchestration.
-
-## Installation
-
-The public GitHub repository is:
-
-```text
-JulienGlobalis/plugin_project_design
-```
-
-### Claude Code
-
-Add the GitHub repository as a marketplace, then install the plugin:
+Ajouter une seule fois la marketplace :
 
 ```bash
-claude plugin marketplace add JulienGlobalis/plugin_project_design
+codex plugin marketplace add git@gitlab.com:globalis-ms/marketplace/llm_plugin_project_design.git
+```
+
+Installer ensuite le plugin depuis le répertoire des plugins de l'application,
+ou avec :
+
+```bash
+codex plugin add project-design@project-design
+```
+
+Démarrer une nouvelle conversation avant la première utilisation.
+
+## Installation dans Claude Code
+
+Ajouter la marketplace puis installer le plugin :
+
+```bash
+claude plugin marketplace add git@gitlab.com:globalis-ms/marketplace/llm_plugin_project_design.git
 claude plugin install project-design@project-design
 ```
 
-Restart Claude Code after installation. To retrieve a later release:
+La même opération peut être réalisée depuis `/plugin` ou depuis le navigateur
+de plugins de Claude Code Desktop. Redémarrer Claude Code avant la première
+utilisation.
+
+Les skills Claude Code sont accessibles sous la forme
+`/project-design:<skill>`, par exemple :
+
+```text
+/project-design:project-design
+/project-design:project-framing
+/project-design:functional-design
+/project-design:document-project-canvas
+```
+
+## Mise à jour
+
+Codex :
+
+```bash
+codex plugin marketplace upgrade project-design
+codex plugin add project-design@project-design
+```
+
+Claude Code :
 
 ```bash
 claude plugin marketplace update project-design
 claude plugin update project-design@project-design
 ```
 
-The Claude marketplace catalog is
-`.claude-plugin/marketplace.json`. It points to the isolated
-`plugins/project-design/` bundle, so development tests and context files are
-not installed with the plugin.
+Rafraîchir la marketplace avant la mise à jour du plugin, sinon l'ancienne
+copie reste installée. Démarrer ensuite une nouvelle conversation Codex ou
+redémarrer Claude Code.
 
-### Codex
+## Skills disponibles
 
-The Codex marketplace catalog is `.agents/plugins/marketplace.json`. Add the
-GitHub repository as a marketplace and install the plugin with:
+| Skill | Statut | Rôle | Livrable |
+| --- | --- | --- | --- |
+| `project-design` | Implémenté | Entrée guidée : présentation, consentement, initialisation, choix d'étape, reprise entre conversations | `_project-design/project-design-state.json` (état de contrôle uniquement) |
+| `project-framing` | Implémenté | Étape 1 : cadrage et Project Canvas en dix sections | `_project-design/project-canvas.md` |
+| `functional-design` | Implémenté | Étape 2 : conception fonctionnelle vivante à partir d'un Canvas validé | `_project-design/functional-design.md` |
+| `document-project-canvas` | Implémenté | Restitution documentaire du Canvas validé | `_project-design/documents/`, `.docx` ou lien Google Docs |
+| `technical-design` | Placeholder | Conception technique future | Aucun |
+| `product-backlog` | Placeholder | Backlog traçable futur | Aucun |
+| `document-functional-design` | Placeholder | Spécifications fonctionnelles futures | Aucun |
+| `document-technical-design` | Placeholder | Spécifications techniques futures | Aucun |
+| `document-product-backlog` | Placeholder | Document de backlog futur | Aucun |
 
-```bash
-codex plugin marketplace add JulienGlobalis/plugin_project_design --ref main
-codex plugin add project-design@project-design
+Un placeholder annonce son statut et ses entrées ou sorties prévues, mais ne
+crée aucun fichier. Chaque skill spécialisé reste appelable directement.
+
+Le parcours pas à pas, les questions posées, les intrants et les extrants sont
+décrits dans le [guide utilisateur](development/documentation/USER_GUIDE.md).
+
+## Exemples de prompts
+
+Les prompts sont utilisables dans Codex comme dans Claude Code. Remplacer les
+chemins, langues et formats par les valeurs du projet.
+
+Démarrer le parcours guidé (`project-design`) :
+
+```text
+Utilise le skill project-design pour guider la spécification de l'application
+située dans /chemin/vers/mon-projet. Présente les skills disponibles et les
+règles du répertoire, puis demande mon consentement explicite avant de créer
+ou réutiliser _project-design/.
 ```
 
-Submission to an official vendor-managed public directory remains separate
-from this independently distributed GitHub marketplace.
+Reprendre après un changement de conversation (`project-design`) :
+
+```text
+Reprends le workflow project-design dans /chemin/vers/mon-projet. Vérifie
+d'abord le statut persisté et exécute uniquement la prochaine action
+enregistrée. Si des réponses de cadrage sont en attente, présente exactement
+les questions non répondues déjà présentes dans le Project Canvas.
+```
+
+Cadrer directement à partir de sources (`project-framing`) :
+
+```text
+Utilise le skill project-framing pour /chemin/vers/mon-projet. Construis un
+Project Canvas en français à partir de docs/brief.md et de
+docs/notes-atelier.md. Conserve les décisions non tranchées, pose toutes les
+questions de décision nécessaires et enregistre l'artefact dans
+_project-design/project-canvas.md.
+```
+
+Créer la conception fonctionnelle (`functional-design`) :
+
+```text
+Utilise functional-design pour /chemin/vers/mon-projet. Construis le
+Functional Design en français à partir du Canvas validé
+_project-design/project-canvas.md. Utilise des identifiants stables, conserve
+les décisions non résolues, définis chaque message une seule fois dans le
+catalogue et enregistre l'artefact dans _project-design/functional-design.md,
+sans architecture technique ni backlog.
+```
+
+Produire le document Word du Canvas (`document-project-canvas`) :
+
+```text
+Utilise le skill document-project-canvas pour transformer le Canvas validé
+_project-design/project-canvas.md en document Microsoft Word professionnel en
+français. Utilise la structure par défaut, conserve tout le sens métier et les
+questions ouvertes, enregistre le fichier dans
+_project-design/documents/project-canvas.docx et vérifie le résultat avant
+livraison.
+```
+
+Vérifier la disponibilité d'un placeholder (`technical-design`,
+`product-backlog`, `document-functional-design`, `document-technical-design`,
+`document-product-backlog`) :
+
+```text
+Vérifie le skill technical-design pour /chemin/vers/mon-projet. S'il est
+encore un placeholder, présente sa couverture prévue et ne génère aucun
+artefact.
+```
+
+## Structure
+
+```text
+.
+├── .agents/plugins/marketplace.json     # Marketplace Codex
+├── .claude-plugin/marketplace.json      # Marketplace Claude Code
+├── plugins/
+│   └── project-design/                  # Bundle installable
+│       ├── .codex-plugin/plugin.json
+│       ├── .claude-plugin/plugin.json
+│       ├── README.md
+│       ├── shared/                      # Modèles, terminologie, règles qualité
+│       └── skills/
+│           ├── project-design/          # SKILL.md, references/, scripts/
+│           ├── project-framing/
+│           ├── functional-design/
+│           ├── document-project-canvas/
+│           └── ...                      # Cinq placeholders
+├── development/                         # Tests, fixtures, contexte, docs (non installés)
+├── integrations/                        # Notes par plateforme
+├── AGENTS.md
+├── CLAUDE.md
+├── CHANGELOG.md
+└── CONTRIBUTING.md
+```
+
+Le dossier `plugins/project-design/skills/` est l'unique source des skills.
+Les deux plugins et les deux marketplaces utilisent cette même source ;
+`development/` reste versionné mais n'est jamais installé.
+
+L'architecture complète (modèles, responsabilités, flux et dépendances) est
+décrite dans la
+[vue d'ensemble de l'architecture](development/documentation/PLUGIN_ARCHITECTURE_OVERVIEW.md).
+
+## Validation pour les mainteneurs
+
+Avant chaque publication :
+
+```bash
+python3 -m unittest discover -s development/tests/tools -q
+claude plugin validate plugins/project-design
+claude plugin validate .
+```
+
+Valider également le plugin Codex et chaque skill modifié, suivre la
+[stratégie de test](development/tests/TESTING.md), puis mettre à jour le
+[CHANGELOG](CHANGELOG.md) et le [guide utilisateur](development/documentation/USER_GUIDE.md).
+
+Incrémenter la version de `plugins/project-design/.claude-plugin/plugin.json`
+à chaque publication : Claude Code ne détecte pas une mise à jour si la
+version reste identique. Créer ensuite le tag correspondant (`vX.Y.Z`).
+
+Vérifier enfin une installation réelle depuis la marketplace et tester dans
+une nouvelle conversation ou session.

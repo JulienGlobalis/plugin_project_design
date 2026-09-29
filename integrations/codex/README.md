@@ -9,11 +9,18 @@ The shared `SKILL.md` files use only the cross-platform `name` and `description`
 
 The repository marketplace entry is defined in
 `.agents/plugins/marketplace.json` and points only to
-`plugins/project-design/`. The GitHub repository can be configured as an
-independent marketplace with:
+`plugins/project-design/`. The private GitLab repository can be configured as
+a marketplace (access to the `globalis-ms` group required) with:
 
 ```bash
-codex plugin marketplace add JulienGlobalis/plugin_project_design --ref main
+codex plugin marketplace add git@gitlab.com:globalis-ms/marketplace/llm_plugin_project_design.git
+codex plugin add project-design@project-design
+```
+
+To update:
+
+```bash
+codex plugin marketplace upgrade project-design
 codex plugin add project-design@project-design
 ```
 

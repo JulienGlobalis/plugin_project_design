@@ -1,6 +1,6 @@
 # Project Design - Contexte de continuité
 
-Dernière mise à jour : 2026-09-05
+Dernière mise à jour : 2026-09-28
 
 ## Utilisation de ce fichier
 
@@ -194,6 +194,8 @@ concurrent.
   approuvés ; les conclusions attendues des fixtures ne deviennent jamais des
   exemples runtime.
 - Aucun commit ou push n'est effectué sans demande explicite.
+- Après chaque modification majeure, proposer un tag de version `vX.Y.Z`
+  aligné sur `CHANGELOG.md`, sans le créer sans accord explicite.
 - Après chaque modification, fournir un compte rendu de type CI indiquant
   clairement les contrôles passés, échoués ou non applicables.
 - Avant d'exécuter un skill, présenter très brièvement le skill ou l'ordre des
@@ -1233,26 +1235,49 @@ Le bundle a été réinstallé depuis le marketplace local en version
 phase d'attente dédiée et la version 0.4. Un nouveau fil Codex est requis pour
 charger ce registre mis à jour.
 
-## Distribution GitHub pour Claude Code
+## Distribution GitLab pour Codex et Claude Code
 
-Le dépôt public GitHub `JulienGlobalis/plugin_project_design` distribue le
-plugin comme marketplace indépendante. Le catalogue Claude Code est
-`.claude-plugin/marketplace.json` et expose uniquement le bundle
-`./plugins/project-design`, comme le catalogue Codex
-`.agents/plugins/marketplace.json`.
+Depuis le 28 septembre 2026, le remote principal `origin` est le dépôt GitLab
+privé `git@gitlab.com:globalis-ms/marketplace/llm_plugin_project_design.git`.
+L'installation exige un accès au groupe `globalis-ms`. Le remote `github`
+(`JulienGlobalis/plugin_project_design`) est conservé tel quel ; son rôle de
+miroir public reste à confirmer par l'utilisateur.
 
-Installation Claude Code :
+Les catalogues `.claude-plugin/marketplace.json` et
+`.agents/plugins/marketplace.json` exposent uniquement le bundle
+`./plugins/project-design`. La marketplace et le plugin s'appellent tous deux
+`project-design` : l'identifiant d'installation est
+`project-design@project-design`.
 
 ```bash
-claude plugin marketplace add JulienGlobalis/plugin_project_design
+codex plugin marketplace add git@gitlab.com:globalis-ms/marketplace/llm_plugin_project_design.git
+codex plugin add project-design@project-design
+claude plugin marketplace add git@gitlab.com:globalis-ms/marketplace/llm_plugin_project_design.git
 claude plugin install project-design@project-design
 ```
 
-Le manifeste Claude conserve la version `0.1.0`. Toute future livraison Claude
-doit incrémenter cette version avant publication, puis être récupérée avec
-`claude plugin marketplace update project-design` et
-`claude plugin update project-design@project-design`. Un redémarrage de Claude
-Code est requis après installation ou mise à jour.
+Mise à jour : `codex plugin marketplace upgrade project-design` puis
+`codex plugin add project-design@project-design` ; `claude plugin marketplace
+update project-design` puis `claude plugin update
+project-design@project-design`. Toute livraison Claude doit incrémenter la
+version du manifeste. Une nouvelle conversation Codex ou un redémarrage de
+Claude Code est requis.
+
+Le README racine est désormais rédigé en français sur le modèle du README de
+la marketplace Globalis `project-ai-bootstrap` : installation d'abord, tableau
+des neuf skills, prompts d'exemple, structure et contrôles mainteneurs. Le
+détail architectural reste dans la vue d'ensemble de l'architecture.
+
+## Versions, CHANGELOG et tags
+
+`CHANGELOG.md` suit le format Keep a Changelog et SemVer. La section
+`[0.1.0]` regroupe tout l'historique depuis l'initialisation ; sa date est
+fixée au moment de la création du tag. Chaque version publiée correspond à un
+tag Git `vX.Y.Z`, distinct des versions méthodologiques des skills.
+
+Après chaque modification majeure, proposer à l'utilisateur la création d'un
+tag avec le numéro de version suivant, sans jamais le créer ni le pousser sans
+accord explicite. Le premier tag proposé est `v0.1.0`.
 
 ## Notice d'utilisation des neuf skills
 
@@ -1357,6 +1382,35 @@ Les références runtime, la checklist de développement, les observations des
 quatre scénarios, le test manuel et les contrôles automatisés sont présents.
 Aucun Golden Output n'a été créé ou modifié. Le rejeu réel des fixtures et le
 test manuel restent nécessaires avant validation méthodologique complète.
+
+## Configuration GitHub Spec Kit — 28 septembre 2026
+
+Le CLI GitHub Spec Kit installé via `uv` a été mis à niveau de la version
+`0.16.2` vers la version officielle `1.0.12`. L'environnement précédent et les
+fichiers de configuration concernés ont été sauvegardés sous
+`.local/backups/spec-kit/20260928T195533+0200/` avant toute modification.
+
+Le dépôt est désormais initialisé comme projet Spec Kit avec :
+
+- `codex` comme intégration par défaut sous `.agents/skills/` ;
+- `claude` comme seconde intégration sous `.claude/skills/` ;
+- dix skills `speckit-*` installés pour chaque assistant ;
+- les scripts shell, templates, constitution et manifestes partagés sous
+  `.specify/`.
+
+`specify integration status --json` retourne `ok` : les intégrations `codex`
+et `claude` sont enregistrées comme compatibles avec l'installation multiple,
+sans fichier géré manquant ou modifié, chemin de manifeste invalide ni
+manifeste non contrôlé. Codex reste l'intégration par défaut.
+
+Les fichiers `AGENTS.md`, `CLAUDE.md`, `.gitignore`, le catalogue Codex
+`.agents/plugins/marketplace.json` et le catalogue Claude Code
+`.claude-plugin/marketplace.json` sont restés identiques à leur sauvegarde.
+Les empreintes des réglages globaux Codex et Claude sont également inchangées :
+leurs fournisseurs natifs, modèles et paramètres de raisonnement n'ont pas été
+modifiés. Aucun workflow Spec Kit n'a été exécuté, aucun commit et aucun push
+n'ont été effectués. Une nouvelle session Codex ou Claude Code est nécessaire
+pour recharger le catalogue de skills installé.
 
 ## Prompt de reprise
 
