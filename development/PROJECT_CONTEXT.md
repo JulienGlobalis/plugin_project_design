@@ -1464,7 +1464,15 @@ Claude et liens du bundle passent. Le rejeu de `project-framing` sur un jeu
 fictif est consigné dans
 `development/tests/executions/2026-10-21-sources-and-tabular-canvas-review.md`.
 Le rejeu des quatre fixtures et la recette Google Sheet ne sont pas
-actualisés. Aucun commit ni push.
+actualisés.
+
+Le README racine est désormais bilingue (anglais puis français) sur le modèle
+du README `project-ai-bootstrap`. Livraison commitée (`3b1a70a`) et poussée sur
+`origin` (GitLab) le 22 octobre 2026 à la demande de l'utilisateur ; le remote
+`github` n'a pas été poussé. Les copies installées ont été rafraîchies : Codex
+depuis la marketplace locale (cache `0.1.0+codex.20260903155050`, contenu
+identique au bundle) et Claude Code par désinstallation puis réinstallation
+(cache `0.1.0`, identique au bundle).
 
 ## Prompt de reprise
 
