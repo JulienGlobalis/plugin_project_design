@@ -67,6 +67,20 @@ class SourceWorkspaceTests(unittest.TestCase):
             )
             self.assertEqual(duplicate.returncode, 2)
 
+    def test_deposited_documents_are_indexed_once_without_change(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.run_cli(root, "init", "--confirmed")
+            deposited = root / "_sources" / "documents" / "manual.pdf"
+            deposited.write_bytes(b"manual")
+            _, first = self.run_cli(root, "index-documents")
+            _, second = self.run_cli(root, "index-documents")
+            self.assertEqual(first["indexed"], ["manual.pdf"])
+            self.assertEqual(second["indexed"], [])
+            index = (root / "_sources" / "source-index.md").read_text(encoding="utf-8")
+            self.assertEqual(index.count("| manual.pdf |"), 1)
+            self.assertEqual(deposited.read_bytes(), b"manual")
+
     def test_drive_link_is_indexed_without_export(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

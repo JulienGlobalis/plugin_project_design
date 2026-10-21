@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create and maintain the optional project source workspace."""
+"""Create and maintain the project source workspace."""
 
 from __future__ import annotations
 
@@ -114,6 +114,14 @@ def append_index(index: Path, kind: str, reference: str, origin: str, digest: st
         handle.write(row)
 
 
+def sha256(path: Path) -> str:
+    hasher = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            hasher.update(chunk)
+    return hasher.hexdigest()
+
+
 def add_local_file(root: Path, source_value: str, confirmed: bool) -> dict[str, str]:
     if not confirmed:
         raise WorkspaceError("explicit confirmation is required before copying a local source")
@@ -124,14 +132,26 @@ def add_local_file(root: Path, source_value: str, confirmed: bool) -> dict[str, 
     destination = documents / source.name
     if destination.exists():
         raise WorkspaceError(f"destination already exists and will not be overwritten: {destination}")
-    hasher = hashlib.sha256()
-    with source.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
-            hasher.update(chunk)
-    digest = hasher.hexdigest()
+    digest = sha256(source)
     shutil.copy2(source, destination)
     append_index(index, "local-copy", destination.name, str(source), digest)
     return {"source": str(source), "destination": str(destination), "sha256": digest}
+
+
+def index_documents(root: Path) -> dict[str, object]:
+    """Index files dropped directly into _sources/documents without changing them."""
+    _, documents, index, _ = require_initialized(root)
+    content = index.read_text(encoding="utf-8")
+    indexed = []
+    for path in sorted(documents.rglob("*")):
+        if not path.is_file() or path.is_symlink() or path.name.startswith("."):
+            continue
+        reference = escape_table(str(path.relative_to(documents)))
+        if f"| {reference} |" in content:
+            continue
+        append_index(index, "deposited-file", reference, "_sources/documents", sha256(path))
+        indexed.append(reference)
+    return {"indexed": indexed}
 
 
 def add_remote_link(root: Path, label: str, url: str) -> dict[str, str]:
@@ -165,6 +185,7 @@ def build_parser() -> argparse.ArgumentParser:
     local_parser = command("add-local")
     local_parser.add_argument("--source", required=True)
     local_parser.add_argument("--confirmed-copy", action="store_true")
+    command("index-documents")
     link_parser = command("add-link")
     link_parser.add_argument("--label", required=True)
     link_parser.add_argument("--url", required=True)
@@ -181,6 +202,8 @@ def main() -> int:
             result = initialize_source_workspace(root, dry_run=args.dry_run)
         elif args.command == "add-local":
             result = add_local_file(root, args.source, args.confirmed_copy)
+        elif args.command == "index-documents":
+            result = index_documents(root)
         else:
             result = add_remote_link(root, args.label, args.url)
         emit("ok", **result)

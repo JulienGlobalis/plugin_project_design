@@ -49,9 +49,9 @@ Write every necessary decision question to
 `_project-design/project-canvas.md`, present that exact batch, and let the
 orchestrator record its count with `present-questions`. In
 `awaiting_framing_answers`, read and resume only the unanswered questions
-already in the Canvas. After a substantive partial or complete answer, update
-only the affected Canvas content and let the orchestrator record the received
-count. Preserve unaddressed questions. A deferral must be explicit and is
+already in the Canvas, marked `To be provided`. After a substantive partial or
+complete answer, write the answer in the question's row, update only the
+affected Canvas content, and let the orchestrator record the received count. Preserve unaddressed questions. A deferral must be explicit and is
 recorded separately. Finish the Canvas update in
 `framing_iteration_completion` before the orchestrator closes the iteration.
 Never edit the state file directly or record question or answer text in it.
@@ -132,16 +132,25 @@ captured an answer:
 2. If yes, ask whether to use a supplied local template, a Google Drive
    template link, or the default professional structure. Record the choice for
    `document-project-canvas`; do not apply it during framing.
-3. Ask whether source documents should remain at their original locations or
-   be centralized in the optional `_sources/` workspace. If centralized, use
-   the project-design source-workspace script and require explicit approval
-   before copying each local file. Keep Drive-native sources as links.
-4. Ask the user to provide either a project description directly in the
-   conversation or one or more source documents. Accept both together.
+3. Ask the user to provide either a project description directly in the
+   conversation or one or more source documents. Accept both together. In the
+   guided flow, `_sources/documents/` already exists: invite the user to drop
+   documents there or to provide links, require explicit approval before
+   copying each file located elsewhere, and keep Drive-native sources as
+   links. Keeping originals in place is an optional opt-out, not a question.
+4. In the same message, ask: "Is a technical foundation imposed or already
+   chosen? Must it prepare future evolutions, for example other channels or
+   other applications?" (FR: « Un socle technique est-il imposé ou déjà
+   choisi ? Doit-il préparer des évolutions futures, par exemple d'autres
+   canaux ou d'autres applications ? »). Skip it when the inputs already
+   answer it. Classify the answer: the foundation and its constraints, such as
+   an obligation to prepare a future evolution, go to Technical Constraints; a
+   settled choice goes to Decisions; the cited future evolution itself goes to
+   Outside MVP as a feature row.
 
-This opening is a short intake, not an exhaustive questionnaire. Do not ask
-about project substance before the user supplies the initial description or
-sources.
+This opening is a short intake, not an exhaustive questionnaire. Apart from the
+technical-foundation question, do not ask about project substance before the
+user supplies the initial description or sources.
 
 ### 2. Establish the Request Context
 
@@ -162,6 +171,30 @@ state the limitation and obtain an explicit fallback choice; never silently
 use an unrelated localized language.
 
 ### 3. Prepare the Working Project View
+
+#### Source Extraction
+
+Read every supplied source completely before composing the Canvas:
+
+- Check the extraction quality of each document. Treat a document whose
+  extracted text is nearly empty or reduced to headers as an image, and read
+  it by optical character recognition or by page-by-page visual reading with
+  the tools available in the environment.
+- For a large corpus, such as several manuals or several hundred pages,
+  split the inventory between several parallel sub-agents when the
+  environment allows it. Each returns:
+  - a `Module | Feature | Short description` table written per the
+    [feature formulation rules](references/project-canvas.md#feature-formulation-rules);
+  - the business rules;
+  - the exchanges;
+  - the ambiguous points.
+- Read spreadsheets and structured files with libraries installed in an
+  isolated temporary environment. Never modify an original.
+- Finish with an internal coverage list stating, for each source, whether it
+  was read and by which method. Report every unread or partially read source
+  in the delivery message. The coverage list never enters the Canvas.
+
+#### Working Project View
 
 When a Project View is supplied:
 
@@ -289,7 +322,11 @@ For every round:
 In a guided workflow, save the updated working Canvas before recording the
 corresponding transition. Once a batch has been presented, do not formulate a
 new batch or open another iteration until every presented question has been
-answered or explicitly deferred and the current iteration is complete. On
+answered or explicitly deferred and the current iteration is complete.
+When new questions emerge while a batch is pending, do not add them to the
+Canvas. Present them in the delivery message under the heading `Candidate
+questions for the next batch` (FR: `Questions candidates pour le prochain
+lot`) and open them in the next iteration, once the current batch is settled. On
 resumption, read the pending questions from the Canvas and present exactly
 those questions without duplication. If a transition is rejected, stop and
 follow the state machine's returned phase.
@@ -324,10 +361,14 @@ question in section 9 only when a Decision genuinely conditions functional
 design, technical design, or backlog preparation.
 
 Keep the default Canvas concise, autonomous, reviewable, and reusable. Use
-short paragraphs and bullets by default. Use a table only when several
-comparable items materially become clearer; never create a status, evidence,
-contradiction, or decision-history table in the standard Canvas. Do not repeat
-the same information across sections.
+the mandatory tables of the
+[Project Canvas reference](references/project-canvas.md#tabular-sections-mandatory-format)
+for Functional Scope (`MVP` and `Outside MVP`), Risks, Decisions, and
+Questions, and write Functional Scope rows per its feature formulation rules.
+Keep the other sections in short paragraphs and bullets; Users may use a
+population table. Never create a status, evidence, contradiction, or
+decision-history table or column in the standard Canvas. Do not repeat the
+same information across sections.
 
 The standard Canvas must not contain:
 
@@ -412,6 +453,13 @@ Confirm that:
   Project Scope;
 - no source identifier, traceability trail, normalization status label,
   analysis history, or decision chronology appears in the standard Canvas;
+- the four tables respect their columns, every feature starts with an
+  infinitive verb, no capability is duplicated across profiles, and every
+  supplied functional source is covered by the inventory;
+- unanswered questions show `To be provided` and numbering is stable;
+- the delivery message contains the source coverage list, flags unread or
+  partially read sources, and announces Risk solutions not taken from the
+  sources as proposals awaiting validation;
 - the user was able to review the progressively updated Canvas and explicitly
   validate delivery or defer the remaining questions;
 - no detailed functional, technical, backlog, or document methodology was
@@ -477,9 +525,11 @@ history outside the Canvas when governance requires it.
 
 - Remain independently callable without the `project-design` orchestrator.
 - Remain fully usable without GitHub Spec Kit.
-- Do not produce detailed modules, features, data models, exception flows,
-  exhaustive journeys, acceptance criteria, architecture, APIs, component
-  designs, deployment plans, or a complete Product Backlog.
+- Do not produce detailed feature behavior (exception flows, field
+  specifications, acceptance criteria). A feature inventory in the Functional
+  Scope section, written per the feature formulation rules, is expected.
+- Do not produce data models, exhaustive journeys, architecture, APIs,
+  component designs, deployment plans, or a complete Product Backlog.
 - Do not invent Business Rules, Requirements, Decisions, success criteria,
   or project facts.
 - Do not resolve contradictions without sufficient authority and evidence.

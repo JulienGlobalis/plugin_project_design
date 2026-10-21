@@ -34,6 +34,8 @@ class InitializeWorkspaceTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0)
             self.assertEqual(json.loads(result.stdout)["status"], "dry-run")
             self.assertFalse((Path(directory) / "_project-design").exists())
+            self.assertFalse((Path(directory) / "_sources").exists())
+            self.assertFalse((Path(directory) / ".gitignore").exists())
 
     def test_initialization_is_idempotent(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -42,6 +44,9 @@ class InitializeWorkspaceTests(unittest.TestCase):
             self.assertEqual(json.loads(first.stdout)["status"], "created")
             self.assertEqual(json.loads(second.stdout)["status"], "existing")
             self.assertTrue((Path(directory) / "_project-design" / "documents").is_dir())
+            for name in ("source-index.md", "links.md"):
+                self.assertTrue((Path(directory) / "_sources" / name).is_file())
+            self.assertTrue((Path(directory) / "_sources" / "documents").is_dir())
 
     def test_existing_file_is_not_overwritten(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -50,6 +55,13 @@ class InitializeWorkspaceTests(unittest.TestCase):
             result = self.run_script("--project-root", directory, "--confirmed")
             self.assertEqual(result.returncode, 2)
             self.assertEqual(workspace.read_text(encoding="utf-8"), "preserve")
+
+    def test_invalid_source_target_creates_nothing(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            (Path(directory) / "_sources").write_text("preserve", encoding="utf-8")
+            result = self.run_script("--project-root", directory, "--confirmed")
+            self.assertEqual(result.returncode, 2)
+            self.assertFalse((Path(directory) / "_project-design").exists())
 
 
 if __name__ == "__main__":

@@ -15,8 +15,8 @@ The content contract remains defined by
   definition.
 - Keep only concise Questions that condition a downstream stage.
 - Avoid repeating the same fact in an executive summary and every section.
-- Prefer short paragraphs and bullets; avoid tables when they add no material
-  clarity.
+- Use the mandatory tables for Functional Scope, Risks, Decisions, and
+  Questions; keep the other sections in short paragraphs and bullets.
 - Keep evidence and analysis mechanics outside the standard Canvas.
 
 ## Review Context
@@ -51,9 +51,11 @@ system interaction.
 
 ### Functional Scope
 
-Display validated MVP content and authorized Outside MVP content separately.
-Do not create an Unresolved Scope register; move only a consequential decision
-need to Questions.
+Display the validated MVP table and the authorized Outside MVP table
+separately, each with the `Module | Feature | Short description` columns and
+rows written per the feature formulation rules. List included services as
+bullets after the MVP table. Do not create an Unresolved Scope register; move
+only a consequential decision need to Questions.
 
 ### Technical Constraints
 
@@ -62,20 +64,24 @@ available; do not fill the section with design recommendations.
 
 ### Risks
 
-List Risks separately from confirmed Issues. Confirmed Issues may be
+Use the `Risk | Impact | Solution` table and keep Risks separate from
+confirmed Issues. Confirmed Issues may be
 referenced from Business Context or shown in a companion register when this
 improves clarity.
 
 ### Decisions
 
-State each current Decision result directly. Do not display authority history,
+Use the `Topic | Decision` table and state each current Decision result
+directly. Do not display authority history,
 dates, former alternatives, rejected formulations, or source references.
 
 ### Questions
 
-Use a short bullet list. Retain only Decisions required before functional
-design, technical design, or backlog preparation, without displaying an
-impact-classification label.
+Use the `No. | Question | Answer` table with stable numbering. Write
+`To be provided` for an unanswered question, the current result for an
+answered one, and `Deferred` for an explicitly deferred one. Retain only
+Decisions required before functional design, technical design, or backlog
+preparation, without displaying an impact-classification label.
 
 ### Success Criteria
 
@@ -85,10 +91,12 @@ complete.
 
 ## Registers and Tables
 
-Do not use a register by default. Prefer a few bullets or sentences. A table is
-acceptable only when several current validated items share dimensions that a
-reader must compare. Never create columns for status, source, evidence,
-authority history, contradictions, or arbitration history.
+Functional Scope, Risks, Decisions, and Questions always use the tables and
+columns defined in the
+[Project Canvas reference](project-canvas.md#tabular-sections-mandatory-format).
+Users may use a population table. Other sections prefer a few bullets or
+sentences. Never create columns for status, source, evidence, authority
+history, contradictions, or arbitration history.
 
 ## Question Classification
 
@@ -116,7 +124,8 @@ narrate the source disagreement or clarification history.
 Do not add an eleventh numbered Canvas section. Always append the unnumbered
 Downstream Readiness block to the saved Canvas and qualify functional design,
 technical design, and backlog preparation separately, with blocking and
-non-blocking questions distinguished. Relay these conclusions in the
+non-blocking questions distinguished and referenced by their stable question
+number. Relay these conclusions in the
 interaction before approval. The Questions section carries the decisions
 that condition the next stages.
 

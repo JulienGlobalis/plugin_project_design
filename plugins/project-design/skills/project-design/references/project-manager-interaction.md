@@ -14,10 +14,12 @@ Do not expose command names or state JSON in the normal user conversation.
 
 Reuse explicit choices and inputs already supplied for this project. Run the
 required transitions in order without asking the user to repeat those choices.
-If choices are missing, recommend framing, Markdown-only delivery, and keeping
-sources in place as the simplest starting configuration. Explain alternatives
-only where useful. A recommendation is not consent: initialization, source
-centralization or copies, business decisions, and Canvas approval retain their
+If choices are missing, recommend framing and Markdown-only delivery as the
+simplest starting configuration, and invite the user to drop sources into the
+default `_sources/documents/` workspace or to provide links. Explain
+alternatives, such as keeping originals in place, only where useful. A
+recommendation is not consent: initialization, copies of files located
+elsewhere, business decisions, and Canvas approval retain their
 existing explicit authorization requirements. Never treat silence as a choice.
 
 ## Turn Questions into Supported Decisions
@@ -70,8 +72,9 @@ request such as saving or changing conversation.
 
 ## Preserve Explicit Deferrals on Resumption
 
-In Canvas section 9, distinguish active questions from explicitly deferred
-questions with short subheadings when both exist. This is question handling,
+In the Canvas section 9 table, distinguish active questions, whose answer
+cell reads `To be provided`, from explicitly deferred questions, whose answer
+cell carries the deferred marker. This is question handling,
 not a normalization-status or audit table. Retain a deferred question only
 when it still conditions downstream work. Preserve its wording and explain
 the blocking consequence in the existing readiness block.

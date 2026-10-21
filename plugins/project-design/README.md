@@ -56,11 +56,12 @@ nothing. Its state machine stores the current phase and non-business choices in
 `_project-design/project-design-state.json`, rejects skipped transitions, and
 allows a new conversation to resume from the recorded next action.
 
-Before source intake, the workflow asks whether originals stay in place or an
-optional private `_sources/` workspace is initialized. Centralized sources use
-`_sources/documents/`, `source-index.md`, and `links.md`; local files require
-per-file copy approval, Drive-native documents remain links, and `/_sources/`
-is added to the target project's `.gitignore` by default.
+The same consented start also creates the private `_sources/` workspace:
+`_sources/documents/`, `source-index.md`, and `links.md`, with `/_sources/`
+added to the target project's `.gitignore`. Users drop documents there or
+provide links; every present document is indexed, copying a file located
+elsewhere requires per-file approval, Drive-native documents remain links, and
+keeping originals in place remains an optional opt-out.
 
 ## Current Status
 

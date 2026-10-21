@@ -19,7 +19,8 @@ from source_workspace import initialize_source_workspace
 
 STATE_NAME = "project-design-state.json"
 CANVAS_NAME = "project-canvas.md"
-SCHEMA_VERSION = 3
+SCHEMA_VERSION = 4
+SOURCE_PATH = "_sources"
 
 
 class WorkflowError(ValueError):
@@ -84,9 +85,17 @@ def load_state(root: Path) -> dict[str, Any]:
                 "questions_deferred": None,
                 "questions_pending": None,
             }
-        state["schema_version"] = SCHEMA_VERSION
+        schema_version = 3
+        state["schema_version"] = schema_version
         state.setdefault("history", []).append(
             {"event": "workflow_state_migrated_to_v3", "at": now()}
+        )
+        migrated = True
+    if schema_version == 3:
+        migrate_source_workspace_to_v4(root, state)
+        state["schema_version"] = SCHEMA_VERSION
+        state.setdefault("history", []).append(
+            {"event": "workflow_state_migrated_to_v4", "at": now()}
         )
         migrated = True
     elif schema_version != SCHEMA_VERSION:
@@ -94,6 +103,25 @@ def load_state(root: Path) -> dict[str, Any]:
     if migrated:
         save_state(root, state)
     return state
+
+
+def centralized_source_workspace() -> dict[str, Any]:
+    return {"mode": "centralized", "path": SOURCE_PATH, "gitignored": True}
+
+
+def migrate_source_workspace_to_v4(root: Path, state: dict[str, Any]) -> None:
+    """Adopt the default _sources workspace created at start since schema 4."""
+    sources = state.setdefault(
+        "source_workspace", {"mode": None, "path": None, "gitignored": False}
+    )
+    phase = state.get("phase")
+    early = phase in {"awaiting_stage", "awaiting_delivery", "awaiting_source_strategy"}
+    realign = sources.get("mode") == "external" and (root / SOURCE_PATH).is_dir()
+    if early or realign:
+        initialize_source_workspace(root)
+        state["source_workspace"] = centralized_source_workspace()
+    if phase == "awaiting_source_strategy":
+        state["phase"] = "awaiting_sources"
 
 
 def save_state(root: Path, state: dict[str, Any]) -> None:
@@ -139,8 +167,7 @@ def next_action(state: dict[str, Any]) -> str:
     return {
         "awaiting_stage": "Record project-framing when the user already explicitly selected framing; otherwise recommend it and ask for the missing stage choice.",
         "awaiting_delivery": "Reuse an explicit delivery choice already supplied; otherwise recommend Markdown-only and ask whether Word or Google Docs is required. Resolve the template mode for an external format.",
-        "awaiting_source_strategy": "Reuse an explicit source strategy already supplied; otherwise recommend keeping originals in place and ask for the choice. Centralizing in _sources requires explicit confirmation.",
-        "awaiting_sources": "Use the project description or sources already available; collect only missing initial inputs using the selected source strategy.",
+        "awaiting_sources": "Use the project description or sources already available; collect only missing initial inputs. Unless the user opted out with set-source-strategy --mode external, invite them to drop source files into _sources/documents/ or to provide links; copying a file located elsewhere requires explicit per-file approval. Index every document present in _sources/source-index.md and never modify an original.",
         "framing_iterations": "Open one framing iteration before analyzing sources or changing the working Canvas.",
         "framing_iteration_preparation": "Use project-framing to analyze the available information, update _project-design/project-canvas.md, identify every necessary decision question, present the complete non-duplicated batch to the user, then record the number actually presented.",
         "framing_iteration_completion": "Update the Canvas from the recorded answers, keep unresolved or explicitly deferred questions visible as appropriate, then complete the active iteration and choose another iteration or Canvas review.",
@@ -165,10 +192,12 @@ def append_event(state: dict[str, Any], event: str) -> None:
 def start(root: Path, confirmed: bool) -> dict[str, Any]:
     if not confirmed:
         raise WorkflowError("explicit user confirmation is required")
-    initialize_workspace(root)
     path = state_path(root)
     if path.exists():
+        # Resume unchanged; a recorded opt-out from _sources stays respected.
+        initialize_workspace(root, sources=False)
         return load_state(root)
+    initialize_workspace(root)
     timestamp = now()
     state: dict[str, Any] = {
         "schema_version": SCHEMA_VERSION,
@@ -183,7 +212,7 @@ def start(root: Path, confirmed: bool) -> dict[str, Any]:
             "template_reference": None,
         },
         "inputs": {"description_provided": False, "documents_provided": False},
-        "source_workspace": {"mode": None, "path": None, "gitignored": False},
+        "source_workspace": centralized_source_workspace(),
         "framing": {
             "iterations": [],
             "active_iteration": None,
@@ -237,32 +266,29 @@ def set_delivery(
             "template_reference": template_reference,
         }
     )
-    state["phase"] = "awaiting_source_strategy"
+    state["phase"] = "awaiting_sources"
     append_event(state, "delivery_selected")
 
 
 def set_source_strategy(
     root: Path, state: dict[str, Any], mode: str, confirmed: bool
 ) -> None:
-    require_phase(state, "awaiting_source_strategy")
+    """Optionally opt out of, or back into, the default _sources workspace."""
+    require_phase(state, "awaiting_sources")
     if mode == "centralized":
         if not confirmed:
             raise WorkflowError("explicit confirmation is required to create or reuse _sources")
         initialize_source_workspace(root)
-        state["source_workspace"] = {
-            "mode": mode,
-            "path": "_sources",
-            "gitignored": True,
-        }
+        state["source_workspace"] = centralized_source_workspace()
         append_event(state, "source_workspace_initialized")
     else:
+        # The existing _sources directory is kept; nothing is ever deleted.
         state["source_workspace"] = {
             "mode": "external",
             "path": None,
             "gitignored": False,
         }
         append_event(state, "external_sources_selected")
-    state["phase"] = "awaiting_sources"
 
 
 def confirm_inputs(state: dict[str, Any], description: bool, documents: bool) -> None:

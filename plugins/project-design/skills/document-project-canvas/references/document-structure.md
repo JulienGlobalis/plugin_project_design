@@ -51,6 +51,10 @@ Preserve an existing logical register when it carries status, authority,
 qualification, or traceability. A document may change a register's visual
 layout but not its rows, meaning, or relationships.
 
+The Canvas Functional Scope (`MVP` and `Outside MVP`), Risks, Decisions, and
+Questions tables are mandatory business content: reproduce them with the same
+columns, rows, question numbers, and answer cells. Never add a column to them.
+
 Recommended documentary uses include:
 
 - participant tables for stakeholder authority and user interaction;

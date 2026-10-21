@@ -12,6 +12,15 @@
       grouping does not merge separate decisions into one pending counter.
 
 - [ ] Every supplied source artefact is considered.
+- [ ] Each source's extraction quality is checked; a near-empty or
+      header-only extraction is read by OCR or page-by-page visual reading.
+- [ ] Spreadsheets and structured files are read with libraries installed in
+      an isolated temporary environment, and no original is modified.
+- [ ] The delivery message includes the source coverage list and flags any
+      unread or partially read source.
+- [ ] The technical-foundation question was asked at intake unless already
+      answered, and its answer is classified into Technical Constraints,
+      Decisions, or Outside MVP.
 - [ ] The skill uses an existing Project View when supplied and does not
       silently override it.
 - [ ] Raw sources are organized according to the Knowledge Model and Project
@@ -34,6 +43,11 @@
 - [ ] Users is present or explicitly insufficiently informed.
 - [ ] Functional Scope is present and separates validated MVP content from
       authorized Outside MVP content.
+- [ ] The four tables respect their columns: Functional Scope
+      `Module | Feature | Short description`, Risks `Risk | Impact | Solution`,
+      Decisions `Topic | Decision`, and Questions `No. | Question | Answer`.
+- [ ] No table contains a source identifier, a normalization status, a
+      contradiction, or a decision history.
 - [ ] Technical Constraints is present or explicitly insufficiently informed.
 - [ ] Risks is present or explicitly insufficiently informed.
 - [ ] Decisions is present or explicitly insufficiently informed.
@@ -57,6 +71,14 @@
 - [ ] Proposed Capabilities and undecided Options are not presented as part of
       the validated Project.
 - [ ] No MVP or outside-MVP classification is invented.
+- [ ] Every feature starts with an infinitive verb.
+- [ ] No capability is duplicated across profiles.
+- [ ] Every supplied functional source is covered by the inventory: each
+      capability is in MVP, in Outside MVP as removed or excluded, or behind a
+      Question.
+- [ ] Included services are bullets after the MVP table, never table rows.
+- [ ] Risk solutions not taken from the sources are announced in the delivery
+      message as proposals awaiting validation.
 - [ ] Business and technical Constraints remain distinct from preferences and
       proposed designs.
 - [ ] Existing, Target, and Transition perspectives remain distinct.
@@ -90,8 +112,12 @@
 - [ ] Every unresolved question is concrete, project-specific, and
       actionable.
 - [ ] Every question presented in an active guided batch exists in the Canvas,
-      answered questions are removed only after their result is incorporated,
-      and pending questions resume without duplication.
+      unanswered questions show `To be provided`, answered questions keep
+      their row with the current result, numbering is stable, and pending
+      questions resume without duplication.
+- [ ] Questions discovered while a batch is pending are not added to the
+      Canvas; they appear in the delivery message as candidate questions for
+      the next batch.
 - [ ] Question impact is classified internally; status labels are not displayed
       in the standard Canvas.
 - [ ] Deferrable questions are omitted from the standard Canvas.
@@ -132,10 +158,11 @@
 
 ## Boundaries, Adjustments, and Handoffs
 
-- [ ] The output does not produce detailed products, modules, features,
-      screens, exhaustive journeys, functional data models, exception
-      catalogs, acceptance criteria, architecture, APIs, components,
-      deployment design, or a complete backlog.
+- [ ] The output does not produce detailed feature behavior, screens,
+      field specifications, exhaustive journeys, functional data models,
+      exception catalogs, acceptance criteria, architecture, APIs,
+      components, deployment design, or a complete backlog; the Functional
+      Scope feature inventory is expected.
 - [ ] Framing-relevant Requirements and Business Rules are included only at
       the level needed for context, boundaries, feasibility, governance,
       Risk, or handoff.

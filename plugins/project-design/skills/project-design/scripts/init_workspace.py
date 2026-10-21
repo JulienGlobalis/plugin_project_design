@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Safely initialize the project-design delivery workspace."""
+"""Safely initialize the project-design delivery and source workspaces."""
 
 from __future__ import annotations
 
@@ -25,27 +25,43 @@ def resolve_project_root(value: str) -> Path:
     return root
 
 
-def initialize_workspace(root: Path, dry_run: bool = False) -> dict[str, str]:
+def initialize_workspace(
+    root: Path, dry_run: bool = False, sources: bool = True
+) -> dict[str, object]:
+    """Create _project-design and, by default, the _sources intake workspace."""
+    # Imported here because source_workspace reuses this module's helpers.
+    from source_workspace import initialize_source_workspace
+
     workspace = root / "_project-design"
     documents = workspace / "documents"
     for target in (workspace, documents):
         if target.exists() and not target.is_dir():
             raise WorkspaceError(f"target exists and is not a directory: {target}")
+    if sources:
+        # Validate the source targets before creating anything.
+        initialize_source_workspace(root, dry_run=True)
 
     existed = workspace.is_dir() and documents.is_dir()
+    source_result = None
     if not dry_run:
         documents.mkdir(parents=True, exist_ok=True)
-    return {
+    if sources:
+        source_result = initialize_source_workspace(root, dry_run=dry_run)
+        existed = existed and source_result["result"] == "existing"
+    result: dict[str, object] = {
         "status": "dry-run" if dry_run else ("existing" if existed else "created"),
         "project_root": str(root),
         "workspace": str(workspace),
         "documents": str(documents),
     }
+    if source_result is not None:
+        result["sources"] = source_result
+    return result
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Create _project-design and its documents directory."
+        description="Create _project-design, its documents directory, and _sources."
     )
     parser.add_argument("--project-root", required=True)
     parser.add_argument("--confirmed", action="store_true")
@@ -66,4 +82,8 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    # Run through the importable module so WorkspaceError raised by
+    # source_workspace is the same class as the one caught by main().
+    import init_workspace
+
+    raise SystemExit(init_workspace.main())

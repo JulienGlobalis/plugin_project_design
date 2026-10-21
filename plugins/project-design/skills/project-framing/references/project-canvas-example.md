@@ -8,8 +8,8 @@ a Golden Output, fixture result, or source of reusable project facts.
 ### 1. Contexte métier
 
 Le centre associatif gère actuellement les demandes de réservation de salles
-par courriel. Le rapprochement manuel des disponibilités provoque des doubles
-réservations.
+par courriel et dans un tableur partagé. Le rapprochement manuel des
+disponibilités provoque des doubles réservations.
 
 ### 2. Objectifs et valeur attendue
 
@@ -31,14 +31,26 @@ réservations.
 
 #### MVP
 
-- Dépôt d'une demande de réservation.
-- Consultation des disponibilités.
-- Acceptation ou refus par un agent.
-- Consultation de l'état de la demande.
+| Module | Fonctionnalité | Description succincte |
+| --- | --- | --- |
+| Réservations | Créer une demande de réservation | Le responsable associatif choisit une salle et un créneau libres ; la demande est créée « En attente ». |
+| Réservations | Lister et filtrer les demandes | Un responsable associatif ne voit que les demandes de son association. |
+| Réservations | Annuler une réservation acceptée | Possible jusqu'à 48 heures avant le créneau, qui redevient libre. |
+| Salles | Visualiser les disponibilités d'une salle | Les créneaux affichés sont ceux tenus à jour par l'équipe logistique. |
+| Salles | Gérer les salles : lister, créer, éditer, supprimer | Référentiel tenu par l'équipe logistique. |
+| Notifications | Notifier le demandeur de la réponse | **[Nouveau]** Un courriel est envoyé à chaque acceptation ou refus. |
 
-#### Outside MVP
+Prestations incluses :
 
-- Les paiements en ligne sont exclus du MVP.
+- reprise des réservations à venir du tableur partagé ;
+- formation des agents d'accueil.
+
+#### Hors MVP
+
+| Module | Fonctionnalité | Description succincte |
+| --- | --- | --- |
+| Paiements | Payer une réservation en ligne | Exclu du MVP. |
+| Réservations | Exporter le tableur des réservations | Supprimée, remplacée par la liste des demandes. |
 
 ### 6. Contraintes techniques
 
@@ -46,17 +58,23 @@ réservations.
 
 ### 7. Risques
 
-- Des disponibilités incorrectes peuvent encore provoquer des doubles
-  réservations.
+| Risque | Impact | Solution |
+| --- | --- | --- |
+| Disponibilités des salles non tenues à jour | Doubles réservations malgré le nouvel outil | Mise à jour hebdomadaire des disponibilités par l'équipe logistique. |
 
 ### 8. Décisions
 
-- Le nom officiel est Muzzo.
-- Les paiements en ligne sont exclus du MVP.
+| Thème | Décision |
+| --- | --- |
+| Nom du produit | Le nom officiel est Muzzo. |
+| Paiement | Les paiements en ligne sont exclus du MVP. |
 
 ### 9. Questions à décider
 
-- Quel mode d'approbation des demandes doit être retenu pour le MVP ?
+| N° | Question | Réponse |
+| --- | --- | --- |
+| 1 | Quel mode d'approbation des demandes doit être retenu pour le MVP ? | À apporter |
+| 2 | Un responsable associatif peut-il annuler une réservation acceptée ? | Oui, jusqu'à 48 heures avant le créneau. |
 
 ### 10. Critères de succès
 
@@ -67,8 +85,8 @@ réservations.
 
 ### Conception fonctionnelle — Non prête
 
-Le mode d'approbation des demandes doit être décidé avant de détailler le
-processus fonctionnel.
+Le mode d'approbation des demandes (question n° 1) doit être décidé avant de
+détailler le processus fonctionnel.
 
 ### Conception technique — Prête avec réserves
 
@@ -77,5 +95,5 @@ L'étude de l'existant peut commencer, mais les contraintes techniques restent
 
 ### Préparation du backlog — Non prête
 
-Le découpage détaillé attend la décision sur le mode d'approbation et la
-conception fonctionnelle correspondante.
+Le découpage détaillé attend la décision sur le mode d'approbation
+(question n° 1) et la conception fonctionnelle correspondante.

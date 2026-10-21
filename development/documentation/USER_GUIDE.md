@@ -38,18 +38,18 @@ de créer ou réutiliser le dossier _project-design/.
 
 | Étape | Ce que le plugin demande | Ce que vous fournissez | Résultat |
 | --- | --- | --- | --- |
-| 1. Autorisation | Accord pour utiliser le plugin et créer ou réutiliser `_project-design/` | Confirmation explicite | Espace de travail et fichier d'état |
+| 1. Autorisation | Accord pour utiliser le plugin et créer ou réutiliser `_project-design/` et `_sources/` | Confirmation explicite | Espaces de travail et de sources, fichier d'état |
 | 2. Étape | Quelle étape lancer ; `project-framing` est proposé par défaut | Choix de `project-framing` | Étape enregistrée |
 | 3. Livrables | Canvas seul, Word ou Google Docs ; modèle par défaut, local ou Drive | Format et modèle éventuel | Choix documentaire enregistré |
-| 4. Sources | Conserver les sources en place ou les centraliser | Stratégie de sources et autorisations de copie | Sources référencées ou `_sources/` initialisé |
-| 5. Projet | Description, documents sources ou les deux | Brief, notes, règles, décisions ou liens utiles | Intrants prêts pour l'analyse |
-| 6. Cadrage | Questions de décision réellement nécessaires | Réponses complètes, partielles ou reports explicites | Canvas progressivement complété |
-| 7. Validation | Approbation du Canvas ou demande d'une nouvelle itération | Accord ou corrections | Canvas validé |
-| 8. Document | Rien de plus si le format et le modèle sont déjà enregistrés | Éventuelles contraintes de présentation déjà annoncées | Document natif vérifié |
+| 4. Projet | Description, documents déposés dans `_sources/documents/` ou liens, et socle technique imposé ou choisi | Brief, notes, règles, décisions, manuels ou liens utiles | Sources indexées, intrants prêts pour l'analyse |
+| 5. Cadrage | Questions de décision réellement nécessaires | Réponses complètes, partielles ou reports explicites | Canvas progressivement complété |
+| 6. Validation | Approbation du Canvas ou demande d'une nouvelle itération | Accord ou corrections | Canvas validé |
+| 7. Document | Rien de plus si le format et le modèle sont déjà enregistrés | Éventuelles contraintes de présentation déjà annoncées | Document natif vérifié |
 
 Les choix explicites déjà fournis sont réutilisés sans vous les redemander.
 Si vous n'avez pas encore choisi, le plugin recommande un démarrage par le
-cadrage, un Canvas Markdown seul et les sources conservées en place. Il
+cadrage et un Canvas Markdown seul, puis vous invite à déposer vos sources dans
+`_sources/documents/`. Il
 enregistre les transitions dans l'ordre et attend les accords nécessaires.
 
 ### Un appui pour décider
@@ -76,8 +76,13 @@ par exemple :
 
 Il n'applique aucune limite arbitraire au nombre de questions. Vous pouvez
 répondre à tout le lot, répondre partiellement ou reporter explicitement une
-question. Les questions restantes sont conservées dans le Canvas et reprises
-à l'identique dans une conversation suivante.
+question. Les questions figurent dans un tableau `N° | Question | Réponse` à
+numérotation stable : une question sans réponse affiche « À apporter », une
+question répondue garde sa ligne avec la réponse retenue. Les questions sans
+réponse sont reprises à l'identique dans une conversation suivante. Une
+question nouvelle découverte pendant un lot en attente n'est pas ajoutée au
+Canvas : elle est proposée sous « Questions candidates pour le prochain lot »
+et ouverte à l'itération suivante.
 
 Le lot est ordonné selon les blocages et les dépendances : le plugin indique
 par où commencer, sans masquer les autres questions nécessaires. Après une
@@ -108,10 +113,24 @@ Vous pouvez fournir une simple description et/ou des sources :
 Le plugin ne vous demande pas de construire vous-même un Knowledge Model ou un
 Project Model.
 
-Si vous choisissez de centraliser les sources, chaque copie locale exige votre
-accord. L'original n'est pas modifié, la copie n'écrase aucun fichier et son
-empreinte SHA-256 est enregistrée. Les documents Google natifs restent des
-liens. Le dossier `/_sources/` est ajouté au `.gitignore` par défaut.
+Le démarrage crée systématiquement `_sources/documents/`, `source-index.md` et
+`links.md`, et ajoute `/_sources/` au `.gitignore`. Déposez vos documents dans
+`_sources/documents/` ou fournissez des liens : chaque document présent est
+indexé avec son empreinte SHA-256. Copier un fichier situé ailleurs exige votre
+accord, fichier par fichier ; l'original n'est jamais modifié et aucune copie
+n'écrase un fichier. Les documents Google natifs restent des liens. Vous
+pouvez, si vous le demandez, conserver vos sources à leur emplacement
+d'origine ; `_sources/` n'est alors pas supprimé.
+
+Chaque source est lue intégralement : un document dont le texte extrait est
+quasi vide est lu par reconnaissance de caractères ou page par page, et les
+tableurs sont lus sans modifier l'original. Le message de livraison indique,
+pour chaque source, si elle a été lue et par quelle méthode, et signale toute
+source non lue ou partiellement lue.
+
+Dès l'accueil, le plugin demande si un socle technique est imposé ou déjà
+choisi et s'il doit préparer des évolutions futures, par exemple d'autres
+canaux ou d'autres applications.
 
 ## Extrant du cadrage
 
@@ -128,6 +147,23 @@ sections numérotées :
 8. décisions ;
 9. questions ;
 10. critères de succès.
+
+Le périmètre fonctionnel, les risques, les décisions et les questions sont
+présentés en tableaux :
+
+- périmètre : tableaux `MVP` et `Hors MVP` en colonnes
+  `Module | Fonctionnalité | Description succincte`, une ligne par
+  fonctionnalité commençant par un verbe à l'infinitif, les capacités
+  propres à la cible marquées **[Nouveau]** et les prestations incluses
+  listées sous le tableau MVP ;
+- risques : `Risque | Impact | Solution` ; une solution absente des sources
+  est signalée comme proposition à valider dans le message de livraison ;
+- décisions : `Thème | Décision` ;
+- questions : `N° | Question | Réponse`.
+
+Lorsque des manuels, menus existants ou maquettes définissent le périmètre,
+chaque fonctionnalité décrite figure dans le MVP, en Hors MVP avec sa raison,
+ou derrière une question.
 
 Un bloc non numéroté indique ensuite séparément si la conception
 fonctionnelle, la conception technique et la préparation du backlog sont
@@ -248,7 +284,10 @@ mon-projet/
 │   ├── functional-design.md      # si le skill direct est demandé
 │   └── documents/
 │       └── project-canvas.docx   # seulement si Word est demandé
-└── _sources/                     # seulement si la centralisation est choisie
+└── _sources/                     # créé au démarrage, ignoré par Git
+    ├── source-index.md
+    ├── links.md
+    └── documents/
 ```
 
 ## Maintenance de ce guide

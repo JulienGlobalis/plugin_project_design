@@ -22,9 +22,9 @@ Allowed results:
    conversation if desired, and verify that the workflow resumes at the same
    phase without storing project or source content.
 4. Select the optional documentary output and template mode.
-5. Choose whether sources stay at their original locations or are centralized
-   in `_sources/`. For centralization, confirm creation, verify Git exclusion,
-   approve each local copy separately, and keep Drive-native sources as links.
+5. Verify that start created `_sources/` and its Git exclusion. Drop sources
+   into `_sources/documents/` or provide links, approve each copy of a file
+   located elsewhere separately, and keep Drive-native sources as links.
 6. Select one case below and provide every listed source artefact, excluding
    the fixture `README.md`.
 7. Use the supplied prompt or the applicable entry in the `Prompt` column
@@ -279,7 +279,7 @@ context.
 | Tester |  |
 | ChatGPT model or environment |  |
 | Source documents or information used |  |
-| Source strategy: original locations or `_sources/` |  |
+| Sources dropped in `_sources/documents/`, linked, or kept in place (opt-out) |  |
 | Requested language |  |
 | Review purpose |  |
 | Intended audience |  |
@@ -297,8 +297,8 @@ Enter one allowed result and concise evidence or reservations for every row.
 | The state file contains no project or source business content | Le fichier d'état ne contient aucun contenu métier du projet ou des sources | Inspect project-design-state.json and verify that it contains only consent, phase, choices, presence flags, counts, approvals, references, and transition history. |  |  |
 | The state machine accepts every necessary question in one explicit batch | La machine d'état accepte toutes les questions nécessaires dans un même lot explicite | During framing, present at least four necessary questions, record the complete batch, end the conversation before answering, then verify that a new conversation resumes exactly the existing questions from the Canvas without duplication. |  |  |
 | Completion is gated by Canvas approval and the requested native document | La finalisation exige l'approbation du Canvas et le document natif demandé | Try to approve without a saved non-empty Canvas and, when Word or Google Docs is selected, try to complete without the verified file or URL; both attempts must fail. |  |  |
-| Source strategy is selected before project inputs are requested | La stratégie des sources est choisie avant la demande des intrants projet | After documentary delivery is selected, ask whether sources remain at their original locations or are centralized in `_sources/`; do not request project content before that choice. |  |  |
-| Centralized sources use a separate private initialized workspace | Les sources centralisées utilisent un espace privé initialisé séparément | Select centralization and verify `_sources/documents/`, `source-index.md`, `links.md`, and exactly one `/_sources/` rule in `.gitignore`. |  |  |
+| Delivery selection leads directly to source collection | Le choix documentaire mène directement à la collecte des sources | After documentary delivery is selected, verify that no source-strategy question is asked and that I am invited to drop documents into `_sources/documents/` or to provide links. |  |  |
+| Start creates the private source workspace | Le démarrage crée l'espace privé des sources | After consent, verify `_sources/documents/`, `source-index.md`, `links.md`, and exactly one `/_sources/` rule in `.gitignore`; drop a file and verify that it is indexed with its SHA-256. |  |  |
 | Every local source copy requires approval and cannot overwrite | Chaque copie de source locale exige un accord et ne peut pas écraser | Refuse a local copy first, then approve it, verify its origin and SHA-256 in the index, and confirm that a duplicate destination is rejected. |  |  |
 | Drive-native sources remain links and stay out of workflow state | Les sources Drive natives restent des liens et sont absentes de l'état du workflow | Register a Google Drive-native source without exporting it, then verify the link is indexed and neither its URL nor content appears in `project-design-state.json`. |  |  |
 | The plugin requests explicit consent before initializing its project workspace | Le plugin demande un consentement explicite avant d'initialiser son espace projet | Present the project-design skills and ask me to confirm that I want to use the plugin for my project specifications. Do not create any directory before my answer. |  |  |
@@ -315,6 +315,13 @@ Enter one allowed result and concise evidence or reservations for every row.
 | Objectives and expected value are correct and distinct | Les objectifs et la valeur attendue sont corrects et distincts | Separate supported Objectives from expected value and do not turn benefits into unsupported commitments. |  |  |
 | Project Stakeholders and users are correctly distinguished | Les parties prenantes du projet et les utilisateurs sont correctement distingués | Distinguish Project Stakeholders, authority, contributors, direct users, and indirect users from the supplied evidence. |  |  |
 | Validated MVP and authorized exclusions are distinct | Le MVP validé et les exclusions autorisées sont distincts | Separate validated MVP from authorized Outside MVP and omit proposed or undecided Capabilities. |  |  |
+| The four Canvas tables respect their columns | Les quatre tableaux du Canvas respectent leurs colonnes | Verify the `Module \| Fonctionnalité \| Description succincte` MVP and Hors MVP tables, `Risque \| Impact \| Solution`, `Thème \| Décision`, and `N° \| Question \| Réponse`, with no source identifier or status column. |  |  |
+| Features start with an infinitive verb and are not duplicated | Les fonctionnalités commencent par un verbe à l'infinitif et ne sont pas dupliquées | Verify that every feature row starts with an infinitive verb, that no capability is repeated across profiles, and that target-only capabilities carry **[Nouveau]**. |  |  |
+| Every supplied functional source is covered | Chaque source fonctionnelle fournie est couverte | Supply a user manual or legacy menu defining the scope and verify that each described capability is in MVP, in Hors MVP with its reason, or behind a question. |  |  |
+| Unanswered questions show « À apporter » and answered ones keep their row | Les questions sans réponse affichent « À apporter » et les questions répondues conservent leur ligne | Answer one question and verify that its row keeps the same number with the answer, while the others still show « À apporter ». |  |  |
+| The delivery message lists source coverage | Le message de livraison liste la couverture des sources | Supply a scanned PDF and verify that the delivery message states for each source whether and how it was read and flags any unread or partially read source. |  |  |
+| The technical foundation is asked at intake | Le socle technique est demandé dès l'accueil | Verify that intake asks whether a technical foundation is imposed or chosen and must prepare future evolutions, then that the answer lands in Contraintes techniques, Décisions, or Hors MVP. |  |  |
+| Questions found during a pending batch become candidates | Les questions découvertes pendant un lot en attente deviennent candidates | While a batch is pending, provide information raising a new question and verify that it appears under « Questions candidates pour le prochain lot » without entering the Canvas. |  |  |
 | Known business and technical Constraints are represented without detailed design | Les contraintes métier et techniques connues sont représentées sans conception détaillée | Represent known business and technical Constraints at framing level and stop before detailed solution design. |  |  |
 | Existing, Target, and Transition are correctly distinguished | L'existant, la cible et la transition sont correctement distingués | Distinguish Existing, Target, and Transition information wherever mixing them would change meaning. |  |  |
 | Decisions remain distinct from Assumptions, preferences, and proposals | Les décisions restent distinctes des hypothèses, préférences et propositions | Keep authoritative Decisions separate from Assumptions, preferences, proposals, and Options. |  |  |

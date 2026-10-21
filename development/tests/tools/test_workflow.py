@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -43,7 +44,6 @@ class WorkflowTests(unittest.TestCase):
         if output_format != "none":
             delivery.extend(["--template-mode", "default"])
         self.run_cli("set-delivery", *delivery)
-        self.run_cli("set-source-strategy", "--mode", "external")
         self.run_cli("confirm-inputs", "--description-provided")
 
     def open_question_batch(self, questions: int) -> dict:
@@ -70,14 +70,62 @@ class WorkflowTests(unittest.TestCase):
         self.assertEqual(output["status"], "error")
         self.assertFalse((self.root / "_project-design").exists())
 
-    def test_start_creates_v3_state_and_is_resumable(self) -> None:
+    def test_start_creates_v4_state_and_is_resumable(self) -> None:
         first = self.start()
         second = self.start()
-        self.assertEqual(first["state"]["schema_version"], 3)
+        self.assertEqual(first["state"]["schema_version"], 4)
         self.assertEqual(second["state"]["created_at"], first["state"]["created_at"])
         self.assertTrue(self.state_file().is_file())
 
-    def test_v1_state_migrates_through_v2_to_v3_without_losing_history(self) -> None:
+    def test_start_creates_centralized_source_workspace(self) -> None:
+        output = self.start()
+        self.assertEqual(
+            output["state"]["source_workspace"],
+            {"mode": "centralized", "path": "_sources", "gitignored": True},
+        )
+        for name in ("source-index.md", "links.md"):
+            self.assertTrue((self.root / "_sources" / name).is_file())
+        self.assertTrue((self.root / "_sources" / "documents").is_dir())
+        self.assertIn("/_sources/", (self.root / ".gitignore").read_text(encoding="utf-8"))
+
+    def write_v3_state(self, phase: str, mode: str | None) -> None:
+        state = self.start()["state"]
+        state["schema_version"] = 3
+        state["phase"] = phase
+        state["source_workspace"] = {
+            "mode": mode, "path": "_sources" if mode == "centralized" else None,
+            "gitignored": mode == "centralized",
+        }
+        self.state_file().write_text(json.dumps(state), encoding="utf-8")
+
+    def test_v3_source_strategy_phase_migrates_to_centralized_source_collection(self) -> None:
+        self.write_v3_state("awaiting_source_strategy", None)
+        shutil.rmtree(self.root / "_sources")
+        _, output = self.run_cli("status")
+        self.assertEqual(output["state"]["schema_version"], 4)
+        self.assertEqual(output["phase"], "awaiting_sources")
+        self.assertEqual(output["state"]["source_workspace"]["mode"], "centralized")
+        self.assertTrue((self.root / "_sources" / "documents").is_dir())
+        events = [item["event"] for item in output["state"]["history"]]
+        self.assertEqual(events.count("workflow_state_migrated_to_v4"), 1)
+
+    def test_v3_external_state_with_existing_sources_is_realigned(self) -> None:
+        self.write_v3_state("framing_iterations", "external")
+        _, output = self.run_cli("status")
+        self.assertEqual(output["phase"], "framing_iterations")
+        self.assertEqual(
+            output["state"]["source_workspace"],
+            {"mode": "centralized", "path": "_sources", "gitignored": True},
+        )
+
+    def test_v3_external_state_without_sources_stays_external(self) -> None:
+        self.write_v3_state("framing_iterations", "external")
+        shutil.rmtree(self.root / "_sources")
+        _, output = self.run_cli("status")
+        self.assertEqual(output["state"]["source_workspace"]["mode"], "external")
+        self.assertFalse((self.root / "_sources").exists())
+
+    def test_v1_state_migrates_through_v2_and_v3_to_v4_without_losing_history(self) -> None:
         initial = self.start()["state"]
         initial["schema_version"] = 1
         initial["phase"] = "awaiting_sources"
@@ -85,11 +133,13 @@ class WorkflowTests(unittest.TestCase):
         self.state_file().write_text(json.dumps(initial), encoding="utf-8")
         result, output = self.run_cli("status")
         self.assertEqual(result.returncode, 0)
-        self.assertEqual(output["state"]["schema_version"], 3)
-        self.assertEqual(output["phase"], "awaiting_source_strategy")
+        self.assertEqual(output["state"]["schema_version"], 4)
+        self.assertEqual(output["phase"], "awaiting_sources")
+        self.assertEqual(output["state"]["source_workspace"]["mode"], "centralized")
         events = [item["event"] for item in output["state"]["history"]]
         self.assertEqual(events.count("workflow_state_migrated_to_v2"), 1)
         self.assertEqual(events.count("workflow_state_migrated_to_v3"), 1)
+        self.assertEqual(events.count("workflow_state_migrated_to_v4"), 1)
         self.assertEqual(output["state"]["history"][0]["event"], "workflow_started")
 
     def test_v2_ambiguous_framing_state_migrates_cautiously_and_idempotently(self) -> None:
@@ -108,6 +158,7 @@ class WorkflowTests(unittest.TestCase):
             "canvas_approved": False,
         }
         self.state_file().write_text(json.dumps(initial), encoding="utf-8")
+        shutil.rmtree(self.root / "_sources")
         _, first = self.run_cli("status")
         _, second = self.run_cli("status")
         self.assertEqual(first["phase"], "framing_recovery")
@@ -187,40 +238,44 @@ class WorkflowTests(unittest.TestCase):
         self.start()
         self.run_cli("select-stage", "--stage", "project-framing")
         self.run_cli("set-delivery", "--additional-format", "none")
-        self.run_cli("set-source-strategy", "--mode", "external")
         result, output = self.run_cli("confirm-inputs")
         self.assertEqual(result.returncode, 2)
         self.assertIn("description", output["error"])
 
-    def test_source_strategy_is_required_before_inputs(self) -> None:
+    def test_delivery_leads_directly_to_source_collection(self) -> None:
         self.start()
         self.run_cli("select-stage", "--stage", "project-framing")
         _, delivery = self.run_cli("set-delivery", "--additional-format", "none")
-        self.assertEqual(delivery["phase"], "awaiting_source_strategy")
+        self.assertEqual(delivery["phase"], "awaiting_sources")
+        self.assertIn("_sources/documents/", delivery["next_action"])
         result, output = self.run_cli("confirm-inputs", "--description-provided")
-        self.assertEqual(result.returncode, 2)
-        self.assertIn("awaiting_sources", output["error"])
+        self.assertEqual(result.returncode, 0)
+        self.assertEqual(output["phase"], "framing_iterations")
 
-    def test_centralized_source_strategy_requires_confirmation(self) -> None:
+    def test_external_opt_out_is_optional_and_keeps_sources(self) -> None:
         self.start()
         self.run_cli("select-stage", "--stage", "project-framing")
         self.run_cli("set-delivery", "--additional-format", "none")
+        result, output = self.run_cli("set-source-strategy", "--mode", "external")
+        self.assertEqual(result.returncode, 0)
+        self.assertEqual(output["phase"], "awaiting_sources")
+        self.assertEqual(output["state"]["source_workspace"]["mode"], "external")
+        self.assertTrue((self.root / "_sources" / "documents").is_dir())
+        _, resumed = self.run_cli("start", "--confirmed")
+        self.assertEqual(resumed["state"]["source_workspace"]["mode"], "external")
+
+    def test_reenabling_centralized_sources_requires_confirmation(self) -> None:
+        self.start()
+        self.run_cli("select-stage", "--stage", "project-framing")
+        self.run_cli("set-delivery", "--additional-format", "none")
+        self.run_cli("set-source-strategy", "--mode", "external")
         result, output = self.run_cli("set-source-strategy", "--mode", "centralized")
         self.assertEqual(result.returncode, 2)
         self.assertIn("explicit confirmation", output["error"])
-        self.assertFalse((self.root / "_sources").exists())
-
-    def test_centralized_source_strategy_initializes_private_workspace(self) -> None:
-        self.start()
-        self.run_cli("select-stage", "--stage", "project-framing")
-        self.run_cli("set-delivery", "--additional-format", "none")
-        result, output = self.run_cli(
+        _, accepted = self.run_cli(
             "set-source-strategy", "--mode", "centralized", "--confirmed"
         )
-        self.assertEqual(result.returncode, 0)
-        self.assertEqual(output["phase"], "awaiting_sources")
-        self.assertTrue((self.root / "_sources" / "documents").is_dir())
-        self.assertIn("/_sources/", (self.root / ".gitignore").read_text(encoding="utf-8"))
+        self.assertEqual(accepted["state"]["source_workspace"]["mode"], "centralized")
 
     def test_present_questions_accepts_more_than_three(self) -> None:
         self.advance_to_iterations()

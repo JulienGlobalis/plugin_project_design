@@ -1,6 +1,6 @@
 # Project Design - Contexte de continuité
 
-Dernière mise à jour : 2026-09-28
+Dernière mise à jour : 2026-10-21
 
 ## Utilisation de ce fichier
 
@@ -208,13 +208,15 @@ concurrent.
   mais ne crée aucun fichier ni répertoire de livraison.
 - `project-design` doit obtenir un consentement explicite avant de créer ou
   réutiliser `_project-design/` pour un nouveau parcours. Un refus ne crée rien.
-- L'initialisation est idempotente et ne crée que `_project-design/` et
-  `_project-design/documents/`, sans artefact vide.
-- Après le choix documentaire, le workflow impose une stratégie de sources :
-  conserver les originaux en place ou centraliser dans `_sources/`.
-- La centralisation exige une confirmation explicite, crée
+- L'initialisation est idempotente et ne crée que `_project-design/`,
+  `_project-design/documents/` et l'espace `_sources/`, sans artefact métier
+  vide.
+- Depuis le 21 octobre 2026, le démarrage consenti crée systématiquement
   `_sources/documents/`, `_sources/source-index.md` et `_sources/links.md`, et
-  ajoute `/_sources/` au `.gitignore` du projet cible par défaut.
+  ajoute `/_sources/` au `.gitignore` du projet cible. Le choix documentaire
+  mène directement à la collecte des sources ; conserver les originaux en
+  place reste un retrait optionnel (`set-source-strategy --mode external`)
+  qui ne supprime jamais `_sources/`.
 - Chaque copie locale exige un accord explicite, n'écrase jamais une copie
   existante et inscrit le chemin d'origine et le SHA-256 dans l'index. Les
   sources Drive natives restent des liens sans export automatique.
@@ -248,9 +250,20 @@ concurrent.
 - Les réponses partielles et les reports explicites réduisent séparément le
   compteur restant. Une demande technique ou un changement de conversation ne
   constitue jamais un report métier.
-- Le schéma d'état version 3 conserve uniquement les compteurs du lot actif et
-  ses horodatages. Le texte des questions, réponses, sources et du Canvas reste
+- Le schéma d'état version 4 (version 3 jusqu'au 21 octobre 2026) conserve
+  uniquement les compteurs du lot actif et ses horodatages. Le texte des questions, réponses, sources et du Canvas reste
   exclu du JSON.
+- Le Canvas présente le périmètre fonctionnel (tableaux `MVP` et `Hors MVP`
+  en `Module | Fonctionnalité | Description succincte`), les risques
+  (`Risque | Impact | Solution`), les décisions (`Thème | Décision`) et les
+  questions (`N° | Question | Réponse`, « À apporter » sans réponse,
+  numérotation stable) en tableaux. Les fonctionnalités commencent par un
+  verbe à l'infinitif, sont dédupliquées entre profils et couvrent toute
+  source fonctionnelle définissant le périmètre. L'inventaire des
+  fonctionnalités est attendu ; leur comportement détaillé reste en aval.
+- Une question découverte pendant un lot en attente n'entre pas dans le
+  Canvas : elle est proposée sous « Questions candidates pour le prochain
+  lot ».
 - La phase `complete` exige un Canvas non vide explicitement approuvé puis, si
   demandé, un `.docx` sous `_project-design/documents/` ou un lien Google Docs
   natif vérifié.
@@ -1411,6 +1424,47 @@ leurs fournisseurs natifs, modèles et paramètres de raisonnement n'ont pas ét
 modifiés. Aucun workflow Spec Kit n'a été exécuté, aucun commit et aucun push
 n'ont été effectués. Une nouvelle session Codex ou Claude Code est nécessaire
 pour recharger le catalogue de skills installé.
+
+## Évolution du 21 octobre 2026 — sources par défaut et Canvas tabulaire
+
+Demande utilisateur : pas de gestion de version par le plugin (aucun
+manifeste, version méthodologique, CHANGELOG ou tag modifié), création
+directe de `_sources/` au démarrage, sections du Canvas en tableaux, règles
+de formulation des fonctionnalités, lecture exhaustive des sources, question
+sur le socle technique dès l'accueil et questions candidates pendant un lot
+en attente.
+
+Livré :
+
+- `init_workspace.py` crée aussi `_sources/` en réutilisant
+  `initialize_source_workspace`, valide toutes les cibles avant création et
+  s'exécute via son module importable pour partager `WorkspaceError` ;
+- `workflow.py` passe au schéma 4 : `start` enregistre
+  `{mode: centralized, path: _sources, gitignored: true}`, `set-delivery`
+  mène à `awaiting_sources`, `set-source-strategy` devient un retrait
+  optionnel dans cette phase ; la migration v3 transforme
+  `awaiting_source_strategy` en `awaiting_sources` centralisé et réaligne un
+  état `external` lorsque `_sources/` existe ;
+- `source_workspace.py index-documents` indexe une seule fois, avec SHA-256,
+  les fichiers déposés directement dans `_sources/documents/` ;
+- `project-framing`, ses trois références, l'exemple fictif, le skill
+  orchestrateur, le contrat d'interaction, les règles qualité, le skill
+  documentaire (préservation des tableaux), le guide utilisateur, le README du
+  bundle, la vue d'architecture et la recette manuelle (50 critères) sont
+  alignés.
+
+Écart assumé : la demande indiquait `gitignored: false` tout en demandant que
+`_sources/documents/` soit « ignoré par Git » et que la fonction existante,
+qui ajoute la règle `.gitignore`, soit réutilisée. L'état enregistre
+`gitignored: true`, conforme à la réalité du dépôt cible. À confirmer par
+l'utilisateur.
+
+Contrôles : 75 tests Python, neuf validateurs Skill Creator, validateur
+Claude et liens du bundle passent. Le rejeu de `project-framing` sur un jeu
+fictif est consigné dans
+`development/tests/executions/2026-10-21-sources-and-tabular-canvas-review.md`.
+Le rejeu des quatre fixtures et la recette Google Sheet ne sont pas
+actualisés. Aucun commit ni push.
 
 ## Prompt de reprise
 

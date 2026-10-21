@@ -80,8 +80,11 @@ python3 scripts/workflow.py start \
   --confirmed
 ```
 
-`start` safely creates or reuses `_project-design/` and `documents/`, creates
-the state file on first use, and resumes it unchanged on later calls.
+`start` safely creates or reuses `_project-design/` and `documents/`, and the
+`_sources/` intake workspace (`documents/`, `source-index.md`, `links.md`),
+adds `/_sources/` to the target project's `.gitignore` without duplicating the
+rule, creates the state file on first use, and resumes it unchanged on later
+calls. Presenting the plugin includes stating that `_sources/` will be created.
 
 ### 2. Select the Stage
 
@@ -129,33 +132,35 @@ python3 scripts/workflow.py set-delivery \
   --template-mode default
 ```
 
-### 4. Choose the Source Strategy
+### 4. Use the Source Workspace
 
-When the phase is `awaiting_source_strategy`, ask whether sources should:
-
-- remain at their original locations (`external`); or
-- be centralized in the optional root-level `_sources/` workspace
-  (`centralized`).
-
-Centralization requires explicit confirmation. Record the choice with:
-
-```text
-python3 scripts/workflow.py set-source-strategy \
-  --project-root <project-root> \
-  --mode centralized \
-  --confirmed
-```
-
-Use `--mode external` without `--confirmed` when originals remain in place.
-For centralized mode, the command creates `_sources/documents/`,
-`_sources/source-index.md`, and `_sources/links.md`, then adds `/_sources/` to
-the target project's `.gitignore` without duplicating the rule.
+Delivery selection leads directly to `awaiting_sources`; there is no
+separate source-strategy choice. Start always creates `_sources/documents/`,
+ignored by Git. Invite the user to drop their source documents there, in any
+format the active environment can read, or to provide them as links. Copying a
+file located elsewhere still requires explicit approval, file by file. Index
+every document present in `_sources/source-index.md`. Never modify an
+original.
 
 Use `scripts/source_workspace.py add-local` only after explicit consent to
 copy each local file. It never overwrites an existing destination and records
 the original path and SHA-256 in the index. Use `add-link` for native Google
 Drive, Docs, Sheets, or Slides sources; record the link without exporting it.
-Never modify an original source.
+After the user drops files into `_sources/documents/`, run
+`scripts/source_workspace.py index-documents --project-root <project-root>`;
+it records each not-yet-indexed file with its SHA-256 and changes none of them.
+
+Keeping originals in place remains an optional opt-out, never a mandatory
+question. Only when the user asks for it, record:
+
+```text
+python3 scripts/workflow.py set-source-strategy \
+  --project-root <project-root> \
+  --mode external
+```
+
+The opt-out never deletes `_sources/`. Returning to the centralized default
+requires `--mode centralized --confirmed`.
 
 ### 5. Obtain Initial Project Inputs
 
@@ -163,7 +168,9 @@ When the phase is `awaiting_sources`, ask for a project description in the
 conversation, source documents, or both. Do not store their contents in the
 state file.
 
-After at least one input form is actually available, run `confirm-inputs` with
+Sources may be supplied by files dropped into `_sources/documents/`, links,
+approved copies, or original locations under the opt-out. After at least one
+input form is actually available, run `confirm-inputs` with
 `--description-provided`, `--documents-provided`, or both.
 
 ### 6. Run Iterative Project Framing
@@ -196,8 +203,15 @@ In `awaiting_framing_answers`, read the existing unanswered questions from
 inventing or duplicating any. A new conversation, a request to save state, or
 a technical transition instruction is not a business answer or a deferral.
 
-For substantive answers, update only the affected Canvas content, keep the
-remaining questions in its `Questions` section, and record the count received:
+When new questions emerge while a batch is pending, do not add them to the
+Canvas. Present them in the delivery message under the heading `Candidate
+questions for the next batch` (French: `Questions candidates pour le prochain
+lot`), then open them in the next iteration once the current batch is settled.
+
+For substantive answers, update only the affected Canvas content, write each
+answer as the current result in the `Questions` table row of its question,
+keep the remaining questions marked `To be provided`, and record the count
+received:
 
 ```text
 python3 scripts/workflow.py record-answers \
@@ -205,9 +219,10 @@ python3 scripts/workflow.py record-answers \
   --answers-received <count>
 ```
 
-For questions the user explicitly defers, retain the unresolved questions as
-appropriate under a separate short deferred-questions subheading in Canvas
-section 9, so resumption can distinguish them from active questions. Then run:
+For questions the user explicitly defers, keep them in the Canvas section 9
+table with the deferred marker in their answer cell, so resumption can
+distinguish them from active questions still marked `To be provided`. Then
+run:
 
 ```text
 python3 scripts/workflow.py defer-questions \
@@ -310,8 +325,8 @@ counters.
   in the workflow state.
 - Never treat a conversation boundary or technical workflow request as a
   business answer or explicit deferral.
-- Keep `_sources/` separate from the `_project-design/` delivery workspace and
-  ignore it from Git by default.
+- Keep `_sources/` separate from the `_project-design/` delivery workspace,
+  create it at start, and ignore it from Git by default.
 - Never advance a phase without a successful script transition.
 - Never initialize before explicit consent or reset an existing state.
 - Never execute a placeholder methodology or invent an unsupported guided

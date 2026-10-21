@@ -31,7 +31,6 @@ class WorkflowResumptionIntegrationTests(unittest.TestCase):
             self.run_cli(root, "start", "--confirmed")
             self.run_cli(root, "select-stage", "--stage", "project-framing")
             self.run_cli(root, "set-delivery", "--additional-format", "none")
-            self.run_cli(root, "set-source-strategy", "--mode", "external")
             self.run_cli(root, "confirm-inputs", "--description-provided")
             self.run_cli(root, "open-iteration")
             canvas = root / "_project-design" / "project-canvas.md"
