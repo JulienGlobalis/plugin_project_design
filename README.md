@@ -85,43 +85,133 @@ an update.
 The skills also trigger on a natural request, such as "frame my project".
 Start the assistant from the root of the target project.
 
-#### Default guided run
+#### Complete walkthrough
 
-Launched through `project-design`, the plugin chains these steps:
+The guided workflow is launched once with `project-design`; the following
+steps are plain answers in the same conversation. Commands are given for
+Claude Code; in Codex, name the skill in the sentence instead
+(`Use project-design for …`).
 
-1. **Consent:** it presents the skills and the folders it will create, then
-   asks whether you agree to use the plugin for the project. A refusal creates
-   nothing. After agreement it creates `_project-design/`,
-   `_project-design/documents/`, the private `_sources/` workspace
-   (`documents/`, `source-index.md`, `links.md`), and adds `/_sources/` to the
-   `.gitignore`.
-2. **Stage:** it asks which stage to run and proposes `project-framing` by
-   default, the only stage routed by the guided workflow.
-3. **Delivery:** the Markdown Canvas is always produced. It asks whether you
-   also want Word or Google Docs and, if so, which template: a local file, a
-   Drive link, or the default structure.
-4. **Sources:** it invites you to drop documents into `_sources/documents/`,
-   to provide links, or to describe the project in the conversation. Each
-   document is indexed with its SHA-256; copying a file located elsewhere
-   requires your approval, file by file; no original is modified. In the same
-   message it asks whether a technical foundation is imposed or already
-   chosen, and whether it must prepare future evolutions.
-5. **Analysis:** it reads every source completely (OCR or page-by-page reading
-   when extraction is poor) and writes a first Project Canvas with ten
-   sections. Functional Scope, Risks, Decisions, and Questions are tables. The
-   delivery message lists how each source was read.
-6. **Question batches:** it presents every necessary decision question with
-   options, consequences, and a recommendation. You can answer all, part, or
-   explicitly defer some. Unanswered questions show `To be provided`; answered
-   ones keep their number and answer. New questions that appear during a
-   pending batch are proposed as candidates for the next batch.
-7. **Approval:** it links the Canvas, summarizes the changes and remaining
-   blockers, and asks for approval or another iteration.
-8. **Document:** if requested, `document-project-canvas` produces the `.docx`
-   or the native Google Docs and verifies it.
+**Step 1 — Start and consent**
 
-Every transition is recorded in a state file: no step can be skipped, and a
-new conversation resumes exactly where the previous one stopped.
+- Command: `/project-design:project-design`
+- Example prompt:
+
+  ```text
+  /project-design:project-design Guide the specification of the application
+  in /path/to/my-project.
+  ```
+
+- The plugin presents the skills and the folders it will create, then asks:
+  "Do you agree to use the plugin for this project?"
+- Your answer: `Yes, I agree.` A refusal creates nothing.
+- Result: `_project-design/`, `_project-design/documents/`, and the private
+  `_sources/` workspace (`documents/`, `source-index.md`, `links.md`) are
+  created, and `/_sources/` is added to the `.gitignore`.
+
+**Step 2 — Stage**
+
+- Question: "Which stage should be run?" `project-framing` is proposed by
+  default, the only stage routed by the guided workflow.
+- Your answer: `Start with framing.`
+
+**Step 3 — Delivery format**
+
+- The Markdown Canvas is always produced.
+- Question: "Do you also want a Word or Google Docs document?" If yes: "Which
+  template: a local file, a Drive link, or the default structure?"
+- Example answers: `Markdown only.` or
+  `Also a Word document, with the default structure.`
+
+**Step 4 — Sources and technical foundation**
+
+- The plugin invites you to drop documents into `_sources/documents/`, to
+  provide links, or to describe the project in the conversation. Copying a
+  file located elsewhere requires your approval, file by file.
+- Question asked in the same message: "Is a technical foundation imposed or
+  already chosen? Must it prepare future evolutions, for example other
+  channels or other applications?"
+- Example answer:
+
+  ```text
+  I dropped the brief and the legacy user manual into _sources/documents/.
+  The manual defines the scope to take over. No technical foundation is
+  imposed, but the tool must later open to a mobile application.
+  ```
+
+- Optional opt-out: `Keep my sources at their original location.`
+
+**Step 5 — Analysis and first Canvas**
+
+- No input is needed. The plugin reads every source completely and writes
+  `_project-design/project-canvas.md` with ten sections; Functional Scope
+  (MVP and Outside MVP), Risks, Decisions, and Questions are tables.
+- The delivery message lists how each source was read, flags any unread
+  source, and states which Risk solutions are proposals awaiting validation.
+
+**Step 6 — Question batches**
+
+- The plugin presents every necessary decision question, numbered, with
+  options, consequences, and a recommendation.
+- Example answer:
+
+  ```text
+  1: online reservation is in the MVP. 2: loans last 14 days.
+  I defer question 5.
+  ```
+
+- Unanswered questions show `To be provided`; answered ones keep their number
+  and answer. New questions found during a pending batch are proposed as
+  candidates for the next batch. Batches continue until the Canvas is ready.
+
+**Step 7 — Canvas approval**
+
+- The plugin links the Canvas, summarizes the changes and remaining blockers,
+  then asks: "Do you approve the Canvas, or do you want another iteration?"
+- Example answers: `I approve the Canvas.` or
+  `Another iteration: clarify the scope of the notifications module.`
+
+**Step 8 — Final document (only if requested in step 3)**
+
+- No input is needed: `document-project-canvas` is called automatically and
+  produces `_project-design/documents/project-canvas.docx` or a native Google
+  Docs link, then verifies it.
+- To produce or redo the document outside the guided run:
+
+  ```text
+  /project-design:document-project-canvas Turn the validated Canvas into a
+  professional Word document with the default structure.
+  ```
+
+**Step 9 — Next stage: Functional Design**
+
+- The guided workflow ends after framing and recommends the next action.
+  `functional-design` is not routed by the workflow: call it directly.
+
+  ```text
+  /project-design:functional-design Build the Functional Design from the
+  validated _project-design/project-canvas.md, without technical architecture
+  or backlog.
+  ```
+
+**Resuming in a new conversation**
+
+```text
+/project-design:project-design Resume the workflow in /path/to/my-project.
+```
+
+The plugin reads the recorded step and continues exactly there; pending
+questions are presented again without duplication.
+
+#### Which command for which need
+
+| Need | Command (Claude Code) |
+|---|---|
+| Start or resume the guided workflow | `/project-design:project-design` |
+| Frame a project directly, outside the guided workflow | `/project-design:project-framing` |
+| Build or update the Functional Design | `/project-design:functional-design` |
+| Produce the Canvas document (Markdown, Word, Google Docs) | `/project-design:document-project-canvas` |
+| Check a placeholder (`technical-design`, `product-backlog`, `document-functional-design`, `document-technical-design`, `document-product-backlog`) | `/project-design:<skill>` — it describes its planned coverage and creates nothing |
 
 #### Typical requests
 
@@ -322,47 +412,140 @@ Les skills se déclenchent aussi sur une demande formulée naturellement, par
 exemple « cadre mon projet ». Lancer l'assistant depuis la racine du projet
 cible.
 
-#### Déroulé guidé par défaut
+#### Parcours complet
 
-Lancé via `project-design`, le plugin enchaîne les étapes suivantes :
+Le parcours guidé se lance une seule fois avec `project-design` ; les étapes
+suivantes sont de simples réponses dans la même conversation. Les commandes
+sont données pour Claude Code ; dans Codex, nommer le skill dans la phrase
+(`Utilise project-design pour …`).
 
-1. **Accord :** il présente les skills et les dossiers qu'il va créer, puis
-   demande si vous acceptez d'utiliser le plugin pour le projet. Un refus ne
-   crée rien. Après accord, il crée `_project-design/`,
-   `_project-design/documents/`, l'espace privé `_sources/` (`documents/`,
-   `source-index.md`, `links.md`) et ajoute `/_sources/` au `.gitignore`.
-2. **Étape :** il demande quelle étape lancer et propose `project-framing` par
-   défaut, seule étape routée par le parcours guidé.
-3. **Livrables :** le Canvas Markdown est toujours produit. Il demande si vous
-   voulez aussi un document Word ou Google Docs et, si oui, quel modèle : un
-   fichier local, un lien Drive ou la structure par défaut.
-4. **Sources :** il vous invite à déposer vos documents dans
-   `_sources/documents/`, à fournir des liens ou à décrire le projet dans la
-   conversation. Chaque document est indexé avec son empreinte SHA-256 ;
-   copier un fichier situé ailleurs exige votre accord, fichier par fichier ;
-   aucun original n'est modifié. Dans le même message, il demande si un socle
-   technique est imposé ou déjà choisi et s'il doit préparer des évolutions
-   futures.
-5. **Analyse :** il lit intégralement chaque source (OCR ou lecture page par
-   page si l'extraction est mauvaise) et rédige un premier Project Canvas en
-   dix sections. Le périmètre fonctionnel, les risques, les décisions et les
-   questions sont présentés en tableaux. Le message de livraison indique
-   comment chaque source a été lue.
-6. **Lots de questions :** il présente toutes les questions de décision
-   nécessaires, avec options, conséquences et recommandation. Vous pouvez tout
-   répondre, répondre en partie ou reporter explicitement certaines
-   questions. Une question sans réponse affiche « À apporter » ; une question
-   répondue garde son numéro et sa réponse. Les nouvelles questions apparues
-   pendant un lot en attente sont proposées comme candidates pour le lot
-   suivant.
-7. **Validation :** il donne le lien du Canvas, résume les changements et les
-   blocages restants, puis demande l'approbation ou une nouvelle itération.
-8. **Document :** si demandé, `document-project-canvas` produit le `.docx` ou
-   le Google Docs natif et le vérifie.
+**Étape 1 — Démarrage et accord**
 
-Chaque transition est enregistrée dans un fichier d'état : aucune étape ne
-peut être sautée et une nouvelle conversation reprend exactement là où la
-précédente s'est arrêtée.
+- Commande : `/project-design:project-design`
+- Exemple de prompt :
+
+  ```text
+  /project-design:project-design Guide la spécification de l'application
+  située dans /chemin/vers/mon-projet.
+  ```
+
+- Le plugin présente les skills et les dossiers qu'il va créer, puis demande :
+  « Acceptes-tu que j'utilise le plugin pour ce projet ? »
+- Votre réponse : `Oui, j'accepte.` Un refus ne crée rien.
+- Résultat : `_project-design/`, `_project-design/documents/` et l'espace
+  privé `_sources/` (`documents/`, `source-index.md`, `links.md`) sont créés,
+  et `/_sources/` est ajouté au `.gitignore`.
+
+**Étape 2 — Étape à lancer**
+
+- Question : « Quelle étape lancer ? » `project-framing` est proposé par
+  défaut ; c'est la seule étape routée par le parcours guidé.
+- Votre réponse : `Commence par le cadrage.`
+
+**Étape 3 — Format de livraison**
+
+- Le Canvas Markdown est toujours produit.
+- Question : « Veux-tu aussi un document Word ou Google Docs ? » Si oui :
+  « Quel modèle : un fichier local, un lien Drive ou la structure par
+  défaut ? »
+- Exemples de réponse : `Markdown seul.` ou
+  `Aussi un document Word, avec la structure par défaut.`
+
+**Étape 4 — Sources et socle technique**
+
+- Le plugin vous invite à déposer vos documents dans `_sources/documents/`, à
+  fournir des liens ou à décrire le projet dans la conversation. Copier un
+  fichier situé ailleurs exige votre accord, fichier par fichier.
+- Question posée dans le même message : « Un socle technique est-il imposé ou
+  déjà choisi ? Doit-il préparer des évolutions futures, par exemple d'autres
+  canaux ou d'autres applications ? »
+- Exemple de réponse :
+
+  ```text
+  J'ai déposé le brief et le manuel utilisateur de l'ancien outil dans
+  _sources/documents/. Le manuel définit le périmètre à reprendre. Aucun socle
+  technique n'est imposé, mais l'outil devra s'ouvrir plus tard à une
+  application mobile.
+  ```
+
+- Retrait optionnel : `Conserve mes sources à leur emplacement d'origine.`
+
+**Étape 5 — Analyse et premier Canvas**
+
+- Aucune saisie n'est nécessaire. Le plugin lit intégralement chaque source
+  et rédige `_project-design/project-canvas.md` en dix sections ; le
+  périmètre fonctionnel (MVP et Hors MVP), les risques, les décisions et les
+  questions sont en tableaux.
+- Le message de livraison indique comment chaque source a été lue, signale
+  toute source non lue et précise quelles solutions aux risques sont des
+  propositions à valider.
+
+**Étape 6 — Lots de questions**
+
+- Le plugin présente toutes les questions de décision nécessaires,
+  numérotées, avec options, conséquences et recommandation.
+- Exemple de réponse :
+
+  ```text
+  1 : la réservation en ligne fait partie du MVP. 2 : un prêt dure 14 jours.
+  Je reporte la question 5.
+  ```
+
+- Une question sans réponse affiche « À apporter » ; une question répondue
+  garde son numéro et sa réponse. Les nouvelles questions apparues pendant un
+  lot en attente sont proposées comme candidates pour le lot suivant. Les
+  lots se succèdent jusqu'à ce que le Canvas soit prêt.
+
+**Étape 7 — Validation du Canvas**
+
+- Le plugin donne le lien du Canvas, résume les changements et les blocages
+  restants, puis demande : « Approuves-tu le Canvas, ou veux-tu une nouvelle
+  itération ? »
+- Exemples de réponse : `J'approuve le Canvas.` ou
+  `Nouvelle itération : précise le périmètre du module notifications.`
+
+**Étape 8 — Document final (seulement si demandé à l'étape 3)**
+
+- Aucune saisie n'est nécessaire : `document-project-canvas` est appelé
+  automatiquement, produit `_project-design/documents/project-canvas.docx` ou
+  un lien Google Docs natif, puis le vérifie.
+- Pour produire ou refaire le document hors du parcours guidé :
+
+  ```text
+  /project-design:document-project-canvas Transforme le Canvas validé en
+  document Word professionnel avec la structure par défaut.
+  ```
+
+**Étape 9 — Étape suivante : conception fonctionnelle**
+
+- Le parcours guidé s'arrête après le cadrage et recommande la prochaine
+  action. `functional-design` n'est pas routé par le parcours : l'appeler
+  directement.
+
+  ```text
+  /project-design:functional-design Construis le Functional Design à partir du
+  Canvas validé _project-design/project-canvas.md, sans architecture technique
+  ni backlog.
+  ```
+
+**Reprendre dans une nouvelle conversation**
+
+```text
+/project-design:project-design Reprends le workflow dans /chemin/vers/mon-projet.
+```
+
+Le plugin lit l'étape enregistrée et reprend exactement là ; les questions en
+attente sont reposées à l'identique, sans doublon.
+
+#### Quelle commande pour quel besoin
+
+| Besoin | Commande (Claude Code) |
+|---|---|
+| Démarrer ou reprendre le parcours guidé | `/project-design:project-design` |
+| Cadrer directement un projet, hors parcours guidé | `/project-design:project-framing` |
+| Créer ou faire évoluer la conception fonctionnelle | `/project-design:functional-design` |
+| Produire le document du Canvas (Markdown, Word, Google Docs) | `/project-design:document-project-canvas` |
+| Vérifier un placeholder (`technical-design`, `product-backlog`, `document-functional-design`, `document-technical-design`, `document-product-backlog`) | `/project-design:<skill>` — il décrit sa couverture prévue et ne crée rien |
 
 #### Demandes types
 
